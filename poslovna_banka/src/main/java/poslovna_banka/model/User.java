@@ -35,9 +35,8 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Long id, String username, String password, Bank bank) {
+	public User(String username, String password, Bank bank) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.bank = bank;
