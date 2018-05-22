@@ -1,18 +1,39 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app-routing.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ReactiveFormsModule} from '@angular/forms';
+import {LogInComponent} from "./log-in.component/log-in.component";
+import {APP_BASE_HREF} from "@angular/common";
+import {LogInService} from "../service/logInService";
+import {BankComponent} from "./bank/bank.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LogInComponent,
+    BankComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: APP_BASE_HREF, useValue: '/'},
+    LogInService,
+
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

@@ -1,0 +1,27 @@
+
+  <div class=" offset-4 col-md-4" style="margin-top:250px;background: #F7F7F7;">
+
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label style=" font-size: 1.5em;font-weight: bold;margin-top: 30px">Korisnicko ime:</label>
+        <input name="username" class="form-control margin" id="input-username" style="height: 50px"
+               placeholder="unesite korisnicko ime" [formControl]="username">
+        <small class="form-text error" *ngIf="username.errors?.required && username.touched" style="color: red">
+          Korisnicko ime je obavezano!
+        </small>
+
+        <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Lozinka:</label>
+        <input name="password" class="form-control margin" type="password" id="input-password" style="height: 50px"
+               placeholder="unesite lozinku" [formControl]="password">
+        <small class="form-text error" *ngIf="password.errors?.required && password.touched" style="color: red">
+          Lozinka je obavezana!
+        </small>
+
+        <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
+                (click)="confirmClick()" [disabled]="!form.valid">Prijavi se
+        </button>
+
+      </div>
+    </form>
+  </div>
+
