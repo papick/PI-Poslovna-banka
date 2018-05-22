@@ -61,7 +61,7 @@ export class AddCityComponent implements OnInit {
 
 
     } else if (m == 'add') {
-  
+
 
     }
 
