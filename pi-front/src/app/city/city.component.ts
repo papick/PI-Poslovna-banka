@@ -46,7 +46,9 @@ export class CityComponent implements OnInit {
   }
 
   add() {
-    this.router.navigateByUrl('/city/a/d/d/add');
+
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('bank/' + idBank + '/country/city/add');
   }
 
   deleteCity(id): any {
@@ -58,7 +60,8 @@ export class CityComponent implements OnInit {
   }
 
   editCity(id): any {
-    this.router.navigateByUrl('city/e/d/i/t/edit/' + id)
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('bank/' + idBank + '/country/city/edit/' + id);
   }
 
 

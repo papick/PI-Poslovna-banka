@@ -17,6 +17,7 @@ import {CountriesComponent} from "./countries/countries.component";
 import {AddCountryComponent} from "./addCountry/addCountry.component";
 import {CityComponent} from "./city/city.component";
 import {CityService} from "../service/cityService";
+import {AddCityComponent} from "./addCity/addCity.component";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {CityService} from "../service/cityService";
     CountriesComponent,
     AddCountryComponent,
     CityComponent,
+    AddCityComponent,
 
   ],
   imports: [

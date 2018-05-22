@@ -37,7 +37,7 @@ export class CityService {
   createCity(city: CityModel): Observable<any> {
     const body = JSON.stringify(city);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post(`${this.BASE_URL}/add-city`, {headers: headers}, {headers: headers})
+    return this.http.post(`${this.BASE_URL}/add-city`, body, {headers: headers})
   }
 
   editCity(city: CityModel, id: any): Observable<any> {
