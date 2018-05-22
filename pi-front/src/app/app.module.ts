@@ -15,6 +15,8 @@ import {NiComponent} from "./nalog-za-isplatu/ni.component";
 import {CountryService} from "../service/countryService";
 import {CountriesComponent} from "./countries/countries.component";
 import {AddCountryComponent} from "./addCountry/addCountry.component";
+import {CityComponent} from "./city/city.component";
+import {CityService} from "../service/cityService";
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import {AddCountryComponent} from "./addCountry/addCountry.component";
     NiComponent,
     CountriesComponent,
     AddCountryComponent,
+    CityComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,7 @@ import {AddCountryComponent} from "./addCountry/addCountry.component";
     {provide: APP_BASE_HREF, useValue: '/'},
     LogInService,
     CountryService,
+    CityService,
 
   ],
   bootstrap: [AppComponent]

@@ -11,7 +11,7 @@
     <th class="th-style"> Izmeni</th>
     <th class="th-style"> Obrisi</th>
   </tr>
-  <tr *ngFor="let item of items; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+  <tr *ngFor="let item of items; let i = index" >
     <td (click)="forCities(item.id)"> {{item.code}}</td>
     <td (click)="forCities(item.id)"> {{item.name}}</td>
     <td (click)="editCountry(item.id)"> Izmeni</td>

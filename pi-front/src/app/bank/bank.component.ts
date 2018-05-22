@@ -13,6 +13,7 @@ export class BankComponent implements OnInit {
   idBank;
   home = true;
   countries = false;
+  city = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -26,19 +27,30 @@ export class BankComponent implements OnInit {
 
   nalogIsplata() {
     this.nalogZaIsplatu = true;
+    this.city = false;
+    this.countries = false;
   }
 
   getCountries() {
     this.home = false;
     this.countries = true;
     this.nalogZaIsplatu = false;
+    this.city = false;
   }
 
   homePage() {
     this.home = true;
     this.countries = false;
     this.nalogZaIsplatu = false;
+    this.city = false;
 
+  }
+
+  getCities() {
+    this.home = false;
+    this.countries = false;
+    this.nalogZaIsplatu = false;
+    this.city = true;
   }
 
 }
