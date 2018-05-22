@@ -11,6 +11,7 @@
         </small>
 
         <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Lozinka:</label>
+        <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Lozinka:</label>
         <input name="password" class="form-control margin" type="password" id="input-password" style="height: 50px"
                placeholder="unesite lozinku" [formControl]="password">
         <small class="form-text error" *ngIf="password.errors?.required && password.touched" style="color: red">
