@@ -12,6 +12,9 @@ import {APP_BASE_HREF} from "@angular/common";
 import {LogInService} from "../service/logInService";
 import {BankComponent} from "./bank/bank.component";
 import {NiComponent} from "./nalog-za-isplatu/ni.component";
+import {CountryService} from "../service/countryService";
+import {CountriesComponent} from "./countries/countries.component";
+import {AddCountryComponent} from "./addCountry/addCountry.component";
 
 
 @NgModule({
@@ -20,6 +23,8 @@ import {NiComponent} from "./nalog-za-isplatu/ni.component";
     LogInComponent,
     BankComponent,
     NiComponent,
+    CountriesComponent,
+    AddCountryComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,10 +33,12 @@ import {NiComponent} from "./nalog-za-isplatu/ni.component";
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
     LogInService,
+    CountryService,
 
   ],
   bootstrap: [AppComponent]

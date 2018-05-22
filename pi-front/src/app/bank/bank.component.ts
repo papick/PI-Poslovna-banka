@@ -11,6 +11,8 @@ export class BankComponent implements OnInit {
   imageRoute = '../../../assets/images/erste.jpg';
   nalogZaIsplatu = false;
   idBank;
+  home = true;
+  countries = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -18,13 +20,25 @@ export class BankComponent implements OnInit {
 
   ngOnInit() {
     this.idBank = this.route.snapshot.params.idBank;
+
+
   }
 
   nalogIsplata() {
     this.nalogZaIsplatu = true;
   }
 
-  home() {
-    this.router.navigateByUrl('bank/' + this.idBank);
+  getCountries() {
+    this.home = false;
+    this.countries = true;
+    this.nalogZaIsplatu = false;
   }
+
+  homePage() {
+    this.home = true;
+    this.countries = false;
+    this.nalogZaIsplatu = false;
+
+  }
+
 }

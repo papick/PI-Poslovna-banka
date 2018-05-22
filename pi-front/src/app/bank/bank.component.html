@@ -2,13 +2,13 @@
   <img src="{{imageRoute}}" class="img" style="height: 150px">
 </div>
 <ul>
-  <li><a href="/bank/{{idBank}}">Pocetna</a></li>
+  <li (click)="homePage()"><a>Pocetna</a></li>
+  <li (click)="getCountries()"><a>Drzave</a></li>
+  <li><a>Gradovi</a></li>
   <li><a>Racuni</a></li>
-  <li><a href="">Drzave</a></li>
-  <li><a href="">Gradovi</a></li>
 </ul>
 
-<div style="text-align: center;margin-top: 30px">
+<div *ngIf="home==true" style="text-align: center;margin-top: 30px">
   <button>Nalog za uplatu</button>
   <button (click)="nalogIsplata()">Nalog za isplatu</button>
   <button>Nalog za naplatu</button>
@@ -17,4 +17,8 @@
 
 <div *ngIf="nalogZaIsplatu==true">
   <nalog-za-isplatu></nalog-za-isplatu>
+</div>
+
+<div *ngIf="countries==true">
+  <countries></countries>
 </div>
