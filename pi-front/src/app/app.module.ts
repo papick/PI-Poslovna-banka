@@ -11,6 +11,7 @@ import {LogInComponent} from "./log-in.component/log-in.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {LogInService} from "../service/logInService";
 import {BankComponent} from "./bank/bank.component";
+import {NiComponent} from "./nalog-za-isplatu/ni.component";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {BankComponent} from "./bank/bank.component";
     AppComponent,
     LogInComponent,
     BankComponent,
+    NiComponent,
   ],
   imports: [
     BrowserModule,
