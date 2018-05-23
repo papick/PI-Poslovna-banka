@@ -1,0 +1,38 @@
+<div class=" offset-3 col-md-6" style="margin-bottom:50px">
+
+  <form [formGroup]="form" >
+
+    <div class="form-group" >
+
+      <label style="margin-top: 200px">Oznaka:</label>
+      <input name="code" class="form-control margin"  id="input-code"
+             placeholder="oznaka" [formControl]="code" >
+      <small class="form-text error" *ngIf="code.errors?.required && code.touched">
+        Oznaka je obavezana!
+      </small>
+
+      <label style="margin-top:20px">Naziv:</label>
+      <input name="name" class="form-control margin"  id="input-name"
+              placeholder="naziv" [formControl]="name" style="">
+      <small class="form-text error" *ngIf="name.errors?.required && name.touched">
+        Naziv je obavezan!
+      </small>
+
+      <label style="margin-top:20px">Postanski broj:</label>
+      <input name="postNum" class="form-control margin"  id="input-postNum" placeholder="postanski broj" [formControl]="postNum" style="margin-bottom: 30px">
+
+      <select  class="form-control margin " [formControl]="country" style="margin-bottom: 30px;width: 93%;display: inline-block">
+       <option></option>
+        <option *ngFor="let country of countries "  >{{country.name}}</option>
+
+      </select>
+      <button class="btn btn-info" style="margin-left: 2px;height: 40px" (click)="combozoom()">...</button>
+
+
+      <button class="btn btn-success" style="width: 100%"  (click)="confirmClick()" [disabled]="!form.valid">{{method_name}}</button>
+      <button class="btn btn-success" style="width: 100% ; margin-top: 20px"  (click)="exit()">Zatvori</button>
+
+</div>
+
+  </form>
+</div>

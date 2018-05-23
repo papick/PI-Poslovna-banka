@@ -1,0 +1,40 @@
+:host {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4d94ff;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #b3d1ff;
+  }
+
+  button {
+    border-radius: 12px;
+    height: 50px;
+    font-size: 25px;
+    background-color: white; /* Green */
+    color: black;
+    border: 2px solid #4d94ff;
+  }
+
+  button:hover {
+    background-color: #b3d1ff; /* Green */
+    color: white;
+  }
+
+}

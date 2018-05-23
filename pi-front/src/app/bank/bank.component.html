@@ -1,1 +1,33 @@
-Banka
+<div class="offset-1">
+  <img src="{{imageRoute}}" class="img" style="height: 150px">
+</div>
+<ul>
+  <li (click)="homePage()"><a>Pocetna</a></li>
+  <li (click)="getCountries()"><a>Drzave</a></li>
+  <li (click)="getCities()"><a>Gradovi</a></li>
+  <li><a>Racuni</a></li>
+  <li><a>Kursna lista</a></li>
+  <li><a>Delatnosti</a></li>
+
+</ul>
+
+<div *ngIf="home==true" style="text-align: center;margin-top: 30px">
+
+  <button>Nalog za uplatu</button>
+  <button (click)="nalogIsplata()">Nalog za isplatu</button>
+  <button>Nalog za naplatu</button>
+  <button>Nalog za prenos</button>
+</div>
+
+<div *ngIf="nalogZaIsplatu==true">
+  <nalog-za-isplatu></nalog-za-isplatu>
+</div>
+
+<div *ngIf="countries==true">
+  <countries></countries>
+</div>
+
+
+<div *ngIf="city==true">
+  <city></city>
+</div>
