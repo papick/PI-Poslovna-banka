@@ -28,7 +28,7 @@ export class CountriesComponent implements OnInit {
 
   add() {
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/country/add');
+    this.router.navigateByUrl('/bank/' + idBank + '/country/country/add');
 
   }
 
@@ -41,7 +41,8 @@ export class CountriesComponent implements OnInit {
   }
 
   forCities(id): any {
-
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/countries/' + id);
   }
 
   editCountry(id): any {
@@ -52,6 +53,10 @@ export class CountriesComponent implements OnInit {
 
 
   showCities() {
+    const idBank = this.route.snapshot.params.idBank;
+    const id = this.route.snapshot.params.id;
+    this.router.navigateByUrl('bank/' + idBank + '/city/by-country/' + id)
+
   }
 
 
