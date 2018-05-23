@@ -28,7 +28,6 @@ public class Currency {
 	private Boolean domicilna;
 	
 	public Currency() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Currency(String officialCode, Country country, String name, Boolean domicilna) {
