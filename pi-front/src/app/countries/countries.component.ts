@@ -55,6 +55,7 @@ export class CountriesComponent implements OnInit {
   showCities() {
     const idBank = this.route.snapshot.params.idBank;
     const id = this.route.snapshot.params.id;
+
     this.router.navigateByUrl('bank/' + idBank + '/city/by-country/' + id)
 
   }

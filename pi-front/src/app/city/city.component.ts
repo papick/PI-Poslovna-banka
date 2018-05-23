@@ -27,13 +27,18 @@ export class CityComponent implements OnInit {
   ngOnInit() {
 
     const country = this.route.snapshot.params.country;
-    console.log(country)
-    if (country == 'by-country') {
+
+
+    if (country === 'by-country') {
       const id = this.route.snapshot.params.id;
-      console.log(id)
-      this.cityService.getCitesByCountry(id).subscribe(data => {
-        this.items = data.cities;
-      })
+      if (id == 'undefined') {
+        const idBank = this.route.snapshot.params.idBank;
+        this.router.navigateByUrl('bank/' + idBank + '/countries');
+      }else {
+        this.cityService.getCitesByCountry(id).subscribe(data => {
+          this.items = data.cities;
+        })
+      }
     } else {
       this.cityService.getCities().subscribe(data => {
         this.items = data.cities;

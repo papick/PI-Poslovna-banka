@@ -34,7 +34,6 @@ export class BankComponent implements OnInit {
 
 
     if (click === 'home') {
-
       this.home = true;
       this.countries = false;
       this.paymentCheck = false;
