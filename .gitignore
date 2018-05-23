@@ -1,2 +1,4 @@
 .gitignore
 /pi-front/node_modules
+/pi-front/.idea/workspace.xml
+.xml
