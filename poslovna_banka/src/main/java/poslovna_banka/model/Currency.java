@@ -1,4 +1,4 @@
-/*package poslovna_banka.model;
+package poslovna_banka.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -83,4 +83,4 @@ public class Currency {
 	
 	
 	
-}*/
+}
