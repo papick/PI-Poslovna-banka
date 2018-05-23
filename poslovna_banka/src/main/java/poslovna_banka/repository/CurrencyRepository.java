@@ -1,5 +1,13 @@
 package poslovna_banka.repository;
 
-public interface CurrencyRepository {
+import java.util.Currency;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CurrencyRepository extends JpaRepository<Currency,Long> {
+
+	
+	// test
 }
