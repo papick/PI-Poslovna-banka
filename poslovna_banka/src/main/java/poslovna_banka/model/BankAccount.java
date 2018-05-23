@@ -31,9 +31,12 @@ public class BankAccount {
 	
 	@ManyToOne
 	private LegalEntity legalEntity;
-
+	
+	@ManyToOne
+	private Currency currency;
+	
 	public BankAccount(String number, Date dateOfOpenning, boolean valid, Bank bank, Individual individual,
-			LegalEntity legalEntity) {
+			LegalEntity legalEntity, Currency currency) {
 		super();
 		this.number = number;
 		this.dateOfOpenning = dateOfOpenning;
@@ -41,8 +44,9 @@ public class BankAccount {
 		this.bank = bank;
 		this.individual = individual;
 		this.legalEntity = legalEntity;
+		this.currency = currency;
 	}
-	
+
 	public BankAccount(){}
 
 	public Long getId() {

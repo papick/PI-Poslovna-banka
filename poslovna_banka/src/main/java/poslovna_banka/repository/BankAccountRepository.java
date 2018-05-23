@@ -7,7 +7,5 @@ import poslovna_banka.model.BankAccount;
 
 @Repository
 public interface BankAccountRepository extends CrudRepository<BankAccount, Long>{
-
-	
 	
 }

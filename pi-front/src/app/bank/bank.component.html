@@ -5,7 +5,7 @@
   <li (click)="homePage()"><a>Pocetna</a></li>
   <li (click)="getCountries()"><a>Drzave</a></li>
   <li (click)="getCities()"><a>Gradovi</a></li>
-  <li><a>Racuni</a></li>
+  <li (click)="getBankAccounts()"><a>Racuni</a></li>
   <li><a>Kursna lista</a></li>
   <li (click)="getActivities()"><a>Delatnosti</a></li>
 
@@ -34,4 +34,8 @@
 
 <div *ngIf="activities==true">
   <activities></activities>
+</div>
+
+<div *ngIf="bankAccounts==true">
+  <app-bank-accounts></app-bank-accounts>
 </div>

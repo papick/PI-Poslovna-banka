@@ -5,6 +5,7 @@ import {BankComponent} from "./bank/bank.component";
 import {AddCountryComponent} from "./addCountry/addCountry.component";
 import {AddCityComponent} from "./addCity/addCity.component";
 import {AddActivitiesComponent} from "./addActivities/addActivities.component";
+import {BankAccountsComponent} from "./bank-accounts/bank-accounts.component";
 
 
 const routes: Routes = [

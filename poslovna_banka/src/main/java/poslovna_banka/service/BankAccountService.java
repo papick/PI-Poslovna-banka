@@ -14,5 +14,9 @@ public interface BankAccountService {
 	public BankAccount modifyBankAccount(BankAccount ba);
 	
 	public List<BankAccount> getAllBankAccounts();
+	
+	public List<BankAccount> getAllLegalEntities();
+	
+	public List<BankAccount> getAllIndividuals();
 
 }
