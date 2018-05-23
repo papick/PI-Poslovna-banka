@@ -1,4 +1,4 @@
-package poslovna_banka.model;
+/*package poslovna_banka.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +28,6 @@ public class Currency {
 	private Boolean domicilna;
 	
 	public Currency() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Currency(String officialCode, Country country, String name, Boolean domicilna) {
@@ -84,4 +83,4 @@ public class Currency {
 	
 	
 	
-}
+}*/
