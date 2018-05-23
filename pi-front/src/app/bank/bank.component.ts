@@ -76,4 +76,9 @@ export class BankComponent implements OnInit {
     this.router.navigateByUrl('/bank/' + this.idBank + '/city');
   }
 
+  nalogIsplata() {
+    location.reload();
+    this.router.navigateByUrl('/bank/' + this.idBank + '/nalog-za-splatu');
+  }
+
 }
