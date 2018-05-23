@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 
 export class BankComponent implements OnInit {
-  imageRoute = '../../../assets/images/erste.jpg';
+  imageRoute;
   nalogZaIsplatu = false;
   idBank;
   home = true;
@@ -20,7 +20,15 @@ export class BankComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.idBank = this.route.snapshot.params.idBank;
+    if (this.idBank == 1) {
+      this.imageRoute = '../../../assets/images/erste.jpg';
+    } else if(this.idBank == 2){
+      this.imageRoute = '../../../assets/images/intesa.jpg';
+    } else {
+      this.imageRoute = '../../../assets/images/banka.jpg';
+    }
   }
 
   nalogIsplata() {
