@@ -5,10 +5,12 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import poslovna_banka.model.Activity;
 import poslovna_banka.model.Bank;
 import poslovna_banka.model.City;
 import poslovna_banka.model.Country;
 import poslovna_banka.model.User;
+import poslovna_banka.repository.ActivityRepository;
 import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CountryRepository;
@@ -28,6 +30,9 @@ public class TestData {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private ActivityRepository activitiesRepository;
 
 	@PostConstruct
 	private void init() {
@@ -68,5 +73,15 @@ public class TestData {
 		userRepository.save(user3);
 		userRepository.save(user1);
 		userRepository.save(user2);
+		
+		Activity activity1 = new Activity("01","Poljoprivredna proizvodnja,lov,pratece delatnosti");
+		Activity activity2 = new Activity("01.11","Gajenje zita");
+		Activity activity4 = new Activity("01.2","Gajenje visegodisnjih biljaka");
+		Activity activity3 = new Activity("01.21","Gajenje grozdja");
+		
+		activitiesRepository.save(activity1);
+		activitiesRepository.save(activity2);
+		activitiesRepository.save(activity3);
+		activitiesRepository.save(activity4);
 	}
 }

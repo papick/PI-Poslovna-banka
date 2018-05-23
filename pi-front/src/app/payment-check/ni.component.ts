@@ -2,7 +2,7 @@
 import {Component} from "@angular/core";
 
 @Component({
-  selector: 'nalog-za-isplatu',
+  selector: 'payment-check',
   templateUrl: './ni.component.html',
   styleUrls: ['./ni.component.scss'],
 
