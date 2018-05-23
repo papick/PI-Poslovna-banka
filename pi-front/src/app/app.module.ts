@@ -11,13 +11,16 @@ import {LogInComponent} from "./log-in.component/log-in.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {LogInService} from "../service/logInService";
 import {BankComponent} from "./bank/bank.component";
-import {NiComponent} from "./nalog-za-isplatu/ni.component";
+import {NiComponent} from "./payment-check/ni.component";
 import {CountryService} from "../service/countryService";
 import {CountriesComponent} from "./countries/countries.component";
 import {AddCountryComponent} from "./addCountry/addCountry.component";
 import {CityService} from "../service/cityService";
 import {CityComponent} from './city/city.component';
 import {AddCityComponent} from "./addCity/addCity.component";
+import {ActivitiesComponent} from "./activities/activities.component";
+import {ActivityService} from "../service/activityService";
+import {AddActivitiesComponent} from "./addActivities/addActivities.component";
 
 
 @NgModule({
@@ -30,6 +33,8 @@ import {AddCityComponent} from "./addCity/addCity.component";
     AddCountryComponent,
     CityComponent,
     AddCityComponent,
+    ActivitiesComponent,
+    AddActivitiesComponent,
 
   ],
   imports: [
@@ -46,6 +51,7 @@ import {AddCityComponent} from "./addCity/addCity.component";
     LogInService,
     CountryService,
     CityService,
+    ActivityService,
 
   ],
   bootstrap: [AppComponent]

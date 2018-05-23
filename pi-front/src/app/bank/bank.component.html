@@ -7,20 +7,20 @@
   <li (click)="getCities()"><a>Gradovi</a></li>
   <li><a>Racuni</a></li>
   <li><a>Kursna lista</a></li>
-  <li><a>Delatnosti</a></li>
+  <li (click)="getActivities()"><a>Delatnosti</a></li>
 
 </ul>
 
 <div *ngIf="home==true" style="text-align: center;margin-top: 30px">
 
   <button>Nalog za uplatu</button>
-  <button (click)="nalogIsplata()">Nalog za isplatu</button>
+  <button (click)="paymentCheckk()">Nalog za isplatu</button>
   <button>Nalog za naplatu</button>
   <button>Nalog za prenos</button>
 </div>
 
-<div *ngIf="nalogZaIsplatu==true">
-  <nalog-za-isplatu></nalog-za-isplatu>
+<div *ngIf="paymentCheck==true">
+  <payment-check></payment-check>
 </div>
 
 <div *ngIf="countries==true">
@@ -30,4 +30,8 @@
 
 <div *ngIf="city==true">
   <city></city>
+</div>
+
+<div *ngIf="activities==true">
+  <activities></activities>
 </div>
