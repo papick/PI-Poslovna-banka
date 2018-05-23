@@ -83,7 +83,7 @@ export class AddCityComponent implements OnInit {
     this.cityService.createCity(city).toPromise()
       .then(data => {
         const idBank = this.route.snapshot.params.idBank;
-        this.router.navigateByUrl('bank/' + idBank);
+        this.router.navigateByUrl('bank/' + idBank + '/city');
 
       })
   }
@@ -99,15 +99,15 @@ export class AddCityComponent implements OnInit {
     this.cityService.editCity(city, id).toPromise()
       .then(data => {
         const idBank = this.route.snapshot.params.idBank;
-        this.router.navigateByUrl('bank/' + idBank);
+        this.router.navigateByUrl('bank/' + idBank + '/city');
 
       })
   }
 
   exit() {
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('bank/' + idBank);
+    this.router.navigateByUrl('bank/' + idBank + '/city');
 
   }
-  
+
 }

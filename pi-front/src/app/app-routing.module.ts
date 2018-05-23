@@ -9,7 +9,7 @@ import {AddCityComponent} from "./addCity/addCity.component";
 const routes: Routes = [
   {path: '', redirectTo: 'log-in', pathMatch: 'full'},
   {path: 'log-in', component: LogInComponent},
-  {path: 'bank/:idBank', component: BankComponent},
+  {path: 'bank/:idBank/:click', component: BankComponent},
   {path: 'bank/:idBank/country/:mode', component: AddCountryComponent},
   {path: 'bank/:idBank/country/city/:mode', component: AddCityComponent},
 

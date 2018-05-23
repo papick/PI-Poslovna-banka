@@ -43,7 +43,7 @@ export class LogInComponent implements OnInit {
         console.log('Pogresna lozinka! Pokusajte ponovo.');
         this.form.controls['password'].setValue('');
       } else {
-        this.router.navigateByUrl('/bank/' + this.bank.id);
+        this.router.navigateByUrl('/bank/' + this.bank.id + '/home');
       }
     })
   }

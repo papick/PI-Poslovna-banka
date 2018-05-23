@@ -65,7 +65,7 @@ export class AddCountryComponent implements OnInit {
     this.countryService.createCountry(country).toPromise()
       .then(data => {
         const idBank = this.route.snapshot.params.idBank;
-        this.router.navigateByUrl('bank/' + idBank);
+        this.router.navigateByUrl('bank/' + idBank + '/countries');
 
       })
   }
@@ -79,14 +79,14 @@ export class AddCountryComponent implements OnInit {
     this.countryService.editCountry(country, id).toPromise()
       .then(data => {
         const idBank = this.route.snapshot.params.idBank;
-        this.router.navigateByUrl('bank/' + idBank);
+        this.router.navigateByUrl('bank/' + idBank + '/countries');
 
       })
   }
 
   exit() {
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('bank/' + idBank);
+    this.router.navigateByUrl('bank/' + idBank + '/countries');
 
   }
 }
