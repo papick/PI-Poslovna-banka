@@ -9,11 +9,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 export class BankComponent implements OnInit {
   imageRoute;
-  nalogZaIsplatu = false;
+  paymentCheck = false;
   idBank;
   home = true;
   countries = false;
   city = false;
+  activities = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -32,29 +33,36 @@ export class BankComponent implements OnInit {
     }
 
 
-
     if (click === 'home') {
 
       this.home = true;
       this.countries = false;
-      this.nalogZaIsplatu = false;
+      this.paymentCheck = false;
       this.city = false;
-    } else if (click === 'nalog-za-splatu') {
-      this.nalogZaIsplatu = true;
+      this.activities = false;
+    } else if (click === 'payment-check') {
+      this.paymentCheck = true;
       this.city = false;
       this.countries = false;
+      this.activities = false;
     } else if (click === 'countries') {
       this.home = false;
       this.countries = true;
-      this.nalogZaIsplatu = false;
+      this.paymentCheck = false;
       this.city = false;
+      this.activities = false;
     } else if (click === 'city') {
       this.home = false;
       this.countries = false;
-      this.nalogZaIsplatu = false;
+      this.paymentCheck = false;
       this.city = true;
-    } else {
-
+      this.activities = false;
+    } else if (click === 'activities') {
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = true;
     }
 
   }
@@ -76,9 +84,16 @@ export class BankComponent implements OnInit {
     this.router.navigateByUrl('/bank/' + this.idBank + '/city');
   }
 
-  nalogIsplata() {
+  paymentCheckk() {
     location.reload();
-    this.router.navigateByUrl('/bank/' + this.idBank + '/nalog-za-splatu');
+
+    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-check');
+  }
+
+  getActivities() {
+    location.reload();
+
+    this.router.navigateByUrl('/bank/' + this.idBank + '/activities');
   }
 
 }

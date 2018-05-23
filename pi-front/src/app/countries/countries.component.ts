@@ -12,19 +12,12 @@ import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 })
 export class CountriesComponent implements OnInit {
 
-  public form: FormGroup;
-  public sss: AbstractControl;
-  selectedRow: number;
-
+  items = []
 
   constructor(private countryService: CountryService,
               protected router: Router,
-              private route: ActivatedRoute,
-              private fb: FormBuilder) {
+              private route: ActivatedRoute,) {
   }
-
-  items = []
-
 
   ngOnInit() {
 
