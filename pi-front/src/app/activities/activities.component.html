@@ -10,8 +10,8 @@
     <th class="th-style"> Obrisi</th>
   </tr>
   <tr *ngFor="let item of items;">
-    <td> {{item.code}}</td>
     <td> {{item.name}}</td>
+    <td> {{item.code}}</td>
     <td (click)="editActivity(item.id)"> Izmeni</td>
     <td (click)="deleteActivity(item.id)"> Obriši</td>
   </tr>

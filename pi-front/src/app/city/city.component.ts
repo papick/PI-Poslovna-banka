@@ -26,24 +26,26 @@ export class CityComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cityService.getCities().subscribe(data => {
-      this.items = data.cities;
-    })
+    const country = this.route.snapshot.params.country;
 
-    /*   const mode = this.route.snapshot.params.mode;
-       if (mode == 'all') {
-         this.cityService.getCities().subscribe(data => {
-           this.items = data.cities;
-         })
-       }
-       else if (mode == 'by-country') {
-         const id = this.route.snapshot.params.id;
-         this.cityService.getCitesByCountry(id).subscribe(data => {
-           this.items = data.cities;
-         })
-       } else {
-       }*/
+
+    if (country === 'by-country') {
+      const id = this.route.snapshot.params.id;
+      if (id == 'undefined') {
+        const idBank = this.route.snapshot.params.idBank;
+        this.router.navigateByUrl('bank/' + idBank + '/countries');
+      }else {
+        this.cityService.getCitesByCountry(id).subscribe(data => {
+          this.items = data.cities;
+        })
+      }
+    } else {
+      this.cityService.getCities().subscribe(data => {
+        this.items = data.cities;
+      })
+    }
   }
+
 
   add() {
     const idBank = this.route.snapshot.params.idBank;
