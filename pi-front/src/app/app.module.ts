@@ -21,6 +21,8 @@ import {AddCityComponent} from "./addCity/addCity.component";
 import {ActivitiesComponent} from "./activities/activities.component";
 import {ActivityService} from "../service/activityService";
 import {AddActivitiesComponent} from "./addActivities/addActivities.component";
+import {BankAccountsComponent} from './bank-accounts/bank-accounts.component';
+import {ClientService} from "../service/clientService";
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import {AddActivitiesComponent} from "./addActivities/addActivities.component";
     AddCityComponent,
     ActivitiesComponent,
     AddActivitiesComponent,
+    BankAccountsComponent,
 
   ],
   imports: [
@@ -52,6 +55,7 @@ import {AddActivitiesComponent} from "./addActivities/addActivities.component";
     CountryService,
     CityService,
     ActivityService,
+    ClientService,
 
   ],
   bootstrap: [AppComponent]

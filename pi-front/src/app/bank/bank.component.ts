@@ -15,6 +15,7 @@ export class BankComponent implements OnInit {
   countries = false;
   city = false;
   activities = false;
+  bankAccounts = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -34,35 +35,46 @@ export class BankComponent implements OnInit {
 
 
     if (click === 'home') {
-
       this.home = true;
       this.countries = false;
       this.paymentCheck = false;
       this.city = false;
       this.activities = false;
+      this.bankAccounts = false;
     } else if (click === 'payment-check') {
       this.paymentCheck = true;
       this.city = false;
       this.countries = false;
       this.activities = false;
+      this.bankAccounts = false;
     } else if (click === 'countries') {
       this.home = false;
       this.countries = true;
       this.paymentCheck = false;
       this.city = false;
       this.activities = false;
+      this.bankAccounts = false;
     } else if (click === 'city') {
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
       this.city = true;
       this.activities = false;
+      this.bankAccounts = false;
     } else if (click === 'activities') {
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
       this.city = false;
       this.activities = true;
+      this.bankAccounts = false;
+    } else if(click === 'bankAccounts'){
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = true;
     }
 
   }
@@ -86,7 +98,6 @@ export class BankComponent implements OnInit {
 
   paymentCheckk() {
     location.reload();
-
     this.router.navigateByUrl('/bank/' + this.idBank + '/payment-check');
   }
 
@@ -94,6 +105,12 @@ export class BankComponent implements OnInit {
     location.reload();
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/activities');
+  }
+
+  getBankAccounts() {
+    location.reload();
+
+    this.router.navigateByUrl('/bank/' + this.idBank + '/bankAccounts');
   }
 
 }

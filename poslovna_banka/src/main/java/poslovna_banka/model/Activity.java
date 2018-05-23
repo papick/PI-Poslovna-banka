@@ -13,10 +13,10 @@ public class Activity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
-	@Column(name = "code" ,unique =true )
+	@Column(name = "name" ,unique =true )
 	private String code;
 
-	@Column(name = "name", unique =true )
+	@Column(name = "code", unique =true )
 	private String name;
 
 	public Activity() {

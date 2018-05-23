@@ -1,5 +1,6 @@
 package poslovna_banka.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,30 @@ public class BankAccountServiceImpl implements BankAccountService{
 	@Override
 	public List<BankAccount> getAllBankAccounts() {
 		return (List<BankAccount>) repo.findAll();
+	}
+
+	@Override
+	public List<BankAccount> getAllLegalEntities() {
+		List<BankAccount> accounts=this.getAllBankAccounts();
+		List<BankAccount> legals = new ArrayList<>();
+		for(BankAccount ba : accounts){
+			if( !(ba.getLegalEntity()).equals(null) ){
+				legals.add(ba);
+			}
+		}
+		return legals;
+	}
+
+	@Override
+	public List<BankAccount> getAllIndividuals() {
+		List<BankAccount> accounts=this.getAllBankAccounts();
+		List<BankAccount> indvs = new ArrayList<>();
+		for(BankAccount ba : accounts){
+			if( (ba.getLegalEntity()).equals(null) ){
+				indvs.add(ba);
+			}
+		}
+		return indvs;
 	}
 
 }
