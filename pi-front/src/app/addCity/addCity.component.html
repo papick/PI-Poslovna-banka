@@ -21,12 +21,11 @@
       <label style="margin-top:20px">Postanski broj:</label>
       <input name="postNum" class="form-control margin"  id="input-postNum" placeholder="postanski broj" [formControl]="postNum" style="margin-bottom: 30px">
 
-      <select  class="form-control margin " [formControl]="country" style="margin-bottom: 30px;width: 93%;display: inline-block">
+      <select  class="form-control margin " [formControl]="country" style="margin-bottom: 30px;width: 100%;display: inline-block">
        <option></option>
         <option *ngFor="let country of countries "  >{{country.name}}</option>
 
       </select>
-      <button class="btn btn-info" style="margin-left: 2px;height: 40px" (click)="combozoom()">...</button>
 
 
       <button class="btn btn-success" style="width: 100%"  (click)="confirmClick()" [disabled]="!form.valid">{{method_name}}</button>

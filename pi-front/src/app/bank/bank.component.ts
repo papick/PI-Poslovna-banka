@@ -22,45 +22,58 @@ export class BankComponent implements OnInit {
   ngOnInit() {
 
     this.idBank = this.route.snapshot.params.idBank;
+    const click = this.route.snapshot.params.click;
     if (this.idBank == 1) {
       this.imageRoute = '../../../assets/images/erste.jpg';
-    } else if(this.idBank == 2){
+    } else if (this.idBank == 2) {
       this.imageRoute = '../../../assets/images/intesa.jpg';
     } else {
       this.imageRoute = '../../../assets/images/banka.jpg';
     }
-  }
 
-  nalogIsplata() {
-    this.nalogZaIsplatu = true;
-    this.city = false;
-    this.countries = false;
 
-  }
 
-  getCountries() {
-    this.home = false;
-    this.countries = true;
-    this.nalogZaIsplatu = false;
-    this.city = false;
+    if (click === 'home') {
+
+      this.home = true;
+      this.countries = false;
+      this.nalogZaIsplatu = false;
+      this.city = false;
+    } else if (click === 'nalog-za-splatu') {
+      this.nalogZaIsplatu = true;
+      this.city = false;
+      this.countries = false;
+    } else if (click === 'countries') {
+      this.home = false;
+      this.countries = true;
+      this.nalogZaIsplatu = false;
+      this.city = false;
+    } else if (click === 'city') {
+      this.home = false;
+      this.countries = false;
+      this.nalogZaIsplatu = false;
+      this.city = true;
+    } else {
+
+    }
 
   }
 
   homePage() {
-    this.home = true;
-    this.countries = false;
-    this.nalogZaIsplatu = false;
-    this.city = false;
 
+    this.router.navigateByUrl('/bank/' + this.idBank + '/home');
+    location.reload();
+  }
 
+  getCountries() {
+
+    this.router.navigateByUrl('/bank/' + this.idBank + '/countries');
+    location.reload();
   }
 
   getCities() {
-    this.home = false;
-    this.countries = false;
-    this.nalogZaIsplatu = false;
-    this.city = true;
+    location.reload();
+    this.router.navigateByUrl('/bank/' + this.idBank + '/city');
   }
-
 
 }
