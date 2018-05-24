@@ -11,7 +11,7 @@ import {LogInComponent} from "./log-in.component/log-in.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {LogInService} from "../service/logInService";
 import {BankComponent} from "./bank/bank.component";
-import {NiComponent} from "./payment-check/ni.component";
+import {PaymentCheckComponent} from "./payment-check/payment-check.component";
 import {CountryService} from "../service/countryService";
 import {CountriesComponent} from "./countries/countries.component";
 import {AddCountryComponent} from "./addCountry/addCountry.component";
@@ -32,7 +32,7 @@ import { AddBankAccountIndividualComponent } from './add-bank-account-individual
     AppComponent,
     LogInComponent,
     BankComponent,
-    NiComponent,
+    PaymentCheckComponent,
     CountriesComponent,
     AddCountryComponent,
     CityComponent,
