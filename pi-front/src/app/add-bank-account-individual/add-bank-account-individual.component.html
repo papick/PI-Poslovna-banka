@@ -1,0 +1,56 @@
+
+<div class=" offset-4 col-md-4" style="margin-top:150px;background: #F7F7F7;">
+
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label style=" font-size: 1.5em;font-weight: bold;margin-top: 30px">Ime</label>
+      <input name="name" class="form-control margin" id="input-name" style="height: 50px" [formControl]="name">
+      <small class="form-text error" *ngIf="name.errors?.required && name.touched" style="color: red">
+        Ime je obavezno!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Skraceno ime</label>
+      <input name="shortname" class="form-control margin" id="input-shortname" style="height: 50px" [formControl]="shortname">
+      <small class="form-text error" *ngIf="shortname.errors?.required && shortname.touched" style="color: red">
+        Skraceno ime je obavezno!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Adresa</label>
+      <input name="adress" class="form-control margin" id="input-adress" style="height: 50px" [formControl]="adress">
+      <small class="form-text error" *ngIf="adress.errors?.required && adress.touched" style="color: red">
+        Adresa je obavezno!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Broj telefona</label>
+      <input name="phonenumber" class="form-control margin" id="input-phonenumber" style="height: 50px" [formControl]="phonenumber">
+      <small class="form-text error" *ngIf="phonenumber.errors?.required && phonenumber.touched" style="color: red">
+        Broj telefona je obavezan!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">JMBG</label>
+      <input name="jmbg" class="form-control margin" id="input-jmbg" style="height: 50px" [formControl]="jmbg">
+      <small class="form-text error" *ngIf="jmbg.errors?.required && jmbg.touched" style="color: red">
+        JMBG je obavezan!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">E-mail</label>
+      <input name="email" class="form-control margin" id="input-email" style="height: 50px" [formControl]="email">
+      <small class="form-text error" *ngIf="email.errors?.required && email.touched" style="color: red">
+        E-mail je obavezan!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Adresa dostavljanja</label>
+      <input name="deliveringadress" class="form-control margin" id="input-deliveringadress" style="height: 50px" [formControl]="deliveringadress">
+      <small class="form-text error" *ngIf="deliveringadress.errors?.required && deliveringadress.touched" style="color: red">
+        Adresa dostavljanja je obavezna!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Izvestaj na e-mail</label>
+      <input type="checkbox">
+
+      <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px" [disabled]="!form.valid">Dodaj</button>
+
+    </div>
+  </form>
+</div>
+
