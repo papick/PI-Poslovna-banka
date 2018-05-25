@@ -13,6 +13,7 @@ import {AddBankAccountLegalsComponent} from "./add-bank-account-legals/add-bank-
 const routes: Routes = [
   {path: '', redirectTo: 'log-in', pathMatch: 'full'},
   {path: 'log-in', component: LogInComponent},
+  {path: 'bank/:idBank', component: BankAccountsComponent},
   {path: 'bank/:idBank/addBankAccountIndividual', component: AddBankAccountIndividualComponent},
   {path: 'bank/:idBank/addBankAccountLegalEntity', component: AddBankAccountLegalsComponent},
   {path: 'bank/:idBank/:click', component: BankComponent},

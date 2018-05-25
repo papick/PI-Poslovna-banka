@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {BankAccountService} from "../../service/bankAccountService";
-import {ActivatedRoute} from "@angular/router";
-import {CurrencyService} from "../../service/currencyService";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {BankAccountService} from '../../service/bankAccountService';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CurrencyService} from '../../service/currencyService';
 
 @Component({
   selector: 'app-add-bank-account-individual',
@@ -48,7 +48,11 @@ export class AddBankAccountIndividualComponent implements OnInit {
     currency: '',
   };
 
-  constructor(private fb: FormBuilder, private bankAccountService: BankAccountService, protected route: ActivatedRoute, private  currencyService: CurrencyService) {
+  constructor(private fb: FormBuilder,
+              private bankAccountService: BankAccountService,
+              protected route: ActivatedRoute,
+              private  currencyService: CurrencyService,
+              private router: Router) {
 
     this.form = this.fb.group({
       'name': ['', Validators.compose([Validators.required])],
@@ -62,7 +66,7 @@ export class AddBankAccountIndividualComponent implements OnInit {
       'currency': ['', Validators.compose([Validators.required])],
       'mailreporting': ['', Validators.compose([Validators.required])],
 
-    })
+    });
 
     this.name = this.form.controls['name'];
     this.shortname = this.form.controls['shortname'];
@@ -100,8 +104,8 @@ export class AddBankAccountIndividualComponent implements OnInit {
     this.bankAccountService.addIndividuals(this.individual).toPromise().then(res => {
       this.result = res;
       this.adding();
-      alert(res);
     });
+    location.reload();
   }
 
   adding() {
