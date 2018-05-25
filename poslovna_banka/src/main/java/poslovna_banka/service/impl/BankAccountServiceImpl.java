@@ -44,7 +44,7 @@ public class BankAccountServiceImpl implements BankAccountService{
 		List<BankAccount> accounts=this.getAllBankAccounts();
 		List<BankAccount> legals = new ArrayList<BankAccount>();
 		for(BankAccount ba : accounts){
-			if( !(ba.getLegalEntity()).equals(null) ){
+			if( ba.getLegalEntity() != null ){
 				legals.add(ba);
 			}
 		}
