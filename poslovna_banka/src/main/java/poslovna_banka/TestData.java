@@ -1,7 +1,5 @@
 package poslovna_banka;
 
-import java.util.Date;
-
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,7 @@ import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CountryRepository;
 import poslovna_banka.repository.CurrencyRepository;
+import poslovna_banka.repository.IndividualRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.repository.UserRepository;
 
@@ -51,6 +50,9 @@ public class TestData {
 	
 	@Autowired
 	private LegalEntityRepository leRepo;
+	
+	@Autowired
+	private IndividualRepository individualRepo;
 
 	@PostConstruct
 	private void init() {
@@ -103,16 +105,21 @@ public class TestData {
 		activitiesRepository.save(activity4);
 		
 		LegalEntity le = new LegalEntity("asd", "as", "asdasd", "1234", "123124", "sdads",
-				"1231", "poreska", "1231231", "asdad", true);
+				"1231", "poreska", "1231231", "asdad", true, activity1);
 		leRepo.save(le);
 		
-		Currency curr = new Currency("new", country1, "sadad", true);
-		currRepo.save(curr);
+		Individual i = new Individual("hbj","k","uyhg","56","6666666666666","ujh","hg",true);
+		individualRepo.save(i);
 		
-		BankAccount ba = new BankAccount("1234", new Date(), true, bank, null,le,curr);
-		BankAccount ba2 = new BankAccount("4444", new Date(), true, bank1, null,le,curr);
+		Currency curr = new Currency("new", country1, "novcaniceeee", true);
+		currRepo.save(curr);
+		Currency curr1 = new Currency("you", country1, "Euro", true);
+		currRepo.save(curr1);
+		
+		/*BankAccount ba = new BankAccount("1234", "", true, bank, null,le,curr);
+		BankAccount ba2 = new BankAccount("4444", "", true, bank1, null,le,curr);
 		bankAccRepo.save(ba);
-		bankAccRepo.save(ba2);
+		bankAccRepo.save(ba2);*/
 		
 	}
 }

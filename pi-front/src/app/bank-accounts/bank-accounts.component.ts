@@ -16,8 +16,9 @@ export class BankAccountsComponent implements OnInit {
   fizickoLice = false;
   prikaziZaFizicka = false;
   individualAccounts = [];
+  idBank;
 
-  constructor(private clientService: ClientService, protected route: ActivatedRoute) {
+  constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -43,10 +44,12 @@ export class BankAccountsComponent implements OnInit {
   }
 
   addLegalEntity() {
-
+    this.idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('bank/' + this.idBank + '/addBankAccountLegalEntity');
   }
 
   addIndividual() {
-    
+    this.idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('bank/' + this.idBank + '/addBankAccountIndividual');
   }
 }

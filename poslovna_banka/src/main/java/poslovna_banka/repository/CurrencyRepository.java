@@ -1,15 +1,11 @@
 package poslovna_banka.repository;
-
-
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import poslovna_banka.model.Currency;
 
 @Repository
-public interface CurrencyRepository extends JpaRepository<Currency,Long> {
+public interface CurrencyRepository extends CrudRepository<Currency,Long> {
 
-	
-	// test
+	public Currency findByName(String name);
 }

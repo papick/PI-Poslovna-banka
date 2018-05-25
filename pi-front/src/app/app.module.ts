@@ -11,7 +11,7 @@ import {LogInComponent} from "./log-in.component/log-in.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {LogInService} from "../service/logInService";
 import {BankComponent} from "./bank/bank.component";
-import {NiComponent} from "./payment-check/ni.component";
+import {PaymentCheckComponent} from "./payment-check/payment-check.component";
 import {CountryService} from "../service/countryService";
 import {CountriesComponent} from "./countries/countries.component";
 import {AddCountryComponent} from "./addCountry/addCountry.component";
@@ -24,6 +24,10 @@ import {AddActivitiesComponent} from "./addActivities/addActivities.component";
 import {BankAccountsComponent} from './bank-accounts/bank-accounts.component';
 import {ClientService} from "../service/clientService";
 import {PaymentOrderComponent} from "./payment-order/payment-order.component";
+import { AddBankAccountLegalsComponent } from './add-bank-account-legals/add-bank-account-legals.component';
+import { AddBankAccountIndividualComponent } from './add-bank-account-individual/add-bank-account-individual.component';
+import {BankAccountService} from "../service/bankAccountService";
+import {CurrencyService} from "../service/currencyService";
 
 
 @NgModule({
@@ -31,7 +35,7 @@ import {PaymentOrderComponent} from "./payment-order/payment-order.component";
     AppComponent,
     LogInComponent,
     BankComponent,
-    NiComponent,
+    PaymentCheckComponent,
     CountriesComponent,
     AddCountryComponent,
     CityComponent,
@@ -40,6 +44,8 @@ import {PaymentOrderComponent} from "./payment-order/payment-order.component";
     AddActivitiesComponent,
     BankAccountsComponent,
     PaymentOrderComponent,
+    AddBankAccountLegalsComponent,
+    AddBankAccountIndividualComponent,
 
   ],
   imports: [
@@ -58,6 +64,8 @@ import {PaymentOrderComponent} from "./payment-order/payment-order.component";
     CityService,
     ActivityService,
     ClientService,
+    BankAccountService,
+    CurrencyService,
 
   ],
   bootstrap: [AppComponent]

@@ -42,9 +42,9 @@ public class BankAccountServiceImpl implements BankAccountService{
 	@Override
 	public List<BankAccount> getAllLegalEntities() {
 		List<BankAccount> accounts=this.getAllBankAccounts();
-		List<BankAccount> legals = new ArrayList<>();
+		List<BankAccount> legals = new ArrayList<BankAccount>();
 		for(BankAccount ba : accounts){
-			if( !(ba.getLegalEntity()).equals(null) ){
+			if( ba.getLegalEntity() != null ){
 				legals.add(ba);
 			}
 		}
@@ -54,9 +54,9 @@ public class BankAccountServiceImpl implements BankAccountService{
 	@Override
 	public List<BankAccount> getAllIndividuals() {
 		List<BankAccount> accounts=this.getAllBankAccounts();
-		List<BankAccount> indvs = new ArrayList<>();
+		List<BankAccount> indvs = new ArrayList<BankAccount>();
 		for(BankAccount ba : accounts){
-			if( (ba.getLegalEntity()).equals(null) ){
+			if( ba.getLegalEntity() == null ){
 				indvs.add(ba);
 			}
 		}

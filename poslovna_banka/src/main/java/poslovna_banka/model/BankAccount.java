@@ -1,11 +1,12 @@
 package poslovna_banka.model;
-import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,28 +15,31 @@ public class BankAccount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	private String number;
-	
+
 	@NotNull
-	private Date dateOfOpenning;
-	
+	private String dateOfOpenning;
+
 	private boolean valid;
-	
+
 	@ManyToOne
 	private Bank bank;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Individual individual;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private LegalEntity legalEntity;
-	
-	@ManyToOne
+
+	@OneToOne
 	private Currency currency;
-	
-	public BankAccount(String number, Date dateOfOpenning, boolean valid, Bank bank, Individual individual,
+
+	public BankAccount() {
+	}
+
+	public BankAccount(String number, String dateOfOpenning, boolean valid, Bank bank, Individual individual,
 			LegalEntity legalEntity, Currency currency) {
 		super();
 		this.number = number;
@@ -46,8 +50,6 @@ public class BankAccount {
 		this.legalEntity = legalEntity;
 		this.currency = currency;
 	}
-
-	public BankAccount(){}
 
 	public Long getId() {
 		return id;
@@ -65,11 +67,11 @@ public class BankAccount {
 		this.number = number;
 	}
 
-	public Date getDateOfOpenning() {
+	public String getDateOfOpenning() {
 		return dateOfOpenning;
 	}
 
-	public void setDateOfOpenning(Date dateOfOpenning) {
+	public void setDateOfOpenning(String dateOfOpenning) {
 		this.dateOfOpenning = dateOfOpenning;
 	}
 
@@ -104,4 +106,20 @@ public class BankAccount {
 	public void setLegalEntity(LegalEntity legalEntity) {
 		this.legalEntity = legalEntity;
 	}
+
+	public Currency getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
+	}
+
+	@Override
+	public String toString() {
+		return "BankAccount [id=" + id + ", number=" + number + ", dateOfOpenning=" + dateOfOpenning + ", valid="
+				+ valid + ", bank=" + bank + ", individual=" + individual + ", legalEntity=" + legalEntity
+				+ ", currency=" + currency + "]";
+	}
+
 }
