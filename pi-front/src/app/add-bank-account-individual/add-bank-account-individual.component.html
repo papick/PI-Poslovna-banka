@@ -15,6 +15,19 @@
         Skraceno ime je obavezno!
       </small>
 
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Broj racuna</label>
+      <input name="accountnumber" class="form-control margin" id="input-accountnumber" style="height: 50px" [formControl]="accountnumber">
+      <small class="form-text error" *ngIf="accountnumber.errors?.required && accountnumber.touched" style="color: red">
+        Broj racuna je obavezan!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Valuta</label>
+      <select name="currency" class="form-control margin" id="input-currency" [formControl]="currency">
+        <option *ngFor="let currency of currencies;">
+          {{currency.name}}
+        </option>
+      </select>
+
       <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Adresa</label>
       <input name="adress" class="form-control margin" id="input-adress" style="height: 50px" [formControl]="adress">
       <small class="form-text error" *ngIf="adress.errors?.required && adress.touched" style="color: red">
@@ -46,9 +59,9 @@
       </small>
 
       <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Izvestaj na e-mail</label>
-      <input type="checkbox">
+      <input type="checkbox" name="mailreporting" [formControl]="mailreporting">
 
-      <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px" [disabled]="!form.valid">Dodaj</button>
+      <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px" [disabled]="!form.valid" (click)="addIndividualAccount()">Dodaj</button>
 
     </div>
   </form>

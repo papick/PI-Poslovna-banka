@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -45,9 +46,17 @@ public class LegalEntity {
 	private String deliveringAdress;
 	
 	private boolean mailReport;
+	
+	@OneToOne
+	private Activity activity;
+
+	
+	public LegalEntity(){}
+
 
 	public LegalEntity(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg,
-			String email, String mbr, String taxAuthority, String pib, String deliveringAdress, boolean mailReport) {
+			String email, String mbr, String taxAuthority, String pib, String deliveringAdress, boolean mailReport,
+			Activity activity) {
 		super();
 		this.name = name;
 		this.abbreviatedName = abbreviatedName;
@@ -60,104 +69,139 @@ public class LegalEntity {
 		this.pib = pib;
 		this.deliveringAdress = deliveringAdress;
 		this.mailReport = mailReport;
+		this.activity = activity;
 	}
-	
-	public LegalEntity(){}
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getAbbreviatedName() {
 		return abbreviatedName;
 	}
 
+
 	public void setAbbreviatedName(String abbreviatedName) {
 		this.abbreviatedName = abbreviatedName;
 	}
+
 
 	public String getAdress() {
 		return adress;
 	}
 
+
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+
 
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 
 	public String getJmbg() {
 		return jmbg;
 	}
 
+
 	public void setJmbg(String jmbg) {
 		this.jmbg = jmbg;
 	}
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getMbr() {
 		return mbr;
 	}
 
+
 	public void setMbr(String mbr) {
 		this.mbr = mbr;
 	}
+
 
 	public String getTaxAuthority() {
 		return taxAuthority;
 	}
 
+
 	public void setTaxAuthority(String taxAuthority) {
 		this.taxAuthority = taxAuthority;
 	}
+
 
 	public String getPib() {
 		return pib;
 	}
 
+
 	public void setPib(String pib) {
 		this.pib = pib;
 	}
+
 
 	public String getDeliveringAdress() {
 		return deliveringAdress;
 	}
 
+
 	public void setDeliveringAdress(String deliveringAdress) {
 		this.deliveringAdress = deliveringAdress;
 	}
+
 
 	public boolean isMailReport() {
 		return mailReport;
 	}
 
+
 	public void setMailReport(boolean mailReport) {
 		this.mailReport = mailReport;
 	}
+
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	
 
 }

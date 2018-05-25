@@ -1,44 +1,28 @@
-package poslovna_banka.model;
+package poslovna_banka.service.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+import poslovna_banka.model.Individual;
+import poslovna_banka.model.LegalEntity;
 
-@Entity
-public class BankAccount {
+public class BankAccountDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@NotNull
 	private String number;
 
-	@NotNull
 	private String dateOfOpenning;
 
 	private boolean valid;
 
-	@ManyToOne
-	private Bank bank;
+	private String bank;
 
-	@ManyToOne
 	private Individual individual;
 
-	@ManyToOne
 	private LegalEntity legalEntity;
 
-	@ManyToOne
-	private Currency currency;
+	private String currency;
 
-	public BankAccount(){}
+	private String activity;
 
-	public BankAccount(String number, String dateOfOpenning, boolean valid, Bank bank, Individual individual,
-			LegalEntity legalEntity, Currency currency) {
+	public BankAccountDTO(String number, String dateOfOpenning, boolean valid, String bank, Individual individual,
+			LegalEntity legalEntity, String currency, String activity) {
 		super();
 		this.number = number;
 		this.dateOfOpenning = dateOfOpenning;
@@ -47,14 +31,7 @@ public class BankAccount {
 		this.individual = individual;
 		this.legalEntity = legalEntity;
 		this.currency = currency;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.activity = activity;
 	}
 
 	public String getNumber() {
@@ -81,11 +58,11 @@ public class BankAccount {
 		this.valid = valid;
 	}
 
-	public Bank getBank() {
+	public String getBank() {
 		return bank;
 	}
 
-	public void setBank(Bank bank) {
+	public void setBank(String bank) {
 		this.bank = bank;
 	}
 
@@ -105,13 +82,20 @@ public class BankAccount {
 		this.legalEntity = legalEntity;
 	}
 
-	public Currency getCurrency() {
+	public String getCurrency() {
 		return currency;
 	}
 
-	public void setCurrency(Currency currency) {
+	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
 
-	
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
+
 }

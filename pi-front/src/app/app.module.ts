@@ -25,6 +25,8 @@ import {BankAccountsComponent} from './bank-accounts/bank-accounts.component';
 import {ClientService} from "../service/clientService";
 import { AddBankAccountLegalsComponent } from './add-bank-account-legals/add-bank-account-legals.component';
 import { AddBankAccountIndividualComponent } from './add-bank-account-individual/add-bank-account-individual.component';
+import {BankAccountService} from "../service/bankAccountService";
+import {CurrencyService} from "../service/currencyService";
 
 
 @NgModule({
@@ -60,6 +62,8 @@ import { AddBankAccountIndividualComponent } from './add-bank-account-individual
     CityService,
     ActivityService,
     ClientService,
+    BankAccountService,
+    CurrencyService,
 
   ],
   bootstrap: [AppComponent]
