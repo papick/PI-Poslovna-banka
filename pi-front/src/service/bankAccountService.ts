@@ -25,7 +25,7 @@ export class BankAccountService {
   addAccount(account): Observable<any>{
     const body = JSON.stringify(account);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post(`http://localhost:8080/api/bankAccounts/add-individual`, body, {headers: headers});
+    return this.http.post(`http://localhost:8080/api/bankAccounts/add-account-individual`, body, {headers: headers});
   }
 
 }

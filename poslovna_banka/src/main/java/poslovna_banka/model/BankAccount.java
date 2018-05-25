@@ -1,5 +1,6 @@
 package poslovna_banka.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,16 +27,17 @@ public class BankAccount {
 	@ManyToOne
 	private Bank bank;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Individual individual;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private LegalEntity legalEntity;
 
-	@ManyToOne
+	@OneToOne
 	private Currency currency;
 
-	public BankAccount(){}
+	public BankAccount() {
+	}
 
 	public BankAccount(String number, String dateOfOpenning, boolean valid, Bank bank, Individual individual,
 			LegalEntity legalEntity, Currency currency) {
@@ -113,5 +115,11 @@ public class BankAccount {
 		this.currency = currency;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "BankAccount [id=" + id + ", number=" + number + ", dateOfOpenning=" + dateOfOpenning + ", valid="
+				+ valid + ", bank=" + bank + ", individual=" + individual + ", legalEntity=" + legalEntity
+				+ ", currency=" + currency + "]";
+	}
+
 }

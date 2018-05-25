@@ -21,6 +21,7 @@
       <label style="margin-top:20px">Postanski broj:</label>
       <input name="postNum" class="form-control margin"  id="input-postNum" placeholder="postanski broj" [formControl]="postNum" style="margin-bottom: 30px">
 
+      <label style="margin-top:20px">Drzava:</label>
       <select  class="form-control margin " [formControl]="country" style="margin-bottom: 30px;width: 100%;display: inline-block">
        <option></option>
         <option *ngFor="let country of countries "  >{{country.name}}</option>

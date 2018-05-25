@@ -23,6 +23,7 @@
 
       <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Valuta</label>
       <select name="currency" class="form-control margin" id="input-currency" [formControl]="currency">
+        <option></option>
         <option *ngFor="let currency of currencies;">
           {{currency.name}}
         </option>

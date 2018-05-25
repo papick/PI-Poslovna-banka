@@ -11,6 +11,7 @@ import {CurrencyService} from "../../service/currencyService";
 })
 export class AddBankAccountIndividualComponent implements OnInit {
 
+  result;
   idbank;
   public form: FormGroup;
   public name: AbstractControl;
@@ -28,28 +29,23 @@ export class AddBankAccountIndividualComponent implements OnInit {
 
   individual = {
     name: '',
-    shortname: '',
-    accountnumber: '',
+    abbreviatedName: '',
     adress: '',
-    phonenumber: '',
+    phoneNumber: '',
     jmbg: '',
     email: '',
-    deliveringadress: '',
-    currency: '',
-    mailreporting: ''
+    deliveringAdress: '',
+    mailReport: ''
   };
 
   bankAccount = {
     number: '',
-    date: '',
+    dateOfOpenning: '',
     valid: true,
-    bank:'',
-    phonenumber: '',
-    jmbg: '',
-    email: '',
-    deliveringadress: '',
+    bank: '',
+    legalEntity: null,
+    individual: null,
     currency: '',
-    mailreporting: ''
   };
 
   constructor(private fb: FormBuilder, private bankAccountService: BankAccountService, protected route: ActivatedRoute, private  currencyService: CurrencyService) {
@@ -88,18 +84,28 @@ export class AddBankAccountIndividualComponent implements OnInit {
 
     this.idbank = this.route.snapshot.params.idBank;
     this.individual.name = this.name.value;
-    this.individual.shortname = this.shortname.value;
+    this.individual.abbreviatedName = this.shortname.value;
     this.individual.adress = this.adress.value;
-    this.individual.phonenumber = this.phonenumber.value;
+    this.individual.phoneNumber = this.phonenumber.value;
     this.individual.jmbg = this.jmbg.value;
     this.individual.email = this.email.value;
-    this.individual.deliveringadress = this.deliveringadress.value;
-    this.individual.mailreporting = this.mailreporting.value;
+    this.individual.deliveringAdress = this.deliveringadress.value;
+    this.individual.mailReport = this.mailreporting.value;
 
     this.bankAccount.bank = this.idbank;
+    this.bankAccount.individual = this.individual;
+    this.bankAccount.currency = this.currency.value;
+    this.bankAccount.number = this.accountnumber.value;
 
-    alert(this.individual);
-    this.bankAccountService.addIndividuals(this.individual).subscribe();
+    this.bankAccountService.addIndividuals(this.individual).toPromise().then(res => {
+      this.result = res;
+      this.adding();
+      alert(res);
+    });
+  }
+
+  adding() {
+    this.bankAccountService.addAccount(this.bankAccount).subscribe();
   }
 
   getCurrencies() {

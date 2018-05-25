@@ -1,5 +1,6 @@
 package poslovna_banka.resource;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,15 +41,34 @@ public class BankAccountResource {
 		return new ResponseEntity<List<BankAccount>>(bas.getAllIndividuals(), HttpStatus.OK);
 	}
 	
-	/*@PostMapping("/add-account-legal")
+	@PostMapping("/add-account-legal")
 	public ResponseEntity<BankAccount> addLegal(@RequestBody BankAccountDTO ba) {
 		BankAccount account = new BankAccount();
+		Date d = new Date();
 		account.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
 		account.setCurrency(currRepo.findByName(ba.getCurrency()));
-		account.setDateOfOpenning(ba.getDateOfOpenning());
+		account.setDateOfOpenning(d.toString());
 		account.setIndividual(null);
 		account.setLegalEntity(ba.getLegalEntity());
+		account.setNumber(ba.getNumber());
+		account.setValid(true);
 		
-		return new ResponseEntity<BankAccount>(bas.addBankAccount(ba), HttpStatus.OK);
-	}*/
+		return new ResponseEntity<BankAccount>(bas.addBankAccount(account), HttpStatus.OK);
+	}
+	
+	@PostMapping("/add-account-individual")
+	public ResponseEntity<BankAccount> addIndividual(@RequestBody BankAccountDTO ba) {
+		BankAccount account = new BankAccount();
+		Date d = new Date();
+		account.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
+		account.setCurrency(currRepo.findByName(ba.getCurrency()));
+		account.setDateOfOpenning(d.toString());
+		account.setIndividual(ba.getIndividual());
+		account.setLegalEntity(null);
+		account.setNumber(ba.getNumber());
+		account.setValid(true);
+		System.out.println(account.toString());
+		
+		return new ResponseEntity<BankAccount>(bas.addBankAccount(account), HttpStatus.OK);
+	}
 }

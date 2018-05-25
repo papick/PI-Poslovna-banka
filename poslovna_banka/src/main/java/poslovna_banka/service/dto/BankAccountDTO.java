@@ -18,11 +18,11 @@ public class BankAccountDTO {
 	private LegalEntity legalEntity;
 
 	private String currency;
-
-	private String activity;
+	
+	public BankAccountDTO(){}
 
 	public BankAccountDTO(String number, String dateOfOpenning, boolean valid, String bank, Individual individual,
-			LegalEntity legalEntity, String currency, String activity) {
+			LegalEntity legalEntity, String currency) {
 		super();
 		this.number = number;
 		this.dateOfOpenning = dateOfOpenning;
@@ -31,7 +31,6 @@ public class BankAccountDTO {
 		this.individual = individual;
 		this.legalEntity = legalEntity;
 		this.currency = currency;
-		this.activity = activity;
 	}
 
 	public String getNumber() {
@@ -89,13 +88,4 @@ public class BankAccountDTO {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-
-	public String getActivity() {
-		return activity;
-	}
-
-	public void setActivity(String activity) {
-		this.activity = activity;
-	}
-
 }

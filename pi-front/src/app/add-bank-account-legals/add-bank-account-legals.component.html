@@ -30,6 +30,7 @@
 
       <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Valuta</label>
       <select name="currency" class="form-control margin" id="input-currency" [formControl]="currency">
+        <option></option>
         <option *ngFor="let currency of currencies;">
           {{currency.name}}
         </option>
@@ -37,6 +38,7 @@
 
       <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Delatnost</label>
       <select name="activity" class="form-control margin" id="input-activity" [formControl]="activity">
+        <option></option>
         <option *ngFor="let value of values;">
           {{value.code}}
         </option>
