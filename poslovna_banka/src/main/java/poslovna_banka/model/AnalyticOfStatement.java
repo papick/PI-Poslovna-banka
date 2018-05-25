@@ -46,7 +46,7 @@ public class AnalyticOfStatement {
 	private BankAccount debtorAccount; // racun duznika
 
 	@ManyToOne
-	private String accountCreditor; // racun poverioca
+	private BankAccount accountCreditor; // racun poverioca
 
 	private Integer modelApproval; // model odobrenja
 
@@ -78,8 +78,9 @@ public class AnalyticOfStatement {
 
 	public AnalyticOfStatement(String debtor, String purposeOfPayment, String creditor, Date dateOfReceipt,
 			Date currencyDate, Integer modelAssigments, String referenceNumberAssigments, BankAccount debtorAccount,
-			String accountCreditor, Integer modelApproval, String referenceNumberCreditor, Boolean emergency, Float sum,
-			Integer typeOfMistake, String status, PaymentType paymentType, Currency paymentCurrency, City city) {
+			BankAccount accountCreditor, Integer modelApproval, String referenceNumberCreditor, Boolean emergency,
+			Float sum, Integer typeOfMistake, String status, PaymentType paymentType, Currency paymentCurrency,
+			City city) {
 		super();
 		this.debtor = debtor;
 		this.purposeOfPayment = purposeOfPayment;
@@ -173,11 +174,11 @@ public class AnalyticOfStatement {
 		this.debtorAccount = debtorAccount;
 	}
 
-	public String getAccountCreditor() {
+	public BankAccount getAccountCreditor() {
 		return accountCreditor;
 	}
 
-	public void setAccountCreditor(String accountCreditor) {
+	public void setAccountCreditor(BankAccount accountCreditor) {
 		this.accountCreditor = accountCreditor;
 	}
 
