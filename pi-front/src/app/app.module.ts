@@ -23,6 +23,7 @@ import {ActivityService} from "../service/activityService";
 import {AddActivitiesComponent} from "./addActivities/addActivities.component";
 import {BankAccountsComponent} from './bank-accounts/bank-accounts.component';
 import {ClientService} from "../service/clientService";
+import {PaymentOrderComponent} from "./payment-order/payment-order.component";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {ClientService} from "../service/clientService";
     ActivitiesComponent,
     AddActivitiesComponent,
     BankAccountsComponent,
+    PaymentOrderComponent,
 
   ],
   imports: [
