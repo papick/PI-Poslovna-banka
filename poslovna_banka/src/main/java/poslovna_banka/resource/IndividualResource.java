@@ -18,7 +18,9 @@ public class IndividualResource {
 	private IndividualService is;
 	
 	@PostMapping("/add-individual")
-	public ResponseEntity<Individual> addLegal(@RequestBody Individual i) {
-		return new ResponseEntity<Individual>(is.addIndividual(i), HttpStatus.OK);
+	public ResponseEntity<Individual> addIndividual(@RequestBody Individual i) {
+		
+		Individual individualForAdd=is.addIndividual(i);
+		return new ResponseEntity<Individual>(individualForAdd, HttpStatus.OK);
 	}
 }

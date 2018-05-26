@@ -39,7 +39,7 @@ public class LegalEntityServiceImpl implements LegalEntityService{
 	}
 
 	@Override
-	public List<LegalEntity> getAllLegalEntities(LegalEntity le) {
+	public List<LegalEntity> getAllLegalEntities() {
 		return (List<LegalEntity>) repo.findAll();
 	}
 

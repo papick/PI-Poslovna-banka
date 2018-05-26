@@ -9,7 +9,7 @@ import poslovna_banka.model.Individual;
 @Service
 public interface IndividualService {
 	
-public Individual addIndividual(Individual i);
+	public Individual addIndividual(Individual i);
 	
 	public Individual modifyIndividual(Individual i);
 	

@@ -12,6 +12,7 @@ import {CurrencyService} from '../../service/currencyService';
 export class AddBankAccountIndividualComponent implements OnInit {
 
   result;
+  brojRacuna;
   idbank;
   public form: FormGroup;
   public name: AbstractControl;
@@ -101,11 +102,8 @@ export class AddBankAccountIndividualComponent implements OnInit {
     this.bankAccount.currency = this.currency.value;
     this.bankAccount.number = this.accountnumber.value;
 
-    this.bankAccountService.addIndividuals(this.individual).toPromise().then(res => {
-      this.result = res;
-      this.adding();
-    });
-    location.reload();
+    this.adding();
+    this.router.navigateByUrl('http://localhost:4200/bank/' + this.idbank);
   }
 
   adding() {

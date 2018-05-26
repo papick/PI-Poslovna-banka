@@ -1,64 +1,38 @@
-package poslovna_banka.model;
+package poslovna_banka.service.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-@Entity
-public class LegalEntity {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@NotNull
+public class LegalEntityDTO {
+	
 	private String name;
 
-	@NotNull
 	private String abbreviatedName;
 
-	@NotNull
 	private String adress;
 
-	@NotNull
 	private String phoneNumber;
 
-	@NotNull
-	@Column(length = 13)
 	private String jmbg;
 
-	@NotNull
 	private String email;
 
-	@NotNull
 	private String mbr;
 
-	@NotNull
 	private String taxAuthority;
 
-	@Column(length = 10)
 	private String pib;
 
 	private String deliveringAdress;
 
 	private boolean mailReport;
 
-	@OneToOne
-	private Activity activity;
+	private String activity;
 	
-	@NotNull
 	private String responsiblePerson;
+	
+	public LegalEntityDTO(){}
 
-	public LegalEntity() {
-	}
-
-	public LegalEntity(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg,
+	public LegalEntityDTO(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg,
 			String email, String mbr, String taxAuthority, String pib, String deliveringAdress, boolean mailReport,
-			Activity activity, String responsiblePerson) {
+			String activity, String responsiblePerson) {
 		super();
 		this.name = name;
 		this.abbreviatedName = abbreviatedName;
@@ -73,14 +47,6 @@ public class LegalEntity {
 		this.mailReport = mailReport;
 		this.activity = activity;
 		this.responsiblePerson = responsiblePerson;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -171,11 +137,11 @@ public class LegalEntity {
 		this.mailReport = mailReport;
 	}
 
-	public Activity getActivity() {
+	public String getActivity() {
 		return activity;
 	}
 
-	public void setActivity(Activity activity) {
+	public void setActivity(String activity) {
 		this.activity = activity;
 	}
 

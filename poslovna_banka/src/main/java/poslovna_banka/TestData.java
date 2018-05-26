@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import poslovna_banka.model.Activity;
 import poslovna_banka.model.Bank;
-import poslovna_banka.model.BankAccount;
 import poslovna_banka.model.City;
 import poslovna_banka.model.Country;
 import poslovna_banka.model.Currency;
@@ -15,7 +14,6 @@ import poslovna_banka.model.Individual;
 import poslovna_banka.model.LegalEntity;
 import poslovna_banka.model.User;
 import poslovna_banka.repository.ActivityRepository;
-import poslovna_banka.repository.BankAccountRepository;
 import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CountryRepository;
@@ -41,9 +39,6 @@ public class TestData {
 	
 	@Autowired
 	private ActivityRepository activitiesRepository;
-	
-	@Autowired
-	private BankAccountRepository bankAccRepo;
 	
 	@Autowired
 	private CurrencyRepository currRepo;
@@ -105,7 +100,7 @@ public class TestData {
 		activitiesRepository.save(activity4);
 		
 		LegalEntity le = new LegalEntity("asd", "as", "asdasd", "1234", "123124", "sdads",
-				"1231", "poreska", "1231231", "asdad", true, activity1);
+				"1231", "poreska", "1231231", "asdad", true, activity1, "kristina");
 		leRepo.save(le);
 		
 		Individual i = new Individual("hbj","k","uyhg","56","6666666666666","ujh","hg",true);
@@ -115,11 +110,6 @@ public class TestData {
 		currRepo.save(curr);
 		Currency curr1 = new Currency("you", country1, "Euro", true);
 		currRepo.save(curr1);
-		
-		/*BankAccount ba = new BankAccount("1234", "", true, bank, null,le,curr);
-		BankAccount ba2 = new BankAccount("4444", "", true, bank1, null,le,curr);
-		bankAccRepo.save(ba);
-		bankAccRepo.save(ba2);*/
 		
 	}
 }

@@ -13,6 +13,6 @@ public interface LegalEntityService {
 	
 	public LegalEntity modifyLegalEntity(LegalEntity le);
 	
-	public List<LegalEntity> getAllLegalEntities(LegalEntity le);
+	public List<LegalEntity> getAllLegalEntities();
 	
 }

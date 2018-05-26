@@ -97,10 +97,10 @@
       </small>
 
       <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Izvestaj na e-mail</label>
-      <input type="checkbox">
+      <input type="checkbox" name="mailreporting" [formControl]="mailreporting">
 
       <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
-              [disabled]="!form.valid">Dodaj
+              [disabled]="!form.valid" (click)="addLegalEntityAccount()">Dodaj
       </button>
 
     </div>
