@@ -80,7 +80,7 @@ export class AddBankAccountLegalsComponent implements OnInit {
       'deliveringadress': ['', Validators.compose([Validators.required])],
       'currency': ['', Validators.compose([Validators.required])],
       'responsibleperson': ['', Validators.compose([Validators.required])],
-      'mailreporting': ['', Validators.compose([Validators.required])],
+      'mailreporting': [''],
 
     });
     this.name = this.form.controls['name'];

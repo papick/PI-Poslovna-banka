@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import poslovna_banka.model.BankAccount;
 
 @Repository
-public interface BankAccountRepository extends CrudRepository<BankAccount, Long>{
-	
+public interface BankAccountRepository extends CrudRepository<BankAccount, Long> {
+	BankAccount findOneByNumber(String number);
 }
