@@ -13,7 +13,7 @@
 
 <div *ngIf="home==true" style="text-align: center;margin-top: 30px">
 
-  <button>Nalog za uplatu</button>
+  <button (click)="paymentOrderClick()">Nalog za uplatu</button>
   <button (click)="paymentCheckk()">Nalog za isplatu</button>
   <button>Nalog za naplatu</button>
   <button>Nalog za prenos</button>
@@ -38,4 +38,8 @@
 
 <div *ngIf="bankAccounts==true">
   <app-bank-accounts></app-bank-accounts>
+</div>
+
+<div *ngIf="paymentOrder">
+  <app-payment-order></app-payment-order>
 </div>
