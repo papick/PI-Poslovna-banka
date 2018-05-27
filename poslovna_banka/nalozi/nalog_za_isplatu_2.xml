@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analyticsOfStatements>
 	<type>Nalog za isplatu</type>
-	<debtor>NN d.o.o</debtor>
+	<debtor>ZARA</debtor>
 	<purposeOfPayment>Isplata zarade 03/2018</purposeOfPayment>
-	<creditor>Tanasije Tanasic , blagajnik</creditor>
-	<sum>35000</sum>
-	<debtorAccountXML>123456</debtorAccountXML>
+	<creditor>Milica Kovacevic  , radnik</creditor>
+	<sum>25000</sum>
+	<debtorAccountXML>777888</debtorAccountXML>
 	<modelAssigments>97</modelAssigments>
 	<referenceNumberAssigments>BOP</referenceNumberAssigments>
 

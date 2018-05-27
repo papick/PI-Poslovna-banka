@@ -106,15 +106,22 @@ public class TestData {
 		activitiesRepository.save(activity3);
 		activitiesRepository.save(activity4);
 
-		LegalEntity le = new LegalEntity("asd", "as", "asdasd", "1234", "123124", "sdads", "1231", "poreska", "1231231",
-				"asdad", true, activity1, "kristina");
+		LegalEntity le = new LegalEntity("NN d.o.o", "as", "asdasd", "1234", "123124", "sdads", "1231", "poreska",
+				"1231231", "asdad", true, activity1, "kristina");
 		leRepo.save(le);
+
+		LegalEntity zara = new LegalEntity("Zara", "aa", "aaaa", "1111", "111111", "ssss", "1122", "poreska", "1231231",
+				"aaaa", true, activity1, "jelena");
+		leRepo.save(zara);
 
 		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg", true);
 		individualRepo.save(i);
 
 		BankAccount bankAccount = new BankAccount("123456");
 		bankAccountRepository.save(bankAccount);
+		
+		BankAccount bankAccount1 = new BankAccount("777888");
+		bankAccountRepository.save(bankAccount1);
 
 		Currency curr = new Currency("new", country1, "novcaniceeee", true);
 		currRepo.save(curr);

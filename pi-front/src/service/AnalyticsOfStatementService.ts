@@ -14,7 +14,7 @@ export class AnalyticsOfStatementService {
   constructor(private http: HttpClient) {
   }
 
-  getPaymentCheck(): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/xml/nalog_za_isplatu_1`, httpOptions);
+  getPaymentCheck(name: any): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/xml/${name}`, httpOptions);
   }
 }

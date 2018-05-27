@@ -10,7 +10,7 @@ import {AnalyticsOfStatementService} from "../../service/AnalyticsOfStatementSer
 
 })
 
-export class PaymentCheckComponent implements OnInit{
+export class PaymentCheckComponent implements OnInit {
 
   public form: FormGroup;
 
@@ -60,26 +60,39 @@ export class PaymentCheckComponent implements OnInit{
 
   ngOnInit() {
 
+  }
 
-    this.analyticService.getPaymentCheck().subscribe(data => {
+  load1() {
+    this.analyticService.getPaymentCheck('nalog_za_isplatu_1').subscribe(data => {
       this.form.controls['debtor'].setValue(data.debtor);
       this.form.controls['purpose'].setValue(data.purposeOfPayment);
       this.form.controls['creditor'].setValue(data.creditor);
       //this.form.controls['code'].setValue(data.code);
-     // this.form.controls['currency'].setValue(data.debtor);
+      // this.form.controls['currency'].setValue(data.debtor);
       this.form.controls['sum'].setValue(data.sum);
       this.form.controls['bankAccount'].setValue(data.debtorAccount.number);
       this.form.controls['model'].setValue(data.modelAssigments);
       this.form.controls['referenceNumber'].setValue(data.referenceNumberAssigments);
-
-
-
     })
-
-
-    confirmClick()
-    {
-      console.log('milica')
-    }
-
   }
+
+  load2() {
+    this.analyticService.getPaymentCheck('nalog_za_isplatu_2').subscribe(data => {
+      this.form.controls['debtor'].setValue(data.debtor);
+      this.form.controls['purpose'].setValue(data.purposeOfPayment);
+      this.form.controls['creditor'].setValue(data.creditor);
+      //this.form.controls['code'].setValue(data.code);
+      // this.form.controls['currency'].setValue(data.debtor);
+      this.form.controls['sum'].setValue(data.sum);
+      this.form.controls['bankAccount'].setValue(data.debtorAccount.number);
+      this.form.controls['model'].setValue(data.modelAssigments);
+      this.form.controls['referenceNumber'].setValue(data.referenceNumberAssigments);
+    })
+  }
+
+
+  confirmClick() {
+    console.log('milica')
+  }
+
+}
