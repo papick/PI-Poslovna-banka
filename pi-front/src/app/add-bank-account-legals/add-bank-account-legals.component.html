@@ -1,34 +1,37 @@
-<div class=" offset-4 col-md-4" style="margin-top:150px;background: #F7F7F7;">
+<div class=" offset-4 col-md-4" style="margin-top:150px">
 
   <form [formGroup]="form">
     <div class="form-group">
-      <label style=" font-size: 1.5em;font-weight: bold;margin-top: 30px">Ime</label>
-      <input name="name" class="form-control margin" id="input-name" style="height: 50px" [formControl]="name">
+      <h2 style="margin-bottom: 30px">Otvaranje racuna za pravno lice:</h2>
+      <label>Ime</label>
+      <input name="name" class="form-control margin" id="input-name" [formControl]="name">
       <small class="form-text error" *ngIf="name.errors?.required && name.touched" style="color: red">
         Ime je obavezno!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Skraceno ime</label>
-      <input name="shortname" class="form-control margin" id="input-shortname" style="height: 50px"
+      <label style="margin-top:20px">Skraceno ime</label>
+      <input name="shortname" class="form-control margin" id="input-shortname"
              [formControl]="shortname">
       <small class="form-text error" *ngIf="shortname.errors?.required && shortname.touched" style="color: red">
         Skraceno ime je obavezno!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Odgovorno lice</label>
-      <input name="responsibleperson" class="form-control margin" id="input-responsibleperson" style="height: 50px" [formControl]="responsibleperson">
-      <small class="form-text error" *ngIf="responsibleperson.errors?.required && responsibleperson.touched" style="color: red">
+      <label style="margin-top:20px">Odgovorno lice</label>
+      <input name="responsibleperson" class="form-control margin" id="input-responsibleperson"
+             [formControl]="responsibleperson">
+      <small class="form-text error" *ngIf="responsibleperson.errors?.required && responsibleperson.touched"
+             style="color: red">
         Odgovorno lice je obavezno!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Broj racuna</label>
-      <input name="accountnumber" class="form-control margin" id="input-accountnumber" style="height: 50px"
+      <label style="margin-top:20px">Broj racuna</label>
+      <input name="accountnumber" class="form-control margin" id="input-accountnumber"
              [formControl]="accountnumber">
       <small class="form-text error" *ngIf="accountnumber.errors?.required && accountnumber.touched" style="color: red">
         Broj racuna je obavezan!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Valuta</label>
+      <label style="margin-top:20px">Valuta</label>
       <select name="currency" class="form-control margin" id="input-currency" [formControl]="currency">
         <option></option>
         <option *ngFor="let currency of currencies;">
@@ -36,7 +39,7 @@
         </option>
       </select>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Delatnost</label>
+      <label style="margin-top:20px">Delatnost</label>
       <select name="activity" class="form-control margin" id="input-activity" [formControl]="activity">
         <option></option>
         <option *ngFor="let value of values;">
@@ -44,59 +47,59 @@
         </option>
       </select>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Adresa</label>
-      <input name="adress" class="form-control margin" id="input-adress" style="height: 50px" [formControl]="adress">
+      <label style="margin-top:20px">Adresa</label>
+      <input name="adress" class="form-control margin" id="input-adress" [formControl]="adress">
       <small class="form-text error" *ngIf="adress.errors?.required && adress.touched" style="color: red">
         Adresa je obavezno!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Broj telefona</label>
-      <input name="phonenumber" class="form-control margin" id="input-phonenumber" style="height: 50px"
+      <label style="margin-top:20px">Broj telefona</label>
+      <input name="phonenumber" class="form-control margin" id="input-phonenumber"
              [formControl]="phonenumber">
       <small class="form-text error" *ngIf="phonenumber.errors?.required && phonenumber.touched" style="color: red">
         Broj telefona je obavezan!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">JMBG</label>
-      <input name="jmbg" class="form-control margin" id="input-jmbg" style="height: 50px" [formControl]="jmbg">
+      <label style="margin-top:20px">JMBG</label>
+      <input name="jmbg" class="form-control margin" id="input-jmbg" [formControl]="jmbg">
       <small class="form-text error" *ngIf="jmbg.errors?.required && jmbg.touched" style="color: red">
         JMBG je obavezan!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">E-mail</label>
-      <input name="email" class="form-control margin" id="input-email" style="height: 50px" [formControl]="email">
+      <label style="margin-top:20px">E-mail</label>
+      <input name="email" class="form-control margin" id="input-email" [formControl]="email">
       <small class="form-text error" *ngIf="email.errors?.required && email.touched" style="color: red">
         E-mail je obavezan!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">MBR</label>
-      <input name="mbr" class="form-control margin" id="input-mbr" style="height: 50px" [formControl]="mbr">
+      <label style="margin-top:20px">MBR</label>
+      <input name="mbr" class="form-control margin" id="input-mbr" [formControl]="mbr">
       <small class="form-text error" *ngIf="mbr.errors?.required && mbr.touched" style="color: red">
         MBR je obavezan!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Poreski organ</label>
-      <input name="taxauthority" class="form-control margin" id="input-taxauthority" style="height: 50px"
+      <label style="margin-top:20px">Poreski organ</label>
+      <input name="taxauthority" class="form-control margin" id="input-taxauthority"
              [formControl]="taxauthority">
       <small class="form-text error" *ngIf="taxauthority.errors?.required && taxauthority.touched" style="color: red">
         Poreski organ je obavezan!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">PIB</label>
-      <input name="pib" class="form-control margin" id="input-pib" style="height: 50px" [formControl]="pib">
+      <label style="margin-top:20px">PIB</label>
+      <input name="pib" class="form-control margin" id="input-pib" [formControl]="pib">
       <small class="form-text error" *ngIf="pib.errors?.required && pib.touched" style="color: red">
         PIB je obavezan!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Adresa dostavljanja</label>
-      <input name="deliveringadress" class="form-control margin" id="input-deliveringadress" style="height: 50px"
+      <label style="margin-top:20px">Adresa dostavljanja</label>
+      <input name="deliveringadress" class="form-control margin" id="input-deliveringadress"
              [formControl]="deliveringadress">
       <small class="form-text error" *ngIf="deliveringadress.errors?.required && deliveringadress.touched"
              style="color: red">
         Adresa dostavljanja je obavezna!
       </small>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Izvestaj na e-mail</label>
+      <label style="margin-top:20px">Izvestaj na e-mail</label>
       <input type="checkbox" name="mailreporting" [formControl]="mailreporting">
 
       <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"

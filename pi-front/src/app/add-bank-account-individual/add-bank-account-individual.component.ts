@@ -65,7 +65,7 @@ export class AddBankAccountIndividualComponent implements OnInit {
       'email': ['', Validators.compose([Validators.required])],
       'deliveringadress': ['', Validators.compose([Validators.required])],
       'currency': ['', Validators.compose([Validators.required])],
-      'mailreporting': ['', Validators.compose([Validators.required])],
+      'mailreporting': [''],
 
     });
 

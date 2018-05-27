@@ -20,9 +20,11 @@ public class AnalyticOfStatement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
+	private String type;
+
 	@NotNull
 	@Column(name = "debtor")
-	private String debtor; // duznik
+	private String debtor; // isplatilac-platilac-duznik-nalogodavac
 
 	@NotNull
 	@Column(name = "purposeOfPayment")
@@ -30,17 +32,19 @@ public class AnalyticOfStatement {
 
 	@NotNull
 	@Column(name = "creditor")
-	private String creditor; // nalogodavac
+	private String creditor; // poverilac-primalac
 
-	@NotNull
-	private Date dateOfReceipt; // datum prijema
+	// @NotNull
+	private String dateOfReceipt; // datum prijema
 
-	@NotNull
-	private Date currencyDate; // datum valute
+	// @NotNull
+	private String currencyDate; // datum valute
 
 	private Integer modelAssigments; // model zaduzenja
 
 	private String referenceNumberAssigments; // poziv na broj zaduzenja
+
+	private String debtorAccountXML; // racun duznika
 
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
@@ -59,7 +63,6 @@ public class AnalyticOfStatement {
 	private Integer typeOfMistake;
 
 	@Column(length = 1)
-	@XmlElement
 	private String status;
 
 	@ManyToOne
@@ -76,30 +79,28 @@ public class AnalyticOfStatement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnalyticOfStatement(String debtor, String purposeOfPayment, String creditor, Date dateOfReceipt,
-			Date currencyDate, Integer modelAssigments, String referenceNumberAssigments, BankAccount debtorAccount,
-			BankAccount accountCreditor, Integer modelApproval, String referenceNumberCreditor, Boolean emergency,
-			Float sum, Integer typeOfMistake, String status, PaymentType paymentType, Currency paymentCurrency,
-			City city) {
-		super();
-		this.debtor = debtor;
-		this.purposeOfPayment = purposeOfPayment;
-		this.creditor = creditor;
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getDebtorAccountXML() {
+		return debtorAccountXML;
+	}
+
+	public void setDebtorAccountXML(String debtorAccountXML) {
+		this.debtorAccountXML = debtorAccountXML;
+	}
+
+	public void setDateOfReceipt(String dateOfReceipt) {
 		this.dateOfReceipt = dateOfReceipt;
+	}
+
+	public void setCurrencyDate(String currencyDate) {
 		this.currencyDate = currencyDate;
-		this.modelAssigments = modelAssigments;
-		this.referenceNumberAssigments = referenceNumberAssigments;
-		this.debtorAccount = debtorAccount;
-		this.accountCreditor = accountCreditor;
-		this.modelApproval = modelApproval;
-		this.referenceNumberCreditor = referenceNumberCreditor;
-		this.emergency = emergency;
-		this.sum = sum;
-		this.typeOfMistake = typeOfMistake;
-		this.status = status;
-		this.paymentType = paymentType;
-		this.paymentCurrency = paymentCurrency;
-		this.city = city;
 	}
 
 	public Long getId() {
@@ -134,20 +135,12 @@ public class AnalyticOfStatement {
 		this.creditor = creditor;
 	}
 
-	public Date getDateOfReceipt() {
+	public String getDateOfReceipt() {
 		return dateOfReceipt;
 	}
 
-	public void setDateOfReceipt(Date dateOfReceipt) {
-		this.dateOfReceipt = dateOfReceipt;
-	}
-
-	public Date getCurrencyDate() {
+	public String getCurrencyDate() {
 		return currencyDate;
-	}
-
-	public void setCurrencyDate(Date currencyDate) {
-		this.currencyDate = currencyDate;
 	}
 
 	public Integer getModelAssigments() {
