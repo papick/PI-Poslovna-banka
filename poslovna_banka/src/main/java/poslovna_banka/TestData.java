@@ -32,27 +32,27 @@ public class TestData {
 
 	@Autowired
 	private CityRepository cityService;
-	
+
 	@Autowired
 	private BankRepository bankRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private ActivityRepository activitiesRepository;
-	
-	@Autowired
-	private BankAccountRepository bankAccRepo;
-	
+
 	@Autowired
 	private CurrencyRepository currRepo;
-	
+
 	@Autowired
 	private LegalEntityRepository leRepo;
-	
+
 	@Autowired
 	private IndividualRepository individualRepo;
+
+	@Autowired
+	private BankAccountRepository bankAccountRepository;
 
 	@PostConstruct
 	private void init() {
@@ -80,46 +80,53 @@ public class TestData {
 
 		City city3 = new City("Nis", country1, "NI", "18000");
 		cityService.save(city3);
-		
-		Bank bank = new Bank("001","111","Erste banka","Narodnog fronta 23","erste@gmail.com","www.erste.com"," 021 4809299","1122");
+
+		Bank bank = new Bank("001", "111", "Erste banka", "Narodnog fronta 23", "erste@gmail.com", "www.erste.com",
+				" 021 4809299", "1122");
 		bankRepository.save(bank);
-		
-		Bank bank1 = new Bank("002","222","Banka Intesa","Narodnog fronta 50","intesa@gmail.com","www.intesa.com"," 021 4809889","3344");
+
+		Bank bank1 = new Bank("002", "222", "Banka Intesa", "Narodnog fronta 50", "intesa@gmail.com", "www.intesa.com",
+				" 021 4809889", "3344");
 		bankRepository.save(bank1);
-		
-		User user1 = new User("milica","milica",bank);
-		User user2 = new User("dejan","dejan",bank);
-		User user3 = new User("kristina","kristina",bank1);
+
+		User user1 = new User("milica", "milica", bank);
+		User user2 = new User("dejan", "dejan", bank);
+		User user3 = new User("kristina", "kristina", bank1);
 		userRepository.save(user3);
 		userRepository.save(user1);
 		userRepository.save(user2);
-		
-		Activity activity1 = new Activity("01","Poljoprivredna proizvodnja,lov,pratece delatnosti");
-		Activity activity2 = new Activity("01.11","Gajenje zita");
-		Activity activity4 = new Activity("01.2","Gajenje visegodisnjih biljaka");
-		Activity activity3 = new Activity("01.21","Gajenje grozdja");
-		
+
+		Activity activity1 = new Activity("01", "Poljoprivredna proizvodnja,lov,pratece delatnosti");
+		Activity activity2 = new Activity("01.11", "Gajenje zita");
+		Activity activity4 = new Activity("01.2", "Gajenje visegodisnjih biljaka");
+		Activity activity3 = new Activity("01.21", "Gajenje grozdja");
+
 		activitiesRepository.save(activity1);
 		activitiesRepository.save(activity2);
 		activitiesRepository.save(activity3);
 		activitiesRepository.save(activity4);
-		
-		LegalEntity le = new LegalEntity("asd", "as", "asdasd", "1234", "123124", "sdads",
-				"1231", "poreska", "1231231", "asdad", true, activity1);
+
+		LegalEntity le = new LegalEntity("NN d.o.o", "as", "asdasd", "1234", "123124", "sdads", "1231", "poreska",
+				"1231231", "asdad", true, activity1, "kristina");
 		leRepo.save(le);
-		
-		Individual i = new Individual("hbj","k","uyhg","56","6666666666666","ujh","hg",true);
+
+		LegalEntity zara = new LegalEntity("Zara", "aa", "aaaa", "1111", "111111", "ssss", "1122", "poreska", "1231231",
+				"aaaa", true, activity1, "jelena");
+		leRepo.save(zara);
+
+		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg", true);
 		individualRepo.save(i);
+
+		BankAccount bankAccount = new BankAccount("123456");
+		bankAccountRepository.save(bankAccount);
 		
+		BankAccount bankAccount1 = new BankAccount("777888");
+		bankAccountRepository.save(bankAccount1);
+
 		Currency curr = new Currency("new", country1, "novcaniceeee", true);
 		currRepo.save(curr);
 		Currency curr1 = new Currency("you", country1, "Euro", true);
 		currRepo.save(curr1);
-		
-		/*BankAccount ba = new BankAccount("1234", "", true, bank, null,le,curr);
-		BankAccount ba2 = new BankAccount("4444", "", true, bank1, null,le,curr);
-		bankAccRepo.save(ba);
-		bankAccRepo.save(ba2);*/
-		
+
 	}
 }

@@ -12,6 +12,7 @@ import {CurrencyService} from '../../service/currencyService';
 export class AddBankAccountIndividualComponent implements OnInit {
 
   result;
+  brojRacuna;
   idbank;
   public form: FormGroup;
   public name: AbstractControl;
@@ -64,7 +65,7 @@ export class AddBankAccountIndividualComponent implements OnInit {
       'email': ['', Validators.compose([Validators.required])],
       'deliveringadress': ['', Validators.compose([Validators.required])],
       'currency': ['', Validators.compose([Validators.required])],
-      'mailreporting': ['', Validators.compose([Validators.required])],
+      'mailreporting': [''],
 
     });
 
@@ -101,11 +102,9 @@ export class AddBankAccountIndividualComponent implements OnInit {
     this.bankAccount.currency = this.currency.value;
     this.bankAccount.number = this.accountnumber.value;
 
-    this.bankAccountService.addIndividuals(this.individual).toPromise().then(res => {
-      this.result = res;
-      this.adding();
-    });
-    location.reload();
+    this.adding();
+
+    this.router.navigateByUrl('bank/' + this.idbank + '/bankAccounts');
   }
 
   adding() {

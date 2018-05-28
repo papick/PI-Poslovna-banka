@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivityService} from "../../service/activityService";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CurrencyService} from "../../service/currencyService";
+import {BankAccountService} from "../../service/bankAccountService";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-bank-account-legals',
@@ -10,10 +12,14 @@ import {CurrencyService} from "../../service/currencyService";
 })
 export class AddBankAccountLegalsComponent implements OnInit {
 
+  idBank;
+  result;
   public form: FormGroup;
   public name: AbstractControl;
   public shortname: AbstractControl;
+  public responsibleperson: AbstractControl;
   public accountnumber: AbstractControl;
+  public currency: AbstractControl;
   public activity: AbstractControl;
   public adress: AbstractControl;
   public phonenumber: AbstractControl;
@@ -23,12 +29,42 @@ export class AddBankAccountLegalsComponent implements OnInit {
   public taxauthority: AbstractControl;
   public pib: AbstractControl;
   public deliveringadress: AbstractControl;
-  public currency: AbstractControl;
-  public responsibleperson: AbstractControl;
+  public mailreporting: AbstractControl;
   values = [];
   currencies = [];
 
-  constructor(private activityService: ActivityService, private fb: FormBuilder, private  currencyService: CurrencyService) {
+  bankAccount = {
+    number: '',
+    dateOfOpenning: '',
+    valid: true,
+    bank: '',
+    legalEntity: null,
+    individual: null,
+    currency: '',
+  };
+
+  legalEntity = {
+    name: '',
+    abbreviatedName: '',
+    adress: '',
+    phoneNumber: '',
+    jmbg: '',
+    email: '',
+    mbr: '',
+    taxAuthority: '',
+    pib: '',
+    activity: '',
+    deliveringAdress: '',
+    responsiblePerson: '',
+    mailReport: ''
+  };
+
+  constructor(private activityService: ActivityService,
+              private fb: FormBuilder,
+              private  currencyService: CurrencyService,
+              private bankAccountService: BankAccountService,
+              protected route: ActivatedRoute,
+              private router: Router) {
     this.form = this.fb.group({
       'name': ['', Validators.compose([Validators.required])],
       'shortname': ['', Validators.compose([Validators.required])],
@@ -44,8 +80,9 @@ export class AddBankAccountLegalsComponent implements OnInit {
       'deliveringadress': ['', Validators.compose([Validators.required])],
       'currency': ['', Validators.compose([Validators.required])],
       'responsibleperson': ['', Validators.compose([Validators.required])],
+      'mailreporting': [''],
 
-    })
+    });
     this.name = this.form.controls['name'];
     this.shortname = this.form.controls['shortname'];
     this.accountnumber = this.form.controls['accountnumber'];
@@ -60,13 +97,13 @@ export class AddBankAccountLegalsComponent implements OnInit {
     this.deliveringadress = this.form.controls['deliveringadress'];
     this.currency = this.form.controls['currency'];
     this.responsibleperson = this.form.controls['responsibleperson'];
+    this.mailreporting = this.form.controls['mailreporting'];
 
   }
 
   ngOnInit() {
     this.selectItem();
     this.getCurrencies();
-
   }
 
   selectItem() {
@@ -79,6 +116,37 @@ export class AddBankAccountLegalsComponent implements OnInit {
     this.currencyService.getCurrencies().subscribe(data => {
       this.currencies = data;
     });
+  }
+
+  addLegalEntityAccount() {
+
+    this.idBank = this.route.snapshot.params.idBank;
+    this.legalEntity.name = this.name.value;
+    this.legalEntity.abbreviatedName = this.shortname.value;
+    this.legalEntity.adress = this.adress.value;
+    this.legalEntity.phoneNumber = this.phonenumber.value;
+    this.legalEntity.jmbg = this.jmbg.value;
+    this.legalEntity.email = this.email.value;
+    this.legalEntity.mbr = this.mbr.value;
+    this.legalEntity.taxAuthority = this.taxauthority.value;
+    this.legalEntity.pib = this.pib.value;
+    this.legalEntity.activity = this.activity.value;
+    this.legalEntity.deliveringAdress = this.deliveringadress.value;
+    this.legalEntity.responsiblePerson = this.responsibleperson.value;
+    this.legalEntity.mailReport = this.mailreporting.value;
+
+    this.bankAccount.bank = this.idBank;
+    this.bankAccount.legalEntity = this.legalEntity;
+    this.bankAccount.currency = this.currency.value;
+    this.bankAccount.number = this.accountnumber.value;
+
+    this.adding();
+    this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
+
+  }
+
+  adding() {
+    this.bankAccountService.addAccountLegalEntity(this.bankAccount).subscribe();
   }
 
 }

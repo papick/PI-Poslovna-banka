@@ -12,8 +12,10 @@ export class BankAccountService {
   constructor(private http: HttpClient) {
   }
 
-  addLegals(): Observable<any> {
-    return this.http.post(`http://localhost:8080/api/legal-entity/add-legal-entity`, httpOptions);
+  addLegals(legalEntity): Observable<any> {
+    const body = JSON.stringify(legalEntity);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post(`http://localhost:8080/api/legal-entity/add-legal-entity`, body, {headers: headers});
   }
 
   addIndividuals(individual): Observable<any> {
@@ -22,10 +24,16 @@ export class BankAccountService {
     return this.http.post(`http://localhost:8080/api/individual/add-individual`, body, {headers: headers});
   }
 
-  addAccount(account): Observable<any>{
+  addAccount(account): Observable<any> {
     const body = JSON.stringify(account);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post(`http://localhost:8080/api/bankAccounts/add-account-individual`, body, {headers: headers});
+  }
+
+  addAccountLegalEntity(account): Observable<any>{
+    const body = JSON.stringify(account);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post(`http://localhost:8080/api/bankAccounts/add-account-legal`, body, {headers: headers});
   }
 
 }

@@ -8,33 +8,24 @@
 <br><br><br>
 
 <table class="table offset-2 tables" style=" border: 1px solid black ;">
-  <tr *ngIf="pravnoLice || fizickoLice">
+  <tr>
     <th class="th-style"> Broj racuna</th>
     <th class="th-style"> Datum otvaranja</th>
     <th class="th-style"> Valuta</th>
     <th class="th-style"> Vlasnik racuna</th>
   </tr>
-  <div *ngIf="!prikaziZaFizicka">
-  <div *ngFor="let item of items; let i = index">
-    <tr *ngIf="activeId == item.bank.id">
+
+    <tr *ngFor="let item of items; ">
       <td> {{item.number}}</td>
       <td> {{item.dateOfOpenning.toString()}}</td>
-      <td> {{item.id}} </td>
+      <td> {{item.currency.name}} </td>
       <td> {{item.legalEntity.name}} </td>
     </tr>
-  </div>
-  </div>
-  <div *ngIf="prikaziZaFizicka">
-    <div *ngFor="let item of individualAccounts; let i = index">
-      <tr *ngIf="activeId == item.bank.id">
-        <td> {{item.number}}</td>
-        <td> {{item.dateOfOpenning.toString()}}</td>
-        <td> {{item.currency.name}} </td>
-        <td> {{item.individual.name}} </td>
-      </tr>
-    </div>
-  </div>
+
+
 </table>
 <br><br><br>
-<button style="margin-left: 300px" *ngIf="pravnoLice" (click)="addLegalEntity()">Dodaj racun za pravno lice</button>
-<button style="margin-left: 300px" *ngIf="fizickoLice" (click)="addIndividual()">Dodaj racun za fizicko lice</button>
+<div style="text-align: center">
+<button style="" *ngIf="pravnoLice" (click)="addLegalEntity()">Dodaj racun za pravno lice</button>
+<button style="" *ngIf="fizickoLice" (click)="addIndividual()">Dodaj racun za fizicko lice</button>
+</div>

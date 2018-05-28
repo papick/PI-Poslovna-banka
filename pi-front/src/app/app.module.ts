@@ -28,6 +28,7 @@ import { AddBankAccountLegalsComponent } from './add-bank-account-legals/add-ban
 import { AddBankAccountIndividualComponent } from './add-bank-account-individual/add-bank-account-individual.component';
 import {BankAccountService} from "../service/bankAccountService";
 import {CurrencyService} from "../service/currencyService";
+import {AnalyticsOfStatementService} from '../service/AnalyticsOfStatementService';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import {CurrencyService} from "../service/currencyService";
     ClientService,
     BankAccountService,
     CurrencyService,
+    AnalyticsOfStatementService,
 
   ],
   bootstrap: [AppComponent]

@@ -19,7 +19,7 @@ public class BankAccount {
 	@NotNull
 	private String number;
 
-	@NotNull
+	// @NotNull
 	private String dateOfOpenning;
 
 	private boolean valid;
@@ -37,6 +37,11 @@ public class BankAccount {
 	private Currency currency;
 
 	public BankAccount() {
+	}
+
+	public BankAccount(String number) {
+		super();
+		this.number = number;
 	}
 
 	public BankAccount(String number, String dateOfOpenning, boolean valid, Bank bank, Individual individual,

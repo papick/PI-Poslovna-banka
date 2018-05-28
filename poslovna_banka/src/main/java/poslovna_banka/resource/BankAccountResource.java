@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import poslovna_banka.model.BankAccount;
+import poslovna_banka.model.LegalEntity;
+import poslovna_banka.repository.ActivityRepository;
 import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CurrencyRepository;
 import poslovna_banka.service.BankAccountService;
@@ -30,6 +32,9 @@ public class BankAccountResource {
 	
 	@Autowired
 	private CurrencyRepository currRepo;
+	
+	@Autowired
+	private ActivityRepository actRepo;
 	
 	@GetMapping("/get-legals")
 	public ResponseEntity<List<BankAccount>> getLegals() {
@@ -49,7 +54,23 @@ public class BankAccountResource {
 		account.setCurrency(currRepo.findByName(ba.getCurrency()));
 		account.setDateOfOpenning(d.toString());
 		account.setIndividual(null);
-		account.setLegalEntity(ba.getLegalEntity());
+		
+		LegalEntity legalEntity=new LegalEntity();
+		legalEntity.setName(ba.getLegalEntity().getName());
+		legalEntity.setAbbreviatedName(ba.getLegalEntity().getAbbreviatedName());
+		legalEntity.setActivity(actRepo.findByCode((ba.getLegalEntity().getActivity())));
+		legalEntity.setAdress(ba.getLegalEntity().getAdress());
+		legalEntity.setDeliveringAdress(ba.getLegalEntity().getDeliveringAdress());
+		legalEntity.setEmail(ba.getLegalEntity().getEmail());
+		legalEntity.setJmbg(ba.getLegalEntity().getJmbg());
+		legalEntity.setMailReport(ba.getLegalEntity().isMailReport());
+		legalEntity.setMbr(ba.getLegalEntity().getMbr());
+		legalEntity.setPhoneNumber(ba.getLegalEntity().getPhoneNumber());
+		legalEntity.setPib(ba.getLegalEntity().getPib());
+		legalEntity.setResponsiblePerson(ba.getLegalEntity().getResponsiblePerson());
+		legalEntity.setTaxAuthority(ba.getLegalEntity().getTaxAuthority());
+		
+		account.setLegalEntity(legalEntity);
 		account.setNumber(ba.getNumber());
 		account.setValid(true);
 		

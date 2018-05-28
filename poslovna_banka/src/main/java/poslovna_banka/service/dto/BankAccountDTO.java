@@ -1,7 +1,6 @@
 package poslovna_banka.service.dto;
 
 import poslovna_banka.model.Individual;
-import poslovna_banka.model.LegalEntity;
 
 public class BankAccountDTO {
 
@@ -15,14 +14,14 @@ public class BankAccountDTO {
 
 	private Individual individual;
 
-	private LegalEntity legalEntity;
+	private LegalEntityDTO legalEntity;
 
 	private String currency;
 	
 	public BankAccountDTO(){}
 
 	public BankAccountDTO(String number, String dateOfOpenning, boolean valid, String bank, Individual individual,
-			LegalEntity legalEntity, String currency) {
+			LegalEntityDTO legalEntity, String currency) {
 		super();
 		this.number = number;
 		this.dateOfOpenning = dateOfOpenning;
@@ -73,11 +72,11 @@ public class BankAccountDTO {
 		this.individual = individual;
 	}
 
-	public LegalEntity getLegalEntity() {
+	public LegalEntityDTO getLegalEntity() {
 		return legalEntity;
 	}
 
-	public void setLegalEntity(LegalEntity legalEntity) {
+	public void setLegalEntity(LegalEntityDTO legalEntity) {
 		this.legalEntity = legalEntity;
 	}
 

@@ -39,7 +39,7 @@ export class BankAccountsComponent implements OnInit {
     this.fizickoLice = true;
     this.prikaziZaFizicka = true;
     this.clientService.getIndividuals().subscribe(data => {
-      this.individualAccounts = data;
+      this.items = data;
     });
   }
 
