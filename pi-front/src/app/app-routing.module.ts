@@ -7,7 +7,7 @@ import {AddCityComponent} from "./addCity/addCity.component";
 import {AddActivitiesComponent} from "./addActivities/addActivities.component";
 import {BankAccountsComponent} from "./bank-accounts/bank-accounts.component";
 import {AddBankAccountIndividualComponent} from "./add-bank-account-individual/add-bank-account-individual.component";
-import {AddBankAccountLegalsComponent} from "./add-bank-account-legals/add-bank-account-legals.component";
+import {AddLegalsComponent} from "./add-legals/add-legals.component";
 
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'log-in', component: LogInComponent},
   {path: 'bank/:idBank', component: BankAccountsComponent},
   {path: 'bank/:idBank/addBankAccountIndividual', component: AddBankAccountIndividualComponent},
-  {path: 'bank/:idBank/addBankAccountLegalEntity', component: AddBankAccountLegalsComponent},
+  {path: 'bank/:idBank/addBankAccountLegalEntity', component: AddLegalsComponent},
   {path: 'bank/:idBank/:click', component: BankComponent},
   {path: 'bank/:idBank/:click/:id', component: BankComponent},
   {path: 'bank/:idBank/country/city/:mode', component: AddCityComponent},

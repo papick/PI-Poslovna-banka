@@ -22,8 +22,6 @@ public class LegalEntityDTO {
 
 	private String deliveringAdress;
 
-	private boolean mailReport;
-
 	private String activity;
 	
 	private String responsiblePerson;
@@ -31,7 +29,7 @@ public class LegalEntityDTO {
 	public LegalEntityDTO(){}
 
 	public LegalEntityDTO(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg,
-			String email, String mbr, String taxAuthority, String pib, String deliveringAdress, boolean mailReport,
+			String email, String mbr, String taxAuthority, String pib, String deliveringAdress,
 			String activity, String responsiblePerson) {
 		super();
 		this.name = name;
@@ -44,7 +42,6 @@ public class LegalEntityDTO {
 		this.taxAuthority = taxAuthority;
 		this.pib = pib;
 		this.deliveringAdress = deliveringAdress;
-		this.mailReport = mailReport;
 		this.activity = activity;
 		this.responsiblePerson = responsiblePerson;
 	}
@@ -127,14 +124,6 @@ public class LegalEntityDTO {
 
 	public void setDeliveringAdress(String deliveringAdress) {
 		this.deliveringAdress = deliveringAdress;
-	}
-
-	public boolean isMailReport() {
-		return mailReport;
-	}
-
-	public void setMailReport(boolean mailReport) {
-		this.mailReport = mailReport;
 	}
 
 	public String getActivity() {

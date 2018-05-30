@@ -2,8 +2,11 @@
 <div style="text-align: center;margin-top: 30px">
 
 
+  <button style="" (click)="addLegalEntity()">Dodaj pravno lice</button>
+  <button style="" (click)="addIndividual()">Dodaj fizicko lice</button>
   <button (click)="getLegals()">Racuni pravnih lica</button>
   <button (click)="getIndividuals()">Racuni fizickih lica</button>
+
 </div>
 <br><br><br>
 
@@ -26,6 +29,6 @@
 </table>
 <br><br><br>
 <div style="text-align: center">
-<button style="" *ngIf="pravnoLice" (click)="addLegalEntity()">Dodaj racun za pravno lice</button>
-<button style="" *ngIf="fizickoLice" (click)="addIndividual()">Dodaj racun za fizicko lice</button>
+<button style="" *ngIf="pravnoLice" >Dodaj racun za pravno lice</button>
+<button style="" *ngIf="fizickoLice" >Dodaj racun za fizicko lice</button>
 </div>
