@@ -1,10 +1,5 @@
 package poslovna_banka.model;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 84561a4da6561b5fb1d917a5bd7f3ee75f384178
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-
 
 @Entity
 @XmlRootElement(name = "analyticsOfStatements")
@@ -52,7 +46,7 @@ public class AnalyticOfStatement {
 	private BankAccount debtorAccount; // racun duznika
 
 	private String accountCreditorXML;
-	
+
 	@ManyToOne
 	private BankAccount accountCreditor; // racun poverioca
 

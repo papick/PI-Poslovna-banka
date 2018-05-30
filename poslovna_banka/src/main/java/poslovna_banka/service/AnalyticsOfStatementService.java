@@ -13,12 +13,8 @@ import poslovna_banka.model.AnalyticOfStatement;
 import poslovna_banka.model.BankAccount;
 import poslovna_banka.repository.AnalyticOfStatementRepository;
 import poslovna_banka.repository.BankAccountRepository;
-<<<<<<< HEAD
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CurrencyRepository;
-=======
-import poslovna_banka.repository.BankRepository;
->>>>>>> 84561a4da6561b5fb1d917a5bd7f3ee75f384178
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.repository.PaymentTypeRepository;
 
