@@ -23,15 +23,12 @@ public class AnalyticOfStatement {
 	private String type;
 
 	@NotNull
-	@Column(name = "debtor")
 	private String debtor; // isplatilac-platilac-duznik-nalogodavac
 
 	@NotNull
-	@Column(name = "purposeOfPayment")
 	private String purposeOfPayment;
 
 	@NotNull
-	@Column(name = "creditor")
 	private String creditor; // poverilac-primalac
 
 	// @NotNull
@@ -44,7 +41,7 @@ public class AnalyticOfStatement {
 
 	private String referenceNumberAssigments; // poziv na broj zaduzenja
 
-	private String debtorAccountXML; // racun duznika
+	private String debtorAccountXML; // racun duznika ya xml
 
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
