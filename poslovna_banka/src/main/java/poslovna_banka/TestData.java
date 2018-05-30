@@ -117,11 +117,14 @@ public class TestData {
 		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg", true);
 		individualRepo.save(i);
 
-		/*BankAccount bankAccount = new BankAccount("123456");
+		BankAccount bankAccount = new BankAccount("123456");
 		bankAccountRepository.save(bankAccount);
 		
 		BankAccount bankAccount1 = new BankAccount("777888");
-		bankAccountRepository.save(bankAccount1);*/
+		bankAccountRepository.save(bankAccount1);
+		
+		BankAccount bankAccount2 = new BankAccount("111222");
+		bankAccountRepository.save(bankAccount2);
 
 		Currency curr = new Currency("new", country1, "$", true);
 		currRepo.save(curr);

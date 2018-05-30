@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyticsOfStatements>
+
+	<type>Nalog za naplatu</type>
+	<debtor>ZARA</debtor>
+	<purposeOfPayment>Isplata zarade 03/2018</purposeOfPayment>
+	<creditor>Milica Kovacevic  , radnik</creditor>
+	<sum>25000</sum>
+	<debtorAccountXML>777888</debtorAccountXML>
+	<modelAssigments>97</modelAssigments>
+	<referenceNumberAssigments>BOP</referenceNumberAssigments>
+	<accountCreditorXML>111222</accountCreditorXML>>
+	<modelApproval>97</modelApproval>
+	<referenceNumberCreditor>BOP</referenceNumberCreditor>
+
+</analyticsOfStatements>

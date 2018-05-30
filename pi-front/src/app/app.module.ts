@@ -29,6 +29,8 @@ import { AddBankAccountIndividualComponent } from './add-bank-account-individual
 import {BankAccountService} from "../service/bankAccountService";
 import {CurrencyService} from "../service/currencyService";
 import {AnalyticsOfStatementService} from '../service/AnalyticsOfStatementService';
+import { PayCheckComponent } from './pay-check/pay-check.component';
+import { TransferCheckComponent } from './transfer-check/transfer-check.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import {AnalyticsOfStatementService} from '../service/AnalyticsOfStatementServic
     PaymentOrderComponent,
     AddLegalsComponent,
     AddBankAccountIndividualComponent,
+    PayCheckComponent,
+    TransferCheckComponent,
 
   ],
   imports: [

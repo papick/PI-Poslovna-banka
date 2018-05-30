@@ -18,6 +18,8 @@ export class BankComponent implements OnInit {
   activities = false;
   bankAccounts = false;
   paymentOrder = false;
+  payOrder = false;
+  transferOrder = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -45,6 +47,8 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.payOrder = false;
+      this.transferOrder = false;
     } else if (click === 'payment-check') {
       this.paymentCheck = true;
       this.city = false;
@@ -52,6 +56,8 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.payOrder = false;
+      this.transferOrder = false;
     } else if (click === 'countries') {
       this.home = false;
       this.countries = true;
@@ -60,6 +66,8 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.payOrder = false;
+      this.transferOrder = false;
     } else if (click === 'city') {
       this.home = false;
       this.countries = false;
@@ -68,6 +76,8 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.payOrder = false;
+      this.transferOrder = false;
     } else if (click === 'activities') {
       this.home = false;
       this.countries = false;
@@ -76,7 +86,9 @@ export class BankComponent implements OnInit {
       this.activities = true;
       this.bankAccounts = false;
       this.paymentOrder = false;
-    } else if(click === 'bankAccounts'){
+      this.payOrder = false;
+      this.transferOrder = false;
+    } else if (click === 'bankAccounts') {
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
@@ -84,7 +96,9 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = true;
       this.paymentOrder = false;
-    } else if(click === 'payment-order') {
+      this.payOrder = false;
+      this.transferOrder = false;
+    } else if (click === 'payment-order') {
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
@@ -92,8 +106,30 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = true;
-    }
+      this.payOrder = false;
+      this.transferOrder = false;
+    } else if (click === 'pay-order') {
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.payOrder = true;
+      this.transferOrder = false;
+    } else if (click === 'transfer-order') {
 
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.payOrder = false;
+      this.transferOrder = true;
+    }
   }
 
   homePage() {
@@ -139,6 +175,16 @@ export class BankComponent implements OnInit {
   getBankAccounts() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/bankAccounts');
+    location.reload();
+  }
+
+  payCheck() {
+    this.router.navigateByUrl('/bank/' + this.idBank + '/pay-order');
+    location.reload();
+  }
+
+  transfer() {
+    this.router.navigateByUrl('/bank/' + this.idBank + '/transfer-order');
     location.reload();
   }
 

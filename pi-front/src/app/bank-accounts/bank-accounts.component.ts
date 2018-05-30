@@ -43,6 +43,7 @@ export class BankAccountsComponent implements OnInit {
   }
 
   addL() {
+    alert(this.activeId);
     this.router.navigateByUrl('http://localhost:4200/bank/' + this.activeId + '/addLegalEntity');
   }
   addI(){

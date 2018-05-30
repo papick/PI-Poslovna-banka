@@ -14,6 +14,7 @@ import poslovna_banka.model.BankAccount;
 import poslovna_banka.model.LegalEntity;
 import poslovna_banka.repository.AnalyticOfStatementRepository;
 import poslovna_banka.repository.BankAccountRepository;
+import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 
 @Service
@@ -33,7 +34,7 @@ public class AnalyticsOfStatementService {
 		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
-		AnalyticOfStatement a = generateAnalyticsOfStatement(xml);
+		AnalyticOfStatement a = generatePayoffAnalyticsOfStatement(xml);
 		analyticRepository.save(a);
 
 		if (a.getType().equals("Nalog za isplatu")) {
@@ -53,8 +54,19 @@ public class AnalyticsOfStatementService {
 		return a;
 
 	}
+	
+	public AnalyticOfStatement getPaymentAnalyticsOfStatements(File file) throws JAXBException {
+		
+		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
+		AnalyticOfStatement a = generatePaymentAnalyticsOfStatement(xml);
+		analyticRepository.save(a);
+		
+		return a;
+	}
 
-	private AnalyticOfStatement generateAnalyticsOfStatement(AnalyticOfStatement xml) {
+	private AnalyticOfStatement generatePayoffAnalyticsOfStatement(AnalyticOfStatement xml) {
 		AnalyticOfStatement a = new AnalyticOfStatement();
 		a.setType(xml.getType());
 		a.setDebtor(xml.getDebtor());
@@ -65,6 +77,24 @@ public class AnalyticsOfStatementService {
 		a.setModelAssigments(xml.getModelAssigments());
 		a.setReferenceNumberAssigments(xml.getReferenceNumberAssigments());
 
+		return a;
+	}
+	
+	private AnalyticOfStatement generatePaymentAnalyticsOfStatement(AnalyticOfStatement xml) {
+		AnalyticOfStatement a = new AnalyticOfStatement();
+		
+		a.setType(xml.getType());
+		a.setDebtor(xml.getDebtor());
+		a.setPurposeOfPayment(xml.getPurposeOfPayment());
+		a.setCreditor(xml.getCreditor());
+		a.setSum(xml.getSum());
+		a.setDebtorAccount(bankAccountRepository.findOneByNumber(xml.getDebtorAccountXML()));
+		a.setModelAssigments(xml.getModelAssigments());
+		a.setReferenceNumberAssigments(xml.getReferenceNumberAssigments());
+		a.setAccountCreditor(bankAccountRepository.findOneByNumber(xml.getAccountCreditorXML()));
+		a.setModelApproval(xml.getModelApproval());
+		a.setReferenceNumberCreditor(xml.getReferenceNumberCreditor());
+		
 		return a;
 	}
 

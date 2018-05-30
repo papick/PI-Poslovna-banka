@@ -1,6 +1,5 @@
 package poslovna_banka.model;
 
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -46,6 +44,8 @@ public class AnalyticOfStatement {
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
 
+	private String accountCreditorXML;
+	
 	@ManyToOne
 	private BankAccount accountCreditor; // racun poverioca
 
@@ -242,6 +242,14 @@ public class AnalyticOfStatement {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+
+	public String getAccountCreditorXML() {
+		return accountCreditorXML;
+	}
+
+	public void setAccountCreditorXML(String accountCreditorXML) {
+		this.accountCreditorXML = accountCreditorXML;
 	}
 
 }

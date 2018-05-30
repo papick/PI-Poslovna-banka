@@ -15,8 +15,8 @@
 
   <button (click)="paymentOrderClick()">Nalog za uplatu</button>
   <button (click)="paymentCheckk()">Nalog za isplatu</button>
-  <button>Nalog za naplatu</button>
-  <button>Nalog za prenos</button>
+  <button (click)="payCheck()">Nalog za naplatu</button>
+  <button (click)="transfer()">Nalog za prenos</button>
 </div>
 
 <div *ngIf="paymentCheck==true">
@@ -42,4 +42,12 @@
 
 <div *ngIf="paymentOrder">
   <app-payment-order></app-payment-order>
+</div>
+
+<div *ngIf="payOrder">
+  <app-pay-check></app-pay-check>
+</div>
+
+<div *ngIf="transferOrder">
+  <app-transfer-check></app-transfer-check>
 </div>
