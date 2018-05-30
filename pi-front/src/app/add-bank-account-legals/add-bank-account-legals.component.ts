@@ -141,7 +141,7 @@ export class AddBankAccountLegalsComponent implements OnInit {
     this.bankAccount.number = this.accountnumber.value;
 
     this.adding();
-    this.router.navigateByUrl('http://localhost:4200/bank/' + this.idBank);
+    this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
 
   }
 
