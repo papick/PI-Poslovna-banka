@@ -24,7 +24,7 @@ public class LegalEntityResource {
 	
 	@PostMapping("/add-legal-entity")
 	public ResponseEntity<LegalEntity> addLegal(@RequestBody LegalEntityDTO le) {
-		
+		System.out.println("kristinaaaa");
 		LegalEntity newLE=new LegalEntity();
 		
 		newLE.setName(le.getName());
@@ -33,7 +33,6 @@ public class LegalEntityResource {
 		newLE.setDeliveringAdress(le.getDeliveringAdress());
 		newLE.setEmail(le.getEmail());
 		newLE.setJmbg(le.getJmbg());
-		newLE.setMailReport(le.isMailReport());
 		newLE.setMbr(le.getMbr());
 		newLE.setPhoneNumber(le.getPhoneNumber());
 		newLE.setPib(le.getPib());

@@ -63,7 +63,6 @@ public class BankAccountResource {
 		legalEntity.setDeliveringAdress(ba.getLegalEntity().getDeliveringAdress());
 		legalEntity.setEmail(ba.getLegalEntity().getEmail());
 		legalEntity.setJmbg(ba.getLegalEntity().getJmbg());
-		legalEntity.setMailReport(ba.getLegalEntity().isMailReport());
 		legalEntity.setMbr(ba.getLegalEntity().getMbr());
 		legalEntity.setPhoneNumber(ba.getLegalEntity().getPhoneNumber());
 		legalEntity.setPib(ba.getLegalEntity().getPib());
