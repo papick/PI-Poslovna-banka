@@ -4,9 +4,16 @@
 	<debtor>NN d.o.o</debtor>
 	<purposeOfPayment>Isplata zarade 03/2018</purposeOfPayment>
 	<creditor>Tanasije Tanasic , blagajnik</creditor>
+	<dateOfReceipt>29-05-2018</dateOfReceipt>
+	<currencyDate>29-05-2018</currencyDate>
 	<sum>35000</sum>
 	<debtorAccountXML>123456</debtorAccountXML>
 	<modelAssigments>97</modelAssigments>
 	<referenceNumberAssigments>BOP</referenceNumberAssigments>
-
+	<emergency>false</emergency>
+	<typeOfMistake>1</typeOfMistake>
+	<status></status>
+	<paymentTypeXML>1</paymentTypeXML>
+	<paymentCurrencyXML>din</paymentCurrencyXML>
+	<cityXML>Novi Sad</cityXML>
 </analyticsOfStatements>

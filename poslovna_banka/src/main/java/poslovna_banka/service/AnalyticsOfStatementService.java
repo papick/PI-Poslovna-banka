@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 
 import poslovna_banka.model.AnalyticOfStatement;
 import poslovna_banka.model.BankAccount;
-import poslovna_banka.model.LegalEntity;
 import poslovna_banka.repository.AnalyticOfStatementRepository;
 import poslovna_banka.repository.BankAccountRepository;
+import poslovna_banka.repository.CityRepository;
+import poslovna_banka.repository.CurrencyRepository;
 import poslovna_banka.repository.LegalEntityRepository;
+import poslovna_banka.repository.PaymentTypeRepository;
 
 @Service
 public class AnalyticsOfStatementService {
@@ -27,6 +29,15 @@ public class AnalyticsOfStatementService {
 
 	@Autowired
 	private LegalEntityRepository legalEntityRepository;
+
+	@Autowired
+	private CurrencyRepository currencyRepository;
+
+	@Autowired
+	private CityRepository cityRepository;
+	
+	@Autowired
+	private PaymentTypeRepository paymentTypeRepository;
 
 	public AnalyticOfStatement getAnalyticsOfStatements(File file) throws JAXBException {
 
@@ -60,10 +71,19 @@ public class AnalyticsOfStatementService {
 		a.setDebtor(xml.getDebtor());
 		a.setPurposeOfPayment(xml.getPurposeOfPayment());
 		a.setCreditor(xml.getCreditor());
+		a.setDateOfReceipt(xml.getDateOfReceipt());
+		a.setCurrencyDate(xml.getCurrencyDate());
 		a.setSum(xml.getSum());
 		a.setDebtorAccount(bankAccountRepository.findOneByNumber(xml.getDebtorAccountXML()));
 		a.setModelAssigments(xml.getModelAssigments());
 		a.setReferenceNumberAssigments(xml.getReferenceNumberAssigments());
+		a.setEmergency(xml.getEmergency());
+		a.setTypeOfMistake(xml.getTypeOfMistake());
+		a.setStatus(xml.getStatus());
+		a.setPaymentType(paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML()));
+		a.setPaymentCurrency(currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
+		a.setCity(cityRepository.findOneByName(xml.getCityXML()));
+		System.out.println("aaaaaa  " + paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML()) +  currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
 
 		return a;
 	}

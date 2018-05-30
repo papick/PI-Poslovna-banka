@@ -29,9 +29,8 @@ public class PaymentType {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PaymentType(Long id, String code, String name) {
+	public PaymentType(String code, String name) {
 		super();
-		this.id = id;
 		this.code = code;
 		this.name = name;
 	}

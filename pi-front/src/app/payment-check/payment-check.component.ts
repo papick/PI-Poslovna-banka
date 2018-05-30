@@ -67,8 +67,8 @@ export class PaymentCheckComponent implements OnInit {
       this.form.controls['debtor'].setValue(data.debtor);
       this.form.controls['purpose'].setValue(data.purposeOfPayment);
       this.form.controls['creditor'].setValue(data.creditor);
-      //this.form.controls['code'].setValue(data.code);
-      // this.form.controls['currency'].setValue(data.debtor);
+      this.form.controls['code'].setValue(140);
+      this.form.controls['currency'].setValue(data.paymentCurrency.officialCode);
       this.form.controls['sum'].setValue(data.sum);
       this.form.controls['bankAccount'].setValue(data.debtorAccount.number);
       this.form.controls['model'].setValue(data.modelAssigments);

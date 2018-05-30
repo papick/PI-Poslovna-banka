@@ -1,6 +1,6 @@
 package poslovna_banka.model;
 
-import java.sql.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 
 @Entity
 @XmlRootElement(name = "analyticsOfStatements")
@@ -31,16 +32,17 @@ public class AnalyticOfStatement {
 	@NotNull
 	private String creditor; // poverilac-primalac
 
-	// @NotNull
+	@NotNull
 	private String dateOfReceipt; // datum prijema
 
-	// @NotNull
+	@NotNull
 	private String currencyDate; // datum valute
 
 	private Integer modelAssigments; // model zaduzenja
 
 	private String referenceNumberAssigments; // poziv na broj zaduzenja
 
+	@Transient
 	private String debtorAccountXML; // racun duznika ya xml
 
 	@ManyToOne
@@ -62,11 +64,20 @@ public class AnalyticOfStatement {
 	@Column(length = 1)
 	private String status;
 
+	@Transient
+	private String paymentTypeXML;
+
 	@ManyToOne
 	private PaymentType paymentType; // tip placanja
 
+	@Transient
+	private String paymentCurrencyXML;
+
 	@ManyToOne
 	private Currency paymentCurrency; // valuta placanja
+
+	@Transient
+	private String cityXML;
 
 	@ManyToOne
 	private City city;
@@ -74,6 +85,30 @@ public class AnalyticOfStatement {
 	public AnalyticOfStatement() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getPaymentTypeXML() {
+		return paymentTypeXML;
+	}
+
+	public void setPaymentTypeXML(String paymentTypeXML) {
+		this.paymentTypeXML = paymentTypeXML;
+	}
+
+	public String getPaymentCurrencyXML() {
+		return paymentCurrencyXML;
+	}
+
+	public void setPaymentCurrencyXML(String paymentCurrencyXML) {
+		this.paymentCurrencyXML = paymentCurrencyXML;
+	}
+
+	public String getCityXML() {
+		return cityXML;
+	}
+
+	public void setCityXML(String cityXML) {
+		this.cityXML = cityXML;
 	}
 
 	public String getType() {

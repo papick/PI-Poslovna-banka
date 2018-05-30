@@ -27,10 +27,10 @@ public class BankAccount {
 	@ManyToOne
 	private Bank bank;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private Individual individual;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private LegalEntity legalEntity;
 
 	@OneToOne
@@ -39,9 +39,11 @@ public class BankAccount {
 	public BankAccount() {
 	}
 
-	public BankAccount(String number) {
+	public BankAccount(String number, Bank bank, LegalEntity legalEntity) {
 		super();
 		this.number = number;
+		this.bank = bank;
+		this.legalEntity = legalEntity;
 	}
 
 	public BankAccount(String number, String dateOfOpenning, boolean valid, Bank bank, Individual individual,
