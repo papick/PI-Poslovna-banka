@@ -130,11 +130,15 @@ public class TestData {
 		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg", true);
 		individualRepo.save(i);
 
+
 		BankAccount bankAccount = new BankAccount("123456", "29-05-2018", true, bank, null, le, curr);
 		bankAccountRepository.save(bankAccount);
 
 		BankAccount bankAccount1 = new BankAccount("777888", bank, zara);
 		bankAccountRepository.save(bankAccount1);
+
+
+
 
 	}
 }

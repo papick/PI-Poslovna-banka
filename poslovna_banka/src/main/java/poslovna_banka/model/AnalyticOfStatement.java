@@ -1,6 +1,9 @@
 package poslovna_banka.model;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84561a4da6561b5fb1d917a5bd7f3ee75f384178
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,6 +51,8 @@ public class AnalyticOfStatement {
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
 
+	private String accountCreditorXML;
+	
 	@ManyToOne
 	private BankAccount accountCreditor; // racun poverioca
 
@@ -277,6 +282,14 @@ public class AnalyticOfStatement {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+
+	public String getAccountCreditorXML() {
+		return accountCreditorXML;
+	}
+
+	public void setAccountCreditorXML(String accountCreditorXML) {
+		this.accountCreditorXML = accountCreditorXML;
 	}
 
 }

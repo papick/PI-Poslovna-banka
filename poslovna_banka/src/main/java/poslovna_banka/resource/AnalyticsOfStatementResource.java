@@ -26,4 +26,16 @@ public class AnalyticsOfStatementResource {
 		System.out.println("aaaa" + fileName);
 		return analyticService.getAnalyticsOfStatements(file);
 	}
+	
+	@GetMapping("xml-naplata/{fileName}")
+	public AnalyticOfStatement loadXMLPayment(@PathVariable String fileName) throws JAXBException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.getPaymentAnalyticsOfStatements(file);
+	}
+	
+	@GetMapping("xml-prenos/{fileName}")
+	public AnalyticOfStatement loadXMLTransfer(@PathVariable String fileName) throws JAXBException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.getPaymentAnalyticsOfStatements(file);
+	}
 }

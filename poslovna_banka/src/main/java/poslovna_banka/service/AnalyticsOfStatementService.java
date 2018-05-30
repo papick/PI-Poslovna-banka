@@ -13,8 +13,12 @@ import poslovna_banka.model.AnalyticOfStatement;
 import poslovna_banka.model.BankAccount;
 import poslovna_banka.repository.AnalyticOfStatementRepository;
 import poslovna_banka.repository.BankAccountRepository;
+<<<<<<< HEAD
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CurrencyRepository;
+=======
+import poslovna_banka.repository.BankRepository;
+>>>>>>> 84561a4da6561b5fb1d917a5bd7f3ee75f384178
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.repository.PaymentTypeRepository;
 
@@ -44,7 +48,7 @@ public class AnalyticsOfStatementService {
 		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
-		AnalyticOfStatement a = generateAnalyticsOfStatement(xml);
+		AnalyticOfStatement a = generatePayoffAnalyticsOfStatement(xml);
 		analyticRepository.save(a);
 
 		if (a.getType().equals("Nalog za isplatu")) {
@@ -64,8 +68,19 @@ public class AnalyticsOfStatementService {
 		return a;
 
 	}
+	
+	public AnalyticOfStatement getPaymentAnalyticsOfStatements(File file) throws JAXBException {
+		
+		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
+		AnalyticOfStatement a = generatePaymentAnalyticsOfStatement(xml);
+		analyticRepository.save(a);
+		
+		return a;
+	}
 
-	private AnalyticOfStatement generateAnalyticsOfStatement(AnalyticOfStatement xml) {
+	private AnalyticOfStatement generatePayoffAnalyticsOfStatement(AnalyticOfStatement xml) {
 		AnalyticOfStatement a = new AnalyticOfStatement();
 		a.setType(xml.getType());
 		a.setDebtor(xml.getDebtor());
@@ -85,6 +100,24 @@ public class AnalyticsOfStatementService {
 		a.setCity(cityRepository.findOneByName(xml.getCityXML()));
 		System.out.println("aaaaaa  " + paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML()) +  currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
 
+		return a;
+	}
+	
+	private AnalyticOfStatement generatePaymentAnalyticsOfStatement(AnalyticOfStatement xml) {
+		AnalyticOfStatement a = new AnalyticOfStatement();
+		
+		a.setType(xml.getType());
+		a.setDebtor(xml.getDebtor());
+		a.setPurposeOfPayment(xml.getPurposeOfPayment());
+		a.setCreditor(xml.getCreditor());
+		a.setSum(xml.getSum());
+		a.setDebtorAccount(bankAccountRepository.findOneByNumber(xml.getDebtorAccountXML()));
+		a.setModelAssigments(xml.getModelAssigments());
+		a.setReferenceNumberAssigments(xml.getReferenceNumberAssigments());
+		a.setAccountCreditor(bankAccountRepository.findOneByNumber(xml.getAccountCreditorXML()));
+		a.setModelApproval(xml.getModelApproval());
+		a.setReferenceNumberCreditor(xml.getReferenceNumberCreditor());
+		
 		return a;
 	}
 
