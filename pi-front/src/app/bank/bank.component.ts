@@ -73,7 +73,9 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+
     } else if (click === 'countries') {
+
       this.home = false;
       this.countries = true;
       this.paymentCheck = false;
@@ -86,6 +88,7 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+
     } else if (click === 'city') {
       this.home = false;
       this.countries = false;
@@ -109,12 +112,7 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = false;
       this.currencies = false;
-    } else if(click === 'bankAccounts'){
 
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
     } else if (click === 'bankAccounts') {
 
       this.home = false;
@@ -125,6 +123,11 @@ export class BankComponent implements OnInit {
       this.bankAccounts = true;
       this.paymentOrder = false;
       this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+
     } else if(click === 'payment-order') {
 
       this.home = false;
@@ -184,6 +187,7 @@ export class BankComponent implements OnInit {
       this.transferOrder = true;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+
     } else if(click === 'addLegalAccount'){
       this.home = false;
       this.countries = false;
@@ -197,6 +201,7 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = true;
       this.addIndividualAccount = false;
+
     } else if(click === 'addIndividualAccount') {
       this.home = false;
       this.countries = false;
@@ -262,6 +267,8 @@ export class BankComponent implements OnInit {
   getCurrencies() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/currencies');
+    location.reload();
+  }
 
   payCheck() {
     this.router.navigateByUrl('/bank/' + this.idBank + '/pay-order');

@@ -126,10 +126,6 @@ public class TestData {
 		PaymentType paymentType = new PaymentType("1", "gotovinski");
 		paymentTypeRepository.save(paymentType);
 
-		Currency curr = new Currency("din", country1, "Dinar", true);
-		currRepo.save(curr);
-		Currency curr1 = new Currency("eur", country1, "Euro", true);
-		currRepo.save(curr1);
 
 		LegalEntity le = new LegalEntity("NN d.o.o", "as", "asdasd", "1234", "123124", "sdads", "1231", "poreska",
 				"1231231", "asdad", activity1, "kristina");
@@ -141,10 +137,8 @@ public class TestData {
 
 		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg");
 		individualRepo.save(i);
-
-		BankAccount bankAccount = new BankAccount("111222", "29-05-2018", true, bank, null, le, curr, true);
-		bankAccountRepository.save(bankAccount);
-
+		
+			
 		Currency currency1 = new Currency("EUR", country7, "Evro", false);
 		currRepo.save(currency1);
 		Currency currency2 = new Currency("RSD", country1, "Dinar", true);
@@ -152,7 +146,12 @@ public class TestData {
 		Currency currency3 = new Currency("CHF", country6, "Svajcarski franak", false);
 		currRepo.save(currency3);
 
-		BankAccount bankAccount1 = new BankAccount("777888", "11-01-2018", true, bank, null, zara, curr, true);
+		BankAccount bankAccount = new BankAccount("111222", "29-05-2018", true, bank, null, le, currency1, true);
+		bankAccountRepository.save(bankAccount);
+
+		
+
+		BankAccount bankAccount1 = new BankAccount("777888", "11-01-2018", true, bank, null, zara, currency1, true);
 		bankAccountRepository.save(bankAccount1);
 
 

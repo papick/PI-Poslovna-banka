@@ -8,7 +8,7 @@ import {AddActivitiesComponent} from "./addActivities/addActivities.component";
 import {BankAccountsComponent} from "./bank-accounts/bank-accounts.component";
 import {AddBankAccountIndividualComponent} from "./add-bank-account-individual/add-bank-account-individual.component";
 
-import {AddBankAccountLegalsComponent} from "./add-bank-account-legals/add-bank-account-legals.component";
+
 import {CurrencyFormComponent} from "./currency-form/currency-form.component";
 import {ComboZoomCountriesComponent} from "./combo-zoom-countries/combo-zoom-countries.component";
 
