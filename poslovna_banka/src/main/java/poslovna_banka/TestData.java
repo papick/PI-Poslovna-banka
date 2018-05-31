@@ -134,7 +134,7 @@ public class TestData {
 		BankAccount bankAccount = new BankAccount("123456", "29-05-2018", true, bank, null, le, curr);
 		bankAccountRepository.save(bankAccount);
 
-		BankAccount bankAccount1 = new BankAccount("777888", bank, zara);
+		BankAccount bankAccount1 = new BankAccount("777888", "11-01-2018", true, bank, null, zara, curr);
 		bankAccountRepository.save(bankAccount1);
 
 
