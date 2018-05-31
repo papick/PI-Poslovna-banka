@@ -1,0 +1,59 @@
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+.table tr.active td {
+  background-color: rgba(77, 148, 255, 0.44) !important;
+  color: white;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.edit_color {
+  color: #4d94ff;
+}
+
+.delete_color {
+  color: red;
+}
+
+
+#table{
+  margin-top: 30px;
+}
+
+table {
+  width: 100%;
+}
+table, th, td {
+  border: 1px solid black;
+}
+th, td {
+  padding: 15px;
+  background: white;
+}
+
+.th-hall {
+  text-align: left;
+  width: 60%;
+}
+
+.th {
+  width: 20%;
+}
+
+
+.th-style {
+  background-color: rgb(226, 226, 226);
+  color : black;
+}

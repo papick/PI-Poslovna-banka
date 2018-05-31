@@ -29,6 +29,9 @@ import { AddBankAccountIndividualComponent } from './add-bank-account-individual
 import {BankAccountService} from "../service/bankAccountService";
 import {CurrencyService} from "../service/currencyService";
 import {AnalyticsOfStatementService} from '../service/AnalyticsOfStatementService';
+import {CurrenciesComponent} from "./currencies/currencies.component";
+import {CurrencyFormComponent} from "./currency-form/currency-form.component";
+import {ComboZoomCountriesComponent} from "./combo-zoom-countries/combo-zoom-countries.component";
 
 
 @NgModule({
@@ -40,6 +43,7 @@ import {AnalyticsOfStatementService} from '../service/AnalyticsOfStatementServic
     CountriesComponent,
     AddCountryComponent,
     CityComponent,
+    CurrenciesComponent,
     AddCityComponent,
     ActivitiesComponent,
     AddActivitiesComponent,
@@ -47,6 +51,8 @@ import {AnalyticsOfStatementService} from '../service/AnalyticsOfStatementServic
     PaymentOrderComponent,
     AddBankAccountLegalsComponent,
     AddBankAccountIndividualComponent,
+    CurrencyFormComponent,
+    ComboZoomCountriesComponent,
 
   ],
   imports: [

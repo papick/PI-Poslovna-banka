@@ -18,6 +18,7 @@ export class BankComponent implements OnInit {
   activities = false;
   bankAccounts = false;
   paymentOrder = false;
+  currencies = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -27,6 +28,8 @@ export class BankComponent implements OnInit {
 
     this.idBank = this.route.snapshot.params.idBank;
     const click = this.route.snapshot.params.click;
+
+    localStorage.setItem('idBank', this.idBank);
 
     if (this.idBank == 1) {
       this.imageRoute = '../../../assets/images/erste.jpg';
@@ -45,6 +48,7 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.currencies = false;
     } else if (click === 'payment-check') {
       this.paymentCheck = true;
       this.city = false;
@@ -52,6 +56,7 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.currencies = false;
     } else if (click === 'countries') {
       this.home = false;
       this.countries = true;
@@ -60,6 +65,7 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.currencies = false;
     } else if (click === 'city') {
       this.home = false;
       this.countries = false;
@@ -68,6 +74,7 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.currencies = false;
     } else if (click === 'activities') {
       this.home = false;
       this.countries = false;
@@ -76,6 +83,7 @@ export class BankComponent implements OnInit {
       this.activities = true;
       this.bankAccounts = false;
       this.paymentOrder = false;
+      this.currencies = false;
     } else if(click === 'bankAccounts'){
       this.home = false;
       this.countries = false;
@@ -84,6 +92,7 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = true;
       this.paymentOrder = false;
+      this.currencies = false;
     } else if(click === 'payment-order') {
       this.home = false;
       this.countries = false;
@@ -92,6 +101,16 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = true;
+      this.currencies = false;
+    } else if(click === 'currencies') {
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.currencies = true;
     }
 
   }
@@ -139,6 +158,12 @@ export class BankComponent implements OnInit {
   getBankAccounts() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/bankAccounts');
+    location.reload();
+  }
+
+  getCurrencies() {
+
+    this.router.navigateByUrl('/bank/' + this.idBank + '/currencies');
     location.reload();
   }
 

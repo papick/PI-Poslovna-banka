@@ -1,0 +1,46 @@
+<br>
+
+<h2 class="center">{{title}}</h2>
+
+<div class="offset-3 col-md-6" style="margin-bottom:50px">
+
+  <form [formGroup]="form" >
+
+    <div class="form-group" >
+
+      <label style="margin-top:100px">Država:</label>
+      <div class="input-group">
+        <input name="country" type="text" class="form-control" placeholder="Država" [formControl]="country" disabled>
+        <span class="input-group-btn">
+        <button  class="btn btn-hero-info " type="button" (click)="comboZoomCountry()"> Izaberi </button>
+      </span>
+      </div>
+
+      <label style="margin-top: 20px">Zvanična šifra:</label>
+      <input name="officialCode" class="form-control margin"  id="input-officialCode"
+             placeholder="Zvanična šifra" [formControl]="officialCode" >
+      <small class="form-text error" *ngIf="officialCode.errors?.required && officialCode.touched">
+        Zvanična šifra je obavezana!
+      </small>
+
+      <label style="margin-top:20px">Naziv:</label>
+      <input name="name" class="form-control margin"  id="input-name"
+             placeholder="Naziv" [formControl]="name" >
+      <small class="form-text error" *ngIf="name.errors?.required && name.touched">
+        Naziv je obavezan!
+      </small>
+
+      <br>
+      <label>Domicilna: </label> <input name="domicilna" type="checkbox" name="domicilna" value="Bike" [formControl]="domicilna">
+      <br>
+
+      <br>
+      <br>
+
+      <button class="btn btn-primary" style="width: 100%"  (click)="confirmClick()" [disabled]="!form.valid">{{method_name}} </button>
+      <button class="btn btn-ghost" style="width: 100% ; margin-top: 20px"  (click)="close()">Zatvori</button>
+
+    </div>
+
+  </form>
+</div>

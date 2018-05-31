@@ -8,6 +8,8 @@ import {AddActivitiesComponent} from "./addActivities/addActivities.component";
 import {BankAccountsComponent} from "./bank-accounts/bank-accounts.component";
 import {AddBankAccountIndividualComponent} from "./add-bank-account-individual/add-bank-account-individual.component";
 import {AddBankAccountLegalsComponent} from "./add-bank-account-legals/add-bank-account-legals.component";
+import {CurrencyFormComponent} from "./currency-form/currency-form.component";
+import {ComboZoomCountriesComponent} from "./combo-zoom-countries/combo-zoom-countries.component";
 
 
 const routes: Routes = [
@@ -25,6 +27,9 @@ const routes: Routes = [
   {path: 'bank/:idBank/activity/for/act/:mode', component: AddActivitiesComponent},
   {path: 'bank/:idBank/activity/for/act/:mode/:id', component: AddActivitiesComponent},
   {path: 'bank/:idBank/country/city/:mode/:id', component: AddCityComponent},
+  {path: 'currencies/currency-form/:mode', component: CurrencyFormComponent},
+  {path: 'currencies/currency-form/:mode/:id', component: CurrencyFormComponent},
+  {path: 'currencies/currency-form/:mode/combo-zoom/countries', component: ComboZoomCountriesComponent},
 
 ]
 

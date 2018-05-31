@@ -6,6 +6,7 @@
   <li (click)="getCountries()"><a>Drzave</a></li>
   <li (click)="getCities()"><a>Gradovi</a></li>
   <li (click)="getBankAccounts()"><a>Racuni</a></li>
+  <li (click)="getCurrencies()"> <a> Valute </a></li>
   <li><a>Kursna lista</a></li>
   <li (click)="getActivities()"><a>Delatnosti</a></li>
 
@@ -42,4 +43,8 @@
 
 <div *ngIf="paymentOrder">
   <app-payment-order></app-payment-order>
+</div>
+
+<div *ngIf="currencies">
+  <app-currencies></app-currencies>
 </div>
