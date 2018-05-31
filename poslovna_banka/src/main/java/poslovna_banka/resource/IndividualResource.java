@@ -1,8 +1,11 @@
 package poslovna_banka.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +25,10 @@ public class IndividualResource {
 		
 		Individual individualForAdd=is.addIndividual(i);
 		return new ResponseEntity<Individual>(individualForAdd, HttpStatus.OK);
+	}
+	
+	@GetMapping("/get-individualEntities")
+	public ResponseEntity<List<Individual>> getIndividualEntities() {
+		return new ResponseEntity<List<Individual>>(is.getAllIndividuals(), HttpStatus.OK);
 	}
 }

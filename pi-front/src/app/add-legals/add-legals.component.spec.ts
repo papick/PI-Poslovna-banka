@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddBankAccountLegalsComponent } from './add-bank-account-legals.component';
+import { AddBankAccountLegalsComponent } from './add-legals.component';
 
 describe('AddBankAccountLegalsComponent', () => {
   let component: AddBankAccountLegalsComponent;

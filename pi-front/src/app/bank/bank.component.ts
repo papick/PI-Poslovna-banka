@@ -18,7 +18,14 @@ export class BankComponent implements OnInit {
   activities = false;
   bankAccounts = false;
   paymentOrder = false;
+
   currencies = false;
+
+  payOrder = false;
+  transferOrder = false;
+  addLegalAccount = false;
+  addIndividualAccount = false;
+
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -49,6 +56,11 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = false;
       this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+
     } else if (click === 'payment-check') {
       this.paymentCheck = true;
       this.city = false;
@@ -57,6 +69,10 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = false;
       this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
     } else if (click === 'countries') {
       this.home = false;
       this.countries = true;
@@ -66,6 +82,10 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = false;
       this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
     } else if (click === 'city') {
       this.home = false;
       this.countries = false;
@@ -75,6 +95,11 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = false;
       this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+
     } else if (click === 'activities') {
       this.home = false;
       this.countries = false;
@@ -85,6 +110,13 @@ export class BankComponent implements OnInit {
       this.paymentOrder = false;
       this.currencies = false;
     } else if(click === 'bankAccounts'){
+
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+    } else if (click === 'bankAccounts') {
+
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
@@ -94,6 +126,7 @@ export class BankComponent implements OnInit {
       this.paymentOrder = false;
       this.currencies = false;
     } else if(click === 'payment-order') {
+
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
@@ -102,7 +135,14 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = true;
       this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+
+
     } else if(click === 'currencies') {
+
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
@@ -111,8 +151,66 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = false;
       this.currencies = true;
-    }
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
 
+    } else if (click === 'pay-order') {
+
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.currencies = true;
+      this.payOrder = true;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+    } else if (click === 'transfer-order') {
+
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = true;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+    } else if(click === 'addLegalAccount'){
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = true;
+      this.addIndividualAccount = false;
+    } else if(click === 'addIndividualAccount') {
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = true;
+    }
   }
 
   homePage() {
@@ -145,7 +243,7 @@ export class BankComponent implements OnInit {
 
   paymentCheckk() {
 
-    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-check');
+    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-check/paymanent/undefined');
     location.reload();
   }
 
@@ -164,6 +262,14 @@ export class BankComponent implements OnInit {
   getCurrencies() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/currencies');
+
+  payCheck() {
+    this.router.navigateByUrl('/bank/' + this.idBank + '/pay-order');
+    location.reload();
+  }
+
+  transfer() {
+    this.router.navigateByUrl('/bank/' + this.idBank + '/transfer-order');
     location.reload();
   }
 

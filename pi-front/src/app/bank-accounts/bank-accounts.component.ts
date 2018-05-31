@@ -16,7 +16,6 @@ export class BankAccountsComponent implements OnInit {
   fizickoLice = false;
   prikaziZaFizicka = false;
   individualAccounts = [];
-  idBank;
 
   constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router) {
   }
@@ -43,13 +42,21 @@ export class BankAccountsComponent implements OnInit {
     });
   }
 
-  addLegalEntity() {
-    this.idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('bank/' + this.idBank + '/addBankAccountLegalEntity');
+  addL() {
+    this.router.navigateByUrl('bank/' + this.activeId + '/addLegalEntity');
   }
 
-  addIndividual() {
-    this.idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('bank/' + this.idBank + '/addBankAccountIndividual');
+  addI() {
+    this.router.navigateByUrl('bank/' + this.activeId + '/addIndividual');
+  }
+
+  addLegalEntityAccount() {
+    this.router.navigateByUrl('bank/' + this.activeId + '/addLegalAccount');
+    location.reload();
+  }
+
+  addIndividualAccount() {
+    this.router.navigateByUrl('bank/' + this.activeId + '/addIndividualAccount');
+    location.reload();
   }
 }

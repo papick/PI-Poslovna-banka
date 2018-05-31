@@ -8,17 +8,38 @@ const httpOptions = {
 
 @Injectable()
 export class ClientService {
-  private BASE_URL = 'http://localhost:8080/api/bankAccounts';
+
+  private BASE_URL = 'http://localhost:8080/api/cities';
 
   constructor(private http: HttpClient) {
   }
 
   getLegals(): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/get-legals`, httpOptions);
+    return this.http.get(`http://localhost:8080/api/bankAccounts/get-legals`, httpOptions);
   }
 
-  getIndividuals(): Observable<any>{
-    return this.http.get(`${this.BASE_URL}/get-individuals`, httpOptions);
+  getIndividuals(): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/bankAccounts/get-individuals`, httpOptions);
+  }
+
+  addLegal(legal): Observable<any> {
+    const body = JSON.stringify(legal);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post(`http://localhost:8080/api/legal-entity/add-legal-entity`, body, {headers: headers});
+  }
+
+  addIndividual(individual): Observable<any> {
+    const body = JSON.stringify(individual);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post(`http://localhost:8080/api/individual/add-individual`, body, {headers: headers});
+  }
+
+  getLegalEntities(): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/legal-entity/get-legalEntities`, httpOptions);
+  }
+
+  getIndividualEntities() : Observable<any> {
+    return this.http.get(`http://localhost:8080/api/individual/get-individualEntities`, httpOptions);
   }
 
 }

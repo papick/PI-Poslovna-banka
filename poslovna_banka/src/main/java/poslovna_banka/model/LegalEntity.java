@@ -45,8 +45,6 @@ public class LegalEntity {
 
 	private String deliveringAdress;
 
-	private boolean mailReport;
-
 	@OneToOne
 	private Activity activity;
 	
@@ -57,7 +55,7 @@ public class LegalEntity {
 	}
 
 	public LegalEntity(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg,
-			String email, String mbr, String taxAuthority, String pib, String deliveringAdress, boolean mailReport,
+			String email, String mbr, String taxAuthority, String pib, String deliveringAdress,
 			Activity activity, String responsiblePerson) {
 		super();
 		this.name = name;
@@ -70,7 +68,6 @@ public class LegalEntity {
 		this.taxAuthority = taxAuthority;
 		this.pib = pib;
 		this.deliveringAdress = deliveringAdress;
-		this.mailReport = mailReport;
 		this.activity = activity;
 		this.responsiblePerson = responsiblePerson;
 	}
@@ -161,14 +158,6 @@ public class LegalEntity {
 
 	public void setDeliveringAdress(String deliveringAdress) {
 		this.deliveringAdress = deliveringAdress;
-	}
-
-	public boolean isMailReport() {
-		return mailReport;
-	}
-
-	public void setMailReport(boolean mailReport) {
-		this.mailReport = mailReport;
 	}
 
 	public Activity getActivity() {

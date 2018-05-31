@@ -1,8 +1,11 @@
 package poslovna_banka.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +27,7 @@ public class LegalEntityResource {
 	
 	@PostMapping("/add-legal-entity")
 	public ResponseEntity<LegalEntity> addLegal(@RequestBody LegalEntityDTO le) {
-		
+		System.out.println("kristinaaaa");
 		LegalEntity newLE=new LegalEntity();
 		
 		newLE.setName(le.getName());
@@ -33,7 +36,6 @@ public class LegalEntityResource {
 		newLE.setDeliveringAdress(le.getDeliveringAdress());
 		newLE.setEmail(le.getEmail());
 		newLE.setJmbg(le.getJmbg());
-		newLE.setMailReport(le.isMailReport());
 		newLE.setMbr(le.getMbr());
 		newLE.setPhoneNumber(le.getPhoneNumber());
 		newLE.setPib(le.getPib());
@@ -42,5 +44,10 @@ public class LegalEntityResource {
 		newLE.setActivity(activityRepo.findByCode(le.getActivity()));
 		
 		return new ResponseEntity<LegalEntity>(les.addLegalEntity(newLE), HttpStatus.OK);
+	}
+	
+	@GetMapping("/get-legalEntities")
+	public ResponseEntity<List<LegalEntity>> getLegalEntities() {
+		return new ResponseEntity<List<LegalEntity>>(les.getAllLegalEntities(), HttpStatus.OK);
 	}
 }

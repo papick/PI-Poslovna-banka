@@ -29,7 +29,6 @@ public class LegalEntityServiceImpl implements LegalEntityService{
 		updated.setDeliveringAdress(le.getDeliveringAdress());
 		updated.setEmail(le.getEmail());
 		updated.setJmbg(le.getJmbg());
-		updated.setMailReport(le.isMailReport());
 		updated.setMbr(le.getMbr());
 		updated.setName(le.getName());
 		updated.setPhoneNumber(le.getPhoneNumber());

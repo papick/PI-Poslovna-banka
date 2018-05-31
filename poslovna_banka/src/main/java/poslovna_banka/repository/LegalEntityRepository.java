@@ -7,4 +7,5 @@ import poslovna_banka.model.LegalEntity;
 @Repository
 public interface LegalEntityRepository extends CrudRepository<LegalEntity, Long>{
 
+	public LegalEntity findByName(String name);
 }

@@ -11,8 +11,10 @@ import poslovna_banka.model.BankAccount;
 import poslovna_banka.model.City;
 import poslovna_banka.model.Country;
 import poslovna_banka.model.Currency;
+import poslovna_banka.model.DailyAccountState;
 import poslovna_banka.model.Individual;
 import poslovna_banka.model.LegalEntity;
+import poslovna_banka.model.PaymentType;
 import poslovna_banka.model.User;
 import poslovna_banka.repository.ActivityRepository;
 import poslovna_banka.repository.BankAccountRepository;
@@ -20,8 +22,10 @@ import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CountryRepository;
 import poslovna_banka.repository.CurrencyRepository;
+import poslovna_banka.repository.DailyAccountStateRepository;
 import poslovna_banka.repository.IndividualRepository;
 import poslovna_banka.repository.LegalEntityRepository;
+import poslovna_banka.repository.PaymentTypeRepository;
 import poslovna_banka.repository.UserRepository;
 
 @Component
@@ -53,6 +57,12 @@ public class TestData {
 
 	@Autowired
 	private BankAccountRepository bankAccountRepository;
+
+	@Autowired
+	private PaymentTypeRepository paymentTypeRepository;
+
+	@Autowired
+	private DailyAccountStateRepository dailyAccountStateRepository;
 
 	@PostConstruct
 	private void init() {
@@ -113,22 +123,27 @@ public class TestData {
 		activitiesRepository.save(activity3);
 		activitiesRepository.save(activity4);
 
+		PaymentType paymentType = new PaymentType("1", "gotovinski");
+		paymentTypeRepository.save(paymentType);
+
+		Currency curr = new Currency("din", country1, "Dinar", true);
+		currRepo.save(curr);
+		Currency curr1 = new Currency("eur", country1, "Euro", true);
+		currRepo.save(curr1);
+
 		LegalEntity le = new LegalEntity("NN d.o.o", "as", "asdasd", "1234", "123124", "sdads", "1231", "poreska",
-				"1231231", "asdad", true, activity1, "kristina");
+				"1231231", "asdad", activity1, "kristina");
 		leRepo.save(le);
 
 		LegalEntity zara = new LegalEntity("Zara", "aa", "aaaa", "1111", "111111", "ssss", "1122", "poreska", "1231231",
-				"aaaa", true, activity1, "jelena");
+				"aaaa", activity1, "jelena");
 		leRepo.save(zara);
 
-		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg", true);
+		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg");
 		individualRepo.save(i);
 
-		BankAccount bankAccount = new BankAccount("123456");
+		BankAccount bankAccount = new BankAccount("111222", "29-05-2018", true, bank, null, le, curr, true);
 		bankAccountRepository.save(bankAccount);
-		
-		BankAccount bankAccount1 = new BankAccount("777888");
-		bankAccountRepository.save(bankAccount1);
 
 		Currency currency1 = new Currency("EUR", country7, "Evro", false);
 		currRepo.save(currency1);
@@ -137,5 +152,12 @@ public class TestData {
 		Currency currency3 = new Currency("CHF", country6, "Svajcarski franak", false);
 		currRepo.save(currency3);
 
+		BankAccount bankAccount1 = new BankAccount("777888", "11-01-2018", true, bank, null, zara, curr, true);
+		bankAccountRepository.save(bankAccount1);
+
+
+		DailyAccountState dailyAccountState = new DailyAccountState("29-05-2018", 50000.0, 0.0, 0.0, 50000.0,
+				bankAccount);
+		dailyAccountStateRepository.save(dailyAccountState);
 	}
 }

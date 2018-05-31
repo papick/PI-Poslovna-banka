@@ -9,6 +9,8 @@
   <li (click)="getCurrencies()"> <a> Valute </a></li>
   <li><a>Kursna lista</a></li>
   <li (click)="getActivities()"><a>Delatnosti</a></li>
+  <li><a>Kliring</a></li>
+  <li><a>RTGS</a></li>
 
 </ul>
 
@@ -16,8 +18,8 @@
 
   <button (click)="paymentOrderClick()">Nalog za uplatu</button>
   <button (click)="paymentCheckk()">Nalog za isplatu</button>
-  <button>Nalog za naplatu</button>
-  <button>Nalog za prenos</button>
+  <button (click)="payCheck()">Nalog za naplatu</button>
+  <button (click)="transfer()">Nalog za prenos</button>
 </div>
 
 <div *ngIf="paymentCheck==true">
@@ -45,6 +47,23 @@
   <app-payment-order></app-payment-order>
 </div>
 
+
 <div *ngIf="currencies">
   <app-currencies></app-currencies>
+
+<div *ngIf="payOrder">
+  <app-pay-check></app-pay-check>
+</div>
+
+<div *ngIf="transferOrder">
+  <app-transfer-check></app-transfer-check>
+</div>
+
+<div *ngIf="addLegalAccount">
+  <app-add-legal-account></app-add-legal-account>
+</div>
+
+<div *ngIf="addIndividualAccount">
+  <app-add-individual></app-add-individual>
+>>>>>>> efa5f37cf45d6623bddf76c00446f95d5c7f5f22
 </div>

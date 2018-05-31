@@ -1,6 +1,5 @@
 package poslovna_banka.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +18,7 @@ public class BankAccount {
 	@NotNull
 	private String number;
 
-	// @NotNull
+	@NotNull
 	private String dateOfOpenning;
 
 	private boolean valid;
@@ -27,25 +26,22 @@ public class BankAccount {
 	@ManyToOne
 	private Bank bank;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private Individual individual;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private LegalEntity legalEntity;
 
 	@OneToOne
 	private Currency currency;
+	
+	private boolean mailReporting;
 
 	public BankAccount() {
 	}
 
-	public BankAccount(String number) {
-		super();
-		this.number = number;
-	}
-
 	public BankAccount(String number, String dateOfOpenning, boolean valid, Bank bank, Individual individual,
-			LegalEntity legalEntity, Currency currency) {
+			LegalEntity legalEntity, Currency currency, boolean mr) {
 		super();
 		this.number = number;
 		this.dateOfOpenning = dateOfOpenning;
@@ -54,6 +50,7 @@ public class BankAccount {
 		this.individual = individual;
 		this.legalEntity = legalEntity;
 		this.currency = currency;
+		this.mailReporting = mr;
 	}
 
 	public Long getId() {
@@ -118,6 +115,14 @@ public class BankAccount {
 
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
+	}
+
+	public boolean isMailReporting() {
+		return mailReporting;
+	}
+
+	public void setMailReporting(boolean mailReporting) {
+		this.mailReporting = mailReporting;
 	}
 
 	@Override

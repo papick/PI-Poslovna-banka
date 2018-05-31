@@ -1,15 +1,13 @@
 package poslovna_banka.model;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -23,31 +21,31 @@ public class AnalyticOfStatement {
 	private String type;
 
 	@NotNull
-	@Column(name = "debtor")
 	private String debtor; // isplatilac-platilac-duznik-nalogodavac
 
 	@NotNull
-	@Column(name = "purposeOfPayment")
 	private String purposeOfPayment;
 
 	@NotNull
-	@Column(name = "creditor")
 	private String creditor; // poverilac-primalac
 
-	// @NotNull
+	@NotNull
 	private String dateOfReceipt; // datum prijema
 
-	// @NotNull
+	@NotNull
 	private String currencyDate; // datum valute
 
 	private Integer modelAssigments; // model zaduzenja
 
 	private String referenceNumberAssigments; // poziv na broj zaduzenja
 
-	private String debtorAccountXML; // racun duznika
+	@Transient
+	private String debtorAccountXML; // racun duznika ya xml
 
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
+
+	private String accountCreditorXML;
 
 	@ManyToOne
 	private BankAccount accountCreditor; // racun poverioca
@@ -58,18 +56,27 @@ public class AnalyticOfStatement {
 
 	private Boolean emergency;
 
-	private Float sum;
+	private Double sum;
 
 	private Integer typeOfMistake;
 
 	@Column(length = 1)
 	private String status;
 
+	@Transient
+	private String paymentTypeXML;
+
 	@ManyToOne
 	private PaymentType paymentType; // tip placanja
 
+	@Transient
+	private String paymentCurrencyXML;
+
 	@ManyToOne
 	private Currency paymentCurrency; // valuta placanja
+
+	@Transient
+	private String cityXML;
 
 	@ManyToOne
 	private City city;
@@ -77,6 +84,30 @@ public class AnalyticOfStatement {
 	public AnalyticOfStatement() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getPaymentTypeXML() {
+		return paymentTypeXML;
+	}
+
+	public void setPaymentTypeXML(String paymentTypeXML) {
+		this.paymentTypeXML = paymentTypeXML;
+	}
+
+	public String getPaymentCurrencyXML() {
+		return paymentCurrencyXML;
+	}
+
+	public void setPaymentCurrencyXML(String paymentCurrencyXML) {
+		this.paymentCurrencyXML = paymentCurrencyXML;
+	}
+
+	public String getCityXML() {
+		return cityXML;
+	}
+
+	public void setCityXML(String cityXML) {
+		this.cityXML = cityXML;
 	}
 
 	public String getType() {
@@ -199,11 +230,11 @@ public class AnalyticOfStatement {
 		this.emergency = emergency;
 	}
 
-	public Float getSum() {
+	public Double getSum() {
 		return sum;
 	}
 
-	public void setSum(Float sum) {
+	public void setSum(Double sum) {
 		this.sum = sum;
 	}
 
@@ -245,6 +276,14 @@ public class AnalyticOfStatement {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+
+	public String getAccountCreditorXML() {
+		return accountCreditorXML;
+	}
+
+	public void setAccountCreditorXML(String accountCreditorXML) {
+		this.accountCreditorXML = accountCreditorXML;
 	}
 
 }

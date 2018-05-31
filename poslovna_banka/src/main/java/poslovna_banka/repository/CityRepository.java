@@ -13,4 +13,6 @@ public interface CityRepository extends JpaRepository<City, Long> {
 
 	ArrayList<City> findAllByCountry(Country country);
 
+	City findOneByName(String name);
+
 }

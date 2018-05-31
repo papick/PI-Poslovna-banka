@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import poslovna_banka.model.BankAccount;
-import poslovna_banka.model.LegalEntity;
-import poslovna_banka.repository.ActivityRepository;
 import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CurrencyRepository;
+import poslovna_banka.repository.IndividualRepository;
+import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.service.BankAccountService;
 import poslovna_banka.service.dto.BankAccountDTO;
 
@@ -34,7 +34,10 @@ public class BankAccountResource {
 	private CurrencyRepository currRepo;
 	
 	@Autowired
-	private ActivityRepository actRepo;
+	private LegalEntityRepository legalRepo;
+	
+	@Autowired
+	private IndividualRepository indRepo;
 	
 	@GetMapping("/get-legals")
 	public ResponseEntity<List<BankAccount>> getLegals() {
@@ -54,23 +57,9 @@ public class BankAccountResource {
 		account.setCurrency(currRepo.findByName(ba.getCurrency()));
 		account.setDateOfOpenning(d.toString());
 		account.setIndividual(null);
+		account.setMailReporting(ba.isMailReporting());
 		
-		LegalEntity legalEntity=new LegalEntity();
-		legalEntity.setName(ba.getLegalEntity().getName());
-		legalEntity.setAbbreviatedName(ba.getLegalEntity().getAbbreviatedName());
-		legalEntity.setActivity(actRepo.findByCode((ba.getLegalEntity().getActivity())));
-		legalEntity.setAdress(ba.getLegalEntity().getAdress());
-		legalEntity.setDeliveringAdress(ba.getLegalEntity().getDeliveringAdress());
-		legalEntity.setEmail(ba.getLegalEntity().getEmail());
-		legalEntity.setJmbg(ba.getLegalEntity().getJmbg());
-		legalEntity.setMailReport(ba.getLegalEntity().isMailReport());
-		legalEntity.setMbr(ba.getLegalEntity().getMbr());
-		legalEntity.setPhoneNumber(ba.getLegalEntity().getPhoneNumber());
-		legalEntity.setPib(ba.getLegalEntity().getPib());
-		legalEntity.setResponsiblePerson(ba.getLegalEntity().getResponsiblePerson());
-		legalEntity.setTaxAuthority(ba.getLegalEntity().getTaxAuthority());
-		
-		account.setLegalEntity(legalEntity);
+		account.setLegalEntity((legalRepo.findByName(  ba.getLegalEntity() ) ) );
 		account.setNumber(ba.getNumber());
 		account.setValid(true);
 		
@@ -84,11 +73,10 @@ public class BankAccountResource {
 		account.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
 		account.setCurrency(currRepo.findByName(ba.getCurrency()));
 		account.setDateOfOpenning(d.toString());
-		account.setIndividual(ba.getIndividual());
+		account.setIndividual(indRepo.findByName(ba.getIndividual()));
 		account.setLegalEntity(null);
 		account.setNumber(ba.getNumber());
 		account.setValid(true);
-		System.out.println(account.toString());
 		
 		return new ResponseEntity<BankAccount>(bas.addBankAccount(account), HttpStatus.OK);
 	}

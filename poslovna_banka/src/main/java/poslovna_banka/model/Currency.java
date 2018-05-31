@@ -10,15 +10,15 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "Currency")
 public class Currency {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
-	@Column(name = "officialCode", columnDefinition = "CHAR(3)" , unique =true )
+	@Column(name = "officialCode", columnDefinition = "CHAR(3)", unique = true)
 	private String officialCode;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Country country;
 
 	@Column
@@ -26,7 +26,7 @@ public class Currency {
 
 	@Column
 	private Boolean domicilna;
-	
+
 	public Currency() {
 	}
 
@@ -77,10 +77,5 @@ public class Currency {
 	public void setDomicilna(Boolean domicilna) {
 		this.domicilna = domicilna;
 	}
-	
-	
-	
-	
-	
-	
+
 }

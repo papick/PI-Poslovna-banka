@@ -1,0 +1,81 @@
+<div>
+
+  <div style="margin-left: 40%;margin-top: 50px;">
+    <table style="width: 30%">
+      <tr style=" border: 1px solid #4d94ff;height: 40px">
+        <th  style=" border: 1px solid #4d94ff;text-align: center">nalog_za_prenos_1.xml</th>
+        <th (click)="ucitaj()" style=" border: 1px solid #4d94ff;text-align: center;">Ucitaj</th>
+      </tr>
+    </table>
+  </div>
+  <div style="margin-top: 70px;margin-left: 30%;margin-right:30%;border-style: solid; border-width: 2px;">
+    <div style="margin-left: 150px;margin-top: 20px;">
+
+
+      <form [formGroup]="form">
+        <h2 style="margin-left: 20px;margin-bottom: 20px">Nalog za prenos:</h2>
+        <div class="form-group row" style="display: inline-block;margin-left: 20px">
+
+          <label>Duznik :</label>
+          <input style="width: 480px;height: 60px" class="form-control margin" [formControl]="debtor" disabled="true">
+
+          <label>Svrha placanja :</label>
+          <input style="width: 480px;height: 60px" class="form-control margin" [formControl]="purpose" disabled="true">
+
+          <label>Poverilac :</label>
+          <input style="width: 480px;height: 60px" class="form-control margin" [formControl]="creditor" disabled="true">
+
+
+          <label>Sifra placanja :</label>
+          <input style="width: 150px;" class="form-control margin" [formControl]="code" disabled="true">
+
+
+          <label style="margin-top: 5px">Valuta :</label>
+          <input style="width: 150px;" class="form-control margin" [formControl]="currency" disabled="true">
+
+
+          <label style="margin-top: 5px">Iznos :</label>
+          <input style="width: 480px" class="form-control margin" [formControl]="sum" disabled="true">
+
+
+          <br>
+          <br>
+
+
+          <label>Racun duznika :</label>
+          <input style="width: 480px" class="form-control margin" [formControl]="bankAccountDebtor" disabled="true">
+
+
+          <label style="margin-top: 5px">Model :</label>
+          <input style="width: 150px;" class="form-control margin" [formControl]="modelAssingment" disabled="true">
+
+          <label style="margin-top: 5px;">Poziv na broj(zaduzenje) :</label>
+          <input style="width: 480px;" class="form-control margin" [formControl]="referenceNumberAssingment" disabled="true">
+
+          <label>Racun poverioca :</label>
+          <input style="width: 480px" class="form-control margin" [formControl]="bankAccountCreditor" disabled="true">
+
+          <label style="margin-top: 5px">Model :</label>
+          <input style="width: 150px;" class="form-control margin" [formControl]="modelApproval" disabled="true">
+
+          <label style="margin-top: 5px;">Poziv na broj(odobrenje) :</label>
+          <input style="width: 480px;" class="form-control margin" [formControl]="referenceNumberApproval" disabled="true">
+
+          <br>
+          <br>
+
+          <label style="margin-top: 5px">Hitno :</label>
+          <input type="checkbox" style="width: 25px;height: 25px;margin-left: 7px" class="form-control margin"
+                 [formControl]="urgent">
+          <div style="text-align: center;margin-top: 20px">
+            <button class="btn btn-success" style="height: 50px;width: 100%; border-radius: 12px;margin-bottom: 20px"
+                    (click)="confirmClick()">Potvrdi
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+

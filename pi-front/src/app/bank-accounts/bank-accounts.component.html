@@ -2,8 +2,11 @@
 <div style="text-align: center;margin-top: 30px">
 
 
+  <button style="" (click)="addL()">Dodaj pravno lice</button>
+  <button style="" (click)="addI()">Dodaj fizicko lice</button>
   <button (click)="getLegals()">Racuni pravnih lica</button>
   <button (click)="getIndividuals()">Racuni fizickih lica</button>
+
 </div>
 <br><br><br>
 
@@ -17,7 +20,7 @@
 
     <tr *ngFor="let item of items; ">
       <td> {{item.number}}</td>
-      <td> {{item.dateOfOpenning.toString()}}</td>
+      <td> {{item.dateOfOpenning}}</td>
       <td> {{item.currency.name}} </td>
       <td> {{item.legalEntity.name}} </td>
     </tr>
@@ -26,6 +29,6 @@
 </table>
 <br><br><br>
 <div style="text-align: center">
-<button style="" *ngIf="pravnoLice" (click)="addLegalEntity()">Dodaj racun za pravno lice</button>
-<button style="" *ngIf="fizickoLice" (click)="addIndividual()">Dodaj racun za fizicko lice</button>
+<button style="" *ngIf="pravnoLice" (click)="addLegalEntityAccount()">Dodaj racun za pravno lice</button>
+<button style="" *ngIf="fizickoLice" (click)="addIndividualAccount()">Dodaj racun za fizicko lice</button>
 </div>

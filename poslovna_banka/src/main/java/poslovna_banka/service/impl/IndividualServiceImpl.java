@@ -28,7 +28,6 @@ public class IndividualServiceImpl implements IndividualService{
 		updated.setDeliveringAdress(i.getDeliveringAdress());
 		updated.setEmail(i.getEmail());
 		updated.setJmbg(i.getJmbg());
-		updated.setMailReport(i.isMailReport());
 		updated.setName(i.getName());
 		updated.setPhoneNumber(i.getPhoneNumber());
 		return repo.save(updated);
