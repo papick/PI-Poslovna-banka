@@ -3,7 +3,7 @@
   <form [formGroup]="form">
     <div class="form-group">
 
-      <h2 style="margin-bottom: 30px">Racun za pravno lice:</h2>
+      <h2 style="margin-bottom: 30px">Racun za fizicko lice:</h2>
       <label>Broj racuna</label>
       <input name="accountNumber" class="form-control margin" id="input-accountNumber" [formControl]="accountNumber">
       <small class="form-text error" *ngIf="accountNumber.errors?.required && accountNumber.touched" style="color: red">
@@ -18,10 +18,10 @@
         </option>
       </select>
 
-      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Pravno lice</label>
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Fizicko lice</label>
       <select name="legal" class="form-control margin" id="input-legal" [formControl]="legal">
         <option></option>
-        <option *ngFor="let legal of legalEntities;">
+        <option *ngFor="let legal of inds;">
           {{legal.name}}
         </option>
       </select>

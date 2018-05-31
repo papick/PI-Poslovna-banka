@@ -31,8 +31,15 @@ export class ClientService {
   addIndividual(individual): Observable<any> {
     const body = JSON.stringify(individual);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    alert('nestooo');
     return this.http.post(`http://localhost:8080/api/individual/add-individual`, body, {headers: headers});
+  }
+
+  getLegalEntities(): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/legal-entity/get-legalEntities`, httpOptions);
+  }
+
+  getIndividualEntities() : Observable<any> {
+    return this.http.get(`http://localhost:8080/api/individual/get-individualEntities`, httpOptions);
   }
 
 }

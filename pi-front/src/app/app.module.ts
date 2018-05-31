@@ -32,6 +32,7 @@ import {AnalyticsOfStatementService} from '../service/AnalyticsOfStatementServic
 import { PayCheckComponent } from './pay-check/pay-check.component';
 import { TransferCheckComponent } from './transfer-check/transfer-check.component';
 import { AddLegalAccountComponent } from './add-legal-account/add-legal-account.component';
+import { AddIndividualComponent } from './add-individual/add-individual.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { AddLegalAccountComponent } from './add-legal-account/add-legal-account.
     PayCheckComponent,
     TransferCheckComponent,
     AddLegalAccountComponent,
+    AddIndividualComponent,
 
   ],
   imports: [

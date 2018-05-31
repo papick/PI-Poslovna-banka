@@ -113,7 +113,6 @@ export class AddLegalsComponent implements OnInit {
     this.legalEntity.deliveringAdress = this.deliveringadress.value;
     this.legalEntity.responsiblePerson = this.responsibleperson.value;
 
-    alert('nestoooo druggooo');
 
     this.clientService.addLegal(this.legalEntity).toPromise()
       .then(data => {
@@ -121,7 +120,6 @@ export class AddLegalsComponent implements OnInit {
         this.router.navigateByUrl('bank/' + idBank + '/bankAccounts');
 
       })
-    // this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
 
   }
 

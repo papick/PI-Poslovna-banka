@@ -43,7 +43,6 @@ export class BankAccountsComponent implements OnInit {
   }
 
   addL() {
-    alert(this.activeId);
     this.router.navigateByUrl('bank/' + this.activeId + '/addLegalEntity');
   }
 
@@ -52,8 +51,12 @@ export class BankAccountsComponent implements OnInit {
   }
 
   addLegalEntityAccount() {
-    alert(this.activeId);
     this.router.navigateByUrl('bank/' + this.activeId + '/addLegalAccount');
+    location.reload();
+  }
+
+  addIndividualAccount() {
+    this.router.navigateByUrl('bank/' + this.activeId + '/addIndividualAccount');
     location.reload();
   }
 }

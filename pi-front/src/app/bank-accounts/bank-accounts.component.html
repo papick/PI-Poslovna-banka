@@ -29,6 +29,6 @@
 </table>
 <br><br><br>
 <div style="text-align: center">
-<button style="" *ngIf="pravnoLice" [routerLink]="['bank/2/addLegalAccount']">Dodaj racun za pravno lice</button>
-<button style="" *ngIf="fizickoLice" >Dodaj racun za fizicko lice</button>
+<button style="" *ngIf="pravnoLice" (click)="addLegalEntityAccount()">Dodaj racun za pravno lice</button>
+<button style="" *ngIf="fizickoLice" (click)="addIndividualAccount()">Dodaj racun za fizicko lice</button>
 </div>

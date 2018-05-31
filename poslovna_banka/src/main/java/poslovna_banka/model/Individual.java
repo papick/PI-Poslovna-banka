@@ -34,11 +34,9 @@ public class Individual {
 	private String email;
 	
 	private String deliveringAdress;
-	
-	private boolean mailReport;
 
 	public Individual(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg, String email,
-			String deliveringAdress, boolean mailReport) {
+			String deliveringAdress) {
 		super();
 		this.name = name;
 		this.abbreviatedName = abbreviatedName;
@@ -47,7 +45,6 @@ public class Individual {
 		this.jmbg = jmbg;
 		this.email = email;
 		this.deliveringAdress = deliveringAdress;
-		this.mailReport = mailReport;
 	}
 	
 	public Individual(){}
@@ -114,13 +111,5 @@ public class Individual {
 
 	public void setDeliveringAdress(String deliveringAdress) {
 		this.deliveringAdress = deliveringAdress;
-	}
-
-	public boolean isMailReport() {
-		return mailReport;
-	}
-
-	public void setMailReport(boolean mailReport) {
-		this.mailReport = mailReport;
 	}
 }

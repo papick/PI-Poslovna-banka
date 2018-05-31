@@ -1,7 +1,5 @@
 package poslovna_banka.service.dto;
 
-import poslovna_banka.model.Individual;
-
 public class BankAccountDTO {
 
 	private String number;
@@ -12,16 +10,18 @@ public class BankAccountDTO {
 
 	private String bank;
 
-	private Individual individual;
+	private String individual;
 
-	private LegalEntityDTO legalEntity;
+	private String legalEntity;
 
 	private String currency;
 	
+	private boolean mailReporting;
+	
 	public BankAccountDTO(){}
 
-	public BankAccountDTO(String number, String dateOfOpenning, boolean valid, String bank, Individual individual,
-			LegalEntityDTO legalEntity, String currency) {
+	public BankAccountDTO(String number, String dateOfOpenning, boolean valid, String bank, String individual,
+			String legalEntity, String currency, boolean mr) {
 		super();
 		this.number = number;
 		this.dateOfOpenning = dateOfOpenning;
@@ -30,6 +30,7 @@ public class BankAccountDTO {
 		this.individual = individual;
 		this.legalEntity = legalEntity;
 		this.currency = currency;
+		this.mailReporting = mr;
 	}
 
 	public String getNumber() {
@@ -64,19 +65,19 @@ public class BankAccountDTO {
 		this.bank = bank;
 	}
 
-	public Individual getIndividual() {
+	public String getIndividual() {
 		return individual;
 	}
 
-	public void setIndividual(Individual individual) {
+	public void setIndividual(String individual) {
 		this.individual = individual;
 	}
 
-	public LegalEntityDTO getLegalEntity() {
+	public String getLegalEntity() {
 		return legalEntity;
 	}
 
-	public void setLegalEntity(LegalEntityDTO legalEntity) {
+	public void setLegalEntity(String legalEntity) {
 		this.legalEntity = legalEntity;
 	}
 
@@ -86,5 +87,13 @@ public class BankAccountDTO {
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
+	}
+
+	public boolean isMailReporting() {
+		return mailReporting;
+	}
+
+	public void setMailReporting(boolean mailReporting) {
+		this.mailReporting = mailReporting;
 	}
 }

@@ -74,9 +74,11 @@ export class AddBankAccountIndividualComponent implements OnInit {
     this.individual.email = this.email.value;
     this.individual.deliveringAdress = this.deliveringadress.value;
 
-    this.clientService.addIndividual(this.individual);
-
-    this.router.navigateByUrl('bank/' + this.idbank + '/bankAccounts');
+    this.clientService.addIndividual(this.individual).toPromise()
+      .then(data => {
+        const idBank = this.route.snapshot.params.idBank;
+        this.router.navigateByUrl('bank/' + idBank + '/bankAccounts');
+      });
   }
 
   getCurrencies() {
