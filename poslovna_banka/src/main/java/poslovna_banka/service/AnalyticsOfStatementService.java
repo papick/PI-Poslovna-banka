@@ -35,7 +35,7 @@ public class AnalyticsOfStatementService {
 
 	@Autowired
 	private CityRepository cityRepository;
-	
+
 	@Autowired
 	private PaymentTypeRepository paymentTypeRepository;
 
@@ -44,7 +44,7 @@ public class AnalyticsOfStatementService {
 		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
-		AnalyticOfStatement a = generatePayoffAnalyticsOfStatement(xml);
+		AnalyticOfStatement a = generateAnalyticsOfStatement(xml);
 		analyticRepository.save(a);
 
 		if (a.getType().equals("Nalog za isplatu")) {
@@ -64,19 +64,19 @@ public class AnalyticsOfStatementService {
 		return a;
 
 	}
-	
+
 	public AnalyticOfStatement getPaymentAnalyticsOfStatements(File file) throws JAXBException {
-		
+
 		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
 		AnalyticOfStatement a = generatePaymentAnalyticsOfStatement(xml);
 		analyticRepository.save(a);
-		
+
 		return a;
 	}
 
-	private AnalyticOfStatement generatePayoffAnalyticsOfStatement(AnalyticOfStatement xml) {
+	private AnalyticOfStatement generateAnalyticsOfStatement(AnalyticOfStatement xml) {
 		AnalyticOfStatement a = new AnalyticOfStatement();
 		a.setType(xml.getType());
 		a.setDebtor(xml.getDebtor());
@@ -94,14 +94,15 @@ public class AnalyticsOfStatementService {
 		a.setPaymentType(paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML()));
 		a.setPaymentCurrency(currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
 		a.setCity(cityRepository.findOneByName(xml.getCityXML()));
-		System.out.println("aaaaaa  " + paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML()) +  currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
+		System.out.println("aaaaaa  " + paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML())
+				+ currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
 
 		return a;
 	}
-	
+
 	private AnalyticOfStatement generatePaymentAnalyticsOfStatement(AnalyticOfStatement xml) {
 		AnalyticOfStatement a = new AnalyticOfStatement();
-		
+
 		a.setType(xml.getType());
 		a.setDebtor(xml.getDebtor());
 		a.setPurposeOfPayment(xml.getPurposeOfPayment());
@@ -113,7 +114,7 @@ public class AnalyticsOfStatementService {
 		a.setAccountCreditor(bankAccountRepository.findOneByNumber(xml.getAccountCreditorXML()));
 		a.setModelApproval(xml.getModelApproval());
 		a.setReferenceNumberCreditor(xml.getReferenceNumberCreditor());
-		
+
 		return a;
 	}
 
