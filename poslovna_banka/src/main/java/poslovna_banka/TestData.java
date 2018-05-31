@@ -71,6 +71,13 @@ public class TestData {
 
 		Country country5 = new Country("Lithuania", "LIT");
 		countryService.save(country5);
+		
+		Country country6 = new Country("Switzerland", "CH");
+		countryService.save(country6);
+		
+		Country country7 = new Country("European Union", "EU");
+		countryService.save(country7);
+		
 
 		City city1 = new City("Novi Sad", country1, "NS", "21000");
 		cityService.save(city1);
@@ -123,10 +130,12 @@ public class TestData {
 		BankAccount bankAccount1 = new BankAccount("777888");
 		bankAccountRepository.save(bankAccount1);
 
-		Currency curr = new Currency("new", country1, "novcaniceeee", true);
-		currRepo.save(curr);
-		Currency curr1 = new Currency("you", country1, "Euro", true);
-		currRepo.save(curr1);
+		Currency currency1 = new Currency("EUR", country7, "Evro", false);
+		currRepo.save(currency1);
+		Currency currency2 = new Currency("RSD", country1, "Dinar", true);
+		currRepo.save(currency2);
+		Currency currency3 = new Currency("CHF", country6, "Svajcarski franak", false);
+		currRepo.save(currency3);
 
 	}
 }
