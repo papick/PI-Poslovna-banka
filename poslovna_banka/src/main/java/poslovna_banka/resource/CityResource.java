@@ -37,6 +37,8 @@ public class CityResource {
 
 	@GetMapping("/get-all-cities")
 	public ResponseEntity<ResponseCities> getCities() {
+		
+		System.out.println("Pozvalo seee");
 
 		ArrayList<City> cities = (ArrayList<City>) cityRepository.findAll();
 

@@ -9,6 +9,8 @@ const httpOptions = {
 @Injectable()
 export class ClientService {
 
+  private BASE_URL = 'http://localhost:8080/api/cities';
+
   constructor(private http: HttpClient) {
   }
 
@@ -29,6 +31,7 @@ export class ClientService {
   addIndividual(individual): Observable<any> {
     const body = JSON.stringify(individual);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    alert('nestooo');
     return this.http.post(`http://localhost:8080/api/individual/add-individual`, body, {headers: headers});
   }
 

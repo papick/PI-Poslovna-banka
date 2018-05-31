@@ -46,7 +46,14 @@ export class BankAccountsComponent implements OnInit {
     alert(this.activeId);
     this.router.navigateByUrl('bank/' + this.activeId + '/addLegalEntity');
   }
-  addI(){
+
+  addI() {
     this.router.navigateByUrl('bank/' + this.activeId + '/addIndividual');
+  }
+
+  addLegalEntityAccount() {
+    alert(this.activeId);
+    this.router.navigateByUrl('bank/' + this.activeId + '/addLegalAccount');
+    location.reload();
   }
 }

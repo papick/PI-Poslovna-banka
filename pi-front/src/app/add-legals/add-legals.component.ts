@@ -113,8 +113,15 @@ export class AddLegalsComponent implements OnInit {
     this.legalEntity.deliveringAdress = this.deliveringadress.value;
     this.legalEntity.responsiblePerson = this.responsibleperson.value;
 
-    this.clientService.addLegal(this.legalEntity);
-    this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
+    alert('nestoooo druggooo');
+
+    this.clientService.addLegal(this.legalEntity).toPromise()
+      .then(data => {
+        const idBank = this.route.snapshot.params.idBank;
+        this.router.navigateByUrl('bank/' + idBank + '/bankAccounts');
+
+      })
+    // this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
 
   }
 
