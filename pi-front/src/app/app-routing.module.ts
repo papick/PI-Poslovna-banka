@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: 'bank/:idBank', component: BankAccountsComponent},
   {path: 'bank/:idBank/addIndividual', component: AddBankAccountIndividualComponent},
   {path: 'bank/:idBank/addLegalEntity', component: AddLegalsComponent},
+  {path: 'bank/:idBank/:click/paymanent/:type', component: BankComponent},
   {path: 'bank/:idBank/:click', component: BankComponent},
   {path: 'bank/:idBank/:click/:id', component: BankComponent},
   {path: 'bank/:idBank/country/city/:mode', component: AddCityComponent},

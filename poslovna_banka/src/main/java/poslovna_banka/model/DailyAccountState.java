@@ -21,23 +21,23 @@ public class DailyAccountState {
 
 	@NotNull
 	@Column(name = "date")
-	private Date date;
+	private String date;
 
 	@NotNull
 	@Column(name = "previous_state")
-	private String previousState;
+	private Double previousState;
 
 	@NotNull
 	@Column(name = "payment_to")
-	private String paymentTo;
+	private Double paymentTo; // promet u korist
 
 	@NotNull
 	@Column(name = "payment_from")
-	private String paymentFrom;
+	private Double paymentFrom; // promet na teret
 
 	@NotNull
 	@Column(name = "new_state")
-	private String newState;
+	private Double newState;
 
 	@ManyToOne
 	private BankAccount bankAccount;
@@ -45,17 +45,6 @@ public class DailyAccountState {
 	public DailyAccountState() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public DailyAccountState(Date date, String previousState, String paymentTo, String paymentFrom, String newState,
-			BankAccount bankAccount) {
-		super();
-		this.date = date;
-		this.previousState = previousState;
-		this.paymentTo = paymentTo;
-		this.paymentFrom = paymentFrom;
-		this.newState = newState;
-		this.bankAccount = bankAccount;
 	}
 
 	public Long getId() {
@@ -66,43 +55,43 @@ public class DailyAccountState {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public String getPreviousState() {
+	public Double getPreviousState() {
 		return previousState;
 	}
 
-	public void setPreviousState(String previousState) {
+	public void setPreviousState(Double previousState) {
 		this.previousState = previousState;
 	}
 
-	public String getPaymentTo() {
+	public Double getPaymentTo() {
 		return paymentTo;
 	}
 
-	public void setPaymentTo(String paymentTo) {
+	public void setPaymentTo(Double paymentTo) {
 		this.paymentTo = paymentTo;
 	}
 
-	public String getPaymentFrom() {
+	public Double getPaymentFrom() {
 		return paymentFrom;
 	}
 
-	public void setPaymentFrom(String paymentFrom) {
+	public void setPaymentFrom(Double paymentFrom) {
 		this.paymentFrom = paymentFrom;
 	}
 
-	public String getNewState() {
+	public Double getNewState() {
 		return newState;
 	}
 
-	public void setNewState(String newState) {
+	public void setNewState(Double newState) {
 		this.newState = newState;
 	}
 
@@ -111,6 +100,17 @@ public class DailyAccountState {
 	}
 
 	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+
+	public DailyAccountState(String date, Double previousState, Double paymentTo, Double paymentFrom, Double newState,
+			BankAccount bankAccount) {
+		super();
+		this.date = date;
+		this.previousState = previousState;
+		this.paymentTo = paymentTo;
+		this.paymentFrom = paymentFrom;
+		this.newState = newState;
 		this.bankAccount = bankAccount;
 	}
 

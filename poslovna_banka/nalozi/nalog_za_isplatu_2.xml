@@ -4,9 +4,16 @@
 	<debtor>ZARA</debtor>
 	<purposeOfPayment>Isplata zarade 03/2018</purposeOfPayment>
 	<creditor>Milica Kovacevic  , radnik</creditor>
+	<dateOfReceipt>11-05-2018</dateOfReceipt>
+	<currencyDate>11-05-2018</currencyDate>
 	<sum>25000</sum>
 	<debtorAccountXML>777888</debtorAccountXML>
 	<modelAssigments>97</modelAssigments>
 	<referenceNumberAssigments>BOP</referenceNumberAssigments>
-
+	<emergency>false</emergency>
+	<typeOfMistake>1</typeOfMistake>
+	<status></status>
+	<paymentTypeXML>1</paymentTypeXML>
+	<paymentCurrencyXML>din</paymentCurrencyXML>
+	<cityXML>Beograd</cityXML>
 </analyticsOfStatements>

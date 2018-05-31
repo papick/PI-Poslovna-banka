@@ -11,6 +11,7 @@ import poslovna_banka.model.BankAccount;
 import poslovna_banka.model.City;
 import poslovna_banka.model.Country;
 import poslovna_banka.model.Currency;
+import poslovna_banka.model.DailyAccountState;
 import poslovna_banka.model.Individual;
 import poslovna_banka.model.LegalEntity;
 import poslovna_banka.model.PaymentType;
@@ -21,6 +22,7 @@ import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CountryRepository;
 import poslovna_banka.repository.CurrencyRepository;
+import poslovna_banka.repository.DailyAccountStateRepository;
 import poslovna_banka.repository.IndividualRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.repository.PaymentTypeRepository;
@@ -58,6 +60,9 @@ public class TestData {
 
 	@Autowired
 	private PaymentTypeRepository paymentTypeRepository;
+
+	@Autowired
+	private DailyAccountStateRepository dailyAccountStateRepository;
 
 	@PostConstruct
 	private void init() {
@@ -130,15 +135,14 @@ public class TestData {
 		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg", true);
 		individualRepo.save(i);
 
-
 		BankAccount bankAccount = new BankAccount("123456", "29-05-2018", true, bank, null, le, curr);
 		bankAccountRepository.save(bankAccount);
 
-		BankAccount bankAccount1 = new BankAccount("777888", bank, zara);
+		BankAccount bankAccount1 = new BankAccount("777888", "11-01-2018", true, bank, null, zara, curr);
 		bankAccountRepository.save(bankAccount1);
 
-
-
-
+		DailyAccountState dailyAccountState = new DailyAccountState("29-05-2018", 50000.0, 0.0, 0.0, 50000.0,
+				bankAccount);
+		dailyAccountStateRepository.save(dailyAccountState);
 	}
 }
