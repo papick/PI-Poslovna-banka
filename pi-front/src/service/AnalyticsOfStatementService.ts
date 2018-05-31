@@ -18,6 +18,10 @@ export class AnalyticsOfStatementService {
     return this.http.get(`${this.BASE_URL}/xml/${name}`, httpOptions);
   }
 
+  savePaymentCheck(name: any): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/save/xml/${name}`, httpOptions);
+  }
+
   getPayCheck(name: any): Observable<any> {
     return this.http.get(`${this.BASE_URL}/xml-naplata/${name}`, httpOptions);
   }

@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 
 import poslovna_banka.model.AnalyticOfStatement;
 import poslovna_banka.model.BankAccount;
+import poslovna_banka.model.DailyAccountState;
 import poslovna_banka.repository.AnalyticOfStatementRepository;
 import poslovna_banka.repository.BankAccountRepository;
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CurrencyRepository;
+import poslovna_banka.repository.DailyAccountStateRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.repository.PaymentTypeRepository;
 
@@ -28,9 +30,6 @@ public class AnalyticsOfStatementService {
 	private BankAccountRepository bankAccountRepository;
 
 	@Autowired
-	private LegalEntityRepository legalEntityRepository;
-
-	@Autowired
 	private CurrencyRepository currencyRepository;
 
 	@Autowired
@@ -39,7 +38,20 @@ public class AnalyticsOfStatementService {
 	@Autowired
 	private PaymentTypeRepository paymentTypeRepository;
 
+	@Autowired
+	private DailyAccountStateRepository dailyAccountStateRepository;
+
 	public AnalyticOfStatement getAnalyticsOfStatements(File file) throws JAXBException {
+
+		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
+		AnalyticOfStatement a = generateAnalyticsOfStatement(xml);
+		return a;
+
+	}
+
+	public AnalyticOfStatement saveAnalyticsOfStatements(File file) throws JAXBException {
 
 		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -49,16 +61,36 @@ public class AnalyticsOfStatementService {
 
 		if (a.getType().equals("Nalog za isplatu")) {
 			BankAccount debtorAccount = bankAccountRepository.findOne(a.getDebtorAccount().getId());
-			// DailyAccountBalance dailyAccountBalance =
-			// dailyAccountBalanceService.findByAccountNumberAndDate(debtorAccount,
-			// a.getCurrencyDate());
-			// dailyAccountBalance.setTrafficToTheBurden(dailyAccountBalance.getTrafficToTheBurden()
-			// + a.getSum());
-			// dailyAccountBalance.setNewState(dailyAccountBalance.getPreviousState()+
-			// dailyAccountBalance.getTrafficToBenefit() -
-			// dailyAccountBalance.getTrafficToTheBurden());
-			// dailyAccountBalance.getAnalyticsOfStatements().add(a);
-			// dailyAccountBalanceService.save(dailyAccountBalance);
+			DailyAccountState dailyAccountState = dailyAccountStateRepository
+					.findOneByDateAndBankAccount(a.getCurrencyDate(), debtorAccount);
+
+			if (dailyAccountState == null) {
+
+				DailyAccountState dailyAccountStateNew = new DailyAccountState();
+
+				// pocetno stanje
+
+				dailyAccountStateNew.setPaymentFrom(dailyAccountStateNew.getPaymentTo() + a.getSum());
+				dailyAccountStateNew.setNewState(dailyAccountStateNew.getPreviousState()
+						+ dailyAccountStateNew.getPaymentTo() - dailyAccountStateNew.getPaymentFrom());
+
+				dailyAccountStateRepository.save(dailyAccountStateNew);
+
+			} else {
+
+				if(a.getSum() > dailyAccountState.getNewState()){
+
+					throw new IllegalArgumentException("Ne posotoji dovoljno novca za isplatu !");
+
+				}
+				dailyAccountState.setPaymentFrom(dailyAccountState.getPaymentTo() + a.getSum());
+				dailyAccountState.setNewState(dailyAccountState.getPreviousState() + dailyAccountState.getPaymentTo()
+						- dailyAccountState.getPaymentFrom());
+
+				dailyAccountStateRepository.save(dailyAccountState);
+
+			}
+
 		}
 
 		return a;

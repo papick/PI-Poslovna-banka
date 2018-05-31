@@ -162,7 +162,7 @@ export class BankComponent implements OnInit {
 
   paymentCheckk() {
 
-    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-check');
+    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-check/paymanent/undefined');
     location.reload();
   }
 

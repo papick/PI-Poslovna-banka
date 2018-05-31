@@ -20,19 +20,26 @@ public class AnalyticsOfStatementResource {
 	@Autowired
 	private AnalyticsOfStatementService analyticService;
 
+	// nalog za isplatu ucitaj
 	@GetMapping("/xml/{fileName}")
 	public AnalyticOfStatement loadXML(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
-		System.out.println("aaaa" + fileName);
 		return analyticService.getAnalyticsOfStatements(file);
 	}
-	
+
+	// nalog za isplatu sacuvaj
+	@GetMapping("/save/xml/{fileName}")
+	public AnalyticOfStatement saveAnalytics(@PathVariable String fileName) throws JAXBException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.saveAnalyticsOfStatements(file);
+	}
+
 	@GetMapping("xml-naplata/{fileName}")
 	public AnalyticOfStatement loadXMLPayment(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.getPaymentAnalyticsOfStatements(file);
 	}
-	
+
 	@GetMapping("xml-prenos/{fileName}")
 	public AnalyticOfStatement loadXMLTransfer(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");

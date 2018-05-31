@@ -56,7 +56,7 @@ public class AnalyticOfStatement {
 
 	private Boolean emergency;
 
-	private Float sum;
+	private Double sum;
 
 	private Integer typeOfMistake;
 
@@ -230,11 +230,11 @@ public class AnalyticOfStatement {
 		this.emergency = emergency;
 	}
 
-	public Float getSum() {
+	public Double getSum() {
 		return sum;
 	}
 
-	public void setSum(Float sum) {
+	public void setSum(Double sum) {
 		this.sum = sum;
 	}
 

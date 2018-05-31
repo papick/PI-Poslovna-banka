@@ -59,40 +59,45 @@ export class PaymentCheckComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.route.snapshot.params.type === 'undefined') {
 
+    } else {
+      const type = this.route.snapshot.params.type;
+      this.analyticService.getPaymentCheck(type).subscribe(data => {
+        this.form.controls['debtor'].setValue(data.debtor);
+        this.form.controls['purpose'].setValue(data.purposeOfPayment);
+        this.form.controls['creditor'].setValue(data.creditor);
+        this.form.controls['code'].setValue(140);
+        this.form.controls['currency'].setValue(data.paymentCurrency.officialCode);
+        this.form.controls['sum'].setValue(data.sum);
+        this.form.controls['bankAccount'].setValue(data.debtorAccount.number);
+        this.form.controls['model'].setValue(data.modelAssigments);
+        this.form.controls['referenceNumber'].setValue(data.referenceNumberAssigments);
+      })
+    }
   }
 
   load1() {
-    this.analyticService.getPaymentCheck('nalog_za_isplatu_1').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      this.form.controls['code'].setValue(140);
-      this.form.controls['currency'].setValue(data.paymentCurrency.officialCode);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccount'].setValue(data.debtorAccount.number);
-      this.form.controls['model'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumber'].setValue(data.referenceNumberAssigments);
-    })
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/payment-check/paymanent/nalog_za_isplatu_1');
+    location.reload();
   }
 
   load2() {
-    this.analyticService.getPaymentCheck('nalog_za_isplatu_2').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      //this.form.controls['code'].setValue(data.code);
-      // this.form.controls['currency'].setValue(data.debtor);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccount'].setValue(data.debtorAccount.number);
-      this.form.controls['model'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumber'].setValue(data.referenceNumberAssigments);
-    })
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/payment-check/paymanent/nalog_za_isplatu_2');
+    location.reload();
   }
 
 
   confirmClick() {
-    console.log('milica')
+    const type = this.route.snapshot.params.type;
+    this.analyticService.savePaymentCheck(type).subscribe();
+
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/payment-check/paymanent/undefined');
+    location.reload();
+
   }
 
 }
