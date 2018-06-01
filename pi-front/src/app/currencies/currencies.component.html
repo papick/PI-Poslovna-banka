@@ -1,0 +1,38 @@
+<br>
+
+<div class="center">
+  <h3> Valute </h3>
+
+  <br>
+  <button type="button" class="btn btn-outline-primary" (click)="addNewCurrency()"> Dodaj valutu</button>
+  <br>
+  <br>
+
+  <table class="table table-bordered tables left">
+    <tr>
+      <th class="th-style">Zvanična šifra</th>
+      <th class="th-style">Naziv</th>
+      <th class="th-style">Država</th>
+      <th class="th-style">Domicilna</th>
+      <th class="th-style"></th>
+      <th class="th-style"></th>
+    </tr>
+    <tr *ngFor="let item of items;">
+
+      <td>{{item.officialCode}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.country.name}}</td>
+      <td>{{item.domicilna}}</td>
+      <td class="hover edit_color" (click)="updateCurrency(item.id)">Izmeni</td>
+      <td class="hover delete_color" (click)="deleteCurrency(item.id)">Obriši</td>
+    </tr>
+
+  </table>
+
+  <br>
+
+
+
+
+
+</div>

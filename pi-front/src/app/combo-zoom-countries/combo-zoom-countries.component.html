@@ -1,0 +1,18 @@
+<div style="margin-top: 150px">
+  <table id="table" style="width: 70%" class="offset-2">
+    <tr>
+      <th class="th-style">Oznaka</th>
+      <th class="th-style">Naziv</th>
+    </tr>
+
+    <tr *ngFor="let item of items" >
+      <th (click)="select(item.id , item.name )" [style.background]="boolFlag==false && item.name == forColour ? '#c9e1ff' : ''" >{{item.code}}</th>
+      <th (click)="select(item.id, item.name)" [style.background]="boolFlag==false && item.name == forColour ? '#c9e1ff' : ''" >{{item.name}}</th>
+    </tr>
+
+  </table>
+
+  <button class="btn btn-primary offset-2"  style="width: 70%;margin-top: 30px" (click)="choose()">Izaberi</button>
+  <button class="btn btn-ghost offset-2"  style="width: 70%;margin-top: 30px" (click)="close()">Zatvori</button>
+
+</div>

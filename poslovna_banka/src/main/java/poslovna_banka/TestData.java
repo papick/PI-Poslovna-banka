@@ -81,6 +81,13 @@ public class TestData {
 
 		Country country5 = new Country("Lithuania", "LIT");
 		countryService.save(country5);
+		
+		Country country6 = new Country("Switzerland", "CH");
+		countryService.save(country6);
+		
+		Country country7 = new Country("European Union", "EU");
+		countryService.save(country7);
+		
 
 		City city1 = new City("Novi Sad", country1, "NS", "21000");
 		cityService.save(city1);
@@ -119,10 +126,6 @@ public class TestData {
 		PaymentType paymentType = new PaymentType("1", "gotovinski");
 		paymentTypeRepository.save(paymentType);
 
-		Currency curr = new Currency("din", country1, "Dinar", true);
-		currRepo.save(curr);
-		Currency curr1 = new Currency("eur", country1, "Euro", true);
-		currRepo.save(curr1);
 
 		LegalEntity le = new LegalEntity("NN d.o.o", "as", "asdasd", "1234", "123124", "sdads", "1231", "poreska",
 				"1231231", "asdad", activity1, "kristina");
@@ -134,12 +137,23 @@ public class TestData {
 
 		Individual i = new Individual("Kristina", "kris", "Bul Kralja Petra I 10", "56", "0409995805001", "papic.kris@gmail.com", "abv");
 		individualRepo.save(i);
+		
+			
+		Currency currency1 = new Currency("EUR", country7, "Evro", false);
+		currRepo.save(currency1);
+		Currency currency2 = new Currency("RSD", country1, "Dinar", true);
+		currRepo.save(currency2);
+		Currency currency3 = new Currency("CHF", country6, "Svajcarski franak", false);
+		currRepo.save(currency3);
 
-		BankAccount bankAccount = new BankAccount("111222", "29-05-2018", true, bank, null, le, curr, true);
+		BankAccount bankAccount = new BankAccount("111222", "29-05-2018", true, bank, null, le, currency1, true);
 		bankAccountRepository.save(bankAccount);
 
-		BankAccount bankAccount1 = new BankAccount("777888", "11-01-2018", true, bank, null, zara, curr, true);
+		
+
+		BankAccount bankAccount1 = new BankAccount("777888", "11-01-2018", true, bank, null, zara, currency1, true);
 		bankAccountRepository.save(bankAccount1);
+
 
 		DailyAccountState dailyAccountState = new DailyAccountState("29-05-2018", 50000.0, 0.0, 0.0, 50000.0,
 				bankAccount);

@@ -1,0 +1,28 @@
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+.table tr.active td {
+  background-color: rgba(77, 148, 255, 0.44) !important;
+  color: white;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.edit_color {
+  color: #4d94ff;
+}
+
+.delete_color {
+  color: red;
+}
