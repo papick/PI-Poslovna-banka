@@ -11,14 +11,17 @@ import poslovna_banka.repository.BankAccountRepository;
 import poslovna_banka.service.BankAccountService;
 
 @Service
-public class BankAccountServiceImpl implements BankAccountService{
-	
+public class BankAccountServiceImpl implements BankAccountService {
+
 	@Autowired
-	
+
 	private BankAccountRepository repo;
 
 	@Override
 	public BankAccount addBankAccount(BankAccount ba) {
+		String numberOfAccount = (ba.getBank().getCode()).concat(ba.getNumber());
+		System.out.println("Broj racuna => " + numberOfAccount);
+		ba.setNumber(numberOfAccount);
 		return repo.save(ba);
 	}
 
@@ -41,10 +44,10 @@ public class BankAccountServiceImpl implements BankAccountService{
 
 	@Override
 	public List<BankAccount> getAllLegalEntities() {
-		List<BankAccount> accounts=this.getAllBankAccounts();
+		List<BankAccount> accounts = this.getAllBankAccounts();
 		List<BankAccount> legals = new ArrayList<BankAccount>();
-		for(BankAccount ba : accounts){
-			if( ba.getLegalEntity() != null ){
+		for (BankAccount ba : accounts) {
+			if (ba.getLegalEntity() != null) {
 				legals.add(ba);
 			}
 		}
@@ -53,10 +56,10 @@ public class BankAccountServiceImpl implements BankAccountService{
 
 	@Override
 	public List<BankAccount> getAllIndividuals() {
-		List<BankAccount> accounts=this.getAllBankAccounts();
+		List<BankAccount> accounts = this.getAllBankAccounts();
 		List<BankAccount> indvs = new ArrayList<BankAccount>();
-		for(BankAccount ba : accounts){
-			if( ba.getLegalEntity() == null ){
+		for (BankAccount ba : accounts) {
+			if (ba.getLegalEntity() == null) {
 				indvs.add(ba);
 			}
 		}

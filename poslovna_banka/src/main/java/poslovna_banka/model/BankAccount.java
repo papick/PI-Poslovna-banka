@@ -1,5 +1,6 @@
 package poslovna_banka.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class BankAccount {
 	private Long id;
 
 	@NotNull
+	@Column(length = 13, unique = true)
 	private String number;
 
 	@NotNull
