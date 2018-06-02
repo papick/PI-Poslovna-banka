@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import poslovna_banka.model.BankAccount;
+import poslovna_banka.model.LegalEntity;
 import poslovna_banka.repository.BankAccountRepository;
+import poslovna_banka.repository.BankRepository;
+import poslovna_banka.repository.CurrencyRepository;
+import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.service.BankAccountService;
+import poslovna_banka.service.dto.BankAccountDTO;
 
 @Service
 public class BankAccountServiceImpl implements BankAccountService{
@@ -16,6 +21,15 @@ public class BankAccountServiceImpl implements BankAccountService{
 	@Autowired
 	
 	private BankAccountRepository repo;
+	
+	@Autowired
+	private BankRepository bankRepo;
+	
+	@Autowired
+	private LegalEntityRepository legalRepo;
+	
+	@Autowired
+	private CurrencyRepository currRepo;
 
 	@Override
 	public BankAccount addBankAccount(BankAccount ba) {
@@ -23,14 +37,16 @@ public class BankAccountServiceImpl implements BankAccountService{
 	}
 
 	@Override
-	public BankAccount modifyBankAccount(BankAccount ba) {
-		BankAccount updated = new BankAccount();
-		updated.setBank(ba.getBank());
-		updated.setDateOfOpenning(ba.getDateOfOpenning());
-		updated.setIndividual(ba.getIndividual());
-		updated.setLegalEntity(ba.getLegalEntity());
+	public BankAccount modifyLegalBankAccount(BankAccountDTO ba, Long id) {
+		BankAccount updated = repo.findOne(id);
+		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
+		//updated.setDateOfOpenning(ba.getDateOfOpenning());
+		//updated.setIndividual(ba.getIndividual());
+		updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
+		updated.setCurrency(currRepo.findByName(ba.getCurrency()));
+		updated.setMailReporting(ba.isMailReporting());
 		return repo.save(updated);
 	}
 
@@ -62,5 +78,13 @@ public class BankAccountServiceImpl implements BankAccountService{
 		}
 		return indvs;
 	}
+
+	@Override
+	public BankAccount getBankAccount(Long id) {
+		return repo.findOne(id);
+	}
+
+
+	
 
 }

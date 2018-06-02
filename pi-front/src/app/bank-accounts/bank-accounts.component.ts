@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../../service/clientService";
 
@@ -43,7 +43,7 @@ export class BankAccountsComponent implements OnInit {
   }
 
   addL() {
-    this.router.navigateByUrl('bank/' + this.activeId + '/addLegalEntity');
+    this.router.navigateByUrl('bank/' + this.activeId + '/clients/legals/dodaj');
   }
 
   addI() {
@@ -51,12 +51,16 @@ export class BankAccountsComponent implements OnInit {
   }
 
   addLegalEntityAccount() {
-    this.router.navigateByUrl('bank/' + this.activeId + '/addLegalAccount');
+    this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/legal/account/dodaj');
     location.reload();
   }
 
   addIndividualAccount() {
     this.router.navigateByUrl('bank/' + this.activeId + '/addIndividualAccount');
     location.reload();
+  }
+
+  editLegalAccountPage(id) {
+    this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/legal/account/edit/' + id);
   }
 }

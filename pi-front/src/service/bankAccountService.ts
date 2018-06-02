@@ -30,10 +30,20 @@ export class BankAccountService {
     return this.http.post(`http://localhost:8080/api/bankAccounts/add-account-individual`, body, {headers: headers});
   }
 
-  addAccountLegalEntity(account): Observable<any>{
+  addAccountLegalEntity(account): Observable<any> {
     const body = JSON.stringify(account);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post(`http://localhost:8080/api/bankAccounts/add-account-legal`, body, {headers: headers});
+  }
+
+  editLegalBankAccount(account, id): Observable<any> {
+    const body = JSON.stringify(account);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put(`http://localhost:8080/api/bankAccounts//edit-legal-account/${id}`, body, {headers: headers});
+  }
+
+  getBankAccount(id): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/bankAccounts/get-account/${id}`, httpOptions);
   }
 
 }

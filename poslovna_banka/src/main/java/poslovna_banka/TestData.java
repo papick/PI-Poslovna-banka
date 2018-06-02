@@ -146,7 +146,7 @@ public class TestData {
 		Currency currency3 = new Currency("CHF", country6, "Svajcarski franak", false);
 		currRepo.save(currency3);
 
-		BankAccount bankAccount = new BankAccount("111222", "29-05-2018", true, bank, null, le, currency1, true);
+		/*BankAccount bankAccount = new BankAccount("111222", "29-05-2018", true, bank, null, le, currency1, true);
 		bankAccountRepository.save(bankAccount);
 
 		
@@ -157,6 +157,6 @@ public class TestData {
 
 		DailyAccountState dailyAccountState = new DailyAccountState("29-05-2018", 50000.0, 0.0, 0.0, 50000.0,
 				bankAccount);
-		dailyAccountStateRepository.save(dailyAccountState);
+		dailyAccountStateRepository.save(dailyAccountState);*/
 	}
 }

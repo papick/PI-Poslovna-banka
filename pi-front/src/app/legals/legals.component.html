@@ -1,0 +1,39 @@
+<div style="text-align: center;margin-top: 30px">
+
+
+  <button (click)="add()">Dodaj pravno lice</button>
+</div>
+<h1 style="text-align: center;margin-top: 30px">Pravna lica</h1>
+<table class="table offset-2 tables" style=" border: 1px solid black ;">
+  <tr>
+    <th class="th-style">Naziv</th>
+    <th class="th-style">Skraceni naziv</th>
+    <th class="th-style">Adresa</th>
+    <th class="th-style">E-mail</th>
+    <th class="th-style">JMBG</th>
+    <th class="th-style">Broj telefona</th>
+    <th class="th-style">PIB</th>
+    <th class="th-style">Maticni broj</th>
+    <th class="th-style">Odgovorno lice</th>
+    <th class="th-style">Poreska</th>
+    <th class="th-style">Delatnost</th>
+    <th class="th-style">Izmeni</th>
+    <th class="th-style">Obrisi</th>
+  </tr>
+  <tr *ngFor="let item of legals; let i = index">
+    <td>{{item.name}}</td>
+    <td>{{item.abbreviatedName}}</td>
+    <td>{{item.adress}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.jmbg}}</td>
+    <td>{{item.phoneNumber}}</td>
+    <td>{{item.pib}}</td>
+    <td>{{item.mbr}}</td>
+    <td>{{item.responsiblePerson}}</td>
+    <td>{{item.taxAuthority}}</td>
+    <td>{{item.activity.code}}</td>
+    <td (click)="editLegal(item.id)">Izmeni</td>
+    <td (click)="deleteLegal(item.id)">Obriši</td>
+  </tr>
+
+</table>

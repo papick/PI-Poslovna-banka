@@ -5,8 +5,10 @@
   <li (click)="homePage()"><a>Pocetna</a></li>
   <li (click)="getCountries()"><a>Drzave</a></li>
   <li (click)="getCities()"><a>Gradovi</a></li>
+  <li (click)="legalsPage()"><a>Pravna lica</a></li>
+  <li (click)="individualsPage()"><a>Fizicka lica</a></li>
   <li (click)="getBankAccounts()"><a>Racuni</a></li>
-  <li (click)="getCurrencies()"> <a> Valute </a></li>
+  <li (click)="getCurrencies()"><a> Valute </a></li>
   <li><a>Kursna lista</a></li>
   <li (click)="getActivities()"><a>Delatnosti</a></li>
   <li><a>Kliring</a></li>
@@ -50,19 +52,29 @@
 
 <div *ngIf="currencies==true">
   <app-currencies></app-currencies>
-
-<div *ngIf="payOrder">
-  <app-pay-check></app-pay-check>
 </div>
 
-<div *ngIf="transferOrder">
-  <app-transfer-check></app-transfer-check>
+  <div *ngIf="payOrder">
+    <app-pay-check></app-pay-check>
+  </div>
+
+  <div *ngIf="transferOrder">
+    <app-transfer-check></app-transfer-check>
+  </div>
+
+  <div *ngIf="addLegalAccount">
+    <app-add-legal-account></app-add-legal-account>
+  </div>
+
+  <div *ngIf="addIndividualAccount">
+    <app-add-individual></app-add-individual>
+  </div>
+
+<div *ngIf="legals">
+  <app-legals></app-legals>
 </div>
 
-<div *ngIf="addLegalAccount">
-  <app-add-legal-account></app-add-legal-account>
+<div *ngIf="individuals">
+  <app-individuals></app-individuals>
 </div>
-
-<div *ngIf="addIndividualAccount">
-  <app-add-individual></app-add-individual>
-</div>
+<router-outlet></router-outlet>

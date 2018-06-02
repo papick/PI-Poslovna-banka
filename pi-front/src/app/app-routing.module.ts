@@ -14,6 +14,7 @@ import {ComboZoomCountriesComponent} from "./combo-zoom-countries/combo-zoom-cou
 
 import {AddLegalsComponent} from "./add-legals/add-legals.component";
 import {AddLegalAccountComponent} from "./add-legal-account/add-legal-account.component";
+import {LegalsComponent} from "./legals/legals.component";
 
 
 
@@ -28,6 +29,8 @@ const routes: Routes = [
   {path: 'bank/:idBank/:click/:id', component: BankComponent},
   {path: 'bank/:idBank/country/city/:mode', component: AddCityComponent},
   {path: 'bank/:idBank/country/:mode/:id', component: AddCountryComponent},
+  {path: 'bank/:idBank/clients/legals/:mode/:id', component: AddLegalsComponent},
+  {path: 'bank/:idBank/clients/legals/:mode', component: AddLegalsComponent},
   {path: 'bank/:idBank/:click/:country/:id', component: BankComponent},
   {path: 'bank/:idBank/country/country/:mode', component: AddCountryComponent},
   {path: 'bank/:idBank/activity/for/act/:mode', component: AddActivitiesComponent},
@@ -36,7 +39,9 @@ const routes: Routes = [
   {path: 'currencies/currency-form/:mode', component: CurrencyFormComponent},
   {path: 'currencies/currency-form/:mode/:id', component: CurrencyFormComponent},
   {path: 'currencies/currency-form/:mode/combo-zoom/countries', component: ComboZoomCountriesComponent},
-  {path: 'bank/:idBank/addLegalAccount', component: AddLegalAccountComponent},
+  {path: 'bank/:idBank/add/clients/legal/account/:mode', component: AddLegalAccountComponent},
+  {path: 'bank/:idBank/add/clients/legal/account/:mode/:id', component: AddLegalAccountComponent},
+
 
 ]
 

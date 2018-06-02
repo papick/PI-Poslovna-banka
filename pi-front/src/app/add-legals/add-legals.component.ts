@@ -13,6 +13,7 @@ import {ClientService} from "../../service/clientService";
 export class AddLegalsComponent implements OnInit {
 
   idBank;
+  methodName = 'Dodaj';
   public form: FormGroup;
   public name: AbstractControl;
   public shortname: AbstractControl;
@@ -28,6 +29,7 @@ export class AddLegalsComponent implements OnInit {
   public deliveringadress: AbstractControl;
   values = [];
   currencies = [];
+  editResponse;
 
   legalEntity = {
     name: '',
@@ -81,8 +83,31 @@ export class AddLegalsComponent implements OnInit {
   }
 
   ngOnInit() {
+    const m = this.route.snapshot.params.mode;
+
     this.selectItem();
     this.getCurrencies();
+
+    if (m === 'edit') {
+      this.methodName = 'Izmeni';
+      const id = this.route.snapshot.params.id;
+      this.clientService.getLegalEntity(id).subscribe(data => {
+        this.form.controls['name'].setValue(data.name);
+        this.form.controls['shortname'].setValue(data.abbreviatedName);
+        this.form.controls['adress'].setValue(data.adress);
+        this.form.controls['activity'].setValue(data.activity.code);
+        this.form.controls['phonenumber'].setValue(data.phoneNumber);
+        this.form.controls['jmbg'].setValue(data.jmbg);
+        this.form.controls['email'].setValue(data.email);
+        this.form.controls['mbr'].setValue(data.mbr);
+        this.form.controls['taxauthority'].setValue(data.taxAuthority);
+        this.form.controls['pib'].setValue(data.pib);
+        this.form.controls['deliveringadress'].setValue(data.deliveringAdress);
+        this.form.controls['responsibleperson'].setValue(data.responsiblePerson);
+      });
+    } else {
+      this.methodName = 'Dodaj';
+    }
   }
 
   selectItem() {
@@ -117,10 +142,40 @@ export class AddLegalsComponent implements OnInit {
     this.clientService.addLegal(this.legalEntity).toPromise()
       .then(data => {
         const idBank = this.route.snapshot.params.idBank;
-        this.router.navigateByUrl('bank/' + idBank + '/bankAccounts');
+        this.router.navigateByUrl('bank/' + idBank + '/legals');
 
-      })
+      });
 
+  }
+
+  confirmClick() {
+    if (this.methodName === 'Dodaj') {
+      this.addLegalEntity();
+    } else {
+      this.editLegalEntity();
+    }
+  }
+
+  editLegalEntity() {
+    const id = this.route.snapshot.params.id;
+    this.idBank = this.route.snapshot.params.idBank;
+    this.legalEntity.name = this.name.value;
+    this.legalEntity.abbreviatedName = this.shortname.value;
+    this.legalEntity.adress = this.adress.value;
+    this.legalEntity.phoneNumber = this.phonenumber.value;
+    this.legalEntity.jmbg = this.jmbg.value;
+    this.legalEntity.email = this.email.value;
+    this.legalEntity.mbr = this.mbr.value;
+    this.legalEntity.taxAuthority = this.taxauthority.value;
+    this.legalEntity.pib = this.pib.value;
+    this.legalEntity.activity = this.activity.value;
+    this.legalEntity.deliveringAdress = this.deliveringadress.value;
+    alert(this.responsibleperson.value);
+    this.legalEntity.responsiblePerson = this.responsibleperson.value;
+    this.clientService.editLegalEntity(this.legalEntity, id).subscribe(data => {
+      this.editResponse = data;
+      this.router.navigateByUrl('bank/' + this.idBank + '/legals');
+    });
   }
 
 
