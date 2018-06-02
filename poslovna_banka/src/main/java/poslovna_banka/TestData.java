@@ -135,7 +135,7 @@ public class TestData {
 				"aaaa", activity1, "jelena");
 		leRepo.save(zara);
 
-		Individual i = new Individual("hbj", "k", "uyhg", "56", "6666666666666", "ujh", "hg");
+		Individual i = new Individual("Kristina", "kris", "Bul Kralja Petra I 10", "56", "0409995805001", "papic.kris@gmail.com", "abv");
 		individualRepo.save(i);
 		
 			
