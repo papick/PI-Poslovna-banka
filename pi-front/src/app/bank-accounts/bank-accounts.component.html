@@ -16,6 +16,8 @@
     <th class="th-style"> Datum otvaranja</th>
     <th class="th-style"> Valuta</th>
     <th class="th-style"> Vlasnik racuna</th>
+    <th class="th-style">Izmeni</th>
+    <th class="th-style">Obrisi</th>
   </tr>
 
     <tr *ngFor="let item of items; ">
@@ -23,6 +25,8 @@
       <td> {{item.dateOfOpenning}}</td>
       <td> {{item.currency.name}} </td>
       <td> {{item.legalEntity.name}} </td>
+      <td (click)="editLegalAccountPage(item.id)">Izmeni</td>
+      <td (click)="deleteLegalAccountPage(item.id)">Obriši</td>
     </tr>
 
 

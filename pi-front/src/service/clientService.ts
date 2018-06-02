@@ -38,8 +38,35 @@ export class ClientService {
     return this.http.get(`http://localhost:8080/api/legal-entity/get-legalEntities`, httpOptions);
   }
 
-  getIndividualEntities() : Observable<any> {
+  getIndividualEntities(): Observable<any> {
     return this.http.get(`http://localhost:8080/api/individual/get-individualEntities`, httpOptions);
   }
 
+  getLegalEntity(id): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/legal-entity/get-legalEntity/${id}`, httpOptions);
+  }
+
+  editLegalEntity(legal, id): Observable<any> {
+    const body = JSON.stringify(legal);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put(`http://localhost:8080/api/legal-entity/edit-legalEntity/${id}`, body, {headers: headers});
+  }
+
+  deleteLegalEntity(id): Observable<any> {
+    return this.http.delete(`http://localhost:8080/api/legal-entity/delete-legalEntity/${id}`, httpOptions);
+  }
+
+  deleteIndividual(id): Observable<any> {
+    return this.http.delete(`http://localhost:8080/api/individual/delete-individualEntities/${id}`, httpOptions);
+  }
+
+  getIndividual(id): Observable<any>{
+    return this.http.get(`http://localhost:8080/api/individual/get-individual/${id}`, httpOptions);
+  }
+
+  editIndividual(individual, id): Observable<any> {
+    const body = JSON.stringify(individual);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put(`http://localhost:8080/api/individual/edit-individual/${id}`, body, {headers: headers});
+  }
 }

@@ -36,6 +36,9 @@ import { PayCheckComponent } from './pay-check/pay-check.component';
 import { TransferCheckComponent } from './transfer-check/transfer-check.component';
 import { AddLegalAccountComponent } from './add-legal-account/add-legal-account.component';
 import { AddIndividualComponent } from './add-individual/add-individual.component';
+import { LegalsComponent } from './legals/legals.component';
+import { ClientsComponent } from './clients/clients.component';
+import { IndividualsComponent } from './individuals/individuals.component';
 
 
 
@@ -62,6 +65,9 @@ import { AddIndividualComponent } from './add-individual/add-individual.componen
     TransferCheckComponent,
     AddLegalAccountComponent,
     AddIndividualComponent,
+    LegalsComponent,
+    ClientsComponent,
+    IndividualsComponent,
 
 
   ],

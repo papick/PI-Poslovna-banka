@@ -1,0 +1,29 @@
+<div style="text-align: center;margin-top: 30px">
+
+
+  <button (click)="add()">Dodaj fizicko lice</button>
+</div>
+<h1 style="text-align: center;margin-top: 30px">Fizicka lica</h1>
+<table class="table offset-2 tables" style=" border: 1px solid black ;">
+  <tr>
+    <th class="th-style">Naziv</th>
+    <th class="th-style">Skraceni naziv</th>
+    <th class="th-style">Adresa</th>
+    <th class="th-style">E-mail</th>
+    <th class="th-style">JMBG</th>
+    <th class="th-style">Broj telefona</th>
+    <th class="th-style">Izmeni</th>
+    <th class="th-style">Obrisi</th>
+  </tr>
+  <tr *ngFor="let item of indvs; let i = index">
+    <td>{{item.name}}</td>
+    <td>{{item.abbreviatedName}}</td>
+    <td>{{item.adress}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.jmbg}}</td>
+    <td>{{item.phoneNumber}}</td>
+    <td (click)="editIndividual(item.id)">Izmeni</td>
+    <td (click)="deleteIndividual(item.id)">Obriši</td>
+  </tr>
+
+</table>

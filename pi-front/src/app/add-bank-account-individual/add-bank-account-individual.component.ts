@@ -11,7 +11,7 @@ import {ClientService} from "../../service/clientService";
 })
 export class AddBankAccountIndividualComponent implements OnInit {
 
-  idbank;
+  idBank;
   public form: FormGroup;
   public name: AbstractControl;
   public shortname: AbstractControl;
@@ -19,9 +19,10 @@ export class AddBankAccountIndividualComponent implements OnInit {
   public phonenumber: AbstractControl;
   public jmbg: AbstractControl;
   public email: AbstractControl;
-  public deliveringadress: AbstractControl;
   values = [];
   currencies = [];
+  methodName = 'Dodaj';
+  editResponse;
 
   individual = {
     name: '',
@@ -30,7 +31,6 @@ export class AddBankAccountIndividualComponent implements OnInit {
     phoneNumber: '',
     jmbg: '',
     email: '',
-    deliveringAdress: '',
   };
 
   constructor(private fb: FormBuilder,
@@ -46,7 +46,6 @@ export class AddBankAccountIndividualComponent implements OnInit {
       'phonenumber': ['', Validators.compose([Validators.required])],
       'jmbg': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
-      'deliveringadress': ['', Validators.compose([Validators.required])],
 
     });
 
@@ -56,23 +55,40 @@ export class AddBankAccountIndividualComponent implements OnInit {
     this.phonenumber = this.form.controls['phonenumber'];
     this.jmbg = this.form.controls['jmbg'];
     this.email = this.form.controls['email'];
-    this.deliveringadress = this.form.controls['deliveringadress'];
   }
 
   ngOnInit() {
-    this.getCurrencies();
+    const m = this.route.snapshot.params.mode;
+
+    if (m === 'izmeni') {
+      this.methodName = 'Izmeni';
+      const id = this.route.snapshot.params.id;
+      this.clientService.getIndividual(id).subscribe(data => {
+        this.form.controls['name'].setValue(data.name);
+        this.form.controls['shortname'].setValue(data.abbreviatedName);
+        this.form.controls['adress'].setValue(data.adress);
+        this.form.controls['phonenumber'].setValue(data.phoneNumber);
+        this.form.controls['jmbg'].setValue(data.jmbg);
+        this.form.controls['email'].setValue(data.email);
+      });
+
+
+    } else {
+      this.methodName = 'Dodaj';
+    }
+
   }
 
-  addIndividual() {
+  addIndividual()
+  {
 
-    this.idbank = this.route.snapshot.params.idBank;
+    this.idBank = this.route.snapshot.params.idBank;
     this.individual.name = this.name.value;
     this.individual.abbreviatedName = this.shortname.value;
     this.individual.adress = this.adress.value;
     this.individual.phoneNumber = this.phonenumber.value;
     this.individual.jmbg = this.jmbg.value;
     this.individual.email = this.email.value;
-    this.individual.deliveringAdress = this.deliveringadress.value;
 
     this.clientService.addIndividual(this.individual).toPromise()
       .then(data => {
@@ -81,10 +97,27 @@ export class AddBankAccountIndividualComponent implements OnInit {
       });
   }
 
-  getCurrencies() {
-    this.currencyService.getCurrencies().subscribe(data => {
-      this.currencies = data;
-    });
+  confirmClick() {
+    if (this.methodName === 'Dodaj') {
+      this.addIndividual();
+    } else {
+      this.editIndividual();
+    }
   }
 
+  editIndividual() {
+    const id = this.route.snapshot.params.id;
+    this.idBank = this.route.snapshot.params.idBank;
+    this.individual.name = this.name.value;
+    this.individual.abbreviatedName = this.shortname.value;
+    this.individual.adress = this.adress.value;
+    this.individual.phoneNumber = this.phonenumber.value;
+    this.individual.jmbg = this.jmbg.value;
+    this.individual.email = this.email.value;
+
+    this.clientService.editIndividual(this.individual, id).subscribe(data => {
+      this.editResponse = data;
+      this.router.navigateByUrl('bank/' + this.idBank + '/individuals');
+    });
+  }
 }

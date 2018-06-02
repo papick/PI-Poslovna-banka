@@ -25,6 +25,8 @@ export class BankComponent implements OnInit {
   transferOrder = false;
   addLegalAccount = false;
   addIndividualAccount = false;
+  legals = false;
+  individuals = false;
 
 
   constructor(protected route: ActivatedRoute,
@@ -60,6 +62,8 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
     } else if (click === 'payment-check') {
       this.paymentCheck = true;
@@ -73,6 +77,8 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
     } else if (click === 'countries') {
 
@@ -88,6 +94,8 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
     } else if (click === 'city') {
       this.home = false;
@@ -102,6 +110,8 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
     } else if (click === 'activities') {
       this.home = false;
@@ -112,6 +122,12 @@ export class BankComponent implements OnInit {
       this.bankAccounts = false;
       this.paymentOrder = false;
       this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
     } else if (click === 'bankAccounts') {
 
@@ -127,8 +143,10 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
-    } else if(click === 'payment-order') {
+    } else if (click === 'payment-order') {
 
       this.home = false;
       this.countries = false;
@@ -142,9 +160,11 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
 
-    } else if(click === 'currencies') {
+    } else if (click === 'currencies') {
 
       this.home = false;
       this.countries = false;
@@ -158,6 +178,8 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
     } else if (click === 'pay-order') {
 
@@ -168,11 +190,13 @@ export class BankComponent implements OnInit {
       this.activities = false;
       this.bankAccounts = false;
       this.paymentOrder = false;
-      this.currencies = true;
+      this.currencies = false;
       this.payOrder = true;
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
     } else if (click === 'transfer-order') {
 
       this.home = false;
@@ -187,8 +211,10 @@ export class BankComponent implements OnInit {
       this.transferOrder = true;
       this.addLegalAccount = false;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
-    } else if(click === 'addLegalAccount'){
+    } else if (click === 'addLegalAccount') {
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
@@ -201,8 +227,10 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = true;
       this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = false;
 
-    } else if(click === 'addIndividualAccount') {
+    } else if (click === 'addIndividualAccount') {
       this.home = false;
       this.countries = false;
       this.paymentCheck = false;
@@ -215,6 +243,38 @@ export class BankComponent implements OnInit {
       this.transferOrder = false;
       this.addLegalAccount = false;
       this.addIndividualAccount = true;
+      this.legals = false;
+      this.individuals = false;
+    } else if (click === 'legals') {
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+      this.legals = true;
+      this.individuals = false;
+    } else if(click === 'individuals') {
+      this.home = false;
+      this.countries = false;
+      this.paymentCheck = false;
+      this.city = false;
+      this.activities = false;
+      this.bankAccounts = false;
+      this.paymentOrder = false;
+      this.currencies = false;
+      this.payOrder = false;
+      this.transferOrder = false;
+      this.addLegalAccount = false;
+      this.addIndividualAccount = false;
+      this.legals = false;
+      this.individuals = true;
     }
   }
 
@@ -277,6 +337,16 @@ export class BankComponent implements OnInit {
 
   transfer() {
     this.router.navigateByUrl('/bank/' + this.idBank + '/transfer-order');
+    location.reload();
+  }
+
+  legalsPage() {
+    this.router.navigateByUrl('/bank/' + this.idBank + '/legals');
+    location.reload();
+  }
+
+  individualsPage() {
+    this.router.navigateByUrl('/bank/' + this.idBank + '/individuals');
     location.reload();
   }
 

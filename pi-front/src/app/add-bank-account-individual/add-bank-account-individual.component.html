@@ -40,16 +40,8 @@
         E-mail je obavezan!
       </small>
 
-      <label style="margin-top:20px">Adresa dostavljanja</label>
-      <input name="deliveringadress" class="form-control margin" id="input-deliveringadress"
-             [formControl]="deliveringadress">
-      <small class="form-text error" *ngIf="deliveringadress.errors?.required && deliveringadress.touched"
-             style="color: red">
-        Adresa dostavljanja je obavezna!
-      </small>
-
       <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
-              [disabled]="!form.valid" (click)="addIndividual()">Dodaj
+              [disabled]="!form.valid" (click)="confirmClick()">{{methodName}}
       </button>
 
     </div>

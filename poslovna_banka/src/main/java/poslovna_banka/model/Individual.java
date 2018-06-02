@@ -13,30 +13,28 @@ public class Individual {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	private String name;
-	
+
 	@NotNull
 	private String abbreviatedName;
-	
+
 	@NotNull
 	private String adress;
-	
+
 	@NotNull
 	private String phoneNumber;
-	
+
 	@NotNull
 	@Column(length = 13)
 	private String jmbg;
-	
+
 	@NotNull
 	private String email;
-	
-	private String deliveringAdress;
 
-	public Individual(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg, String email,
-			String deliveringAdress) {
+	public Individual(String name, String abbreviatedName, String adress, String phoneNumber, String jmbg,
+			String email) {
 		super();
 		this.name = name;
 		this.abbreviatedName = abbreviatedName;
@@ -44,10 +42,10 @@ public class Individual {
 		this.phoneNumber = phoneNumber;
 		this.jmbg = jmbg;
 		this.email = email;
-		this.deliveringAdress = deliveringAdress;
 	}
-	
-	public Individual(){}
+
+	public Individual() {
+	}
 
 	public Long getId() {
 		return id;
@@ -103,13 +101,5 @@ public class Individual {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getDeliveringAdress() {
-		return deliveringAdress;
-	}
-
-	public void setDeliveringAdress(String deliveringAdress) {
-		this.deliveringAdress = deliveringAdress;
 	}
 }

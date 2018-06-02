@@ -21,11 +21,10 @@ public class IndividualServiceImpl implements IndividualService{
 	}
 
 	@Override
-	public Individual modifyIndividual(Individual i) {
-		Individual updated = new Individual();
+	public Individual modifyIndividual(Individual i, Long id) {
+		Individual updated = repo.findOne(id);
 		updated.setAbbreviatedName(i.getAbbreviatedName());
 		updated.setAdress(i.getAdress());
-		updated.setDeliveringAdress(i.getDeliveringAdress());
 		updated.setEmail(i.getEmail());
 		updated.setJmbg(i.getJmbg());
 		updated.setName(i.getName());
@@ -36,6 +35,16 @@ public class IndividualServiceImpl implements IndividualService{
 	@Override
 	public List<Individual> getAllIndividuals() {
 		return (List<Individual>) repo.findAll();
+	}
+
+	@Override
+	public void delete(Long id) {
+		repo.delete(id);
+	}
+
+	@Override
+	public Individual get(Long id) {
+		return repo.findOne(id);
 	}
 
 }
