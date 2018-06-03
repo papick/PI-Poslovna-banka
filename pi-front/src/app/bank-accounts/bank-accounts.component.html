@@ -26,7 +26,7 @@
       <td> {{item.currency.name}} </td>
       <td> {{item.legalEntity.name}} </td>
       <td (click)="editLegalAccountPage(item.id)">Izmeni</td>
-      <td (click)="deleteLegalAccountPage(item.id)">Zatvori racun</td>
+      <td ><button class="btn btn-lg btn-outline-primary" (click)="showDialog(item.id)">Zatvori racun</button></td>
     </tr>
 
 </table>
@@ -47,7 +47,7 @@
     <td> {{item.currency.name}} </td>
     <td> {{item.individual.name}} </td>
     <td (click)="editIndividualAccountPage(item.id)">Izmeni</td>
-    <td (click)="deleteIndividualAccountPage(item.id)">Zatvori racun</td>
+    <td ><button class="btn btn-outline-primary" (click)="showDialog(item.id)">Zatvori racun</button></td>
   </tr>
 
 </table>
@@ -58,3 +58,19 @@
 <button style="" *ngIf="pravnoLice" (click)="addLegalEntityAccount()">Dodaj racun za pravno lice</button>
 <button style="" *ngIf="fizickoLice" (click)="addIndividualAccount()">Dodaj racun za fizicko lice</button>
 </div>
+
+
+
+<p-dialog header="Close account" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true" [width]="400" [contentStyle]="{height: '400px'}" >
+   <div class="ui-g ui-fluid" >
+     <label>Odaberite gde želite da prebacite sredsta sa računa:</label>
+     <p-dropdown [(options)]="accounts" [(ngModel)]="selectedAccountTo" placeholder="Select.." [style]="{'width':'250px'}" optionLabel="number" filter="true"> </p-dropdown>
+   </div>
+
+<p-footer >
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button type="button" pButton icon="fa-close" (click)="cancel()" label="Cancel"></button>
+          <button type="button" pButton icon="fa-check" (click)="delete()" label="Delete"></button>
+      </div>
+    </p-footer>
+</p-dialog>

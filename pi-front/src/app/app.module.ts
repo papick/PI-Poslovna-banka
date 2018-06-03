@@ -39,7 +39,14 @@ import { AddIndividualComponent } from './add-individual/add-individual.componen
 import { LegalsComponent } from './legals/legals.component';
 import { ClientsComponent } from './clients/clients.component';
 import { IndividualsComponent } from './individuals/individuals.component';
+import {RecessionService} from "../service/recessionService";
 
+
+import {ButtonModule} from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
+import {FormsModule} from '@angular/forms';
+import {SharedModule} from 'primeng/primeng';
 
 
 @NgModule({
@@ -78,7 +85,11 @@ import { IndividualsComponent } from './individuals/individuals.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    ButtonModule,
+    DialogModule,
+    FormsModule,
+    DropdownModule,
+    SharedModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
@@ -90,6 +101,7 @@ import { IndividualsComponent } from './individuals/individuals.component';
     BankAccountService,
     CurrencyService,
     AnalyticsOfStatementService,
+    RecessionService
 
   ],
   bootstrap: [AppComponent]

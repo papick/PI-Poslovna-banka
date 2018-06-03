@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../../service/clientService";
+import {RecessionService} from '../../service/recessionService';
+import  {Recession} from '../../model/recession.model';
 import index from "@angular/cli/lib/cli";
 
 @Component({
@@ -17,14 +19,32 @@ export class BankAccountsComponent implements OnInit {
   pravnoLice = false;
   fizickoLice = false;
   idbank;
-
   individual = false;
 
-  constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router) {
+  dialogVisible=false;
+  selectedAccountTo:any = {};
+  selectedAccountFrom:any;
+  accounts = [];
+
+  constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router, private recessionService:RecessionService) {
   }
 
   ngOnInit() {
     this.activeId = this.route.snapshot.params.idBank;
+  }
+
+  getAllForSelect(id){
+    this.clientService.getLegals(this.idbank).subscribe(data => {
+      this.accounts = data;
+      this.clientService.getIndividuals(this.idbank).subscribe(data => {
+        this.accounts = data.concat(this.accounts);
+        this.selectedAccountFrom =  this.accounts.find(account => account.id == id);
+        this.accounts = this.accounts.filter(account => account.id != id);
+
+      });
+    });
+
+
   }
 
   getLegals() {
@@ -71,5 +91,25 @@ export class BankAccountsComponent implements OnInit {
 
   editIndividualAccountPage(id) {
     this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/individual/edit/individual/account/edit/' + id);
+  }
+
+  showDialog(id){
+    this.getAllForSelect(id);
+    this.dialogVisible = true;
+  }
+
+  delete(){
+    let body:Recession = {};
+    body.accountFrom = this.selectedAccountFrom;
+    body.accountTo = this.selectedAccountTo;
+    this.recessionService.addRecession(body).subscribe(data =>{
+      this.dialogVisible = false;
+    });
+
+    console.log(JSON.stringify(body));
+  }
+
+  cancel(){
+    this.dialogVisible = false;
   }
 }

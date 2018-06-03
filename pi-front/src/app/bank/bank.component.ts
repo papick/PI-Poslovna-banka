@@ -286,7 +286,7 @@ export class BankComponent implements OnInit {
   }
 
   getCountries() {
-
+    console.log('Je l radis jebo te konj');
     this.router.navigateByUrl('/bank/' + this.idBank + '/countries');
     location.reload();
 

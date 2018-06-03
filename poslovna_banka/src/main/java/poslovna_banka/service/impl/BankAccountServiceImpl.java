@@ -104,4 +104,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 		return repo.findOne(id);
 	}
 
+	@Override
+	public void cancelAccount(Long id) {
+		BankAccount account = repo.findOne(id);
+		account.setValid(false);
+		repo.save(account);
+		
+	}
+
 }
