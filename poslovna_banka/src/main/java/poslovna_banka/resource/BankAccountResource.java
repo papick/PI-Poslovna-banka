@@ -15,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import poslovna_banka.model.BankAccount;
-import poslovna_banka.model.LegalEntity;
 import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CurrencyRepository;
 import poslovna_banka.repository.IndividualRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.service.BankAccountService;
 import poslovna_banka.service.dto.BankAccountDTO;
-import poslovna_banka.service.dto.LegalEntityDTO;
 
 @RestController
 @RequestMapping(value = "/api/bankAccounts")
@@ -93,5 +91,10 @@ public class BankAccountResource {
 	@PutMapping("/edit-legal-account/{id}")
 	public ResponseEntity<BankAccount> editLegalEntity(@PathVariable Long id,@RequestBody BankAccountDTO b) {
 		return new ResponseEntity<BankAccount>(bas.modifyLegalBankAccount(b, id), HttpStatus.OK);
+	}
+	
+	@PutMapping("/edit-individual-account/{id}")
+	public ResponseEntity<BankAccount> editIndividualEntity(@PathVariable Long id,@RequestBody BankAccountDTO b) {
+		return new ResponseEntity<BankAccount>(bas.modifyIndividualBankAccount(b, id), HttpStatus.OK);
 	}
 }

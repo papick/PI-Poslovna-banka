@@ -10,28 +10,50 @@
 </div>
 <br><br><br>
 
-<table class="table offset-2 tables" style=" border: 1px solid black ;">
+<table class="table offset-2 tables" style=" border: 1px solid black ;" *ngIf="!individual">
   <tr>
     <th class="th-style"> Broj racuna</th>
     <th class="th-style"> Datum otvaranja</th>
     <th class="th-style"> Valuta</th>
     <th class="th-style"> Vlasnik racuna</th>
     <th class="th-style">Izmeni</th>
-    <th class="th-style">Obrisi</th>
+    <th class="th-style">Zatvori</th>
   </tr>
 
-    <tr *ngFor="let item of items; ">
+    <tr *ngFor="let item of items;">
       <td> {{item.number}}</td>
       <td> {{item.dateOfOpenning}}</td>
       <td> {{item.currency.name}} </td>
       <td> {{item.legalEntity.name}} </td>
       <td (click)="editLegalAccountPage(item.id)">Izmeni</td>
-      <td (click)="deleteLegalAccountPage(item.id)">Obriši</td>
+      <td (click)="deleteLegalAccountPage(item.id)">Zatvori racun</td>
     </tr>
 
+</table>
+
+<table class="table offset-2 tables" style=" border: 1px solid black ;" *ngIf="individual">
+  <tr>
+    <th class="th-style"> Broj racuna</th>
+    <th class="th-style"> Datum otvaranja</th>
+    <th class="th-style"> Valuta</th>
+    <th class="th-style"> Vlasnik racuna</th>
+    <th class="th-style">Izmeni</th>
+    <th class="th-style">Zatvori</th>
+  </tr>
+
+  <tr *ngFor="let item of items;">
+    <td> {{item.number}}</td>
+    <td> {{item.dateOfOpenning}}</td>
+    <td> {{item.currency.name}} </td>
+    <td> {{item.individual.name}} </td>
+    <td (click)="editIndividualAccountPage(item.id)">Izmeni</td>
+    <td (click)="deleteIndividualAccountPage(item.id)">Zatvori racun</td>
+  </tr>
 
 </table>
+
 <br><br><br>
+
 <div style="text-align: center">
 <button style="" *ngIf="pravnoLice" (click)="addLegalEntityAccount()">Dodaj racun za pravno lice</button>
 <button style="" *ngIf="fizickoLice" (click)="addIndividualAccount()">Dodaj racun za fizicko lice</button>

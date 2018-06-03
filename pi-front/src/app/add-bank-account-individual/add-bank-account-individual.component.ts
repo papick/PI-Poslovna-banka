@@ -79,8 +79,7 @@ export class AddBankAccountIndividualComponent implements OnInit {
 
   }
 
-  addIndividual()
-  {
+  addIndividual() {
 
     this.idBank = this.route.snapshot.params.idBank;
     this.individual.name = this.name.value;

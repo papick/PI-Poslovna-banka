@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../../service/clientService";
+import index from "@angular/cli/lib/cli";
 
 @Component({
   selector: 'app-bank-accounts',
@@ -10,12 +11,13 @@ import {ClientService} from "../../service/clientService";
 })
 export class BankAccountsComponent implements OnInit {
 
-  items = []
+  items = [];
+  index;
   activeId;
   pravnoLice = false;
   fizickoLice = false;
-  prikaziZaFizicka = false;
-  individualAccounts = [];
+
+  individual = false;
 
   constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router) {
   }
@@ -27,7 +29,7 @@ export class BankAccountsComponent implements OnInit {
   getLegals() {
     this.fizickoLice = false;
     this.pravnoLice = true;
-    this.prikaziZaFizicka = false;
+    this.individual = false;
     this.clientService.getLegals().subscribe(data => {
       this.items = data;
     });
@@ -36,7 +38,7 @@ export class BankAccountsComponent implements OnInit {
   getIndividuals() {
     this.pravnoLice = false;
     this.fizickoLice = true;
-    this.prikaziZaFizicka = true;
+    this.individual = true;
     this.clientService.getIndividuals().subscribe(data => {
       this.items = data;
     });
@@ -62,5 +64,9 @@ export class BankAccountsComponent implements OnInit {
 
   editLegalAccountPage(id) {
     this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/legal/account/edit/' + id);
+  }
+
+  editIndividualAccountPage(id) {
+    this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/individual/account/edit/' + id);
   }
 }

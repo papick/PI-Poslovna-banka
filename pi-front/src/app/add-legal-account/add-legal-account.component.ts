@@ -94,6 +94,7 @@ export class AddLegalAccountComponent implements OnInit {
   }
 
   editAccount() {
+    this.idBank = this.route.snapshot.params.idBank;
     const id = this.route.snapshot.params.id;
     this.bankAccount.bank = this.route.snapshot.params.idBank;
     this.bankAccount.legalEntity = this.legal.value;
@@ -102,11 +103,12 @@ export class AddLegalAccountComponent implements OnInit {
     this.bankAccount.mailReporting = this.mailreporting.value;
     this.bankAccountService.editLegalBankAccount(this.bankAccount, id).subscribe(data => {
       this.editResponse = data;
-      this.router.navigateByUrl('bank/' + this.bankAccount.bank + '/bankAccounts');
+      this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
     });
   }
 
   addAccount() {
+    this.idBank = this.route.snapshot.params.idBank;
     this.bankAccount.bank = this.route.snapshot.params.idBank;
     this.bankAccount.legalEntity = this.legal.value;
     this.bankAccount.currency = this.currency.value;
@@ -116,7 +118,7 @@ export class AddLegalAccountComponent implements OnInit {
 
     this.bankAccountService.addAccountLegalEntity(this.bankAccount).subscribe(data => {
       this.sklj = data
-      this.router.navigateByUrl('bank/' + this.bankAccount.bank + '/bankAccounts');
+      this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
     });
 
   }

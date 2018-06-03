@@ -46,4 +46,10 @@ export class BankAccountService {
     return this.http.get(`http://localhost:8080/api/bankAccounts/get-account/${id}`, httpOptions);
   }
 
+  editIndividualBankAccount(account, id): Observable<any> {
+    const body = JSON.stringify(account);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put(`http://localhost:8080/api/bankAccounts/edit-individual-account/${id}`, body, {headers: headers});
+  }
+
 }

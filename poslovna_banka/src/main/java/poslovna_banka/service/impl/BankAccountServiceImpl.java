@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import poslovna_banka.model.BankAccount;
-import poslovna_banka.model.LegalEntity;
 import poslovna_banka.repository.BankAccountRepository;
 import poslovna_banka.repository.BankRepository;
 import poslovna_banka.repository.CurrencyRepository;
+import poslovna_banka.repository.IndividualRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.service.BankAccountService;
 import poslovna_banka.service.dto.BankAccountDTO;
@@ -27,6 +27,9 @@ public class BankAccountServiceImpl implements BankAccountService {
 	
 	@Autowired
 	private LegalEntityRepository legalRepo;
+	
+	@Autowired
+	private IndividualRepository individualRepo;
 	
 	@Autowired
 	private CurrencyRepository currRepo;
@@ -46,6 +49,20 @@ public class BankAccountServiceImpl implements BankAccountService {
 		//updated.setDateOfOpenning(ba.getDateOfOpenning());
 		//updated.setIndividual(ba.getIndividual());
 		updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
+		updated.setNumber(ba.getNumber());
+		updated.setValid(ba.isValid());
+		updated.setCurrency(currRepo.findByName(ba.getCurrency()));
+		updated.setMailReporting(ba.isMailReporting());
+		return repo.save(updated);
+	}
+	
+	@Override
+	public BankAccount modifyIndividualBankAccount(BankAccountDTO ba, Long id) {
+		BankAccount updated = repo.findOne(id);
+		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
+		//updated.setDateOfOpenning(ba.getDateOfOpenning());
+		updated.setIndividual(individualRepo.findByName(ba.getIndividual()));
+		//updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
 		updated.setCurrency(currRepo.findByName(ba.getCurrency()));
@@ -86,8 +103,5 @@ public class BankAccountServiceImpl implements BankAccountService {
 	public BankAccount getBankAccount(Long id) {
 		return repo.findOne(id);
 	}
-
-
-	
 
 }

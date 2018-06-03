@@ -4,7 +4,7 @@
     <div class="form-group">
 
       <h2 style="margin-bottom: 30px">Racun za fizicko lice:</h2>
-      <label>Broj racuna</label>
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Broj racuna</label>
       <input name="accountNumber" class="form-control margin" id="input-accountNumber" [formControl]="accountNumber">
       <small class="form-text error" *ngIf="accountNumber.errors?.required && accountNumber.touched" style="color: red">
         Broj racuna je obavezan!
@@ -31,7 +31,7 @@
 
 
       <button class="btn btn-success" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
-              [disabled]="!form.valid" (click)="addAccount()">Dodaj
+              [disabled]="!form.valid" (click)="confirmClick()">{{methodName}}
       </button>
 
     </div>

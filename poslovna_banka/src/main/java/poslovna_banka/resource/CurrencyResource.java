@@ -1,4 +1,4 @@
-/*package poslovna_banka.resource;
+package poslovna_banka.resource;
 
 import java.util.ArrayList;
 
@@ -79,4 +79,4 @@ public class CurrencyResource {
 	
 	
 	
-}*/
+}
