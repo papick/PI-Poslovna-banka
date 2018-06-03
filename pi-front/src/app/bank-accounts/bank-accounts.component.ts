@@ -67,6 +67,6 @@ export class BankAccountsComponent implements OnInit {
   }
 
   editIndividualAccountPage(id) {
-    this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/individual/account/edit/' + id);
+    this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/individual/edit/individual/account/edit/' + id);
   }
 }

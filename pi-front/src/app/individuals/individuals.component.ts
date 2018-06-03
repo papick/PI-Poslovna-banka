@@ -30,7 +30,7 @@ export class IndividualsComponent implements OnInit {
 
   editIndividual(id) {
     this.idbank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('bank/' + this.idbank + '/add/clients/individual/account/izmeni/' + id);
+    this.router.navigateByUrl('bank/' + this.idbank + '/add/clients/individual/edit/account/izmeni/' + id);
   }
 
   deleteIndividual(id) {
@@ -43,6 +43,6 @@ export class IndividualsComponent implements OnInit {
   add() {
     this.idbank = this.route.snapshot.params.idBank;
     this.mode = this.route.snapshot.params.mode;
-    this.router.navigateByUrl('bank/' + this.idbank + '/add/clients/individual/account/dodaj');
+    this.router.navigateByUrl('bank/' + this.idbank + '/add/clients/individual/edit/account/dodaj');
   }
 }
