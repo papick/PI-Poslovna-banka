@@ -41,8 +41,9 @@ const routes: Routes = [
   {path: 'currencies/currency-form/:mode/combo-zoom/countries', component: ComboZoomCountriesComponent},
   {path: 'bank/:idBank/add/clients/legal/account/:mode', component: AddLegalAccountComponent},
   {path: 'bank/:idBank/add/clients/legal/account/:mode/:id', component: AddLegalAccountComponent},
-  {path: 'bank/:idBank/add/clients/individual/account/:mode/:id', component: AddIndividualComponent},
-  {path: 'bank/:idBank/add/clients/individual/account/:mode', component: AddBankAccountIndividualComponent},
+  {path: 'bank/:idBank/add/clients/individual/edit/account/:mode/:id', component: AddBankAccountIndividualComponent},
+  {path: 'bank/:idBank/add/clients/individual/edit/account/:mode', component: AddBankAccountIndividualComponent},
+  {path: 'bank/:idBank/add/clients/individual/edit/individual/account/:mode/:id', component: AddIndividualComponent}
 
 ]
 

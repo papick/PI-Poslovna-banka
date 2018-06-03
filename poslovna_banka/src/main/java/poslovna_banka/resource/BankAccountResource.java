@@ -1,5 +1,6 @@
 package poslovna_banka.resource;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,14 +42,31 @@ public class BankAccountResource {
 	@Autowired
 	private IndividualRepository indRepo;
 	
-	@GetMapping("/get-legals")
-	public ResponseEntity<List<BankAccount>> getLegals() {
-		return new ResponseEntity<List<BankAccount>>(bas.getAllLegalEntities(), HttpStatus.OK);
+	@GetMapping("/get-legals/{id}")
+	public ResponseEntity<List<BankAccount>> getLegals(@PathVariable Long id) {
+		List<BankAccount> legalEntities=bas.getAllLegalEntities();
+		List<BankAccount> list=new ArrayList<>();
+		for(BankAccount wanted: legalEntities){
+			if(wanted.getBank().getId()==id){
+				list.add(wanted);
+			}
+		}
+		return new ResponseEntity<List<BankAccount>>(list, HttpStatus.OK);
 	}
 
-	@GetMapping("/get-individuals")
-	public ResponseEntity<List<BankAccount>> getIndividuals() {
-		return new ResponseEntity<List<BankAccount>>(bas.getAllIndividuals(), HttpStatus.OK);
+	@GetMapping("/get-individuals/{id}")
+	public ResponseEntity<List<BankAccount>> getIndividuals(@PathVariable Long id) {
+		List<BankAccount> individualEntities=bas.getAllIndividuals();
+		List<BankAccount> list=new ArrayList<>();
+		System.out.println("AAAAAAAAA ID JE "+id);
+		for(BankAccount wanted: individualEntities){
+			if(wanted.getBank().getId()==id){
+				
+				list.add(wanted);
+			}
+		}
+
+		return new ResponseEntity<List<BankAccount>>(list, HttpStatus.OK);
 	}
 	
 	@PostMapping("/add-account-legal")

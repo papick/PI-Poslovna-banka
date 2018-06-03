@@ -16,6 +16,7 @@ export class BankAccountsComponent implements OnInit {
   activeId;
   pravnoLice = false;
   fizickoLice = false;
+  idbank;
 
   individual = false;
 
@@ -30,7 +31,8 @@ export class BankAccountsComponent implements OnInit {
     this.fizickoLice = false;
     this.pravnoLice = true;
     this.individual = false;
-    this.clientService.getLegals().subscribe(data => {
+    this.idbank = this.route.snapshot.params.idBank;
+    this.clientService.getLegals(this.idbank).subscribe(data => {
       this.items = data;
     });
   }
@@ -39,7 +41,8 @@ export class BankAccountsComponent implements OnInit {
     this.pravnoLice = false;
     this.fizickoLice = true;
     this.individual = true;
-    this.clientService.getIndividuals().subscribe(data => {
+    this.idbank = this.route.snapshot.params.idBank;
+    this.clientService.getIndividuals(this.idbank).subscribe(data => {
       this.items = data;
     });
   }
@@ -67,6 +70,6 @@ export class BankAccountsComponent implements OnInit {
   }
 
   editIndividualAccountPage(id) {
-    this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/individual/account/edit/' + id);
+    this.router.navigateByUrl('bank/' + this.activeId + '/add/clients/individual/edit/individual/account/edit/' + id);
   }
 }
