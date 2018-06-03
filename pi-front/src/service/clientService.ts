@@ -14,12 +14,12 @@ export class ClientService {
   constructor(private http: HttpClient) {
   }
 
-  getLegals(): Observable<any> {
-    return this.http.get(`http://localhost:8080/api/bankAccounts/get-legals`, httpOptions);
+  getLegals(id): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/bankAccounts/get-legals/${id}`, httpOptions);
   }
 
-  getIndividuals(): Observable<any> {
-    return this.http.get(`http://localhost:8080/api/bankAccounts/get-individuals`, httpOptions);
+  getIndividuals(id): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/bankAccounts/get-individuals/${id}`, httpOptions);
   }
 
   addLegal(legal): Observable<any> {
