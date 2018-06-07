@@ -14,6 +14,6 @@
 	<typeOfMistake>1</typeOfMistake>
 	<status></status>
 	<paymentTypeXML>1</paymentTypeXML>
-	<paymentCurrencyXML>din</paymentCurrencyXML>
+	<paymentCurrencyXML>RSD</paymentCurrencyXML>
 	<cityXML>Beograd</cityXML>
 </analyticsOfStatements>
