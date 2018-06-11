@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -80,6 +81,17 @@ public class AnalyticOfStatement {
 
 	@ManyToOne
 	private City city;
+
+	@OneToOne
+	private DailyAccountState dailyAccountState;
+
+	public DailyAccountState getDailyAccountState() {
+		return dailyAccountState;
+	}
+
+	public void setDailyAccountState(DailyAccountState dailyAccountState) {
+		this.dailyAccountState = dailyAccountState;
+	}
 
 	public AnalyticOfStatement() {
 		super();

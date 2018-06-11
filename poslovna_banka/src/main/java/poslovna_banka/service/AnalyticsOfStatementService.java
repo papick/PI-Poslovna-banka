@@ -107,6 +107,8 @@ public class AnalyticsOfStatementService {
 
 					dailyAccountStateRepository.save(dailyAccountStateNew);
 
+					a.setDailyAccountState(dailyAccountStateNew);
+					analyticRepository.save(a);
 				}
 
 			} else {
@@ -121,6 +123,9 @@ public class AnalyticsOfStatementService {
 						- dailyAccountState.getPaymentFrom());
 
 				dailyAccountStateRepository.save(dailyAccountState);
+
+				a.setDailyAccountState(dailyAccountState);
+				analyticRepository.save(a);
 
 			}
 
