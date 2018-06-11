@@ -1,6 +1,7 @@
 package poslovna_banka.resource;
 
 import java.io.File;
+import java.text.ParseException;
 
 import javax.xml.bind.JAXBException;
 
@@ -29,7 +30,7 @@ public class AnalyticsOfStatementResource {
 
 	// nalog za isplatu sacuvaj
 	@GetMapping("/save/xml/{fileName}")
-	public AnalyticOfStatement saveAnalytics(@PathVariable String fileName) throws JAXBException {
+	public AnalyticOfStatement saveAnalytics(@PathVariable String fileName) throws JAXBException, ParseException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.saveAnalyticsOfStatements(file);
 	}

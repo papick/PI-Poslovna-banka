@@ -4,9 +4,9 @@
 	<debtor>NN d.o.o</debtor>
 	<purposeOfPayment>Isplata zarade 03/2018</purposeOfPayment>
 	<creditor>Tanasije Tanasic , blagajnik</creditor>
-	<dateOfReceipt>29-05-2018</dateOfReceipt>
-	<currencyDate>29-05-2018</currencyDate>
-	<sum>35000</sum>
+	<dateOfReceipt>2018-05-19</dateOfReceipt>
+	<currencyDate>2018-05-19</currencyDate>
+	<sum>5000</sum>
 	<debtorAccountXML>1234567891111</debtorAccountXML>
 	<modelAssigments>97</modelAssigments>
 	<referenceNumberAssigments>BOP</referenceNumberAssigments>
