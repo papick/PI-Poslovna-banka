@@ -46,8 +46,6 @@ public class BankAccountServiceImpl implements BankAccountService {
 	public BankAccount modifyLegalBankAccount(BankAccountDTO ba, Long id) {
 		BankAccount updated = repo.findOne(id);
 		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
-		//updated.setDateOfOpenning(ba.getDateOfOpenning());
-		//updated.setIndividual(ba.getIndividual());
 		updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
@@ -60,9 +58,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 	public BankAccount modifyIndividualBankAccount(BankAccountDTO ba, Long id) {
 		BankAccount updated = repo.findOne(id);
 		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
-		//updated.setDateOfOpenning(ba.getDateOfOpenning());
 		updated.setIndividual(individualRepo.findByName(ba.getIndividual()));
-		//updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
 		updated.setCurrency(currRepo.findByName(ba.getCurrency()));

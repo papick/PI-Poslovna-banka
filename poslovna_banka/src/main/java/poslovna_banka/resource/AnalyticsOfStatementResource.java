@@ -34,6 +34,13 @@ public class AnalyticsOfStatementResource {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.saveAnalyticsOfStatements(file);
 	}
+	
+	// nalog za naplatu sacuvaj
+	@GetMapping("/save/xml-payment/{fileName}")
+	public AnalyticOfStatement saveAnalyticsPayment(@PathVariable String fileName) throws JAXBException, ParseException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.saveAnalyticsOfStatementsPayment(file);
+	}
 
 	@GetMapping("xml-naplata/{fileName}")
 	public AnalyticOfStatement loadXMLPayment(@PathVariable String fileName) throws JAXBException {

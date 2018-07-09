@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AnalyticsOfStatementService} from "../../service/AnalyticsOfStatementService";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-transfer-check',
@@ -26,7 +27,9 @@ export class TransferCheckComponent implements OnInit {
   public referenceNumberApproval: AbstractControl;
   public urgent: AbstractControl;
 
-  constructor(private fb: FormBuilder, private analyticeService: AnalyticsOfStatementService) {
+  constructor(private fb: FormBuilder, private analyticeService: AnalyticsOfStatementService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.form = this.fb.group({
       'debtor': ['', Validators.compose([Validators.required])],
       'purpose': ['', Validators.compose([Validators.required])],
@@ -65,7 +68,10 @@ export class TransferCheckComponent implements OnInit {
 
 
   ucitaj() {
-    this.analyticeService.getTransferCheck('nalog_za_prenos_1').subscribe(data =>{
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_1');
+
+    this.analyticeService.getTransferCheck('nalog_za_prenos_1').subscribe(data => {
       this.form.controls['debtor'].setValue(data.debtor);
       this.form.controls['purpose'].setValue(data.purposeOfPayment);
       this.form.controls['creditor'].setValue(data.creditor);
@@ -76,6 +82,54 @@ export class TransferCheckComponent implements OnInit {
       this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
       this.form.controls['modelApproval'].setValue(data.modelApproval);
       this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
+      this.form.controls['currency'].setValue(data.paymentCurrency.name);
+      this.form.controls['code'].setValue(data.code);
+      this.form.controls['urgent'].setValue(data.emergency);
     });
+  }
+
+  ucitaj2() {
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_2');
+
+    this.analyticeService.getTransferCheck('nalog_za_prenos_1').subscribe(data => {
+      this.form.controls['debtor'].setValue(data.debtor);
+      this.form.controls['purpose'].setValue(data.purposeOfPayment);
+      this.form.controls['creditor'].setValue(data.creditor);
+      this.form.controls['sum'].setValue(data.sum);
+      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
+      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
+      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
+      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
+      this.form.controls['modelApproval'].setValue(data.modelApproval);
+      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
+      this.form.controls['currency'].setValue(data.paymentCurrency.name);
+      this.form.controls['code'].setValue(data.code);
+      this.form.controls['urgent'].setValue(data.emergency);
+    });
+  }
+
+  ucitaj3() {
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_3');
+
+    this.analyticeService.getTransferCheck('nalog_za_prenos_1').subscribe(data => {
+      this.form.controls['debtor'].setValue(data.debtor);
+      this.form.controls['purpose'].setValue(data.purposeOfPayment);
+      this.form.controls['creditor'].setValue(data.creditor);
+      this.form.controls['sum'].setValue(data.sum);
+      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
+      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
+      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
+      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
+      this.form.controls['modelApproval'].setValue(data.modelApproval);
+      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
+      this.form.controls['currency'].setValue(data.paymentCurrency.name);
+      this.form.controls['code'].setValue(data.code);
+      this.form.controls['urgent'].setValue(data.emergency);
+    });
+  }
+
+  confirmClick() {
   }
 }

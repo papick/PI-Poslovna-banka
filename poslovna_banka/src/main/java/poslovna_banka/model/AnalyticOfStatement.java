@@ -41,7 +41,7 @@ public class AnalyticOfStatement {
 	private String referenceNumberAssigments; // poziv na broj zaduzenja
 
 	@Transient
-	private String debtorAccountXML; // racun duznika ya xml
+	private String debtorAccountXML; // racun duznika za xml
 
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
@@ -84,6 +84,47 @@ public class AnalyticOfStatement {
 
 	@OneToOne
 	private DailyAccountState dailyAccountState;
+	
+	@NotNull
+	private String code;
+
+	public AnalyticOfStatement() {
+	}
+
+	public AnalyticOfStatement(String type, String debtor, String purposeOfPayment, String creditor,
+			String dateOfReceipt, String currencyDate, Integer modelAssigments, String referenceNumberAssigments,
+			String debtorAccountXML, BankAccount debtorAccount, String accountCreditorXML, BankAccount accountCreditor,
+			Integer modelApproval, String referenceNumberCreditor, Boolean emergency, Double sum, Integer typeOfMistake,
+			String status, String paymentTypeXML, PaymentType paymentType, String paymentCurrencyXML,
+			Currency paymentCurrency, String cityXML, City city, DailyAccountState dailyAccountState, String code) {
+		super();
+		this.type = type;
+		this.debtor = debtor;
+		this.purposeOfPayment = purposeOfPayment;
+		this.creditor = creditor;
+		this.dateOfReceipt = dateOfReceipt;
+		this.currencyDate = currencyDate;
+		this.modelAssigments = modelAssigments;
+		this.referenceNumberAssigments = referenceNumberAssigments;
+		this.debtorAccountXML = debtorAccountXML;
+		this.debtorAccount = debtorAccount;
+		this.accountCreditorXML = accountCreditorXML;
+		this.accountCreditor = accountCreditor;
+		this.modelApproval = modelApproval;
+		this.referenceNumberCreditor = referenceNumberCreditor;
+		this.emergency = emergency;
+		this.sum = sum;
+		this.typeOfMistake = typeOfMistake;
+		this.status = status;
+		this.paymentTypeXML = paymentTypeXML;
+		this.paymentType = paymentType;
+		this.paymentCurrencyXML = paymentCurrencyXML;
+		this.paymentCurrency = paymentCurrency;
+		this.cityXML = cityXML;
+		this.city = city;
+		this.dailyAccountState = dailyAccountState;
+		this.code = code;
+	}
 
 	public DailyAccountState getDailyAccountState() {
 		return dailyAccountState;
@@ -93,9 +134,12 @@ public class AnalyticOfStatement {
 		this.dailyAccountState = dailyAccountState;
 	}
 
-	public AnalyticOfStatement() {
-		super();
-		// TODO Auto-generated constructor stub
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getPaymentTypeXML() {

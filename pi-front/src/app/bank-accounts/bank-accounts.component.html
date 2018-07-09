@@ -16,6 +16,7 @@
     <th class="th-style"> Datum otvaranja</th>
     <th class="th-style"> Valuta</th>
     <th class="th-style"> Vlasnik racuna</th>
+    <th class="th-style"> Validan</th>
     <th class="th-style">Izmeni</th>
     <th class="th-style">Zatvori</th>
   </tr>
@@ -25,6 +26,7 @@
       <td> {{item.dateOfOpenning}}</td>
       <td> {{item.currency.name}} </td>
       <td> {{item.legalEntity.name}} </td>
+      <td> {{item.valid}} </td>
       <td (click)="editLegalAccountPage(item.id)">Izmeni</td>
       <td ><button class="btn btn-lg btn-outline-primary" (click)="showDialog(item.id)">Zatvori racun</button></td>
     </tr>
