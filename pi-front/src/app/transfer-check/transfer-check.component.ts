@@ -92,7 +92,7 @@ export class TransferCheckComponent implements OnInit {
     const idBank = this.route.snapshot.params.idBank;
     this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_2');
 
-    this.analyticeService.getTransferCheck('nalog_za_prenos_1').subscribe(data => {
+    this.analyticeService.getTransferCheck('nalog_za_prenos_2').subscribe(data => {
       this.form.controls['debtor'].setValue(data.debtor);
       this.form.controls['purpose'].setValue(data.purposeOfPayment);
       this.form.controls['creditor'].setValue(data.creditor);
@@ -113,7 +113,7 @@ export class TransferCheckComponent implements OnInit {
     const idBank = this.route.snapshot.params.idBank;
     this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_3');
 
-    this.analyticeService.getTransferCheck('nalog_za_prenos_1').subscribe(data => {
+    this.analyticeService.getTransferCheck('nalog_za_prenos_3').subscribe(data => {
       this.form.controls['debtor'].setValue(data.debtor);
       this.form.controls['purpose'].setValue(data.purposeOfPayment);
       this.form.controls['creditor'].setValue(data.creditor);
@@ -131,5 +131,11 @@ export class TransferCheckComponent implements OnInit {
   }
 
   confirmClick() {
+    const type = this.route.snapshot.params.type;
+    this.analyticeService.saveTransferCheck(type).subscribe();
+
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order');
+    location.reload();
   }
 }

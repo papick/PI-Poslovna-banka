@@ -173,6 +173,7 @@ public class AnalyticsOfStatementService {
 	}
 
 	// nalog za naplatu sacuvaj
+	//Bozicu, trebas dodati proveru ako je iznos veci od 250000 da kupis i te naloge i ako su racuni iz razlicitih banaka
 	public AnalyticOfStatement saveAnalyticsOfStatementsPayment(File file) throws JAXBException, ParseException {
 
 		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
@@ -361,6 +362,10 @@ public class AnalyticsOfStatementService {
 		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
 		AnalyticOfStatement a = this.generatePaymentAnalyticsOfStatement(xml);
 		analyticRepository.save(a);
+		
+		if(a.getEmergency()) {
+			//Bozicu, dodaj sta ti sve treba za rtgs i kliring ovde(poruke MT102 ili MT103 )
+		}
 
 		if (a.getType().equals("Nalog za prenos")) {
 			BankAccount debtorAccount = bankAccountRepository.findOne(a.getDebtorAccount().getId());
@@ -538,7 +543,7 @@ public class AnalyticsOfStatementService {
 	private AnalyticOfStatement generatePaymentAnalyticsOfStatement(AnalyticOfStatement xml) {
 		AnalyticOfStatement a = new AnalyticOfStatement();
 
-		a.setDateOfReceipt(xml.getAccountCreditorXML());
+		a.setDateOfReceipt(xml.getDateOfReceipt());
 		a.setCurrencyDate(xml.getCurrencyDate());
 		a.setType(xml.getType());
 		a.setDebtor(xml.getDebtor());
