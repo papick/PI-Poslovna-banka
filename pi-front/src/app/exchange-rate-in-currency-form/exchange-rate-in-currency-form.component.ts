@@ -78,7 +78,7 @@ export class ExchangeRateInCurrencyFormComponent implements OnInit {
     else if(this.primaryCurrency.value === ""){
       alert('Obavezan unos primarne valute!')
     }
-    else if(this.toOtherCurrency.value === ""{
+    else if(this.toOtherCurrency.value === ""){
       alert('Obavezan unos prema valuti!')
     }
     else {

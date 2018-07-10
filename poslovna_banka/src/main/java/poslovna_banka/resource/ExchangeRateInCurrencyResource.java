@@ -1,8 +1,12 @@
 package poslovna_banka.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +31,15 @@ public class ExchangeRateInCurrencyResource {
 		ExchangeRateInCurrency exchangeRateInCurrency = exchangeRateInCurrencyService.newExchangeRateInCurrency(exchangeRateInCurrencyDTO);
 		
 		return new ResponseEntity<ExchangeRateInCurrency>(exchangeRateInCurrency,HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/get-all/{id}")
+	public ResponseEntity<List<ExchangeRateInCurrency>> getExchangeRatesInCurrency(@PathVariable Long id) {
+		
+		List<ExchangeRateInCurrency> exchangeRatesInCurrency = exchangeRateInCurrencyService.getExchangeRatesInCurrency(id);
+		
+		return new ResponseEntity<List<ExchangeRateInCurrency>>(exchangeRatesInCurrency,HttpStatus.OK);
+		
 	}
 }

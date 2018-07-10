@@ -24,4 +24,9 @@ export class ExchangeRateInCurrencyService {
     return this.http.post(`${this.BASE_URL}/new-exchange-rate-in-currency`, body, {headers: headers});
   }
 
+  getExchangeRatesInCurrency(id: any): Observable<any> {
+
+    return this.http.get(`${this.BASE_URL}/get-all/${id}`, httpOptions);
+  }
+
 }

@@ -32,14 +32,24 @@
       <br>
 
       <table class="table table-bordered tables left">
-        <th class="th-style">R.br.</th>
-        <th class="th-style">Osnovna valuta</th>
-        <th class="th-style">Prema valuti</th>
-        <th class="th-style">Kupovni kurs</th>
-        <th class="th-style">Srednji kurs</th>
-        <th class="th-style">Prodajni kurs</th>
-      </table>
+        <tr>
+          <th class="th-style">R.br.</th>
+          <th class="th-style">Osnovna valuta</th>
+          <th class="th-style">Prema valuti</th>
+          <th class="th-style">Kupovni kurs</th>
+          <th class="th-style">Srednji kurs</th>
+          <th class="th-style">Prodajni kurs</th>
+        </tr>
 
+        <tr *ngFor="let item of activeExchRatesInCurrency;">
+          <td></td>
+          <td>{{item.primaryCurrency.name}}</td>
+          <td>{{item.toOtherCurrency.name}}</td>
+          <td>{{item.buying}}</td>
+          <td>{{item.middle}}</td>
+          <td>{{item.selling}}</td>
+        </tr>
+      </table>
       <br>
 
       <div class="right">

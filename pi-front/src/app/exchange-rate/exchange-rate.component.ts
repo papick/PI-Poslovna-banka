@@ -3,6 +3,7 @@ import {CurrencyService} from "../../service/currencyService";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
 import {ExchangeRateService} from "../../service/exchangeRateService";
+import {ExchangeRateInCurrencyService} from "../../service/exchangeRateInCurrencyService";
 
 @Component ({
   selector: 'app-exchange-rate',
@@ -18,10 +19,12 @@ export class ExchangeRateComponent implements OnInit {
   datesBefore = [];
 
   activeExchRate;
+  activeExchRatesInCurrency = [];
 
   constructor( private exchangeRateService: ExchangeRateService,
+               private exchangeRateInCurrencyService: ExchangeRateInCurrencyService,
                protected router: Router,
-               private route: ActivatedRoute,) {
+               private route: ActivatedRoute) {
 
   }
 
@@ -44,6 +47,7 @@ export class ExchangeRateComponent implements OnInit {
       }
 
       this.activeExchRate = this.datesBefore[0];
+      this.getExchangeRatesInCurrency(this.activeExchRate.id);
 
       for(let er of this.datesBefore) {
 
@@ -80,6 +84,7 @@ export class ExchangeRateComponent implements OnInit {
     for(let er of this.exchangeRates) {
       if(value === er.appliedFromDate) {
         this.activeExchRate = er;
+        this.getExchangeRatesInCurrency(this.activeExchRate.id);
       }
     }
   }
@@ -88,6 +93,20 @@ export class ExchangeRateComponent implements OnInit {
   exchangeRateInCurrency() {
 
     this.router.navigateByUrl('bank/' + this.idBank + '/' + this.activeExchRate.id + '/form-exchange-rate-in-currency');
+
+  }
+
+  getExchangeRatesInCurrency(id: any) {
+
+    this.exchangeRateInCurrencyService.getExchangeRatesInCurrency(id).subscribe(data => {
+
+      this.activeExchRatesInCurrency = data;
+
+      for(let it of this.activeExchRatesInCurrency) {
+        console.log(it);
+      }
+
+    })
 
   }
 
