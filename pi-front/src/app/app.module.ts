@@ -50,6 +50,8 @@ import {FormsModule} from '@angular/forms';
 import {SharedModule} from 'primeng/primeng';
 import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form.component";
 import {ExchangeRateService} from "../service/exchangeRateService";
+import {ExchangeRateInCurrencyFormComponent} from "./exchange-rate-in-currency-form/exchange-rate-in-currency-form.component";
+import {ExchangeRateInCurrencyService} from "../service/exchangeRateInCurrencyService";
 
 
 
@@ -81,6 +83,7 @@ import {ExchangeRateService} from "../service/exchangeRateService";
     IndividualsComponent,
     ExchangeRateComponent,
     ExchangeRateFormComponent,
+    ExchangeRateInCurrencyFormComponent,
 
 
 
@@ -110,6 +113,7 @@ import {ExchangeRateService} from "../service/exchangeRateService";
     AnalyticsOfStatementService,
     RecessionService,
     ExchangeRateService,
+    ExchangeRateInCurrencyService,
 
 
   ],

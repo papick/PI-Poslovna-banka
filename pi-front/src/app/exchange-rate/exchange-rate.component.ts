@@ -84,4 +84,11 @@ export class ExchangeRateComponent implements OnInit {
     }
   }
 
+
+  exchangeRateInCurrency() {
+
+    this.router.navigateByUrl('bank/' + this.idBank + '/' + this.activeExchRate.id + '/form-exchange-rate-in-currency');
+
+  }
+
 }

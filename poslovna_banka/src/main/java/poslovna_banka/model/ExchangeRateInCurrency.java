@@ -17,13 +17,13 @@ public class ExchangeRateInCurrency {
 	private Long Id;
 	
 	@Column
-	private float buying;
+	private String buying;
 	
 	@Column
-	private float middle;
+	private String middle;
 	
 	@Column
-	private float selling;
+	private String selling;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private ExchangeRate exchangeRate;
@@ -40,7 +40,7 @@ public class ExchangeRateInCurrency {
 	}
 
 
-	public ExchangeRateInCurrency(float buying, float middle, float selling, ExchangeRate exchangeRate,
+	public ExchangeRateInCurrency(String buying, String middle, String selling, ExchangeRate exchangeRate,
 			Currency primaryCurrency, Currency toOtherCurrency) {
 		super();
 		this.buying = buying;
@@ -62,32 +62,32 @@ public class ExchangeRateInCurrency {
 	}
 
 
-	public float getBuying() {
+	public String getBuying() {
 		return buying;
 	}
 
 
-	public void setBuying(float buying) {
+	public void setBuying(String buying) {
 		this.buying = buying;
 	}
 
 
-	public float getMiddle() {
+	public String getMiddle() {
 		return middle;
 	}
 
 
-	public void setMiddle(float middle) {
+	public void setMiddle(String middle) {
 		this.middle = middle;
 	}
 
 
-	public float getSelling() {
+	public String getSelling() {
 		return selling;
 	}
 
 
-	public void setSelling(float selling) {
+	public void setSelling(String selling) {
 		this.selling = selling;
 	}
 

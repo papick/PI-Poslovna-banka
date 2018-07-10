@@ -16,6 +16,7 @@ import {AddLegalsComponent} from "./add-legals/add-legals.component";
 import {AddLegalAccountComponent} from "./add-legal-account/add-legal-account.component";
 import {AddIndividualComponent} from "./add-individual/add-individual.component";
 import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form.component";
+import {ExchangeRateInCurrencyFormComponent} from "./exchange-rate-in-currency-form/exchange-rate-in-currency-form.component";
 
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'log-in', pathMatch: 'full'},
   {path: 'log-in', component: LogInComponent},
   {path: 'bank/:idBank', component: BankAccountsComponent},
+  {path: 'bank/:idBank/:idExchangeRate/form-exchange-rate-in-currency', component: ExchangeRateInCurrencyFormComponent},
   {path: 'bank/:idBank/form-exchange-rate', component: ExchangeRateFormComponent},
   {path: 'bank/:idBank/addIndividual', component: AddBankAccountIndividualComponent},
   {path: 'bank/:idBank/addLegalEntity', component: AddLegalsComponent},

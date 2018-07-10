@@ -51,9 +51,7 @@ public class ExchangeRateService {
 		
 		List<ExchangeRate> exr = this.getAllExchangeRatesByBank(exchangeRateDTO.getIdBank());
 		
-		int size = exr.size();
-		
-		
+		int size = exr.size();	
 		exchangeRate.setNumber(size+1);
 		
 		Date date = new Date();
