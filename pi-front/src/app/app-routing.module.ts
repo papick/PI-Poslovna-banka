@@ -15,6 +15,7 @@ import {ComboZoomCountriesComponent} from "./combo-zoom-countries/combo-zoom-cou
 import {AddLegalsComponent} from "./add-legals/add-legals.component";
 import {AddLegalAccountComponent} from "./add-legal-account/add-legal-account.component";
 import {AddIndividualComponent} from "./add-individual/add-individual.component";
+import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form.component";
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'log-in', pathMatch: 'full'},
   {path: 'log-in', component: LogInComponent},
   {path: 'bank/:idBank', component: BankAccountsComponent},
+  {path: 'bank/:idBank/form-exchange-rate', component: ExchangeRateFormComponent},
   {path: 'bank/:idBank/addIndividual', component: AddBankAccountIndividualComponent},
   {path: 'bank/:idBank/addLegalEntity', component: AddLegalsComponent},
   {path: 'bank/:idBank/:click/paymanent/:type', component: BankComponent},
@@ -43,7 +45,8 @@ const routes: Routes = [
   {path: 'bank/:idBank/add/clients/legal/account/:mode/:id', component: AddLegalAccountComponent},
   {path: 'bank/:idBank/add/clients/individual/edit/account/:mode/:id', component: AddBankAccountIndividualComponent},
   {path: 'bank/:idBank/add/clients/individual/edit/account/:mode', component: AddBankAccountIndividualComponent},
-  {path: 'bank/:idBank/add/clients/individual/edit/individual/account/:mode/:id', component: AddIndividualComponent}
+  {path: 'bank/:idBank/add/clients/individual/edit/individual/account/:mode/:id', component: AddIndividualComponent},
+
 
 ]
 

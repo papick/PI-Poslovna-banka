@@ -39,6 +39,7 @@ import { AddIndividualComponent } from './add-individual/add-individual.componen
 import { LegalsComponent } from './legals/legals.component';
 import { ClientsComponent } from './clients/clients.component';
 import { IndividualsComponent } from './individuals/individuals.component';
+import {ExchangeRateComponent} from "./exchange-rate/exchange-rate.component";
 import {RecessionService} from "../service/recessionService";
 
 
@@ -47,6 +48,8 @@ import {DialogModule} from 'primeng/dialog';
 import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from 'primeng/primeng';
+import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form.component";
+
 
 
 @NgModule({
@@ -75,6 +78,9 @@ import {SharedModule} from 'primeng/primeng';
     LegalsComponent,
     ClientsComponent,
     IndividualsComponent,
+    ExchangeRateComponent,
+    ExchangeRateFormComponent,
+
 
 
   ],
@@ -89,7 +95,8 @@ import {SharedModule} from 'primeng/primeng';
     DialogModule,
     FormsModule,
     DropdownModule,
-    SharedModule
+    SharedModule,
+
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
@@ -101,7 +108,8 @@ import {SharedModule} from 'primeng/primeng';
     BankAccountService,
     CurrencyService,
     AnalyticsOfStatementService,
-    RecessionService
+    RecessionService,
+
 
   ],
   bootstrap: [AppComponent]

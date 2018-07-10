@@ -1,0 +1,29 @@
+<br>
+
+<h2 class="center">Nova kursna lista</h2>
+
+<div class="offset-3 col-md-6" style="margin-bottom:50px">
+
+  <form [formGroup]="form" >
+
+    <div class="form-group" >
+
+
+      <label style="margin-top:100px">Primenjuje se od:</label>
+      <div class="input-group">
+        <input name="validFrom" type="date" class="form-control" [formControl]="validFrom">
+      </div>
+
+      <br>
+      <br>
+
+      <button class="btn btn-success" style="width: 100%"  (click)="confirmClick()" [disabled]="!form.valid">DODAJ KURSNU LISTU</button>
+      <button class="btn btn-secondary" style="width: 100% ; margin-top: 20px"  (click)="exit()">Zatvori</button>
+
+
+
+
+    </div>
+
+  </form>
+</div>
