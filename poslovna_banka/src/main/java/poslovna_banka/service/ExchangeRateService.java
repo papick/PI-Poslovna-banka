@@ -48,7 +48,13 @@ public class ExchangeRateService {
 		
 		exchangeRate.setAppliedFromDate(exchangeRateDTO.getAppliedFrom());
 		exchangeRate.setBank(bankRepository.findOne(exchangeRateDTO.getIdBank()));
-		exchangeRate.setNumber(bankRepository.findAll().size()+1);
+		
+		List<ExchangeRate> exr = this.getAllExchangeRatesByBank(exchangeRateDTO.getIdBank());
+		
+		int size = exr.size();
+		
+		
+		exchangeRate.setNumber(size+1);
 		
 		Date date = new Date();
 		String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
