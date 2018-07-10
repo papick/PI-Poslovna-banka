@@ -39,9 +39,7 @@ public class CurrencyService {
 	
 	
 	public Currency addNewCurrency(CurrencyDTO currencyDTO) {
-		
-		
-		
+			
 		
 		Currency currency = new Currency();
 		

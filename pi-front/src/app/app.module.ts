@@ -49,6 +49,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from 'primeng/primeng';
 import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form.component";
+import {ExchangeRateService} from "../service/exchangeRateService";
 
 
 
@@ -89,7 +90,6 @@ import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     ButtonModule,
     DialogModule,
@@ -109,6 +109,7 @@ import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form
     CurrencyService,
     AnalyticsOfStatementService,
     RecessionService,
+    ExchangeRateService,
 
 
   ],

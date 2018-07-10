@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ExchangeRateModel} from "../../model/exchangeRate.model";
+import {ExchangeRateService} from "../../service/exchangeRateService";
 
 
 @Component ({
@@ -16,9 +18,11 @@ export class ExchangeRateFormComponent implements OnInit {
   public form: FormGroup;
   public validFrom: AbstractControl;
 
-  constructor(protected router: Router,
+  constructor(private exchangeRateService: ExchangeRateService,
+              protected router: Router,
               private fb: FormBuilder,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              ) {
 
     this.form = this.fb.group({
       'validFrom': ['', Validators.compose([Validators.required])],
@@ -35,7 +39,17 @@ export class ExchangeRateFormComponent implements OnInit {
 
   confirmClick() {
 
-    
+
+    const exchangeRate = new ExchangeRateModel(
+      this.idBank,
+      this.validFrom.value,
+    );
+
+    this.exchangeRateService.addNewExchangeRate(exchangeRate).toPromise()
+      .then(data => {
+
+        this.router.navigateByUrl('bank/' + this.idBank + '/exchangeRate');
+      })
 
   }
 
