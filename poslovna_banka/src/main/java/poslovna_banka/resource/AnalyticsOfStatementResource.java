@@ -41,16 +41,24 @@ public class AnalyticsOfStatementResource {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.saveAnalyticsOfStatementsPayment(file);
 	}
-
+	//nalog za naplatu ucitaj
 	@GetMapping("xml-naplata/{fileName}")
 	public AnalyticOfStatement loadXMLPayment(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.getPaymentAnalyticsOfStatements(file);
 	}
 
+	//nalog za prenos ucitaj
 	@GetMapping("xml-prenos/{fileName}")
 	public AnalyticOfStatement loadXMLTransfer(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.getPaymentAnalyticsOfStatements(file);
+	}
+	
+	// nalog za prenos sacuvaj
+	@GetMapping("/save/xml-transfer/{fileName}")
+	public AnalyticOfStatement saveAnalyticsTransfer(@PathVariable String fileName) throws JAXBException, ParseException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.saveAnalyticsOfStatementsTransfer(file);
 	}
 }

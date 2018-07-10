@@ -33,4 +33,10 @@ export class AnalyticsOfStatementService {
   savePayCheck(name: any): Observable<any> {
     return this.http.get(`${this.BASE_URL}/save/xml-payment/${name}`, httpOptions);
   }
+
+  saveTransferCheck(name: any): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/save/xml-transfer/${name}`, httpOptions);
+  }
+
+
 }
