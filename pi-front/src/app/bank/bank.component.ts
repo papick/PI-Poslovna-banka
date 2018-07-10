@@ -28,6 +28,7 @@ export class BankComponent implements OnInit {
   legals = false;
   individuals = false;
 
+  click;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -36,7 +37,9 @@ export class BankComponent implements OnInit {
   ngOnInit() {
 
     this.idBank = this.route.snapshot.params.idBank;
-    const click = this.route.snapshot.params.click;
+    this.click = this.route.snapshot.params.click;
+
+    console.log(this.click);
 
     localStorage.setItem('idBank', this.idBank);
 
@@ -49,305 +52,401 @@ export class BankComponent implements OnInit {
     }
 
 
-    if (click === 'home') {
-      this.home = true;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
+    if (this.click === 'home') {
 
-    } else if (click === 'payment-check') {
-      this.paymentCheck = true;
-      this.city = false;
-      this.countries = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
+      this.showHome();
 
-    } else if (click === 'countries') {
-
-      this.home = false;
-      this.countries = true;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
-
-    } else if (click === 'city') {
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = true;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
-
-    } else if (click === 'activities') {
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = true;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
-
-    } else if (click === 'bankAccounts') {
-
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = true;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
-
-    } else if (click === 'payment-order') {
-
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = true;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
+    } else if (this.click === 'payment-check') {
 
 
-    } else if (click === 'currencies') {
+    } else if (this.click === 'countries') {
 
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = true;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
+      this.showCountries();
 
-    } else if (click === 'pay-order') {
+    } else if (this.click === 'city') {
 
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = true;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
-    } else if (click === 'transfer-order') {
+      this.showCities();
 
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = true;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
+    } else if (this.click === 'activities') {
 
-    } else if (click === 'addLegalAccount') {
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = true;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = false;
+      this.showActivities();
 
-    } else if (click === 'addIndividualAccount') {
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = true;
-      this.legals = false;
-      this.individuals = false;
-    } else if (click === 'legals') {
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = true;
-      this.individuals = false;
-    } else if(click === 'individuals') {
-      this.home = false;
-      this.countries = false;
-      this.paymentCheck = false;
-      this.city = false;
-      this.activities = false;
-      this.bankAccounts = false;
-      this.paymentOrder = false;
-      this.currencies = false;
-      this.payOrder = false;
-      this.transferOrder = false;
-      this.addLegalAccount = false;
-      this.addIndividualAccount = false;
-      this.legals = false;
-      this.individuals = true;
+    } else if (this.click === 'bankAccounts') {
+
+      this.showBankAccounts();
+
+    } else if (this.click === 'payment-order') {
+
+      this.showPaymentOrder();
+
+
+    } else if (this.click === 'currencies') {
+
+      this.showCurrencies();
+
+
+    } else if (this.click === 'pay-order') {
+
+      this.showPayOrder();
+
+    } else if (this.click === 'transfer-order') {
+
+      this.showTransferOrder();
+
+    } else if (this.click === 'addLegalAccount') {
+
+      this.showAddLegalAccount();
+
+    } else if (this.click === 'addIndividualAccount') {
+
+      this.showAddIndividualAccount();
+
+    } else if (this.click === 'legals') {
+
+      this.showLegals();
+
+    } else if(this.click === 'individuals') {
+
+      this.showIndividuals();
     }
   }
 
   homePage() {
 
+
     this.router.navigateByUrl('/bank/' + this.idBank + '/home');
-    location.reload();
+    this.showHome();
+
 
   }
 
   getCountries() {
-    console.log('Je l radis jebo te konj');
+
     this.router.navigateByUrl('/bank/' + this.idBank + '/countries');
-    location.reload();
+    this.showCountries();
 
   }
 
   getCities() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/city');
-    location.reload();
+    this.showCities();
 
   }
 
   paymentOrderClick() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/payment-order');
-    location.reload();
+    this.showPaymentOrder();
   }
 
 
   paymentCheckk() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/payment-check/paymanent/undefined');
-    location.reload();
+    this.showPaymentCheck();
   }
 
   getActivities() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/activities');
-    location.reload();
+    this.showActivities();
   }
 
   getBankAccounts() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/bankAccounts');
-    location.reload();
+    this.showBankAccounts();
   }
 
   getCurrencies() {
 
     this.router.navigateByUrl('/bank/' + this.idBank + '/currencies');
-    location.reload();
+    this.showCurrencies();
   }
 
   payCheck() {
     this.router.navigateByUrl('/bank/' + this.idBank + '/pay-order');
-    location.reload();
+    this.showPayOrder();
   }
 
   transfer() {
     this.router.navigateByUrl('/bank/' + this.idBank + '/transfer-order');
-    location.reload();
+    this.showTransferOrder();
   }
 
   legalsPage() {
     this.router.navigateByUrl('/bank/' + this.idBank + '/legals');
-    location.reload();
+    this.showLegals();
   }
 
   individualsPage() {
     this.router.navigateByUrl('/bank/' + this.idBank + '/individuals');
-    location.reload();
+    this.showIndividuals();
   }
+
+
+  // divs handle functions
+
+  showHome() {
+
+    this.home = true;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+
+  showCountries() {
+
+    this.home = false;
+    this.countries = true;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+  showPaymentCheck() {
+
+    this.home = false;
+    this.paymentCheck = true;
+    this.city = false;
+    this.countries = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+
+  showCities() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = true;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+
+  showActivities() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = true;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+
+  showBankAccounts() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = true;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+
+  showPaymentOrder() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = true;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+  showCurrencies() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = true;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+  showPayOrder() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = true;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+  showTransferOrder() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = true;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+
+  showAddLegalAccount() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = true;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+
+  showAddIndividualAccount() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = true;
+    this.legals = false;
+    this.individuals = false;
+  }
+
+  showLegals() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = true;
+    this.individuals = false;
+  }
+
+  showIndividuals() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = true;
+
+  }
+
 
 }
