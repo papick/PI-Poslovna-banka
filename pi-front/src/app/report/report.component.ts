@@ -4,6 +4,8 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
 import {ReportModel} from "../../model/report.model";
 import {ReportService} from "../../service/reportService";
 
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'report',
   templateUrl: './report.component.html',
@@ -18,6 +20,8 @@ export class ReportComponent implements OnInit {
   public from: AbstractControl;
   public to: AbstractControl;
   public bankAccount: AbstractControl;
+
+  window: MyWindow;
 
   constructor(protected route: ActivatedRoute,
               private router: Router,
@@ -57,12 +61,25 @@ export class ReportComponent implements OnInit {
     );
 
 
-    this.reportService.createReportClient(report).subscribe();
+    this.reportService.createReportClient(report).subscribe(data => {
+
+
+    });
+
+
+
+
   }
 
   generateReportBankAccounts() {
     const idBank = this.route.snapshot.params.idBank;
-    this.reportService.createReportBankAccount(this.idBank).subscribe();
+    this.reportService.createReportBankAccount(this.idBank).subscribe(data => {
+
+      let file = new Blob([data], { type: 'application/pdf' });
+
+
+
+      FileSaver.saveAs(file, 'Bank_accounts'));
   }
 
 

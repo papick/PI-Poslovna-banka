@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import net.sf.jasperreports.engine.JRException;
 import poslovna_banka.GeneratePdfReport;
 import poslovna_banka.model.BankAccount;
+import poslovna_banka.repository.BankRepository;
 import poslovna_banka.service.ReportsService;
 
 @RestController
 @RequestMapping(value = "/api/reports")
 public class ReportsResource {
 	
+	@Autowired
+	private BankRepository bankRepository;
 	
 	@Autowired
 	private ReportsService reportsService;
@@ -36,31 +39,21 @@ public class ReportsResource {
 		
 		ArrayList<BankAccount> accounts = (ArrayList<BankAccount>) reportsService.getBankAccountsByBank(id);
 		
+		String bankName = bankRepository.findOne(id).getName();
 
-        ByteArrayInputStream bis = GeneratePdfReport.accountsReport(accounts);
+        ByteArrayInputStream bis = GeneratePdfReport.accountsReport(accounts,bankName);
         
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=accounts.pdf");
 		
 		
-		return  ResponseEntity
+		return ResponseEntity
 	            .ok()
 	            .headers(headers)
 	            .contentType(MediaType.APPLICATION_PDF)
 	            .body(new InputStreamResource(bis));
 
-		/*ArrayList<Currency> currencies = (ArrayList<Currency>) currencyService.getCurrencies();
-
-        ByteArrayInputStream bis = GeneratePdfReport.citiesReport(currencies);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
-
-	return ResponseEntity
-            .ok()
-            .headers(headers)
-            .contentType(MediaType.APPLICATION_PDF)
-            .body(new InputStreamResource(bis)); */
+		
 }
 
 }
