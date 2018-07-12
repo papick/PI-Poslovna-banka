@@ -1,6 +1,7 @@
 package poslovna_banka.resource;
 
 import java.io.File;
+import java.text.ParseException;
 
 import javax.xml.bind.JAXBException;
 
@@ -29,20 +30,35 @@ public class AnalyticsOfStatementResource {
 
 	// nalog za isplatu sacuvaj
 	@GetMapping("/save/xml/{fileName}")
-	public AnalyticOfStatement saveAnalytics(@PathVariable String fileName) throws JAXBException {
+	public AnalyticOfStatement saveAnalytics(@PathVariable String fileName) throws JAXBException, ParseException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.saveAnalyticsOfStatements(file);
 	}
-
+	
+	// nalog za naplatu sacuvaj
+	@GetMapping("/save/xml-payment/{fileName}")
+	public AnalyticOfStatement saveAnalyticsPayment(@PathVariable String fileName) throws JAXBException, ParseException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.saveAnalyticsOfStatementsPayment(file);
+	}
+	//nalog za naplatu ucitaj
 	@GetMapping("xml-naplata/{fileName}")
 	public AnalyticOfStatement loadXMLPayment(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.getPaymentAnalyticsOfStatements(file);
 	}
 
+	//nalog za prenos ucitaj
 	@GetMapping("xml-prenos/{fileName}")
 	public AnalyticOfStatement loadXMLTransfer(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		return analyticService.getPaymentAnalyticsOfStatements(file);
+	}
+	
+	// nalog za prenos sacuvaj
+	@GetMapping("/save/xml-transfer/{fileName}")
+	public AnalyticOfStatement saveAnalyticsTransfer(@PathVariable String fileName) throws JAXBException, ParseException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.saveAnalyticsOfStatementsTransfer(file);
 	}
 }

@@ -46,12 +46,10 @@ public class BankAccountServiceImpl implements BankAccountService {
 	public BankAccount modifyLegalBankAccount(BankAccountDTO ba, Long id) {
 		BankAccount updated = repo.findOne(id);
 		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
-		//updated.setDateOfOpenning(ba.getDateOfOpenning());
-		//updated.setIndividual(ba.getIndividual());
 		updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
-		updated.setCurrency(currRepo.findByName(ba.getCurrency()));
+		updated.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		updated.setMailReporting(ba.isMailReporting());
 		return repo.save(updated);
 	}
@@ -60,12 +58,10 @@ public class BankAccountServiceImpl implements BankAccountService {
 	public BankAccount modifyIndividualBankAccount(BankAccountDTO ba, Long id) {
 		BankAccount updated = repo.findOne(id);
 		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
-		//updated.setDateOfOpenning(ba.getDateOfOpenning());
 		updated.setIndividual(individualRepo.findByName(ba.getIndividual()));
-		//updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
-		updated.setCurrency(currRepo.findByName(ba.getCurrency()));
+		updated.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		updated.setMailReporting(ba.isMailReporting());
 		return repo.save(updated);
 	}
@@ -102,6 +98,14 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Override
 	public BankAccount getBankAccount(Long id) {
 		return repo.findOne(id);
+	}
+
+	@Override
+	public void cancelAccount(Long id) {
+		BankAccount account = repo.findOne(id);
+		account.setValid(false);
+		repo.save(account);
+		
 	}
 
 }

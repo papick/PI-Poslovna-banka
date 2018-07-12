@@ -23,5 +23,7 @@ public interface BankAccountService {
 	public List<BankAccount> getAllIndividuals();
 	
 	public BankAccount getBankAccount(Long id);
+	
+	public void cancelAccount(Long id);
 
 }
