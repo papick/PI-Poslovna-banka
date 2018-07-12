@@ -48,6 +48,8 @@ import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form
 import {ExchangeRateInCurrencyFormComponent} from "./exchange-rate-in-currency-form/exchange-rate-in-currency-form.component";
 import {ExchangeRateService} from "../service/exchangeRateService";
 import {ExchangeRateInCurrencyService} from '../service/exchangeRateInCurrencyService';
+import {ReportComponent} from "./report/report.component";
+import {ReportService} from "../service/reportService";
 
 
 @NgModule({
@@ -79,6 +81,7 @@ import {ExchangeRateInCurrencyService} from '../service/exchangeRateInCurrencySe
     ExchangeRateComponent,
     ExchangeRateFormComponent,
     ExchangeRateInCurrencyFormComponent,
+    ReportComponent,
 
 
   ],
@@ -108,6 +111,7 @@ import {ExchangeRateInCurrencyService} from '../service/exchangeRateInCurrencySe
     RecessionService,
     ExchangeRateService,
     ExchangeRateInCurrencyService,
+    ReportService,
 
 
   ],

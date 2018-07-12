@@ -495,5 +495,10 @@ export class BankComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
+  createReport(){
+    const idBank= this.route.snapshot.params.idBank;
+    this.router.navigateByUrl(idBank + '/create/report');
+  }
+
 
 }
