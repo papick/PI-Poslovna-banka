@@ -17,6 +17,7 @@ import {AddLegalsComponent} from "./add-legals/add-legals.component";
 import {AddBankAccountIndividualComponent} from "./add-bank-account-individual/add-bank-account-individual.component";
 import {CurrencyFormComponent} from "./currency-form/currency-form.component";
 import {ComboZoomCountriesComponent} from "./combo-zoom-countries/combo-zoom-countries.component";
+
 import {PayCheckComponent} from "./pay-check/pay-check.component";
 import {TransferCheckComponent} from "./transfer-check/transfer-check.component";
 import {AddLegalAccountComponent} from "./add-legal-account/add-legal-account.component";
@@ -42,6 +43,11 @@ import {ButtonModule} from "primeng/button";
 import {DialogModule} from "primeng/dialog";
 import {SharedModule} from 'primeng/components/common/shared';
 import {DropdownModule} from "primeng/primeng";
+import {ExchangeRateComponent} from "./exchange-rate/exchange-rate.component";
+import {ExchangeRateFormComponent} from "./exchange-rate-form/exchange-rate-form.component";
+import {ExchangeRateInCurrencyFormComponent} from "./exchange-rate-in-currency-form/exchange-rate-in-currency-form.component";
+import {ExchangeRateService} from "../service/exchangeRateService";
+import {ExchangeRateInCurrencyService} from '../service/exchangeRateInCurrencyService';
 
 
 @NgModule({
@@ -70,6 +76,9 @@ import {DropdownModule} from "primeng/primeng";
     LegalsComponent,
     ClientsComponent,
     IndividualsComponent,
+    ExchangeRateComponent,
+    ExchangeRateFormComponent,
+    ExchangeRateInCurrencyFormComponent,
 
 
   ],
@@ -78,13 +87,13 @@ import {DropdownModule} from "primeng/primeng";
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     ButtonModule,
     DialogModule,
     FormsModule,
     DropdownModule,
-    SharedModule
+    SharedModule,
+
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
@@ -96,7 +105,10 @@ import {DropdownModule} from "primeng/primeng";
     BankAccountService,
     CurrencyService,
     AnalyticsOfStatementService,
-    RecessionService
+    RecessionService,
+    ExchangeRateService,
+    ExchangeRateInCurrencyService,
+
 
   ],
   bootstrap: [AppComponent]

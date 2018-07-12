@@ -8,7 +8,7 @@ import poslovna_banka.model.Currency;
 @Repository
 public interface CurrencyRepository extends CrudRepository<Currency, Long> {
 
-	public Currency findByName(String name);
+	Currency findOneByName(String name);
 
 	Currency findOneByOfficialCode(String officialCode);
 }

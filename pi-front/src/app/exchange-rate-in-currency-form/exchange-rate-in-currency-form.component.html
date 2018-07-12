@@ -1,0 +1,58 @@
+<br>
+
+<h2 class="center">Novi kurs u valuti</h2>
+
+<div class="offset-3 col-md-6" style="margin-bottom:50px">
+
+  <form [formGroup]="form" >
+
+    <div class="form-group" >
+
+      <label style="margin-top:20px;">Osnovna valuta:</label>
+      <select name="primaryCurrency" class="form-control" [formControl]="primaryCurrency" >
+        <option></option>
+        <option *ngFor="let cur of currencies">{{cur.name}}</option>
+      </select>
+
+      <label style="margin-top:20px;">Prema valuti:</label>
+      <select name="toOtherCurrency" class="form-control" [formControl]="toOtherCurrency" >
+        <option></option>
+        <option *ngFor="let cur of currencies">{{cur.name}}</option>
+      </select>
+
+      <label style="margin-top:20px">Kupovni kurs:</label>
+      <input name="buying" class="form-control margin"  id="input-buying"
+             placeholder="Kupovni kurs" [formControl]="buying" >
+      <small class="form-text error" *ngIf="buying.errors?.required && buying.touched">
+        Kupovni kurs je obavezan!
+      </small>
+
+      <label style="margin-top:20px">Srednji kurs:</label>
+      <input name="middle" class="form-control margin"  id="input-middle"
+             placeholder="Srednji kurs" [formControl]="middle" >
+      <small class="form-text error" *ngIf="middle.errors?.required && middle.touched">
+        Srednji kurs je obavezan!
+      </small>
+
+
+      <label style="margin-top:20px">Prodajni kurs:</label>
+      <input name="sell" class="form-control margin"  id="input-sell"
+             placeholder="Prodajni kurs" [formControl]="sell" >
+      <small class="form-text error" *ngIf="sell.errors?.required && sell.touched">
+        Prodajni kurs je obavezan!
+      </small>
+
+      <br>
+      <br>
+
+
+      <button class="btn btn-success" style="width: 100%"  (click)="confirmClick()" [disabled]="!form.valid">DODAJ KURS U VALUTI</button>
+      <button class="btn btn-secondary" style="width: 100% ; margin-top: 20px"  (click)="exit()">Zatvori</button>
+
+
+
+
+    </div>
+
+  </form>
+</div>

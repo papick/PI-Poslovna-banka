@@ -18,6 +18,7 @@ export class BankComponent implements OnInit {
   activities = false;
   bankAccounts = false;
   paymentOrder = false;
+  exchangeRate = false;
 
   currencies = false;
 
@@ -109,6 +110,10 @@ export class BankComponent implements OnInit {
 
       this.showIndividuals();
     }
+    else if(this.click === 'exchangeRate') {
+
+      this.showExchangeRate();
+    }
   }
 
   homePage() {
@@ -185,6 +190,11 @@ export class BankComponent implements OnInit {
     this.showIndividuals();
   }
 
+  exchangeRateClick() {
+    this.router.navigateByUrl('/bank/' + this.idBank + '/exchangeRate');
+    this.showExchangeRate();
+  }
+
 
   // divs handle functions
 
@@ -204,6 +214,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
 
@@ -223,6 +234,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
   showPaymentCheck() {
@@ -241,6 +253,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
 
@@ -260,6 +273,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
 
@@ -279,6 +293,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
 
@@ -298,6 +313,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
 
@@ -317,6 +333,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
   showCurrencies() {
@@ -335,6 +352,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
   showPayOrder() {
@@ -353,6 +371,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
   showTransferOrder() {
@@ -371,6 +390,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
 
@@ -390,6 +410,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
 
@@ -409,6 +430,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = true;
     this.legals = false;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
   showLegals() {
@@ -427,6 +449,7 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = true;
     this.individuals = false;
+    this.exchangeRate = false;
   }
 
   showIndividuals() {
@@ -445,7 +468,27 @@ export class BankComponent implements OnInit {
     this.addIndividualAccount = false;
     this.legals = false;
     this.individuals = true;
+    this.exchangeRate = false;
 
+  }
+
+  showExchangeRate() {
+
+    this.home = false;
+    this.countries = false;
+    this.paymentCheck = false;
+    this.city = false;
+    this.activities = false;
+    this.bankAccounts = false;
+    this.paymentOrder = false;
+    this.currencies = false;
+    this.payOrder = false;
+    this.transferOrder = false;
+    this.addLegalAccount = false;
+    this.addIndividualAccount = false;
+    this.legals = false;
+    this.individuals = false;
+    this.exchangeRate = true;
   }
 
 
