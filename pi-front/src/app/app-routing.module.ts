@@ -24,11 +24,12 @@ const routes: Routes = [
   {path: '', redirectTo: 'log-in', pathMatch: 'full'},
   {path: 'log-in', component: LogInComponent},
   {path: 'bank/:idBank', component: BankAccountsComponent},
-  {path: 'bank/:idBank/:idExchangeRate/form-exchange-rate-in-currency', component: ExchangeRateInCurrencyFormComponent},
   {path: 'bank/:idBank/form-exchange-rate', component: ExchangeRateFormComponent},
   {path: 'bank/:idBank/addIndividual', component: AddBankAccountIndividualComponent},
   {path: 'bank/:idBank/addLegalEntity', component: AddLegalsComponent},
   {path: 'bank/:idBank/:click/paymanent/:type', component: BankComponent},
+
+  {path: 'bank/:idBank/:idExchangeRate/form-exchange-rate-in-currency', component: ExchangeRateInCurrencyFormComponent},
   {path: 'bank/:idBank/:click', component: BankComponent},
   {path: 'bank/:idBank/:click/:id', component: BankComponent},
   {path: 'bank/:idBank/country/city/:mode', component: AddCityComponent},
