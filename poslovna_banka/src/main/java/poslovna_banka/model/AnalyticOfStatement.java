@@ -85,7 +85,6 @@ public class AnalyticOfStatement {
 	@OneToOne
 	private DailyAccountState dailyAccountState;
 	
-	@NotNull
 	private String code;
 
 	public AnalyticOfStatement() {

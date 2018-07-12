@@ -58,7 +58,7 @@ export class BankComponent implements OnInit {
       this.showHome();
 
     } else if (this.click === 'payment-check') {
-
+      this.showPaymentCheck();
 
     } else if (this.click === 'countries') {
 
@@ -106,11 +106,11 @@ export class BankComponent implements OnInit {
 
       this.showLegals();
 
-    } else if(this.click === 'individuals') {
+    } else if (this.click === 'individuals') {
 
       this.showIndividuals();
     }
-    else if(this.click === 'exchangeRate') {
+    else if (this.click === 'exchangeRate') {
 
       this.showExchangeRate();
     }
@@ -489,6 +489,15 @@ export class BankComponent implements OnInit {
     this.legals = false;
     this.individuals = false;
     this.exchangeRate = true;
+  }
+
+  logout() {
+    this.router.navigateByUrl('');
+  }
+
+  createReport(){
+    const idBank= this.route.snapshot.params.idBank;
+    this.router.navigateByUrl(idBank + '/create/report');
   }
 
 

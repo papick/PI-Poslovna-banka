@@ -1,0 +1,44 @@
+<div class="offset-1">
+  <img src="{{imageRoute}}" class="img" style="height: 150px">
+</div>
+<div style="text-align: center">
+  <div style="margin-top: 60px;">
+    <form [formGroup]="form">
+
+      <div class="form-group">
+          <h3>Izvod klijenta za vremenski interval:</h3>
+          <label>Broj racuna:</label>
+          <input [formControl]="bankAccount" type="text" style="width: 420px">
+          <div style="margin-top: 30px;">
+            <label>Od:</label>
+            <input type="date" [formControl]="from" style="width: 200px">
+          </div>
+          <div style="margin-top: 30px;">
+            <label>Do:</label>
+            <input type="date" [formControl]="to" style="width: 200px">
+          </div>
+
+        <button style="   border-radius: 12px;margin-top: 20px;
+    height: 50px;
+    font-size: 25px;
+    background-color: #4d94ff;
+    color: white;
+    border: 2px solid #4d94ff;" (click)="generateReportClient()">Generisi izvod
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+  <div style=";margin-top: 60px">
+    <h3>Spisak racuna :</h3>
+
+    <button style="   border-radius: 12px; margin-top: 20px;
+    height: 50px;
+    font-size: 25px;
+    background-color: #4d94ff;
+    color: white;
+    border: 2px solid #4d94ff;" (click)="generateReportBankAccounts()">Generisi izvod
+    </button>
+  </div>
+</div>
