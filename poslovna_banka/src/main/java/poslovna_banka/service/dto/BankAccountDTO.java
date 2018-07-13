@@ -2,7 +2,7 @@ package poslovna_banka.service.dto;
 
 public class BankAccountDTO {
 
-	private String number;
+	//private String number;
 
 	private String dateOfOpenning;
 
@@ -20,10 +20,10 @@ public class BankAccountDTO {
 	
 	public BankAccountDTO(){}
 
-	public BankAccountDTO(String number, String dateOfOpenning, boolean valid, String bank, String individual,
+	public BankAccountDTO(/*String number,*/ String dateOfOpenning, boolean valid, String bank, String individual,
 			String legalEntity, String currency, boolean mr) {
 		super();
-		this.number = number;
+		//this.number = number;
 		this.dateOfOpenning = dateOfOpenning;
 		this.valid = valid;
 		this.bank = bank;
@@ -33,13 +33,14 @@ public class BankAccountDTO {
 		this.mailReporting = mr;
 	}
 
+	/*
 	public String getNumber() {
 		return number;
 	}
 
 	public void setNumber(String number) {
 		this.number = number;
-	}
+	} */
 
 	public String getDateOfOpenning() {
 		return dateOfOpenning;

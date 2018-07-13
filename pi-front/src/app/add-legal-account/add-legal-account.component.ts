@@ -26,7 +26,7 @@ export class AddLegalAccountComponent implements OnInit {
   public mailreporting: AbstractControl;
 
   bankAccount = {
-    number: '',
+    //number: '',
     dateOfOpenning: '',
     valid: true,
     bank: '',
@@ -42,14 +42,14 @@ export class AddLegalAccountComponent implements OnInit {
               private bankAccountService: BankAccountService, protected route: ActivatedRoute,
               private router: Router) {
     this.form = this.fb.group({
-      'accountNumber': ['', Validators.compose([Validators.required])],
+     // 'accountNumber': ['', Validators.compose([Validators.required])],
       'currency': ['', Validators.compose([Validators.required])],
       'legal': ['', Validators.compose([Validators.required])],
       'mailreporting': [''],
 
     });
 
-    this.accountNumber = this.form.controls['accountNumber'];
+   // this.accountNumber = this.form.controls['accountNumber'];
     this.currency = this.form.controls['currency'];
     this.legal = this.form.controls['legal'];
     this.mailreporting = this.form.controls['mailreporting'];
@@ -65,7 +65,7 @@ export class AddLegalAccountComponent implements OnInit {
       this.methodName = 'Izmeni';
       const id = this.route.snapshot.params.id;
       this.bankAccountService.getBankAccount(id).subscribe(data => {
-        this.form.controls['accountNumber'].setValue(data.number);
+       // this.form.controls['accountNumber'].setValue(data.number);
         this.form.controls['currency'].setValue(data.currency.name);
         this.form.controls['legal'].setValue(data.legalEntity.name);
         this.form.controls['mailreporting'].setValue(data.mailReporting);
@@ -99,7 +99,7 @@ export class AddLegalAccountComponent implements OnInit {
     this.bankAccount.bank = this.route.snapshot.params.idBank;
     this.bankAccount.legalEntity = this.legal.value;
     this.bankAccount.currency = this.currency.value;
-    this.bankAccount.number = this.accountNumber.value;
+   // this.bankAccount.number = this.accountNumber.value;
     this.bankAccount.mailReporting = this.mailreporting.value;
     this.bankAccountService.editLegalBankAccount(this.bankAccount, id).subscribe(data => {
       this.editResponse = data;
@@ -112,7 +112,7 @@ export class AddLegalAccountComponent implements OnInit {
     this.bankAccount.bank = this.route.snapshot.params.idBank;
     this.bankAccount.legalEntity = this.legal.value;
     this.bankAccount.currency = this.currency.value;
-    this.bankAccount.number = this.accountNumber.value;
+    //this.bankAccount.number = this.accountNumber.value;
     this.bankAccount.mailReporting = this.mailreporting.value;
 
 

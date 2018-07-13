@@ -36,8 +36,16 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	@Override
 	public BankAccount addBankAccount(BankAccount ba) {
-		String numberOfAccount = (ba.getBank().getCode()).concat(ba.getNumber());
-		System.out.println("Broj racuna => " + numberOfAccount);
+		
+		/*String numberOfAccount = (ba.getBank().getCode()).concat(ba.getNumber());
+		System.out.println("Broj racuna => " + numberOfAccount);*/
+		
+		String bankPIB = ba.getBank().getPIB();
+		String controlNumber = "97";
+		int numb = ((List<BankAccount>) repo.findAll()).size()+1;
+		String formatted = String.format("%013d", numb);
+		String numberOfAccount = bankPIB + formatted + controlNumber;		
+		System.out.println("BROJ RACUNAAA " + numberOfAccount);
 		ba.setNumber(numberOfAccount);
 		return repo.save(ba);
 	}
@@ -47,7 +55,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 		BankAccount updated = repo.findOne(id);
 		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
 		updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
-		updated.setNumber(ba.getNumber());
+		//updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
 		updated.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		updated.setMailReporting(ba.isMailReporting());
@@ -59,7 +67,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 		BankAccount updated = repo.findOne(id);
 		updated.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
 		updated.setIndividual(individualRepo.findByName(ba.getIndividual()));
-		updated.setNumber(ba.getNumber());
+		//updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
 		updated.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		updated.setMailReporting(ba.isMailReporting());

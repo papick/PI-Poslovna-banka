@@ -1,6 +1,5 @@
 package poslovna_banka;
 
-import java.io.File;
 import java.text.ParseException;
 
 import javax.annotation.PostConstruct;
@@ -16,6 +15,8 @@ import poslovna_banka.model.City;
 import poslovna_banka.model.Country;
 import poslovna_banka.model.Currency;
 import poslovna_banka.model.DailyAccountState;
+import poslovna_banka.model.ExchangeRate;
+import poslovna_banka.model.ExchangeRateInCurrency;
 import poslovna_banka.model.Individual;
 import poslovna_banka.model.LegalEntity;
 import poslovna_banka.model.PaymentType;
@@ -27,6 +28,8 @@ import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CountryRepository;
 import poslovna_banka.repository.CurrencyRepository;
 import poslovna_banka.repository.DailyAccountStateRepository;
+import poslovna_banka.repository.ExchangeRateInCurrencyRepository;
+import poslovna_banka.repository.ExchangeRateRepository;
 import poslovna_banka.repository.IndividualRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.repository.PaymentTypeRepository;
@@ -71,6 +74,12 @@ public class TestData {
 	
 	@Autowired
 	private AnalyticsOfStatementService analyticService;
+	
+	@Autowired
+	private ExchangeRateRepository exchangeRateRepository;
+	
+	@Autowired
+	private ExchangeRateInCurrencyRepository exchangeRateInCurrencyRepository;
 
 	@PostConstruct
 	private void init() throws JAXBException, ParseException {
@@ -196,5 +205,33 @@ public class TestData {
 		//analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_2.xml"));
 		//analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_1.xml"));
 		//analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_2.xml"));
+		
+		ExchangeRate exchangeRate1 = new ExchangeRate();
+		exchangeRate1.setBank(bank);
+		exchangeRate1.setDate("2018-07-12");
+		exchangeRate1.setAppliedFromDate("2018-07-13");
+		exchangeRate1.setNumber(2);
+		exchangeRateRepository.save(exchangeRate1);
+		
+		ExchangeRateInCurrency erc1 = new ExchangeRateInCurrency();
+		erc1.setExchangeRate(exchangeRate1);
+		erc1.setPrimaryCurrency(currency1);
+		erc1.setToOtherCurrency(currency2);
+		erc1.setBuying("120.50");
+		erc1.setMiddle("121.00");
+		erc1.setSelling("122.30");
+		exchangeRateInCurrencyRepository.save(erc1);
+		
+		ExchangeRateInCurrency erc2 = new ExchangeRateInCurrency();
+		erc2.setExchangeRate(exchangeRate1);
+		erc2.setPrimaryCurrency(currency3);
+		erc2.setToOtherCurrency(currency2);
+		erc2.setBuying("92.80");
+		erc2.setMiddle("93.50");
+		erc2.setSelling("94.00");
+		exchangeRateInCurrencyRepository.save(erc2);
+		
+		
+		
 	}
 }
