@@ -26,6 +26,9 @@ export class PayCheckComponent implements OnInit {
   public modelApproval: AbstractControl;
   public referenceNumberApproval: AbstractControl;
 
+  public f: FormGroup;
+  public file: AbstractControl;
+
   constructor(private fb: FormBuilder,
               private analyticeService: AnalyticsOfStatementService,
               private route: ActivatedRoute,
@@ -45,6 +48,10 @@ export class PayCheckComponent implements OnInit {
       'modelApproval': ['', Validators.compose([Validators.required])],
       'referenceNumberApproval': ['', Validators.compose([Validators.required])],
     })
+    this.f = this.fb.group({
+      'file': [''],
+    })
+    this.file = this.f.controls['file'];
 
     this.debtor = this.form.controls['debtor'];
     this.purpose = this.form.controls['purpose'];
@@ -62,75 +69,52 @@ export class PayCheckComponent implements OnInit {
   }
 
   ngOnInit() {
+    const type1 = this.route.snapshot.params.type;
+    if (type1 === 'undefined') {
+    } else {
+
+      const type = this.route.snapshot.params.type;
+      this.analyticeService.getPayCheck(type).subscribe(data => {
+        this.form.controls['debtor'].setValue(data.debtor);
+        this.form.controls['purpose'].setValue(data.purposeOfPayment);
+        this.form.controls['creditor'].setValue(data.creditor);
+        this.form.controls['sum'].setValue(data.sum);
+        this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
+        this.form.controls['modelAssingment'].setValue(data.modelAssigments);
+        this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
+        this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
+        this.form.controls['modelApproval'].setValue(data.modelApproval);
+        this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
+        this.form.controls['currency'].setValue(data.paymentCurrency.name);
+        this.form.controls['code'].setValue(data.code);
+      });
+    }
   }
 
-  ucitaj() {
+  load() {
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/pay-order/paymanent/nalog_za_naplatu_1');
 
-    this.analyticeService.getPayCheck('nalog_za_naplatu_1').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
-      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
-      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
-      this.form.controls['modelApproval'].setValue(data.modelApproval);
-      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
-      this.form.controls['currency'].setValue(data.paymentCurrency.name);
-      this.form.controls['code'].setValue(data.code);
-    });
+    console.log('file');
+    console.log(this.file.value);
+    const path = this.file.value;
+    const splited = path.split("\\");
+    const fileXML = splited[splited.length - 1];
+    const splitXML = fileXML.split('.');
+    const file = splitXML[0];
+    console.log(file);
+
+    this.router.navigateByUrl('/bank/' + idBank + '/pay-order/paymanent/' + file);
+    location.reload();
+
   }
 
-  ucitaj2() {
-    const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/pay-order/paymanent/nalog_za_naplatu_2');
-
-    this.analyticeService.getPayCheck('nalog_za_naplatu_2').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
-      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
-      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
-      this.form.controls['modelApproval'].setValue(data.modelApproval);
-      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
-      this.form.controls['currency'].setValue(data.paymentCurrency.name);
-      this.form.controls['code'].setValue(data.code);
-    });
-  }
-
-
-  ucitaj3() {
-    const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/pay-order/paymanent/nalog_za_naplatu_3');
-
-    this.analyticeService.getPayCheck('nalog_za_naplatu_3').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
-      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
-      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
-      this.form.controls['modelApproval'].setValue(data.modelApproval);
-      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
-      this.form.controls['currency'].setValue(data.paymentCurrency.name);
-      this.form.controls['code'].setValue(data.code);
-    });
-  }
 
   done() {
     const type = this.route.snapshot.params.type;
     this.analyticeService.savePayCheck(type).subscribe();
 
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/pay-order');
+    this.router.navigateByUrl('/bank/' + idBank + '/pay-order/paymanent/undefined');
     location.reload();
 
   }

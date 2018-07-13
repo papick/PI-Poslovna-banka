@@ -1,16 +1,14 @@
 <div>
 
-  <div style="margin-left: 40%;margin-top: 50px;">
-    <table style="width: 30%">
-      <tr style=" border: 1px solid #4d94ff;height: 40px">
-        <th  style=" border: 1px solid #4d94ff;text-align: center">nalog_za_isplatu_1.xml</th>
-        <th (click)="load1()" style=" border: 1px solid #4d94ff;text-align: center;">Ucitaj</th>
-      </tr>
-      <tr style=" border: 1px solid #4d94ff;height: 40px">
-        <th  style=" border: 1px solid #4d94ff;text-align: center">nalog_za_isplatu_2.xml</th>
-        <th (click)="load2()" style=" border: 1px solid #4d94ff;text-align: center;">Ucitaj</th>
-      </tr>
-    </table>
+  <div style="margin-left: 45%;margin-top: 50px;">
+    <form [formGroup]="f">
+      <div class="form-group">
+        <input name="Izaberi datoteku" type="file" [formControl]="file"  >
+
+      </div>
+    </form>
+    <button (click)="load()">Ucitaj nalog</button>
+
   </div>
   <div style="margin-top: 70px;margin-left: 30%;margin-right:30%;border-style: solid; border-width: 2px;">
     <div style="margin-left: 150px;margin-top: 20px;">

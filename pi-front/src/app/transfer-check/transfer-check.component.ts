@@ -27,6 +27,9 @@ export class TransferCheckComponent implements OnInit {
   public referenceNumberApproval: AbstractControl;
   public urgent: AbstractControl;
 
+  public f: FormGroup;
+  public file: AbstractControl;
+
   constructor(private fb: FormBuilder, private analyticeService: AnalyticsOfStatementService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -46,6 +49,10 @@ export class TransferCheckComponent implements OnInit {
       'referenceNumberApproval': ['', Validators.compose([Validators.required])],
       'urgent': [''],
     })
+    this.f = this.fb.group({
+      'file': [''],
+    })
+    this.file = this.f.controls['file'];
 
     this.debtor = this.form.controls['debtor'];
     this.purpose = this.form.controls['purpose'];
@@ -64,78 +71,53 @@ export class TransferCheckComponent implements OnInit {
   }
 
   ngOnInit() {
+    const type1 = this.route.snapshot.params.type;
+    if (type1 === 'undefined') {
+    } else {
+      const type = this.route.snapshot.params.type;
+      this.analyticeService.getTransferCheck(type).subscribe(data => {
+        this.form.controls['debtor'].setValue(data.debtor);
+        this.form.controls['purpose'].setValue(data.purposeOfPayment);
+        this.form.controls['creditor'].setValue(data.creditor);
+        this.form.controls['sum'].setValue(data.sum);
+        this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
+        this.form.controls['modelAssingment'].setValue(data.modelAssigments);
+        this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
+        this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
+        this.form.controls['modelApproval'].setValue(data.modelApproval);
+        this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
+        this.form.controls['currency'].setValue(data.paymentCurrency.name);
+        this.form.controls['code'].setValue(data.code);
+        this.form.controls['urgent'].setValue(data.emergency);
+      });
+    }
   }
 
 
-  ucitaj() {
+  load() {
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_1');
 
-    this.analyticeService.getTransferCheck('nalog_za_prenos_1').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
-      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
-      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
-      this.form.controls['modelApproval'].setValue(data.modelApproval);
-      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
-      this.form.controls['currency'].setValue(data.paymentCurrency.name);
-      this.form.controls['code'].setValue(data.code);
-      this.form.controls['urgent'].setValue(data.emergency);
-    });
+    console.log('file');
+    console.log(this.file.value);
+    const path = this.file.value;
+    const splited = path.split("\\");
+    const fileXML = splited[splited.length - 1];
+    const splitXML = fileXML.split('.');
+    const file = splitXML[0];
+    console.log(file);
+
+    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/' + file);
+    location.reload();
+
   }
 
-  ucitaj2() {
-    const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_2');
-
-    this.analyticeService.getTransferCheck('nalog_za_prenos_2').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
-      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
-      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
-      this.form.controls['modelApproval'].setValue(data.modelApproval);
-      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
-      this.form.controls['currency'].setValue(data.paymentCurrency.name);
-      this.form.controls['code'].setValue(data.code);
-      this.form.controls['urgent'].setValue(data.emergency);
-    });
-  }
-
-  ucitaj3() {
-    const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_3');
-
-    this.analyticeService.getTransferCheck('nalog_za_prenos_3').subscribe(data => {
-      this.form.controls['debtor'].setValue(data.debtor);
-      this.form.controls['purpose'].setValue(data.purposeOfPayment);
-      this.form.controls['creditor'].setValue(data.creditor);
-      this.form.controls['sum'].setValue(data.sum);
-      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
-      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
-      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
-      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
-      this.form.controls['modelApproval'].setValue(data.modelApproval);
-      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
-      this.form.controls['currency'].setValue(data.paymentCurrency.name);
-      this.form.controls['code'].setValue(data.code);
-      this.form.controls['urgent'].setValue(data.emergency);
-    });
-  }
 
   confirmClick() {
     const type = this.route.snapshot.params.type;
     this.analyticeService.saveTransferCheck(type).subscribe();
 
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order');
+    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/undefined');
     location.reload();
   }
 }
