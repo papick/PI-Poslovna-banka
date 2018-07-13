@@ -68,7 +68,13 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	@Override
 	public List<BankAccount> getAllBankAccounts() {
-		return (List<BankAccount>) repo.findAll();
+		List<BankAccount> accounts = new ArrayList<>() ;
+		repo.findAll().forEach(ba -> {
+			if(ba.isValid()) {
+				accounts.add(ba);
+			}
+		});
+		return accounts;
 	}
 
 	@Override

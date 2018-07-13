@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clearing>
+    <accountBankForm>908070605040302010</accountBankForm>
+    <accountBankTo>102030405060708090</accountBankTo>
+    <currency>EUR</currency>
+    <currencyDate>2018-07-13</currencyDate>
+    <id>1</id>
+    <payments>
+        <payment>
+            <accountCreditor>1234567890000</accountCreditor>
+            <creditor>BankAccount [id=3, number=1234567890000, dateOfOpenning=29-05-2018, valid=true, bank=poslovna_banka.model.Bank@3baf22d7, individual=null, legalEntity=poslovna_banka.model.LegalEntity@60d5b803, currency=poslovna_banka.model.Currency@3f300ebd]</creditor>
+            <currencyDate>2018-07-13</currencyDate>
+            <dateOfReceipt>2018-07-13</dateOfReceipt>
+            <debtor>Recesija brate</debtor>
+            <debtorAccount>1234567891111</debtorAccount>
+            <id>1</id>
+            <modelApproval>97</modelApproval>
+            <modelAssigments>97</modelAssigments>
+            <paymentCurrency>EUR</paymentCurrency>
+            <purposeOfPayment>Ukidanje racuna</purposeOfPayment>
+            <referenceNumberAssigments>NE ZNAM</referenceNumberAssigments>
+            <referenceNumberCreditor>ne znam</referenceNumberCreditor>
+            <sum>1000.0</sum>
+        </payment>
+    </payments>
+    <sumAll>1000.0</sumAll>
+    <swiftBankFrom>87654321</swiftBankFrom>
+    <swiftBankTo>12345678</swiftBankTo>
+</clearing>

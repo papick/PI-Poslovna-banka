@@ -71,7 +71,7 @@ public class AnalyticsOfStatementResource {
 	public AnalyticOfStatement loadXMLTransfer(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		AnalyticOfStatement analytic = analyticService.getPaymentAnalyticsOfStatements(file);
-		analyticService.generateBankTransfer(analytic);
+	
 		return analytic;
 	}
 	

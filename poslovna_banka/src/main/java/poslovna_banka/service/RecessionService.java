@@ -15,8 +15,8 @@ public class RecessionService {
 	@Autowired
 	private RecessionRepository recessionRepository;
 	
-	public void addRecession(Recession recession) {
-		recessionRepository.save(recession);
+	public Recession addRecession(Recession recession) {
+		return recessionRepository.save(recession);
 	}
 	
 	public List<Recession> getAllRecessions(Recession recession) {

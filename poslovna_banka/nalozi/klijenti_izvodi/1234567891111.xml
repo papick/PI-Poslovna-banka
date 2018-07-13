@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Report xmlns="https://www.journaldev.com/employee">
+<initialState>5.0E8</initialState>
+<endState>4.9996E8</endState>
+<client>NN d.o.o</client>
+<analytics>
+<analytic>
+<sum>5000.0</sum>
+<type>Nalog za isplatu</type>
+</analytic>
+<analytic>
+<sum>35000.0</sum>
+<type>Nalog za isplatu</type>
+</analytic>
+</analytics>
+</Report>
