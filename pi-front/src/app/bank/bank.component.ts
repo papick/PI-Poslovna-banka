@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
+import { ClearingService } from "../../service/clearingService";
 
 @Component({
   templateUrl: './bank.component.html',
@@ -32,7 +33,8 @@ export class BankComponent implements OnInit {
   click;
 
   constructor(protected route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private clearingService : ClearingService) {
   }
 
   ngOnInit() {
@@ -116,6 +118,13 @@ export class BankComponent implements OnInit {
     }
   }
 
+  clearing(){
+    const bank = {id: this.idBank}
+    this.clearingService.clearing(bank).subscribe( data => {
+      alert("Exported clearings");
+    })
+  }
+
   homePage() {
 
 
@@ -141,7 +150,7 @@ export class BankComponent implements OnInit {
 
   paymentOrderClick() {
 
-    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-order');
+    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-order/paymanent/undefined');
     this.showPaymentOrder();
   }
 

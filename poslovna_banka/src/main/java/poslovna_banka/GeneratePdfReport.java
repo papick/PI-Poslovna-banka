@@ -143,7 +143,7 @@ public class GeneratePdfReport {
             
         
             
-            document.addTitle("Racuni banke '" + title + "'");
+            document.add(new Paragraph("Racuni banke '" + title + "'"));
             document.add(table);
             
             document.close();
@@ -164,7 +164,7 @@ public class GeneratePdfReport {
 	
 	
 	
-	public static ByteArrayInputStream clientReport(BankAccount b, List<AnalyticOfStatement> analytics, double initial, double endState) {
+	public static ByteArrayInputStream clientReport(BankAccount b, List<AnalyticOfStatement> analytics, Double initial, Double endState) {
 
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();

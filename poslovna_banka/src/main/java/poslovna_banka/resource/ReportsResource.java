@@ -127,7 +127,7 @@ public class ReportsResource {
 			}
 		}
 		
-		double initial;
+		Double initial;
 		AnalyticOfStatement a = analytics.get(0);
 		Date minDate = format.parse(a.getDateOfReceipt());
 		for(int i = 1; i < analytics.size(); ++i) {
@@ -139,7 +139,7 @@ public class ReportsResource {
 		}
 		initial = a.getDailyAccountState().getPreviousState();
 		
-		double endState;
+		Double endState;
 		AnalyticOfStatement ma = analytics.get(0);
 		Date maxDate = format.parse(ma.getDateOfReceipt());
 		for(int i = 1; i < analytics.size(); ++i) {
@@ -194,7 +194,7 @@ public class ReportsResource {
             DOMSource source = new DOMSource(doc);
             
 			StreamResult console = new StreamResult(System.out);
-			StreamResult file = new StreamResult(new File("C:/Users/Korisnik/Desktop/Nikola/" + accRepo.findOneByNumber(rep.getBankAccount()).getNumber() + ".xml"));
+			StreamResult file = new StreamResult(new File("nalozi/klijenti_izvodi/" + accRepo.findOneByNumber(rep.getBankAccount()).getNumber() + ".xml"));
 			
 			transformer.transform(source, console);
 			transformer.transform(source, file);

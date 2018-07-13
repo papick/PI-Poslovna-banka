@@ -106,11 +106,11 @@ public class TestData {
 		cityService.save(city3);
 
 		Bank bank = new Bank("001", "111", "Erste banka", "Narodnog fronta 23", "erste@gmail.com", "www.erste.com",
-				" 021 4809299", "1122");
+				" 021 4809299", "1122", "12345678" , "102030405060708090");
 		bankRepository.save(bank);
 
 		Bank bank1 = new Bank("002", "222", "Banka Intesa", "Narodnog fronta 50", "intesa@gmail.com", "www.intesa.com",
-				" 021 4809889", "3344");
+				" 021 4809889", "3344", "87654321" , "908070605040302010");
 		bankRepository.save(bank1);
 
 		User user1 = new User("milica", "milica", bank);
@@ -157,14 +157,20 @@ public class TestData {
 		
 		BankAccount bankAccount2 = new BankAccount("1234567892222", "29-05-2018", true, bank, null, le, currency1, true);
 		bankAccountRepository.save(bankAccount2);
+		
+		BankAccount bankAccount3 = new BankAccount("1234567890000", "29-05-2018", true, bank1, null, le, currency1, true);
+		bankAccountRepository.save(bankAccount3);
 
-		DailyAccountState dailyAccountState = new DailyAccountState("2018-05-18", 50000.0, 0.0, 0.0, 50000.0,
+		DailyAccountState dailyAccountState = new DailyAccountState("2018-05-18", 50000000.0, 0.0, 0.0, 50000.0,
 				bankAccount);
 		
-		DailyAccountState dailyAccountState1 = new DailyAccountState("2018-05-19", 50000.0, 0.0, 0.0, 50000.0,
+		DailyAccountState dailyAccountState1 = new DailyAccountState("2018-05-19", 500000000.0, 0.0, 0.0, 50000.0,
 				bankAccount);
+		DailyAccountState dailyAccountState2 = new DailyAccountState("2018-05-19", 500000000.0, 0.0, 0.0, 50000.0,
+				bankAccount3);
 		dailyAccountStateRepository.save(dailyAccountState);
 		dailyAccountStateRepository.save(dailyAccountState1);
+		dailyAccountStateRepository.save(dailyAccountState2);
 		
 		analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_1.xml"));
 		analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_2.xml"));

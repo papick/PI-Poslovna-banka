@@ -21,7 +21,7 @@ export class ReportComponent implements OnInit {
   public to: AbstractControl;
   public bankAccount: AbstractControl;
 
-  window: MyWindow;
+
 
   constructor(protected route: ActivatedRoute,
               private router: Router,
@@ -64,7 +64,7 @@ export class ReportComponent implements OnInit {
     this.reportService.createReportClient(report).subscribe(data => {
 
       const file = new Blob([data], {type: 'application/pdf'});
-      FileSaver.saveAs(file, 'Client_report');
+      FileSaver.saveAs(file, 'Client_repors');
 
     });
 

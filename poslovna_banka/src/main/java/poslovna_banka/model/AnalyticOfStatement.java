@@ -46,6 +46,7 @@ public class AnalyticOfStatement {
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
 
+	@Transient
 	private String accountCreditorXML;
 
 	@ManyToOne
@@ -86,6 +87,7 @@ public class AnalyticOfStatement {
 	private DailyAccountState dailyAccountState;
 	
 	private String code;
+	
 
 	public AnalyticOfStatement() {
 	}
@@ -340,5 +342,6 @@ public class AnalyticOfStatement {
 	public void setAccountCreditorXML(String accountCreditorXML) {
 		this.accountCreditorXML = accountCreditorXML;
 	}
+
 
 }

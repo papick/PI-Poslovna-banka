@@ -27,8 +27,7 @@ export class ExchangeRateInCurrencyFormComponent implements OnInit {
 
   currencies = [];
 
-  constructor(private exchangeRateService: ExchangeRateService,
-              private exchangeRateInCurrencyService: ExchangeRateInCurrencyService,
+  constructor(private exchangeRateInCurrencyService: ExchangeRateInCurrencyService,
               private currencyService: CurrencyService,
               protected router: Router,
               private fb: FormBuilder,
