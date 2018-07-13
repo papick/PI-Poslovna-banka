@@ -1,8 +1,10 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ReportModel} from "../../model/report.model";
-import {ReportService} from "../../service/reportService";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ReportModel} from '../../model/report.model';
+import {ReportService} from '../../service/reportService';
+
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'report',
@@ -19,6 +21,8 @@ export class ReportComponent implements OnInit {
   public to: AbstractControl;
   public bankAccount: AbstractControl;
 
+  window: MyWindow;
+
   constructor(protected route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
@@ -29,7 +33,7 @@ export class ReportComponent implements OnInit {
       'bankAccount': ['', Validators.compose([Validators.required])],
 
 
-    })
+    });
     this.from = this.form.controls['from'];
     this.to = this.form.controls['to'];
     this.bankAccount = this.form.controls['bankAccount'];
@@ -57,12 +61,21 @@ export class ReportComponent implements OnInit {
     );
 
 
-    this.reportService.createReportClient(report).subscribe();
+    this.reportService.createReportClient(report).subscribe(data => {
+
+
+    });
+
+
   }
 
   generateReportBankAccounts() {
     const idBank = this.route.snapshot.params.idBank;
-    this.reportService.createReportBankAccount(this.idBank).subscribe();
+    this.reportService.createReportBankAccount(this.idBank).subscribe(data => {
+
+      const file = new Blob([data], {type: 'application/pdf'});
+      FileSaver.saveAs(file, 'Bank_accounts');
+    });
   }
 
 

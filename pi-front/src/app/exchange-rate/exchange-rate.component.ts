@@ -5,6 +5,8 @@ import {FormBuilder} from "@angular/forms";
 import {ExchangeRateService} from "../../service/exchangeRateService";
 import {ExchangeRateInCurrencyService} from "../../service/exchangeRateInCurrencyService";
 
+
+
 @Component ({
   selector: 'app-exchange-rate',
   templateUrl: './exchange-rate.component.html',

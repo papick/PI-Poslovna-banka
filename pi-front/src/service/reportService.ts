@@ -19,11 +19,13 @@ export class ReportService {
   createReportClient(report: ReportModel): Observable<any> {
     const body = JSON.stringify(report);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post(`${this.BASE_URL}`, body, {headers: headers})
+    return this.http.post(`${this.BASE_URL}/get-client-report`, body, {headers: headers});
   }
 
-  createReportBankAccount(id: any): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/get-accounts/${id}`, httpOptions);
+  createReportBankAccount(id: any): Observable<Blob> {
+
+    //const headers = new HttpHeaders({'Content-Type': 'application/pdf'});
+    return this.http.get(`${this.BASE_URL}/get-accounts/${id}`, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'blob' });
   }
 
 

@@ -22,46 +22,47 @@ import poslovna_banka.model.Currency;
 public class GeneratePdfReport {
 
 	
-	public static ByteArrayInputStream accountsReport(List<BankAccount> accounts) {
+	public static ByteArrayInputStream accountsReport(List<BankAccount> accounts, String title) {
 		
 
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-		
+	
+        
         
         try {
 
             PdfPTable table = new PdfPTable(6);
-            table.setWidthPercentage(60);
-            table.setWidths(new int[]{3, 3, 3, 3, 3, 3});
+            table.setWidthPercentage(100);
+            table.setWidths(new int[]{5, 5, 10, 5, 5, 5});
 
             Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
             
             
             PdfPCell hcell;
-            hcell = new PdfPCell(new Phrase("Person", headFont));
+            hcell = new PdfPCell(new Phrase("Lice", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
             
-            hcell = new PdfPCell(new Phrase("Date_of_opening", headFont));
+            hcell = new PdfPCell(new Phrase("Datum otvaranja", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
           
-            hcell = new PdfPCell(new Phrase("Number", headFont));
+            hcell = new PdfPCell(new Phrase("Broj racuna", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
             
-            hcell = new PdfPCell(new Phrase("Valid", headFont));
+            hcell = new PdfPCell(new Phrase("Validnost", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
-            hcell = new PdfPCell(new Phrase("Bank", headFont));
+            hcell = new PdfPCell(new Phrase("Banka", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
-            hcell = new PdfPCell(new Phrase("Currency", headFont));
+            hcell = new PdfPCell(new Phrase("Valuta", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
@@ -137,6 +138,10 @@ public class GeneratePdfReport {
         
             PdfWriter.getInstance(document, out);
             document.open();
+            
+        
+            
+            document.addTitle("Racuni banke '" + title + "'");
             document.add(table);
             
             document.close();
