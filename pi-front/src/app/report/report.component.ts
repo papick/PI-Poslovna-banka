@@ -75,11 +75,11 @@ export class ReportComponent implements OnInit {
     const idBank = this.route.snapshot.params.idBank;
     this.reportService.createReportBankAccount(this.idBank).subscribe(data => {
 
-      let file = new Blob([data], { type: 'application/pdf' });
+      let file = new Blob([data], {type: 'application/pdf'});
 
 
-
-      FileSaver.saveAs(file, 'Bank_accounts'));
+      FileSaver.saveAs(file, 'Bank_accounts')
+    });
   }
 
 
