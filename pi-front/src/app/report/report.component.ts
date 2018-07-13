@@ -21,7 +21,7 @@ export class ReportComponent implements OnInit {
   public to: AbstractControl;
   public bankAccount: AbstractControl;
 
-  window: MyWindow;
+
 
   constructor(protected route: ActivatedRoute,
               private router: Router,
