@@ -17,7 +17,7 @@ public class BankAccount {
 	private Long id;
 
 	@NotNull
-	@Column(length = 13, unique = true)
+	@Column(length = 15, unique = true)
 	private String number;
 
 	@NotNull

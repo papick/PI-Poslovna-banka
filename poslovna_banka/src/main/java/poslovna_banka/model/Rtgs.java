@@ -22,7 +22,6 @@ public class Rtgs {
 	@ManyToOne
 	private Bank bankTo;
 	
-	@NotNull
 	@OneToOne
 	private AnalyticOfStatement payment;
 	
