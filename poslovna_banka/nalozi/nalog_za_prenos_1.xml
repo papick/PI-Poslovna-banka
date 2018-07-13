@@ -8,10 +8,10 @@
 	<dateOfReceipt>2018-07-14</dateOfReceipt>
 	<currencyDate>2018-07-14</currencyDate>
 	<sum>500</sum>
-	<debtorAccountXML>1234567890000</debtorAccountXML>
+	<debtorAccountXML>0011234567891</debtorAccountXML>
 	<modelAssigments>97</modelAssigments>
 	<referenceNumberAssigments>BOP</referenceNumberAssigments>
-	<accountCreditorXML>1234567892222</accountCreditorXML>
+	<accountCreditorXML>0021234567891</accountCreditorXML>
 	<paymentTypeXML>1</paymentTypeXML>
 	<paymentCurrencyXML>RSD</paymentCurrencyXML>
 	<modelApproval>97</modelApproval>

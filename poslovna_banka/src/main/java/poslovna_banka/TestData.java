@@ -160,6 +160,17 @@ public class TestData {
 		
 		BankAccount bankAccount3 = new BankAccount("1234567890000", "29-05-2018", true, bank1, null, le, currency1, true);
 		bankAccountRepository.save(bankAccount3);
+		
+		BankAccount bankAccount4 = new BankAccount("0011234567891", "29-05-2018", true, bank, null, le, currency1, true);
+		bankAccountRepository.save(bankAccount4);
+		
+
+		BankAccount bankAccount5 = new BankAccount("0021234567891", "29-05-2018", true, bank1, null, le, currency1, true);
+		bankAccountRepository.save(bankAccount5);
+		
+
+		BankAccount bankAccount6 = new BankAccount("0011234567899", "29-05-2018", true, bank, null, le, currency1, true);
+		bankAccountRepository.save(bankAccount6);
 
 		DailyAccountState dailyAccountState = new DailyAccountState("2018-05-18", 50000.0, 0.0, 0.0, 50000.0,
 				bankAccount);
@@ -168,13 +179,22 @@ public class TestData {
 				bankAccount);
 		DailyAccountState dailyAccountState2 = new DailyAccountState("2018-05-19", 50000.0, 0.0, 0.0, 50000.0,
 				bankAccount3);
+		DailyAccountState dailyAccountState3 = new DailyAccountState("2018-07-07", 50000.0, 0.0, 0.0, 50000.0,
+				bankAccount4);
+		DailyAccountState dailyAccountState4 = new DailyAccountState("2018-07-08", 50000.0, 0.0, 0.0, 50000.0,
+				bankAccount5);
+		DailyAccountState dailyAccountState5 = new DailyAccountState("2018-07-09", 50000.0, 0.0, 0.0, 50000.0,
+				bankAccount6);
 		dailyAccountStateRepository.save(dailyAccountState);
 		dailyAccountStateRepository.save(dailyAccountState1);
 		dailyAccountStateRepository.save(dailyAccountState2);
+		dailyAccountStateRepository.save(dailyAccountState3);
+		dailyAccountStateRepository.save(dailyAccountState4);
+		dailyAccountStateRepository.save(dailyAccountState5);
 		
-		analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_1.xml"));
-		analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_2.xml"));
-		analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_1.xml"));
-		analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_2.xml"));
+		//analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_1.xml"));
+		//analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_2.xml"));
+		//analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_1.xml"));
+		//analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_2.xml"));
 	}
 }
