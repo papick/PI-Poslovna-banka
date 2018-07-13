@@ -84,6 +84,102 @@ public class AnalyticsOfStatementService {
 
 	}
 	
+	// nalog za uplatu snimi
+	public AnalyticOfStatement saveAnalyticsOfStatementsOrder(File file) throws JAXBException, ParseException {
+		
+		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
+		AnalyticOfStatement a = this.generateAnalyticsOfStatementOrder(xml);
+		analyticRepository.save(a);
+		
+		if (a.getType().equals("Nalog za uplatu")) {
+			
+			BankAccount creditorAccount = bankAccountRepository.findOne(a.getAccountCreditor().getId());
+			DailyAccountState dailyAccountState = dailyAccountStateRepository.findOneByDateAndBankAccount(a.getCurrencyDate(), creditorAccount);
+			
+			if (dailyAccountState == null) {
+				
+				ArrayList<DailyAccountState> states = dailyAccountStateRepository.findAllByBankAccount(creditorAccount);
+			
+				if (states == null) {
+					
+					DailyAccountState dailyAccountStateNew = new DailyAccountState();
+					dailyAccountStateNew.setBankAccount(creditorAccount);
+					dailyAccountStateNew.setPreviousState(0.0);
+					dailyAccountStateNew.setNewState(0.0);
+					dailyAccountStateNew.setPaymentFrom(0.0);
+					dailyAccountStateNew.setPaymentTo(0.0);
+					dailyAccountStateNew.setDate(a.getCurrencyDate());
+					dailyAccountStateRepository.save(dailyAccountStateNew);
+
+					dailyAccountStateNew.setPaymentTo(dailyAccountStateNew.getPaymentTo() + a.getSum());
+					dailyAccountStateNew.setNewState(dailyAccountStateNew.getPreviousState()
+							+ dailyAccountStateNew.getPaymentTo() - dailyAccountStateNew.getPaymentFrom());
+
+					dailyAccountStateRepository.save(dailyAccountStateNew);
+
+					a.setDailyAccountState(dailyAccountStateNew);
+					analyticRepository.save(a);
+					
+					
+				}
+				else{
+					
+					DailyAccountState max = states.get(0);
+					
+					SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+					Date maxDate = date.parse(states.get(0).getDate());
+
+					Date fromDate = date.parse(a.getCurrencyDate());
+
+					for (int i = 1; i < states.size(); i++) {
+						Date currentDate = date.parse(states.get(i).getDate());
+
+						if (currentDate.after(maxDate) && currentDate.before(fromDate)) {
+							max = states.get(i);
+						}
+					}
+					
+					DailyAccountState dailyAccountStateNew = new DailyAccountState();
+					dailyAccountStateNew.setBankAccount(creditorAccount);
+					dailyAccountStateNew.setPreviousState(max.getNewState());
+					dailyAccountStateNew.setNewState(0.0);
+					dailyAccountStateNew.setPaymentFrom(0.0);
+					dailyAccountStateNew.setPaymentTo(0.0);
+					dailyAccountStateNew.setDate(a.getCurrencyDate());
+					dailyAccountStateRepository.save(dailyAccountStateNew);
+
+					dailyAccountStateNew.setPaymentTo(dailyAccountStateNew.getPaymentTo() + a.getSum());
+					dailyAccountStateNew.setNewState(dailyAccountStateNew.getPreviousState()
+							+ dailyAccountStateNew.getPaymentTo() - dailyAccountStateNew.getPaymentFrom());
+
+					dailyAccountStateRepository.save(dailyAccountStateNew);
+
+					a.setDailyAccountState(dailyAccountStateNew);
+					analyticRepository.save(a);
+					
+				}
+			}
+			else{
+				
+				dailyAccountState.setPaymentTo(dailyAccountState.getPaymentTo() + a.getSum());
+				dailyAccountState.setNewState(dailyAccountState.getPreviousState()
+						+ dailyAccountState.getPaymentTo() - dailyAccountState.getPaymentFrom());
+
+				dailyAccountStateRepository.save(dailyAccountState);
+
+				a.setDailyAccountState(dailyAccountState);
+				analyticRepository.save(a);
+				
+			}
+			
+		}
+		
+		
+		
+		return a;
+	}
 	
 	
 

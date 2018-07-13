@@ -32,7 +32,11 @@ public class AnalyticsOfStatementResource {
 	}
 	
 	
-	
+	@GetMapping("/save/xml-order/{fileName}")
+	public AnalyticOfStatement saveAnalyticsOrder(@PathVariable String fileName) throws JAXBException, ParseException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.saveAnalyticsOfStatementsOrder(file);
+	}
 	
 	
 	// nalog za isplatu ucitaj
