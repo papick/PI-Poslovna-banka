@@ -19,6 +19,6 @@
 	<typeOfMistake>1</typeOfMistake>
 	<status></status>
 	<code>248</code>
-	<emergency>false</emergency>
+	<emergency>true</emergency>
 
 </analyticsOfStatements>

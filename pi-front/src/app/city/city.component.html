@@ -4,6 +4,23 @@
   <button (click)="add()">Dodaj grad</button>
 </div>
 <h1 style="text-align: center;margin-top: 30px">Naseljena mesta</h1>
+
+<div  style="text-align: center;margin-top: 30px">
+
+  <label>Oznaka</label>
+  <input type="text" [(ngModel)]="codeSearch" placeholder="Oznaka..">
+
+  <label >Naziv</label>
+  <input type="text" [(ngModel)] = "nameSearch" placeholder="Naziv..">
+
+  <label>Postanski broj</label>
+  <input type="text" [(ngModel)]="postalSearch" placeholder="Postanski broj..">
+
+  <label >Drzava</label>
+  <input type="text" [(ngModel)] = "countrySearch" placeholder="Drzava..">
+
+  <button (click)="search()">Pretraga</button>
+</div>
 <table class="table offset-2 tables" style=" border: 1px solid black ;">
   <tr>
     <th class="th-style">Oznaka</th>
@@ -23,6 +40,3 @@
   </tr>
 
 </table>
-
-
-

@@ -4,6 +4,18 @@
   <button (click)="add()">Dodaj fizicko lice</button>
 </div>
 <h1 style="text-align: center;margin-top: 30px">Fizicka lica</h1>
+<div  style="text-align: center;margin-top: 30px">
+  <label >Naziv</label>
+  <input type="text" [(ngModel)] = "nameSearch" placeholder="Naziv..">
+
+  <label>Email</label>
+  <input type="text" [(ngModel)]="emailSearch" placeholder="Email..">
+
+  <label>JMBG</label>
+  <input type="text" [(ngModel)]="jmbgSearch" placeholder="JMBG..">
+
+  <button (click)="search()">Pretraga</button>
+</div>
 <table class="table offset-2 tables" style=" border: 1px solid black ;">
   <tr>
     <th class="th-style">Naziv</th>

@@ -15,6 +15,13 @@ export class CityComponent implements OnInit {
 
 
   selectedRow: number;
+  items = []
+  cities;
+
+  nameSearch:string='';
+  postalSearch : string='';
+  codeSearch : string='';
+  countrySearch : string='';
 
   constructor(private cityService: CityService,
               protected router: Router,
@@ -22,7 +29,7 @@ export class CityComponent implements OnInit {
   }
 
 
-  items = []
+
 
   ngOnInit() {
 
@@ -37,11 +44,13 @@ export class CityComponent implements OnInit {
       }else {
         this.cityService.getCitesByCountry(id).subscribe(data => {
           this.items = data.cities;
+          this.cities = data.cities;
         })
       }
     } else {
       this.cityService.getCities().subscribe(data => {
         this.items = data.cities;
+        this.cities = data.cities;
       })
     }
   }
@@ -65,6 +74,14 @@ export class CityComponent implements OnInit {
     const idBank = this.route.snapshot.params.idBank;
     this.router.navigateByUrl('bank/' + idBank + '/country/city/edit/' + id);
 
+  }
+
+  search(){
+    this.items = this.cities.filter(a =>  a.name.toLowerCase().includes(this.nameSearch.toLowerCase()) &&
+                                          a.code.toLowerCase().includes(this.codeSearch.toLowerCase()) &&
+                                          a.postNum.includes(this.postalSearch) &&
+                                          a.country.name.toLowerCase().includes(this.countrySearch.toLowerCase())
+                                          );
   }
 
 

@@ -10,7 +10,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 export class ActivitiesComponent implements OnInit{
 
-  items = []
+  items = [];
+  activities;
+
+  nameSearch:string='';
+  codeSearch : string='';
 
   constructor(private activityService: ActivityService,
               protected router: Router,
@@ -21,6 +25,7 @@ export class ActivitiesComponent implements OnInit{
 
     this.activityService.getActivities().subscribe(data => {
       this.items = data.activities;
+      this.activities = data.activities;
     })
   }
 
@@ -43,5 +48,12 @@ export class ActivitiesComponent implements OnInit{
     const idBank = this.route.snapshot.params.idBank;
     this.router.navigateByUrl('bank/' + idBank + '/activity/for/act/edit/' + id);
 
+  }
+
+  search(){
+
+    this.items = this.activities.filter(a => a.code.toLowerCase().includes(this.nameSearch.toLowerCase()) &&
+                                            a.name.toLowerCase().includes(this.codeSearch.toLowerCase())
+                                          );
   }
 }

@@ -125,12 +125,12 @@ export class BankAccountsComponent implements OnInit {
     if(!this.individual){
 
         this.items = this.allAccounts.filter(a => a.number.includes(this.accountNumberSearch) &&
-                                            a.legalEntity.name.includes(this.nameSearch) &&
+                                            a.legalEntity.name.toLowerCase().includes(this.nameSearch.toLowerCase()) &&
                                             a.legalEntity.pib.includes(this.pibSearch)
                                             );
     }else{
       this.items = this.allAccounts.filter(a => a.number.includes(this.accountNumberSearch) &&
-                                          a.individual.name.includes(this.nameSearch) &&
+                                          a.individual.name.toLowerCase().includes(this.nameSearch.toLowerCase()) &&
                                           a.individual.jmbg.includes(this.jmbgSearch)
                                           );
     }

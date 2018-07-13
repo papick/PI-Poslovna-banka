@@ -10,8 +10,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class LegalsComponent implements OnInit {
 
   legals = []
+  allLegals;
   idbank;
   mode;
+
+  nameSearch:string='';
+  emailSearch : string='';
+  pibSearch:string= '';
+  personSearch:string='';
 
   constructor(private clientService: ClientService,
               private route: ActivatedRoute,
@@ -26,7 +32,10 @@ export class LegalsComponent implements OnInit {
   }
 
   getLegals() {
-    this.clientService.getLegalEntities().subscribe(data => this.legals = data);
+    this.clientService.getLegalEntities().subscribe(data =>{
+      this.legals = data;
+      this.allLegals = data;
+    });
   }
 
   editLegal(id) {
@@ -45,6 +54,14 @@ export class LegalsComponent implements OnInit {
     this.idbank = this.route.snapshot.params.idBank;
     this.mode = this.route.snapshot.params.mode;
     this.router.navigateByUrl('bank/' + this.idbank + '/clients/legals/add');
+  }
+
+  search(){
+    this.legals = this.allLegals.filter(a => a.name.toLowerCase().includes(this.nameSearch.toLowerCase()) &&
+                                            a.email.toLowerCase().includes(this.emailSearch.toLowerCase()) &&
+                                            a.pib.includes(this.pibSearch) &&
+                                            a.responsiblePerson.toLowerCase().includes(this.personSearch.toString())
+                                          );
   }
 
 }

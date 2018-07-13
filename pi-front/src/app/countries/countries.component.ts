@@ -13,6 +13,10 @@ import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 export class CountriesComponent implements OnInit {
 
   items = []
+  countries;
+
+  nameSearch:string='';
+  codeSearch : string='';
 
   constructor(private countryService: CountryService,
               protected router: Router,
@@ -23,6 +27,7 @@ export class CountriesComponent implements OnInit {
 
     this.countryService.getCountries().subscribe(data => {
       this.items = data.countries;
+      this.countries = data.countries;
     })
   }
 
@@ -58,6 +63,12 @@ export class CountriesComponent implements OnInit {
 
     this.router.navigateByUrl('bank/' + idBank + '/city/by-country/' + id)
 
+  }
+
+  search(){
+    this.items = this.countries.filter(a => a.name.toLowerCase().includes(this.nameSearch.toLowerCase()) &&
+                                            a.code.toLowerCase().includes(this.codeSearch.toLowerCase())
+                                          );
   }
 
 
