@@ -111,7 +111,10 @@ import { ClearingService } from '../service/clearingService';
     AnalyticsOfStatementService,
     RecessionService,
     ExchangeRateService,
-    ClearingService
+    ClearingService,
+    ReportService,
+    ExchangeRateInCurrencyService,
+
 
 
   ],
