@@ -130,6 +130,27 @@ export class TransferCheckComponent implements OnInit {
     });
   }
 
+  ucitaj4() {
+    const idBank = this.route.snapshot.params.idBank;
+    this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/nalog_za_prenos_4');
+
+    this.analyticeService.getTransferCheck('nalog_za_prenos_4').subscribe(data => {
+      this.form.controls['debtor'].setValue(data.debtor);
+      this.form.controls['purpose'].setValue(data.purposeOfPayment);
+      this.form.controls['creditor'].setValue(data.creditor);
+      this.form.controls['sum'].setValue(data.sum);
+      this.form.controls['bankAccountDebtor'].setValue(data.debtorAccount.number);
+      this.form.controls['modelAssingment'].setValue(data.modelAssigments);
+      this.form.controls['referenceNumberAssingment'].setValue(data.referenceNumberAssigments);
+      this.form.controls['bankAccountCreditor'].setValue(data.accountCreditor.number);
+      this.form.controls['modelApproval'].setValue(data.modelApproval);
+      this.form.controls['referenceNumberApproval'].setValue(data.referenceNumberCreditor);
+      this.form.controls['currency'].setValue(data.paymentCurrency.name);
+      this.form.controls['code'].setValue(data.code);
+      this.form.controls['urgent'].setValue(data.emergency);
+    });
+  }
+
   confirmClick() {
     const type = this.route.snapshot.params.type;
     this.analyticeService.saveTransferCheck(type).subscribe();

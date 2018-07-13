@@ -1,5 +1,7 @@
 package poslovna_banka.resource;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +23,11 @@ public class UserResource {
 	private UserService userService;
 
 	@PutMapping("/log-in")
-	public ResponseEntity<LogInResponse> logIn(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<LogInResponse> logIn(@RequestBody UserDTO userDTO, HttpServletRequest request) {
 
 		Bank bank = userService.logIn(userDTO);
-
+		request.getSession().setMaxInactiveInterval(60*60*12);
+		request.getSession().setAttribute("bank", bank);
 		return new ResponseEntity<>(new LogInResponse(bank), HttpStatus.OK);
 	}
 }

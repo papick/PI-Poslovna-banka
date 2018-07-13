@@ -11,7 +11,7 @@
 	<debtorAccountXML>1234567892222</debtorAccountXML>
 	<modelAssigments>97</modelAssigments>
 	<referenceNumberAssigments>BOP</referenceNumberAssigments>
-	<accountCreditorXML>1234567891111</accountCreditorXML>
+	<accountCreditorXML>1234567890000</accountCreditorXML>
 	<paymentTypeXML>1</paymentTypeXML>
 	<paymentCurrencyXML>RSD</paymentCurrencyXML>
 	<modelApproval>97</modelApproval>
@@ -19,6 +19,6 @@
 	<typeOfMistake>1</typeOfMistake>
 	<status></status>
 	<code>248</code>
-	<emergency>false</emergency>
+	<emergency>true</emergency>
 
 </analyticsOfStatements>

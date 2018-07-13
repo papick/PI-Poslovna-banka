@@ -87,6 +87,7 @@ public class AnalyticOfStatement {
 	
 	@NotNull
 	private String code;
+	
 
 	public AnalyticOfStatement() {
 	}
@@ -341,5 +342,6 @@ public class AnalyticOfStatement {
 	public void setAccountCreditorXML(String accountCreditorXML) {
 		this.accountCreditorXML = accountCreditorXML;
 	}
+
 
 }

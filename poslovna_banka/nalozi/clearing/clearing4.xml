@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtgs>
+    <accountBankForm>102030405060708090</accountBankForm>
+    <accountBankTo>908070605040302010</accountBankTo>
+    <currency>2018-05-19</currency>
+    <id>4</id>
+    <payments>
+        <payment>
+            <accountCreditor>1234567892222</accountCreditor>
+            <creditor>Kristina Papic  , programer</creditor>
+            <currencyDate>2018-05-19</currencyDate>
+            <dateOfReceipt>2018-05-19</dateOfReceipt>
+            <debtor>ZARA</debtor>
+            <debtorAccount>1234567890000</debtorAccount>
+            <id>1</id>
+            <modelApproval>97</modelApproval>
+            <modelAssigments>97</modelAssigments>
+            <paymentCurrency>RSD</paymentCurrency>
+            <purposeOfPayment>Prenos 03/2018</purposeOfPayment>
+            <referenceNumberAssigments>BOP</referenceNumberAssigments>
+            <referenceNumberCreditor>BOP</referenceNumberCreditor>
+            <sum>3000.0</sum>
+        </payment>
+        <payment>
+            <accountCreditor>1234567892222</accountCreditor>
+            <creditor>Kristina Papic  , programer</creditor>
+            <currencyDate>2018-05-19</currencyDate>
+            <dateOfReceipt>2018-05-19</dateOfReceipt>
+            <debtor>ZARA</debtor>
+            <debtorAccount>1234567890000</debtorAccount>
+            <id>2</id>
+            <modelApproval>97</modelApproval>
+            <modelAssigments>97</modelAssigments>
+            <paymentCurrency>RSD</paymentCurrency>
+            <purposeOfPayment>Prenos 03/2018</purposeOfPayment>
+            <referenceNumberAssigments>BOP</referenceNumberAssigments>
+            <referenceNumberCreditor>BOP</referenceNumberCreditor>
+            <sum>3000.0</sum>
+        </payment>
+        <payment>
+            <accountCreditor>1234567892222</accountCreditor>
+            <creditor>Kristina Papic  , programer</creditor>
+            <currencyDate>2018-05-19</currencyDate>
+            <dateOfReceipt>2018-05-19</dateOfReceipt>
+            <debtor>ZARA</debtor>
+            <debtorAccount>1234567890000</debtorAccount>
+            <id>3</id>
+            <modelApproval>97</modelApproval>
+            <modelAssigments>97</modelAssigments>
+            <paymentCurrency>RSD</paymentCurrency>
+            <purposeOfPayment>Prenos 03/2018</purposeOfPayment>
+            <referenceNumberAssigments>BOP</referenceNumberAssigments>
+            <referenceNumberCreditor>BOP</referenceNumberCreditor>
+            <sum>3000.0</sum>
+        </payment>
+        <payment>
+            <accountCreditor>1234567892222</accountCreditor>
+            <creditor>Kristina Papic  , programer</creditor>
+            <currencyDate>2018-05-19</currencyDate>
+            <dateOfReceipt>2018-05-19</dateOfReceipt>
+            <debtor>ZARA</debtor>
+            <debtorAccount>1234567890000</debtorAccount>
+            <id>4</id>
+            <modelApproval>97</modelApproval>
+            <modelAssigments>97</modelAssigments>
+            <paymentCurrency>RSD</paymentCurrency>
+            <purposeOfPayment>Prenos 03/2018</purposeOfPayment>
+            <referenceNumberAssigments>BOP</referenceNumberAssigments>
+            <referenceNumberCreditor>BOP</referenceNumberCreditor>
+            <sum>3000.0</sum>
+        </payment>
+    </payments>
+    <sumAll>12000.0</sumAll>
+    <swiftBankFrom>12345678</swiftBankFrom>
+    <swiftBankTo>87654321</swiftBankTo>
+</rtgs>

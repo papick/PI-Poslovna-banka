@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <analyticsOfStatements>
 
 	<type>Nalog za prenos</type>
@@ -7,7 +7,7 @@
 	<creditor>Kristina Papic  , programer</creditor>
 	<dateOfReceipt>2018-05-19</dateOfReceipt>
 	<currencyDate>2018-05-19</currencyDate>
-	<sum>5000000</sum>
+	<sum>3000</sum>
 	<debtorAccountXML>1234567890000</debtorAccountXML>
 	<modelAssigments>97</modelAssigments>
 	<referenceNumberAssigments>BOP</referenceNumberAssigments>

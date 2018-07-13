@@ -41,6 +41,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { IndividualsComponent } from './individuals/individuals.component';
 import {ExchangeRateComponent} from "./exchange-rate/exchange-rate.component";
 import {RecessionService} from "../service/recessionService";
+import {ClearingService} from "../service/clearingService";
 
 
 import {ButtonModule} from 'primeng/button';
@@ -110,6 +111,7 @@ import {ExchangeRateService} from "../service/exchangeRateService";
     AnalyticsOfStatementService,
     RecessionService,
     ExchangeRateService,
+    ClearingService
 
 
   ],
