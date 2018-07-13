@@ -108,10 +108,10 @@ export class PaymentOrderComponent implements OnInit{
 
   confirmClick() {
     const type = this.route.snapshot.params.type;
-   // this.analyticService.savePaymentCheck(type).subscribe();
+    this.analyticService.savePaymentOrder(type).subscribe();
 
     const idBank = this.route.snapshot.params.idBank;
-   // this.router.navigateByUrl('/bank/' + idBank + '/payment-check/paymanent/undefined');
+    this.router.navigateByUrl('/bank/' + idBank + '/payment-order/paymanent/undefined');
     location.reload();
 
   }

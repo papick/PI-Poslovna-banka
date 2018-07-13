@@ -161,12 +161,12 @@ public class TestData {
 		BankAccount bankAccount3 = new BankAccount("1234567890000", "29-05-2018", true, bank1, null, le, currency1, true);
 		bankAccountRepository.save(bankAccount3);
 
-		DailyAccountState dailyAccountState = new DailyAccountState("2018-05-18", 50000000.0, 0.0, 0.0, 50000.0,
+		DailyAccountState dailyAccountState = new DailyAccountState("2018-05-18", 50000.0, 0.0, 0.0, 50000.0,
 				bankAccount);
 		
-		DailyAccountState dailyAccountState1 = new DailyAccountState("2018-05-19", 500000000.0, 0.0, 0.0, 50000.0,
+		DailyAccountState dailyAccountState1 = new DailyAccountState("2018-07-14", 50000.0, 0.0, 0.0, 50000.0,
 				bankAccount);
-		DailyAccountState dailyAccountState2 = new DailyAccountState("2018-05-19", 500000000.0, 0.0, 0.0, 50000.0,
+		DailyAccountState dailyAccountState2 = new DailyAccountState("2018-05-19", 50000.0, 0.0, 0.0, 50000.0,
 				bankAccount3);
 		dailyAccountStateRepository.save(dailyAccountState);
 		dailyAccountStateRepository.save(dailyAccountState1);
