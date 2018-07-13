@@ -67,7 +67,7 @@ public class AnalyticsOfStatementResource {
 	public AnalyticOfStatement loadXMLTransfer(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		AnalyticOfStatement analytic = analyticService.getPaymentAnalyticsOfStatements(file);
-		analyticService.generateBankTransfer(analytic);
+	
 		return analytic;
 	}
 	
@@ -76,6 +76,7 @@ public class AnalyticsOfStatementResource {
 	public AnalyticOfStatement saveAnalyticsTransfer(@PathVariable String fileName) throws JAXBException, ParseException {
 		File file = new File("nalozi\\" + fileName + ".xml");
 		AnalyticOfStatement analytic = analyticService.saveAnalyticsOfStatementsTransfer(file);
+		analyticService.generateBankTransfer(analytic);
 		return analytic;
 	}
 }
