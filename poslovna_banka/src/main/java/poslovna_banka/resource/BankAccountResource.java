@@ -88,7 +88,7 @@ public class BankAccountResource {
 		account.setMailReporting(ba.isMailReporting());
 		
 		account.setLegalEntity((legalRepo.findByName(  ba.getLegalEntity() ) ) );
-		account.setNumber(ba.getNumber());
+		//account.setNumber(ba.getNumber());
 		account.setValid(true);
 		
 		return new ResponseEntity<BankAccount>(bas.addBankAccount(account), HttpStatus.OK);
@@ -103,7 +103,7 @@ public class BankAccountResource {
 		account.setDateOfOpenning(d.toString());
 		account.setIndividual(indRepo.findByName(ba.getIndividual()));
 		account.setLegalEntity(null);
-		account.setNumber(ba.getNumber());
+		//account.setNumber(ba.getNumber());
 		account.setValid(true);
 		
 		return new ResponseEntity<BankAccount>(bas.addBankAccount(account), HttpStatus.OK);
