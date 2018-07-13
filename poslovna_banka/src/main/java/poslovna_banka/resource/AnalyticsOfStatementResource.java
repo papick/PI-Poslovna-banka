@@ -23,6 +23,18 @@ public class AnalyticsOfStatementResource {
 	@Autowired
 	private AnalyticsOfStatementService analyticService;
 
+	
+	// nalog za uplatu ucitaj
+	@GetMapping("/xml-order/{fileName}")
+	public AnalyticOfStatement loadXMLOrder(@PathVariable String fileName) throws JAXBException {
+		File file = new File("nalozi\\" + fileName + ".xml");
+		return analyticService.getAnalyticsOfStatementsOrder(file);
+	}
+	
+	
+	
+	
+	
 	// nalog za isplatu ucitaj
 	@GetMapping("/xml/{fileName}")
 	public AnalyticOfStatement loadXML(@PathVariable String fileName) throws JAXBException {

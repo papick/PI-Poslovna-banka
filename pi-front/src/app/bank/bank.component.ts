@@ -150,7 +150,7 @@ export class BankComponent implements OnInit {
 
   paymentOrderClick() {
 
-    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-order');
+    this.router.navigateByUrl('/bank/' + this.idBank + '/payment-order/paymanent/undefined');
     this.showPaymentOrder();
   }
 

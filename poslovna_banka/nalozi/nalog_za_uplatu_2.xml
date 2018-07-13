@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyticsOfStatements>
+	<type>Nalog za uplatu</type>
+	<debtor>Marko Markovic</debtor>
+	<purposeOfPayment>Uplata za jun</purposeOfPayment>
+	<creditor>NN d.o.ok</creditor>
+	<dateOfReceipt>2018-07-13</dateOfReceipt>
+	<currencyDate>2018-05-19</currencyDate>
+	<sum>7000</sum>
+	<accountCreditorXML>1234567891111</accountCreditorXML>
+	<modelAssigments>97</modelAssigments>
+	<referenceNumberAssigments>BOP</referenceNumberAssigments>
+	<emergency>false</emergency>
+	<typeOfMistake>1</typeOfMistake>
+	<status></status>
+	<paymentTypeXML>1</paymentTypeXML>
+	<paymentCurrencyXML>RSD</paymentCurrencyXML>
+	<cityXML>Novi Sad</cityXML>
+	<code>140</code>
+</analyticsOfStatements>

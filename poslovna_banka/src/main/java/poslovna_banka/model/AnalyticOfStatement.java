@@ -46,6 +46,7 @@ public class AnalyticOfStatement {
 	@ManyToOne
 	private BankAccount debtorAccount; // racun duznika
 
+	@Transient
 	private String accountCreditorXML;
 
 	@ManyToOne

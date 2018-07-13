@@ -63,6 +63,10 @@ export class ReportComponent implements OnInit {
 
     this.reportService.createReportClient(report).subscribe(data => {
 
+      let file = new Blob([data], {type: 'application/pdf'});
+
+
+      FileSaver.saveAs(file, 'Bank_accounts')
 
     });
 
