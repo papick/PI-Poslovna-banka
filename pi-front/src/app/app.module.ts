@@ -50,6 +50,7 @@ import {ExchangeRateService} from "../service/exchangeRateService";
 import {ExchangeRateInCurrencyService} from '../service/exchangeRateInCurrencyService';
 import {ReportComponent} from "./report/report.component";
 import {ReportService} from "../service/reportService";
+import { ClearingService } from '../service/clearingService';
 
 
 @NgModule({
@@ -110,8 +111,7 @@ import {ReportService} from "../service/reportService";
     AnalyticsOfStatementService,
     RecessionService,
     ExchangeRateService,
-    ExchangeRateInCurrencyService,
-    ReportService,
+    ClearingService
 
 
   ],

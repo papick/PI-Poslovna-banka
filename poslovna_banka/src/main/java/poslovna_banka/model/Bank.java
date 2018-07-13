@@ -20,7 +20,7 @@ public class Bank {
 	@NotNull
 	@Column(name = "code", length = 3)
 	private String code;
-
+	
 	@NotNull
 	@Column(name = "PIB", length = 10)
 	private String PIB;
@@ -45,13 +45,21 @@ public class Bank {
 	@Column(name = "fax", length = 20)
 	private String fax;
 
+	@NotNull
+	@Column(name = "swift", length = 8)
+	private String swiftCode;
+	
+	@NotNull
+	@Column(name = "accountNumber", length = 18)
+	private String accountNumber;
+	
 	public Bank() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Bank(String code, String PIB, String name, String address, String email, String web, String telefon,
-			String fax) {
+			String fax, String swiftCode, String accountNumber) {
 		super();
 
 		this.code = code;
@@ -62,6 +70,24 @@ public class Bank {
 		this.web = web;
 		this.telefon = telefon;
 		this.fax = fax;
+		this.swiftCode = swiftCode;
+		this.accountNumber = accountNumber;
+	}
+
+	public String getSwiftCode() {
+		return swiftCode;
+	}
+
+	public void setSwiftCode(String swiftCode) {
+		this.swiftCode = swiftCode;
+	}
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public Long getId() {

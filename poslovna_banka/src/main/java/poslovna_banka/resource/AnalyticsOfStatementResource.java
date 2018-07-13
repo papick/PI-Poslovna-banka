@@ -3,6 +3,7 @@ package poslovna_banka.resource;
 import java.io.File;
 import java.text.ParseException;
 
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.JAXBException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import poslovna_banka.model.AnalyticOfStatement;
+import poslovna_banka.model.Bank;
 import poslovna_banka.service.AnalyticsOfStatementService;
 
 @RestController
@@ -64,13 +66,17 @@ public class AnalyticsOfStatementResource {
 	@GetMapping("xml-prenos/{fileName}")
 	public AnalyticOfStatement loadXMLTransfer(@PathVariable String fileName) throws JAXBException {
 		File file = new File("nalozi\\" + fileName + ".xml");
-		return analyticService.getPaymentAnalyticsOfStatements(file);
+		AnalyticOfStatement analytic = analyticService.getPaymentAnalyticsOfStatements(file);
+		analyticService.generateBankTransfer(analytic);
+		return analytic;
 	}
 	
 	// nalog za prenos sacuvaj
 	@GetMapping("/save/xml-transfer/{fileName}")
 	public AnalyticOfStatement saveAnalyticsTransfer(@PathVariable String fileName) throws JAXBException, ParseException {
 		File file = new File("nalozi\\" + fileName + ".xml");
-		return analyticService.saveAnalyticsOfStatementsTransfer(file);
+		AnalyticOfStatement analytic = analyticService.saveAnalyticsOfStatementsTransfer(file);
+		analyticService.generateBankTransfer(analytic);
+		return analytic;
 	}
 }

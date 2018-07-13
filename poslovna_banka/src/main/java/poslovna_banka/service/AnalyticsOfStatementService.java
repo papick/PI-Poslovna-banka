@@ -1,31 +1,41 @@
 package poslovna_banka.service;
 
+
 import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import poslovna_banka.model.AnalyticOfStatement;
+import poslovna_banka.model.Bank;
 import poslovna_banka.model.BankAccount;
+import poslovna_banka.model.Clearing;
 import poslovna_banka.model.DailyAccountState;
+import poslovna_banka.model.Rtgs;
 import poslovna_banka.repository.AnalyticOfStatementRepository;
 import poslovna_banka.repository.BankAccountRepository;
 import poslovna_banka.repository.CityRepository;
 import poslovna_banka.repository.CurrencyRepository;
 import poslovna_banka.repository.DailyAccountStateRepository;
 import poslovna_banka.repository.PaymentTypeRepository;
+import poslovna_banka.xml.RtgsXml;
 
 @Service
 public class AnalyticsOfStatementService {
 
+	private final double maxSum= 250000;
+	
 	@Autowired
 	private AnalyticOfStatementRepository analyticRepository;
 
@@ -43,6 +53,13 @@ public class AnalyticsOfStatementService {
 
 	@Autowired
 	private DailyAccountStateRepository dailyAccountStateRepository;
+	
+	@Autowired
+	private ClearingService clearingService;
+	
+	@Autowired
+	private RtgsService rtgsService;
+	
 
 	// ucitaj nalog za isplatu
 	public AnalyticOfStatement getAnalyticsOfStatements(File file) throws JAXBException {
@@ -146,7 +163,6 @@ public class AnalyticsOfStatementService {
 			}
 
 		}
-
 		return a;
 
 	}
@@ -164,7 +180,7 @@ public class AnalyticsOfStatementService {
 	}
 
 	// Nalog za isplatu
-	private AnalyticOfStatement generateAnalyticsOfStatement(AnalyticOfStatement xml) {
+	private AnalyticOfStatement generateAnalyticsOfStatement(AnalyticOfStatement xml) throws JAXBException {
 		AnalyticOfStatement a = new AnalyticOfStatement();
 		a.setType(xml.getType());
 		a.setDebtor(xml.getDebtor());
@@ -185,6 +201,7 @@ public class AnalyticsOfStatementService {
 		System.out.println("aaaaaa  " + paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML())
 				+ currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
 		a.setCode(xml.getCode());
+
 
 		return a;
 	}
@@ -401,7 +418,7 @@ public class AnalyticsOfStatementService {
 			}
 
 		}
-
+			
 		return a;
 
 	}
@@ -615,6 +632,52 @@ public class AnalyticsOfStatementService {
 		a.setEmergency(xml.getEmergency());
 
 		return a;
+	}
+	
+	public void generateBankTransfer(AnalyticOfStatement a ) throws JAXBException {
+		Bank fromBank = a.getAccountCreditor().getBank();
+		Bank toBank = a.getDebtorAccount().getBank();
+		
+		if(fromBank.getId() == toBank.getId() ) {
+			return;
+		}
+		
+		if(a.getSum() < maxSum && !a.getEmergency()) {
+			Clearing clearing = clearingService.getLastClearingForBank(fromBank.getId(), toBank.getId());
+			if(clearing == null) {
+				List<AnalyticOfStatement> analytics = new ArrayList<>();
+				analytics.add(a);
+				clearing = new Clearing(fromBank,toBank,a.getPaymentCurrency(), a.getCurrencyDate(), analytics, a.getSum());
+			}else {
+				List<AnalyticOfStatement> analytics = clearing.getPayments();
+				analytics.add(a);
+				double sumAll = clearing.getSumAll();
+				sumAll += a.getSum();
+				clearing.setSumAll(sumAll);
+				clearing.setPayments(analytics);
+				clearingService.removeClearing(clearing.getId());
+			}
+			clearingService.saveClearing(clearing);
+			
+		}else {
+			Rtgs newRtgs = new Rtgs(fromBank, toBank, a);
+			newRtgs = rtgsService.addRtgs(newRtgs);
+			generateXmlRTGS(newRtgs);
+		}
+	
+	}
+	
+	private void generateXmlRTGS(Rtgs rtgs) throws JAXBException {
+		JAXBContext jaxbContext = JAXBContext.newInstance(RtgsXml.class);
+		Marshaller m = jaxbContext.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		File file =new File("nalozi//rtgs//rtgs" +rtgs.getId()+".xml");
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		m.marshal(new RtgsXml(rtgs), file );
 	}
 
 }
