@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
+  headers:  new HttpHeaders({'Content-Type': 'application/json'}),
 };
 
 @Injectable()
@@ -12,6 +12,10 @@ export class ClientService {
   private BASE_URL = 'http://localhost:8080/api/cities';
 
   constructor(private http: HttpClient) {
+  }
+
+  getAccounts(){
+    return this.http.get(`http://localhost:8080/api/bankAccounts`, httpOptions);
   }
 
   getLegals(id): Observable<any> {

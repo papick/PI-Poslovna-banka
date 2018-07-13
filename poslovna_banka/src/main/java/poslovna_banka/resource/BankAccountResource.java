@@ -42,6 +42,14 @@ public class BankAccountResource {
 	@Autowired
 	private IndividualRepository indRepo;
 	
+	
+	@GetMapping()
+	public ResponseEntity<List<BankAccount>> getAllAccounts() {
+		List<BankAccount> accounts = bas. getAllBankAccounts();
+		
+		return new ResponseEntity<List<BankAccount>>(accounts, HttpStatus.OK);
+	}
+	
 	@GetMapping("/get-legals/{id}")
 	public ResponseEntity<List<BankAccount>> getLegals(@PathVariable Long id) {
 		List<BankAccount> legalEntities=bas.getAllLegalEntities();
