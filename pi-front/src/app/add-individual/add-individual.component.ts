@@ -104,7 +104,8 @@ export class AddIndividualComponent implements OnInit {
 
     this.bankAccountService.addAccount(this.bankAccount).subscribe(data => {
         this.sklj = data;
-        this.router.navigateByUrl('bank/' + this.idBank);
+        this.router.navigateByUrl('bank/' + this.idBank + '/bankAccounts');
+        location.reload();
   }
     );
   }

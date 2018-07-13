@@ -168,6 +168,7 @@ public class AnalyticsOfStatementService {
 		a.setCity(cityRepository.findOneByName(xml.getCityXML()));
 		System.out.println("aaaaaa  " + paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML())
 				+ currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
+		a.setCode(xml.getCode());
 
 		return a;
 	}

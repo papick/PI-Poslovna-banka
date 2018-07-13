@@ -75,6 +75,7 @@ export class ReportComponent implements OnInit {
 
       const file = new Blob([data], {type: 'application/pdf'});
       FileSaver.saveAs(file, 'Bank_accounts');
+
     });
   }
 
