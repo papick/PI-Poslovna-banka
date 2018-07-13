@@ -24,7 +24,7 @@ export class BankAccountsComponent implements OnInit {
   dialogVisible=false;
   selectedAccountTo:any = {};
   selectedAccountFrom:any;
-  accounts = [];
+  accounts :any=[] ;
 
   constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router, private recessionService:RecessionService) {
   }
@@ -34,14 +34,10 @@ export class BankAccountsComponent implements OnInit {
   }
 
   getAllForSelect(id){
-    this.clientService.getLegals(this.idbank).subscribe(data => {
+    this.clientService.getAccounts().subscribe(data => {
       this.accounts = data;
-      this.clientService.getIndividuals(this.idbank).subscribe(data => {
-        this.accounts = data.concat(this.accounts);
-        this.selectedAccountFrom =  this.accounts.find(account => account.id == id);
-        this.accounts = this.accounts.filter(account => account.id != id);
-
-      });
+      this.selectedAccountFrom =  this.accounts.find(account => account.id == id);
+      this.accounts = this.accounts.filter(account => account.id != id);
     });
 
 
@@ -104,6 +100,8 @@ export class BankAccountsComponent implements OnInit {
     body.accountTo = this.selectedAccountTo;
     this.recessionService.addRecession(body).subscribe(data =>{
       this.dialogVisible = false;
+      const item = this.items.find( a => a.id == body.accountFrom.id);
+      item.valid=false;
     });
 
     console.log(JSON.stringify(body));
