@@ -10,7 +10,7 @@ const httpOptions = {
 @Injectable()
 export class ReportService {
 
-  private BASE_URL = 'http://localhost:8080/api/report';
+  private BASE_URL = 'http://localhost:8080/api/reports';
 
   constructor(private http: HttpClient) {
   }
@@ -23,7 +23,7 @@ export class ReportService {
   }
 
   createReportBankAccount(id: any): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/bank/${id}`, httpOptions);
+    return this.http.get(`${this.BASE_URL}/get-accounts/${id}`, httpOptions);
   }
 
 
