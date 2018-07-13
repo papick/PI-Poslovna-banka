@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <clearing>
-    <accountBankForm>908070605040302010</accountBankForm>
-    <accountBankTo>102030405060708090</accountBankTo>
+    <accountBankForm>102030405060708090</accountBankForm>
+    <accountBankTo>908070605040302010</accountBankTo>
     <currency>RSD</currency>
     <currencyDate>2018-07-14</currencyDate>
-    <id>1</id>
+    <id>3</id>
     <payments>
         <payment>
-            <accountCreditor>0021234567891</accountCreditor>
+            <accountCreditor>1234567892222</accountCreditor>
             <creditor>Kristina Papic  , programer</creditor>
             <currencyDate>2018-07-14</currencyDate>
             <dateOfReceipt>2018-07-14</dateOfReceipt>
             <debtor>ZARA</debtor>
-            <debtorAccount>0011234567891</debtorAccount>
-            <id>1</id>
+            <debtorAccount>1234567890000</debtorAccount>
+            <id>3</id>
             <modelApproval>97</modelApproval>
             <modelAssigments>97</modelAssigments>
             <paymentCurrency>RSD</paymentCurrency>
             <purposeOfPayment>Prenos 03/2018</purposeOfPayment>
             <referenceNumberAssigments>BOP</referenceNumberAssigments>
             <referenceNumberCreditor>BOP</referenceNumberCreditor>
-            <sum>500.0</sum>
+            <sum>5000.0</sum>
         </payment>
     </payments>
-    <sumAll>500.0</sumAll>
-    <swiftBankFrom>87654321</swiftBankFrom>
-    <swiftBankTo>12345678</swiftBankTo>
+    <sumAll>5000.0</sumAll>
+    <swiftBankFrom>12345678</swiftBankFrom>
+    <swiftBankTo>87654321</swiftBankTo>
 </clearing>

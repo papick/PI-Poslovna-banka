@@ -4,7 +4,7 @@
     <accountBankTo>102030405060708090</accountBankTo>
     <currency>RSD</currency>
     <currencyDate>2018-07-14</currencyDate>
-    <id>1</id>
+    <id>2</id>
     <payments>
         <payment>
             <accountCreditor>0021234567891</accountCreditor>
@@ -13,7 +13,7 @@
             <dateOfReceipt>2018-07-14</dateOfReceipt>
             <debtor>ZARA</debtor>
             <debtorAccount>0011234567891</debtorAccount>
-            <id>1</id>
+            <id>2</id>
             <modelApproval>97</modelApproval>
             <modelAssigments>97</modelAssigments>
             <paymentCurrency>RSD</paymentCurrency>
