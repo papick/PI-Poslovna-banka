@@ -1,6 +1,10 @@
 package poslovna_banka;
 
+import java.io.File;
+import java.text.ParseException;
+
 import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +31,7 @@ import poslovna_banka.repository.IndividualRepository;
 import poslovna_banka.repository.LegalEntityRepository;
 import poslovna_banka.repository.PaymentTypeRepository;
 import poslovna_banka.repository.UserRepository;
+import poslovna_banka.service.AnalyticsOfStatementService;
 
 @Component
 public class TestData {
@@ -63,9 +68,12 @@ public class TestData {
 
 	@Autowired
 	private DailyAccountStateRepository dailyAccountStateRepository;
+	
+	@Autowired
+	private AnalyticsOfStatementService analyticService;
 
 	@PostConstruct
-	private void init() {
+	private void init() throws JAXBException, ParseException {
 
 		Country country1 = new Country("Serbia", "SRB");
 		countryService.save(country1);
@@ -157,5 +165,10 @@ public class TestData {
 				bankAccount);
 		dailyAccountStateRepository.save(dailyAccountState);
 		dailyAccountStateRepository.save(dailyAccountState1);
+		
+		analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_1.xml"));
+		analyticService.saveAnalyticsOfStatements(new File("nalozi\\nalog_za_isplatu_2.xml"));
+		analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_1.xml"));
+		analyticService.saveAnalyticsOfStatementsPayment(new File("nalozi\\nalog_za_naplatu_2.xml"));
 	}
 }

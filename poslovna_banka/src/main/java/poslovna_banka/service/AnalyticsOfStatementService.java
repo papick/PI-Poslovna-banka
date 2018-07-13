@@ -142,7 +142,7 @@ public class AnalyticsOfStatementService {
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
 		AnalyticOfStatement a = generatePaymentAnalyticsOfStatement(xml);
-		analyticRepository.save(a);
+		//analyticRepository.save(a);
 
 		return a;
 	}
