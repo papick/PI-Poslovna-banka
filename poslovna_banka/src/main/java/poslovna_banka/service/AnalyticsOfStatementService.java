@@ -54,6 +54,21 @@ public class AnalyticsOfStatementService {
 		return a;
 
 	}
+	
+	
+	// ucitaj nalog za uplatu
+	public AnalyticOfStatement getAnalyticsOfStatementsOrder(File file) throws JAXBException {
+
+		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticOfStatement.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		AnalyticOfStatement xml = (AnalyticOfStatement) jaxbUnmarshaller.unmarshal(file);
+		AnalyticOfStatement a = generateAnalyticsOfStatementOrder(xml);
+		return a;
+
+	}
+	
+	
+	
 
 	// nalog za isplatu snimi
 	public AnalyticOfStatement saveAnalyticsOfStatements(File file) throws JAXBException, ParseException {
@@ -135,6 +150,7 @@ public class AnalyticsOfStatementService {
 		return a;
 
 	}
+		
 
 	public AnalyticOfStatement getPaymentAnalyticsOfStatements(File file) throws JAXBException {
 
@@ -172,6 +188,41 @@ public class AnalyticsOfStatementService {
 
 		return a;
 	}
+	
+	// Nalog za uplatu
+	private AnalyticOfStatement generateAnalyticsOfStatementOrder(AnalyticOfStatement xml) {
+		
+		AnalyticOfStatement a = new AnalyticOfStatement();
+		
+		a.setType(xml.getType());
+		a.setDebtor(xml.getDebtor());
+		a.setPurposeOfPayment(xml.getPurposeOfPayment());
+		a.setCreditor(xml.getCreditor());
+		a.setDateOfReceipt(xml.getDateOfReceipt());
+		a.setCurrencyDate(xml.getCurrencyDate());
+		a.setSum(xml.getSum());
+		a.setAccountCreditor(bankAccountRepository.findOneByNumber(xml.getAccountCreditorXML()));
+		a.setModelAssigments(xml.getModelAssigments());
+		a.setReferenceNumberAssigments(xml.getReferenceNumberAssigments());
+		a.setEmergency(xml.getEmergency());
+		a.setTypeOfMistake(xml.getTypeOfMistake());
+		a.setStatus(xml.getStatus());
+		a.setPaymentType(paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML()));
+		a.setPaymentCurrency(currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
+		a.setCity(cityRepository.findOneByName(xml.getCityXML()));
+		System.out.println("aaaaaa  " + paymentTypeRepository.findOneByCode(xml.getPaymentTypeXML())
+				+ currencyRepository.findOneByOfficialCode(xml.getPaymentCurrencyXML()));
+		a.setCode(xml.getCode());
+		
+		
+		
+		
+		return a;
+	}
+	
+	
+	
+	
 
 	// nalog za naplatu sacuvaj
 	//Bozicu, trebas dodati proveru ako je iznos veci od 250000 da kupis i te naloge i ako su racuni iz razlicitih banaka
