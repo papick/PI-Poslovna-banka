@@ -107,7 +107,6 @@ export class TransferCheckComponent implements OnInit {
     console.log(file);
 
     this.router.navigateByUrl('/bank/' + idBank + '/transfer-order/paymanent/' + file);
-    location.reload();
 
   }
 

@@ -9,7 +9,21 @@
 
 </div>
 <br><br><br>
+<div  style="text-align: center;margin-top: 30px">
+  <label >Name</label>
+  <input type="text" [(ngModel)] = "nameSearch" placeholder="Name..">
 
+  <label >Account number</label>
+  <input type="text" [(ngModel)]="accountNumberSearch" placeholder="Account number..">
+
+  <label *ngIf="individual">JMBG</label>
+  <input *ngIf="individual" type="text" [(ngModel)]="jmbgSearch" placeholder="JMBG..">
+
+  <label *ngIf="!individual">PIB</label>
+  <input *ngIf="!individual" type="text" [(ngModel)]="pibSearch" placeholder="PIB..">
+
+  <button (click)="search()">Search</button>
+</div>
 <table class="table offset-2 tables" style=" border: 1px solid black ;" *ngIf="!individual">
   <tr>
     <th class="th-style"> Broj racuna</th>

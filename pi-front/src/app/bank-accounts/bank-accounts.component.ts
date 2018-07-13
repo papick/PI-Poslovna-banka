@@ -14,6 +14,7 @@ import index from "@angular/cli/lib/cli";
 export class BankAccountsComponent implements OnInit {
 
   items = [];
+  allAccounts=[];
   index;
   activeId;
   pravnoLice = false;
@@ -25,6 +26,11 @@ export class BankAccountsComponent implements OnInit {
   selectedAccountTo:any = {};
   selectedAccountFrom:any;
   accounts :any=[] ;
+
+  nameSearch:string='';
+  accountNumberSearch : string='';
+  pibSearch:string= '';
+  jmbgSearch:string='';
 
   constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router, private recessionService:RecessionService) {
   }
@@ -50,6 +56,8 @@ export class BankAccountsComponent implements OnInit {
     this.idbank = this.route.snapshot.params.idBank;
     this.clientService.getLegals(this.idbank).subscribe(data => {
       this.items = data;
+      this.allAccounts = this.items;
+
     });
   }
 
@@ -60,6 +68,8 @@ export class BankAccountsComponent implements OnInit {
     this.idbank = this.route.snapshot.params.idBank;
     this.clientService.getIndividuals(this.idbank).subscribe(data => {
       this.items = data;
+      this.allAccounts = this.items;
+
     });
   }
 
@@ -109,5 +119,20 @@ export class BankAccountsComponent implements OnInit {
 
   cancel(){
     this.dialogVisible = false;
+  }
+
+  search(){
+    if(!this.individual){
+
+        this.items = this.allAccounts.filter(a => a.number.includes(this.accountNumberSearch) &&
+                                            a.legalEntity.name.includes(this.nameSearch) &&
+                                            a.legalEntity.pib.includes(this.pibSearch)
+                                            );
+    }else{
+      this.items = this.allAccounts.filter(a => a.number.includes(this.accountNumberSearch) &&
+                                          a.individual.name.includes(this.nameSearch) &&
+                                          a.individual.jmbg.includes(this.jmbgSearch)
+                                          );
+    }
   }
 }
