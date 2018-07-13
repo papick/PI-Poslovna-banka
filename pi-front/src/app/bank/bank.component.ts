@@ -171,12 +171,12 @@ export class BankComponent implements OnInit {
   }
 
   payCheck() {
-    this.router.navigateByUrl('/bank/' + this.idBank + '/pay-order');
+    this.router.navigateByUrl('/bank/' + this.idBank + '/pay-order/paymanent/undefined');
     this.showPayOrder();
   }
 
   transfer() {
-    this.router.navigateByUrl('/bank/' + this.idBank + '/transfer-order');
+    this.router.navigateByUrl('/bank/' + this.idBank + '/transfer-order/paymanent/undefined');
     this.showTransferOrder();
   }
 

@@ -14,7 +14,7 @@ export class PaymentCheckComponent implements OnInit {
 
   public form: FormGroup;
   public f: FormGroup;
-
+  public file: AbstractControl;
   public debtor: AbstractControl;
   public purpose: AbstractControl;
   public creditor: AbstractControl;
@@ -26,7 +26,7 @@ export class PaymentCheckComponent implements OnInit {
   public model: AbstractControl;
   public referenceNumber: AbstractControl;
   public urgent: AbstractControl;
-  public file: AbstractControl;
+
 
 
   constructor(protected router: Router,
