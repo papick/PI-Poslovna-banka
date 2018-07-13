@@ -74,7 +74,7 @@ public class BankAccountResource {
 		BankAccount account = new BankAccount();
 		Date d = new Date();
 		account.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
-		account.setCurrency(currRepo.findByName(ba.getCurrency()));
+		account.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		account.setDateOfOpenning(d.toString());
 		account.setIndividual(null);
 		account.setMailReporting(ba.isMailReporting());
@@ -91,7 +91,7 @@ public class BankAccountResource {
 		BankAccount account = new BankAccount();
 		Date d = new Date();
 		account.setBank(bankRepo.findOne(Long.parseLong(ba.getBank())));
-		account.setCurrency(currRepo.findByName(ba.getCurrency()));
+		account.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		account.setDateOfOpenning(d.toString());
 		account.setIndividual(indRepo.findByName(ba.getIndividual()));
 		account.setLegalEntity(null);

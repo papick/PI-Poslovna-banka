@@ -21,7 +21,7 @@ public class Currency {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Country country;
 
-	@Column
+	@Column(unique = true)
 	private String name;
 
 	@Column

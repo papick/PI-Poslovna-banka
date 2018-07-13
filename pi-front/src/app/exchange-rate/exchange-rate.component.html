@@ -11,10 +11,56 @@
     <br>
     <br>
 
-    <label class="center"> Primenjuje se od: <select></select></label>
+    <label class="center"> Primenjuje se od:
+    <select class="form-control" (change)="onChange($event.target.value)">
+      <option></option>
+      <option *ngFor="let er of exchangeRates">{{er.appliedFromDate}}</option>
+    </select></label>
+
+    <br>
+    <br>
+
+    <div class="exchRate">
+
+      <div class="left">
+        Primenjuje se od: <b> {{activeExchRate.appliedFromDate}} </b>
+      </div>
+
+      <br>
+      <button type="button" class="btn btn-outline-primary center" (click)="exchangeRateInCurrency()"> Dodaj kurs</button>
+      <br>
+      <br>
+
+      <table class="table table-bordered tables left">
+        <tr>
+          <th class="th-style">R.br.</th>
+          <th class="th-style">Osnovna valuta</th>
+          <th class="th-style">Prema valuti</th>
+          <th class="th-style">Kupovni kurs</th>
+          <th class="th-style">Srednji kurs</th>
+          <th class="th-style">Prodajni kurs</th>
+        </tr>
+
+        <tr *ngFor="let item of activeExchRatesInCurrency;">
+          <td></td>
+          <td>{{item.primaryCurrency.name}}</td>
+          <td>{{item.toOtherCurrency.name}}</td>
+          <td>{{item.buying}}</td>
+          <td>{{item.middle}}</td>
+          <td>{{item.selling}}</td>
+        </tr>
+      </table>
+      <br>
+
+      <div class="right">
+        Kursna lista broj: <b> {{activeExchRate.number}} </b> / Datum formiranja: {{activeExchRate.date}}
+      </div>
 
 
 
+
+
+    </div>
 
 
   </div>

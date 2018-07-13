@@ -13,7 +13,8 @@ import {AnalyticsOfStatementService} from "../../service/AnalyticsOfStatementSer
 export class PaymentCheckComponent implements OnInit {
 
   public form: FormGroup;
-
+  public f: FormGroup;
+  public file: AbstractControl;
   public debtor: AbstractControl;
   public purpose: AbstractControl;
   public creditor: AbstractControl;
@@ -25,6 +26,8 @@ export class PaymentCheckComponent implements OnInit {
   public model: AbstractControl;
   public referenceNumber: AbstractControl;
   public urgent: AbstractControl;
+
+
 
   constructor(protected router: Router,
               private fb: FormBuilder,
@@ -44,6 +47,10 @@ export class PaymentCheckComponent implements OnInit {
       'urgent': [''],
 
     })
+    this.f = this.fb.group({
+      'file': [''],
+    })
+    this.file = this.f.controls['file'];
     this.debtor = this.form.controls['debtor'];
     this.purpose = this.form.controls['purpose'];
     this.creditor = this.form.controls['creditor'];
@@ -67,7 +74,7 @@ export class PaymentCheckComponent implements OnInit {
         this.form.controls['debtor'].setValue(data.debtor);
         this.form.controls['purpose'].setValue(data.purposeOfPayment);
         this.form.controls['creditor'].setValue(data.creditor);
-        this.form.controls['code'].setValue(140);
+        this.form.controls['code'].setValue(data.code);
         this.form.controls['currency'].setValue(data.paymentCurrency.officialCode);
         this.form.controls['sum'].setValue(data.sum);
         this.form.controls['bankAccount'].setValue(data.debtorAccount.number);
@@ -77,15 +84,17 @@ export class PaymentCheckComponent implements OnInit {
     }
   }
 
-  load1() {
+  load() {
     const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/payment-check/paymanent/nalog_za_isplatu_1');
-    location.reload();
-  }
-
-  load2() {
-    const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('/bank/' + idBank + '/payment-check/paymanent/nalog_za_isplatu_2');
+    console.log('file');
+    console.log(this.file.value);
+    const path = this.file.value;
+    const splited = path.split("\\");
+    const fileXML = splited[splited.length-1];
+    const splitXML = fileXML.split('.');
+    const file = splitXML[0];
+    console.log(file);
+    this.router.navigateByUrl('/bank/' + idBank + '/payment-check/paymanent/' + file);
     location.reload();
   }
 

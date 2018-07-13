@@ -22,9 +22,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<jasper.version>5.6.0</jasper.version>
+		<commons.digester.version>2.1</commons.digester.version>
+    <commons.collections.version>3.2.1</commons.collections.version>
+		
 	</properties>
 
 	<dependencies>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -42,11 +47,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency> -->
+	
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -57,6 +58,58 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		
+			<!-- Jasper -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasper.version}</version>
+	    	<type>jar</type>
+	    	<scope>compile</scope>
+	    	<exclusions>
+	    		<exclusion>
+	    			<artifactId>commons-collections</artifactId>
+	    			<groupId>commons-collections</groupId>
+	    		</exclusion>
+	    		<exclusion>
+	    			<artifactId>commons-beanutils</artifactId>
+	    			<groupId>commons-beanutils</groupId>
+	    		</exclusion>
+	    		<exclusion>
+	    			<artifactId>commons-digester</artifactId>
+	    			<groupId>commons-digester</groupId>
+	    		</exclusion>
+	    		<exclusion>
+	    			<artifactId>commons-logging</artifactId>
+	    			<groupId>commons-logging</groupId>
+	    		</exclusion>
+	    	</exclusions>
+		</dependency>
+		
+		<!-- Dependency required by Jasper -->
+		<dependency>
+	    	<groupId>commons-digester</groupId>
+	    	<artifactId>commons-digester</artifactId>
+	    	<type>jar</type>
+	    	<scope>compile</scope>
+	    </dependency>
+	    
+	    <!-- Dependency required by Jasper -->
+	    <dependency>
+	    	<groupId>commons-collections</groupId>
+	    	<artifactId>commons-collections</artifactId>
+	    	<version>${commons.collections.version}</version>
+	    	<type>jar</type><!--$NO-MVN-MAN-VER$-->
+	    	<scope>compile</scope>
+	    </dependency>
+ 	 	
+ 	 	<dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>4.2.2</version>
+        </dependency>    		
+		
 	</dependencies>
 
 	<build>
@@ -64,6 +117,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				
 			</plugin>
 		</plugins>
 	</build>

@@ -1,24 +1,13 @@
 <div>
 
   <div style="margin-left: 40%;margin-top: 50px;">
-    <table style="width: 30%">
-      <tr style=" border: 1px solid #4d94ff;height: 40px">
-        <th  style=" border: 1px solid #4d94ff;text-align: center">nalog_za_prenos_1.xml</th>
-        <th (click)="ucitaj()" style=" border: 1px solid #4d94ff;text-align: center;">Ucitaj</th>
-      </tr>
-      <tr style=" border: 1px solid #4d94ff;height: 40px">
-        <th  style=" border: 1px solid #4d94ff;text-align: center">nalog_za_prenos_2.xml</th>
-        <th (click)="ucitaj2()" style=" border: 1px solid #4d94ff;text-align: center;">Ucitaj</th>
-      </tr>
-      <tr style=" border: 1px solid #4d94ff;height: 40px">
-        <th  style=" border: 1px solid #4d94ff;text-align: center">nalog_za_prenos_3.xml</th>
-        <th (click)="ucitaj3()" style=" border: 1px solid #4d94ff;text-align: center;">Ucitaj</th>
-      </tr>
-      <tr style=" border: 1px solid #4d94ff;height: 40px">
-        <th  style=" border: 1px solid #4d94ff;text-align: center">nalog_za_prenos_4.xml</th>
-        <th (click)="ucitaj4()" style=" border: 1px solid #4d94ff;text-align: center;">Ucitaj</th>
-      </tr>
-    </table>
+    <form [formGroup]="f">
+      <div class="form-group">
+        <input name="Izaberi datoteku" type="file" [formControl]="file">
+
+      </div>
+    </form>
+    <button (click)="load()">Ucitaj nalog</button>
   </div>
   <div style="margin-top: 70px;margin-left: 30%;margin-right:30%;border-style: solid; border-width: 2px;">
     <div style="margin-left: 150px;margin-top: 20px;">
@@ -62,7 +51,8 @@
           <input style="width: 150px;" class="form-control margin" [formControl]="modelAssingment" disabled="true">
 
           <label style="margin-top: 5px;">Poziv na broj(zaduzenje) :</label>
-          <input style="width: 480px;" class="form-control margin" [formControl]="referenceNumberAssingment" disabled="true">
+          <input style="width: 480px;" class="form-control margin" [formControl]="referenceNumberAssingment"
+                 disabled="true">
 
           <label>Racun poverioca :</label>
           <input style="width: 480px" class="form-control margin" [formControl]="bankAccountCreditor" disabled="true">
@@ -71,7 +61,8 @@
           <input style="width: 150px;" class="form-control margin" [formControl]="modelApproval" disabled="true">
 
           <label style="margin-top: 5px;">Poziv na broj(odobrenje) :</label>
-          <input style="width: 480px;" class="form-control margin" [formControl]="referenceNumberApproval" disabled="true">
+          <input style="width: 480px;" class="form-control margin" [formControl]="referenceNumberApproval"
+                 disabled="true">
 
           <br>
           <br>

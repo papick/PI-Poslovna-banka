@@ -49,7 +49,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 		updated.setLegalEntity(legalRepo.findByName(ba.getLegalEntity()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
-		updated.setCurrency(currRepo.findByName(ba.getCurrency()));
+		updated.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		updated.setMailReporting(ba.isMailReporting());
 		return repo.save(updated);
 	}
@@ -61,7 +61,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 		updated.setIndividual(individualRepo.findByName(ba.getIndividual()));
 		updated.setNumber(ba.getNumber());
 		updated.setValid(ba.isValid());
-		updated.setCurrency(currRepo.findByName(ba.getCurrency()));
+		updated.setCurrency(currRepo.findOneByName(ba.getCurrency()));
 		updated.setMailReporting(ba.isMailReporting());
 		return repo.save(updated);
 	}

@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 
 @Component ({
   selector: 'app-payment-order',
@@ -7,6 +7,17 @@ import {Component} from "@angular/core";
 
 })
 
-export class PaymentOrderComponent {
+export class PaymentOrderComponent implements OnInit{
+
+
+  ngOnInit() {
+
+  }
+
+
+
+  load() {
+
+  }
 
 }

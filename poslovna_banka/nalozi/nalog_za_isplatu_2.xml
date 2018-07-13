@@ -16,4 +16,5 @@
 	<paymentTypeXML>1</paymentTypeXML>
 	<paymentCurrencyXML>RSD</paymentCurrencyXML>
 	<cityXML>Novi Sad</cityXML>
+	<code>140</code>
 </analyticsOfStatements>

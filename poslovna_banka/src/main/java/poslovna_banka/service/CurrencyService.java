@@ -1,16 +1,24 @@
 package poslovna_banka.service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
+import net.sf.jasperreports.engine.JRException;
 import poslovna_banka.model.Country;
 import poslovna_banka.model.Currency;
 import poslovna_banka.repository.CountryRepository;
 import poslovna_banka.repository.CurrencyRepository;
 import poslovna_banka.service.dto.CurrencyDTO;
-import poslovna_banka.service.dto.CurrencyEditDTO;
+
+
 
 @Service
 public class CurrencyService {
@@ -22,9 +30,15 @@ public class CurrencyService {
 	private CurrencyRepository currencyRepository;
 	
 	
-	public List<Currency> getCurrencies() {
+	public List<Currency> getCurrencies() throws JRException, FileNotFoundException {
 		
 		List<Currency> currencies = (List<Currency>) currencyRepository.findAll();
+		
+		
+		// 
+		
+		
+		//
 		
 		return currencies;
 	}
