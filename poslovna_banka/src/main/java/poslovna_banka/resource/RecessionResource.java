@@ -41,9 +41,18 @@ public class RecessionResource {
 		a.setDateOfReceipt(newRecesion.getDateOfRecession());
 		a.setCurrencyDate(newRecesion.getDateOfRecession());
 		a.setType("Nalog za prenos");
-		a.setDebtor(newRecesion.getAccountFrom().getIndividual().getName());
+		if(newRecesion.getAccountFrom().getIndividual() == null) {
+			a.setDebtor(newRecesion.getAccountFrom().getLegalEntity().getName());
+		}else {
+			a.setDebtor(newRecesion.getAccountFrom().getIndividual().getName());
+		}
 		a.setPurposeOfPayment("Ukidanje racuna");
-		a.setCreditor(newRecesion.getAccountTo().getIndividual().getName());
+		if(newRecesion.getAccountTo().getIndividual() == null) {
+			a.setCreditor(newRecesion.getAccountTo().getLegalEntity().getName());
+
+		}else {
+			a.setCreditor(newRecesion.getAccountTo().getIndividual().getName());
+		}
 		a.setSum(1000.00);//otkud mi pare
 		a.setDebtorAccount(newRecesion.getAccountFrom());
 		a.setPaymentCurrency(newRecesion.getAccountFrom().getCurrency());

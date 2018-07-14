@@ -78,9 +78,9 @@ public class BankAccountServiceImpl implements BankAccountService {
 	public List<BankAccount> getAllBankAccounts() {
 		List<BankAccount> accounts = new ArrayList<>() ;
 		repo.findAll().forEach(ba -> {
-			if(ba.isValid()) {
+			
 				accounts.add(ba);
-			}
+			
 		});
 		return accounts;
 	}

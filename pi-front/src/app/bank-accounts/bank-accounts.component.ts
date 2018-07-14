@@ -26,11 +26,15 @@ export class BankAccountsComponent implements OnInit {
   selectedAccountTo:any = {};
   selectedAccountFrom:any;
   accounts :any=[] ;
+  accountsSelect:any=[];
 
   nameSearch:string='';
   accountNumberSearch : string='';
   pibSearch:string= '';
   jmbgSearch:string='';
+  bankSearch:string ='';
+
+  combozoomVisible = false;
 
   constructor(private clientService: ClientService, protected route: ActivatedRoute, private router: Router, private recessionService:RecessionService) {
   }
@@ -43,7 +47,8 @@ export class BankAccountsComponent implements OnInit {
     this.clientService.getAccounts().subscribe(data => {
       this.accounts = data;
       this.selectedAccountFrom =  this.accounts.find(account => account.id == id);
-      this.accounts = this.accounts.filter(account => account.id != id);
+      this.accounts = this.accounts.filter(account => account.id != id && account.valid);
+      this.accountsSelect = this.accounts.slice();
     });
 
 
@@ -135,4 +140,35 @@ export class BankAccountsComponent implements OnInit {
                                           );
     }
   }
+
+  searchCombozoom(){
+      this.accounts = this.accountsSelect.filter(a => {
+        let nameCheck;
+        if(a.individual){
+          nameCheck=  a.individual.name.toLowerCase().includes(this.nameSearch.toLowerCase());
+        }else{
+          nameCheck =  a.legalEntity.name.toLowerCase().includes(this.nameSearch.toLowerCase());
+        }
+        console.log(a.bank.name.toLowerCase().includes(this.bankSearch.toLowerCase()));
+        return nameCheck  && a.number.includes(this.accountNumberSearch) &&
+        a.bank.name.toLowerCase().includes(this.bankSearch.toLowerCase())
+      }
+                                          );
+
+  }
+
+  showCombozoom(){
+    this.combozoomVisible =true;
+  }
+
+  izaberi(id){
+    this.accounts = this.accountsSelect.slice();
+    this.selectedAccountTo = this.accounts.find(a => a.id == id);
+    this.nameSearch='';
+    this.accountNumberSearch ='';
+    this.pibSearch= '';
+    this.jmbgSearch='';
+    this.combozoomVisible = false;
+  }
+
 }

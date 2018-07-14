@@ -42,7 +42,7 @@
       <td> {{item.legalEntity.name}} </td>
       <td> {{item.valid}} </td>
       <td (click)="editLegalAccountPage(item.id)">Izmeni</td>
-      <td ><button class="btn btn-lg btn-outline-primary" (click)="showDialog(item.id)">Zatvori racun</button></td>
+      <td ><button *ngIf="item.valid" class="btn btn-lg btn-outline-primary" (click)="showDialog(item.id)">Zatvori racun</button></td>
     </tr>
 
 </table>
@@ -78,10 +78,12 @@
 
 
 <p-dialog header="Close account" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true" [width]="400" [contentStyle]="{height: '400px'}" >
-   <div class="ui-g ui-fluid" >
+
      <label>Odaberite gde želite da prebacite sredsta sa računa:</label>
-     <p-dropdown [(options)]="accounts" [(ngModel)]="selectedAccountTo" placeholder="Select.." [style]="{'width':'250px'}" optionLabel="number" filter="true"> </p-dropdown>
-   </div>
+     <p-dropdown [(options)]="accountsSelect" [(ngModel)]="selectedAccountTo" placeholder="Select.." [style]="{'width':'250px'}" optionLabel="number" filter="true"> </p-dropdown>
+     <button pButton type="button" (click)="showCombozoom()" icon="fa-external-link" [style]="{'max-width':'40px', 'max-height':'40px'}"></button>
+
+
 
 <p-footer >
       <div class="ui-dialog-buttonpane ui-helper-clearfix">
@@ -89,4 +91,43 @@
           <button type="button" pButton icon="fa-check" (click)="delete()" label="Delete"></button>
       </div>
     </p-footer>
+</p-dialog>
+
+<p-dialog header="Accounts" [(visible)]="combozoomVisible" [responsive]="true" showEffect="fade" [modal]="true" >
+   <div class="ui-g ui-fluid" >
+     <div  style="text-align: center;margin-top: 30px">
+       <label >Naziv</label>
+       <input type="text" [(ngModel)] = "nameSearch" placeholder="Naziv..">
+
+       <label >Broj racuna</label>
+       <input type="text" [(ngModel)]="accountNumberSearch" placeholder="Broj racuna..">
+
+       <label >Banka</label>
+       <input  type="text" [(ngModel)]="bankSearch" placeholder="Banka..">
+
+       <button (click)="searchCombozoom()">Pretraga</button>
+     </div>
+     <table class="table offset-2 tables" style=" border: 1px solid black ;" >
+       <tr>
+         <th class="th-style"> Broj racuna</th>
+         <th class="th-style"> Datum otvaranja</th>
+         <th class="th-style"> Valuta</th>
+         <th class="th-style"> Vlasnik racuna</th>
+         <th class="th-style">Banka</th>
+         <th class="th-style">Izaberi</th>
+       </tr>
+
+         <tr *ngFor="let item of accounts;">
+           <td> {{item.number}}</td>
+           <td> {{item.dateOfOpenning}}</td>
+           <td> {{item.currency.name}} </td>
+           <td *ngIf="item.legalEntity" > {{item.legalEntity.name}} </td>
+           <td *ngIf="item.individual" > {{item.individual.name}} </td>
+           <td> {{item.bank.name}} </td>
+           <td ><button class="btn btn-lg btn-outline-primary" (click)="izaberi(item.id)">Izaberi</button></td>
+         </tr>
+
+     </table>
+   </div>
+
 </p-dialog>
